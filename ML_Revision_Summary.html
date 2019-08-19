@@ -992,7 +992,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*GitHub*/
+</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "center",
+  showProcessingMessages: false,
+  messageStyle: 'none'
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1081,7 +1105,10 @@ body .markdown-body
 <ul>
 <li><strong>Linear</strong>: <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Factor Analysis</u>: <a href="https://www.datacamp.com/community/tutorials/introduction-factor-analysis">Introduction to Factor Analysis in Python</a>: <code>&lt;BGI - No.6.2&gt;</code></li>
-<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Principle Component Analysis</u>: connection to <strong>SVD</strong> <code>&lt;BGI - No.6.3&gt;</code></li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Principle Component Analysis</u>: connection to <strong>SVD</strong> <code>&lt;BGI - No.6.3&gt;</code><ul>
+<li><a href="https://blog.csdn.net/billbliss/article/details/80451748">PCA和SVD的关系 - CSDN</a></li>
+</ul>
+</li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Independent Component Analysis</u>: <a href="https://www.zhihu.com/question/28845451">独立成分分析 ( ICA ) 与主成分分析 ( PCA ) 的区别在哪里？</a> <code>&lt;BGI - No.6.5&gt;</code></li>
 </ul>
 </li>
@@ -1139,10 +1166,10 @@ body .markdown-body
 <h2 id="learning-algorithm">Learning Algorithm<a class="headerlink" href="#learning-algorithm" title="Permanent link"></a></h2>
 <ul>
 <li><strong>Supervised Learning Part</strong><ul class="task-list">
-<li class="task-list-item"><input type="checkbox" disabled/> <u>Linear Regression</u></li>
-<li class="task-list-item"><input type="checkbox" disabled/> <u>Logistic Regression</u></li>
-<li class="task-list-item"><input type="checkbox" disabled/> Kernel and Regularization (Ridge Regression, Lasso)</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Support Vector Machine</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Linear Regression:</u> <code>&lt;BGI - No.7.1&gt;</code></li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Logistic Regression:</u> <code>&lt;BGI - No.7.2&gt;</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Kernel and Regularization (Ridge Regression, Lasso): L1 compared to L2 regularization</li>
+<li>Support Vector Machine</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Decision Tree</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Bagging Algorithm (Random Forests)</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Boosting Algorithm<ul class="task-list">
@@ -1152,6 +1179,7 @@ body .markdown-body
 <li class="task-list-item"><input type="checkbox" disabled/> LightGBM</li>
 </ul>
 </li>
+<li class="task-list-item"><input type="checkbox" disabled/> Gaussian Process</li>
 </ul>
 </li>
 <li>
@@ -1175,14 +1203,18 @@ body .markdown-body
 <li class="task-list-item"><input type="checkbox" disabled/> Structure of LSTM and GRU, compare</li>
 </ul>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> Encoder and Decoder (seq2seq) - Be able to write from stratch</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Attention (Struction and explaination of R-net in Reading comprehension)</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Convolusional Neural Network (refer to the DeepMind note)<ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled/> theory of Convolusion and the equation to calculate</li>
 <li class="task-list-item"><input type="checkbox" disabled/> average-pooling, max-pooling, global pooling &amp; reason to pooling</li>
 </ul>
 </li>
-<li>Others:<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Encoder and Decoder (seq2seq) - Be able to write from stratch</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> Attention (Struction and explaination of R-net in Reading comprehension)</p>
+</li>
+<li>
+<p>Others:</p>
+<ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled/> Batch Normalization</li>
 <li class="task-list-item"><input type="checkbox" disabled/> How to avoid overfitting</li>
 </ul>

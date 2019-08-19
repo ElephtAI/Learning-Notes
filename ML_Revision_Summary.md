@@ -17,6 +17,7 @@
         - **Linear**: 
             - [x] <u>Factor Analysis</u>: [Introduction to Factor Analysis in Python](https://www.datacamp.com/community/tutorials/introduction-factor-analysis): `<BGI - No.6.2>`
             - [x] <u>Principle Component Analysis</u>: connection to **SVD** `<BGI - No.6.3>`
+                - [PCA和SVD的关系 - CSDN](https://blog.csdn.net/billbliss/article/details/80451748)
             - [x] <u>Independent Component Analysis</u>: [独立成分分析 ( ICA ) 与主成分分析 ( PCA ) 的区别在哪里？](https://www.zhihu.com/question/28845451) `<BGI - No.6.5>`
         - **Non-linear, keep global feature**:
             - [x] <u>Kernal PCA</u>: `<BGI - No.6.6>`
