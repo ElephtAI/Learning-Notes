@@ -1,12 +1,12 @@
 ## Data Preprocessing and Feature Engineering
 
-* [x] <u>Normalization and Standardization</u> - **Black Gambol - No. 5**
+* [x] <u>Normalization and Standardization</u> - `<BGI - No.5>`
     - [归一化 （Normalization）、标准化 （Standardization）和中心化/零均值化 （Zero-centered）](https://www.jianshu.com/p/95a8f035c86c)
     - [Normalization vs Standardization — Quantitative analysis](https://towardsdatascience.com/normalization-vs-standardization-quantitative-analysis-a91e8a79cebf)
 * [ ] **Dimensionality Reduction Techniques**
 
     - [x] **Feature Selection** (*Keep the most relevant features*)
-        - [<u>Random Forest for Feature Selection</u>](https://towardsdatascience.com/feature-selection-using-random-forest-26d7b747597f)
+        - [<u>Random Forest for Feature Selection</u>](https://towardsdatascience.com/feature-selection-using-random-forest-26d7b747597f): `<BGI - No.6.1>`
         - <u>Missing Value Ratio (缺失值比率)</u>: remove the feature if its missing value ratio is higher than the preset threshold
         - <u>Low Variance Filter (低方差滤波)</u>: remove the features with lowest variance (`need Normalization at first sine variance depends on the range`)
         - <u>High Correlation Filter</u>: remove one of feature pair, if they have high correlation compare to the thresold
@@ -15,11 +15,13 @@
 
     - **Dimensionality Reduction** (*Find new variable with similar information but lower dimension*)
         - **Linear**: 
-            - [x] <u>Factor Analysis</u>: [Introduction to Factor Analysis in Python](https://www.datacamp.com/community/tutorials/introduction-factor-analysis)
-            - [ ] <u>Principle Component Analysis</u>: Connection to `SVD`
-            - [ ] <u>Independent Component Analysis</u>
+            - [x] <u>Factor Analysis</u>: [Introduction to Factor Analysis in Python](https://www.datacamp.com/community/tutorials/introduction-factor-analysis): `<BGI - No.6.2>`
+            - [x] <u>Principle Component Analysis</u>: connection to **SVD** `<BGI - No.6.3>`
+            - [x] <u>Independent Component Analysis</u>: [独立成分分析 ( ICA ) 与主成分分析 ( PCA ) 的区别在哪里？](https://www.zhihu.com/question/28845451) `<BGI - No.6.5>`
         - **Non-linear, keep global feature**:
-            - [ ] <u>Kernal PCA<u>: Base on **Kernel**
+            - [x] <u>Kernal PCA</u>: `<BGI - No.6.6>`
+                - [降维算法总结比较（三）- Kenel PCA](https://zhuanlan.zhihu.com/p/25097144) 
+                - [Kernel tricks and nonlinear dimensionality reduction via RBF kernel PCA](https://sebastianraschka.com/Articles/2014_kernel_pca.html#gaussian-radial-basis-function-rbf-kernel-pca)
             - [ ] <u>Auto-Encoder</u>: Base on **Neural Network**
             - <u>Multidimensionaly Scaling (MDS)</u>
             - <u>Isomap</u>
@@ -49,10 +51,10 @@
 ## Learning Algorithm
 
 * **Supervised Learning Part**
-    - [ ] <u>Linear Regression</u>
-    - [ ] <u>Logistic Regression</u>
-    - [ ] Kernel and Regularization (Ridge Regression, Lasso)
-    - [ ] Support Vector Machine
+    - [x] <u>Linear Regression:</u> `<BGI - No.7.1>`
+    - [x] <u>Logistic Regression:</u> `<BGI - No.7.2>`
+    - [ ] Kernel and Regularization (Ridge Regression, Lasso): L1 compared to L2 regularization
+    - Support Vector Machine
     - [ ] Decision Tree
     - [ ] Bagging Algorithm (Random Forests)
     - [ ] Boosting Algorithm
@@ -60,9 +62,13 @@
         - [ ] Gradient Boosting Decision Tree
         - [ ] XGBoost
         - [ ] LightGBM
+    - [ ] Gaussian Process
 * **Unsupervised Learning**
     - [ ] Unsupervised Learning Summary
     - [ ] Clustering Algorithm Summary
+    - [ ] Topic Modelling: NMF (AML notes)
+    - [ ] Latent Semantic Indexing (LSI)
+    - [ ] Latent Dirichlet Allocation (LDA)
 
 
 * **Deep Learning Part** (back to the DeepMind Course)
@@ -72,11 +78,12 @@
     - [ ] RNN, LSTM and GRU
         - [ ] Gradient disapper and Gradient explotion
         - [ ] Structure of LSTM and GRU, compare
-    - [ ] Encoder and Decoder (seq2seq) - Be able to write from stratch
-    - [ ] Attention (Struction and explaination of R-net in Reading comprehension)
     - [ ] Convolusional Neural Network (refer to the DeepMind note)
         - [ ] theory of Convolusion and the equation to calculate
         - [ ] average-pooling, max-pooling, global pooling & reason to pooling
+    - [ ] Encoder and Decoder (seq2seq) - Be able to write from stratch
+    - [ ] Attention (Struction and explaination of R-net in Reading comprehension)
+
     - Others:
         - [ ] Batch Normalization
         - [ ] How to avoid overfitting
