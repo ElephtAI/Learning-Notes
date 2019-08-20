@@ -992,7 +992,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*GitHub*/
+</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "center",
+  showProcessingMessages: false,
+  messageStyle: 'none'
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1189,19 +1213,20 @@ body .markdown-body
 </ul>
 </li>
 <li class="task-list-item"><input type="checkbox" disabled/> Word level representation Learning (Representation Learning):<ul class="task-list">
-<li class="task-list-item"><input type="checkbox" disabled/> Bag of words model</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Word2Vec &amp; GloVe: <ul>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Bag of words model</u>: <code>&lt;BGI - No.10.1&gt;</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> <u>Word2Vec</u> (<em>CBoW &amp; Skip-Gram, Hierachical Softmax &amp; Negative Sampling</em>): <code>&lt;BGI - No.10.2&gt;</code><ul>
 <li><a href="https://zhuanlan.zhihu.com/p/44599645">一篇浅显易懂的word2vec原理讲解 - 知乎</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/31319965">WORD2VEC原理及使用方法总结 - 知乎</a></li>
 </ul>
 </li>
+<li class="task-list-item"><input type="checkbox" disabled/> GloVe</li>
 <li class="task-list-item"><input type="checkbox" disabled/> <strong>Doc2Vec</strong></li>
 <li class="task-list-item"><input type="checkbox" disabled/> Tf-idf: <strong>advantages and disadvantages</strong></li>
 <li class="task-list-item"><input type="checkbox" disabled/> other representation learning for nlp: GPT, Transformer, Bert</li>
 </ul>
 </li>
 <li class="task-list-item"><input type="checkbox" disabled/> RNN, LSTM and GRU<ul class="task-list">
-<li class="task-list-item"><input type="checkbox" disabled/> Gradient disapper and Gradient explotion</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Gradient vanishing and Gradient explosion</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Structure of LSTM and GRU, compare</li>
 </ul>
 </li>

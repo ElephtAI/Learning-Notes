@@ -96,7 +96,7 @@
         - [ ] Tf-idf: **advantages and disadvantages**
         - [ ] other representation learning for nlp: GPT, Transformer, Bert
     - [ ] RNN, LSTM and GRU
-        - [ ] Gradient disapper and Gradient explotion
+        - [ ] Gradient vanishing and Gradient explosion
         - [ ] Structure of LSTM and GRU, compare
     - [ ] Convolusional Neural Network (refer to the DeepMind note)
         - [ ] theory of Convolusion and the equation to calculate
