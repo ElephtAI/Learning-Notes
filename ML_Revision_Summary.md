@@ -1,3 +1,8 @@
+## General to read reference:
+
+* [神经网络的激活函数总结](https://zhuanlan.zhihu.com/p/40903328): **links to useful pages at the bottom**
+* [推荐系统从零单排系列(六)—Word2Vec优化策略层次Softmax与负采样](https://zhuanlan.zhihu.com/p/66417229): **links to the series**
+
 ## Data Preprocessing and Feature Engineering
 
 * [x] <u>Normalization and Standardization</u> - `<BGI - No.5>`
@@ -54,7 +59,9 @@
 * **Supervised Learning Part**
     - [x] <u>Linear Regression:</u> `<BGI - No.7.1>`
     - [x] <u>Logistic Regression:</u> `<BGI - No.7.2>`
-    - [ ] Kernel and Regularization (Ridge Regression, Lasso): L1 compared to L2 regularization
+    - [x] <u>Kernel and Regularization</u> (Ridge Regression, Lasso): `<BGI - No.8.1-3>` 
+        - L1 compared to L2 regularization: [L1,L2,L0区别，为什么可以防止过拟合 - 简书](https://www.jianshu.com/p/475d2c3197d2)
+        - Ridge vs Lasso: [变量的选择——Lasso&Ridge&ElasticNet](https://www.cnblogs.com/mengnan/p/9307615.html)
     - Support Vector Machine
     - [ ] Decision Tree
     - [ ] Bagging Algorithm (Random Forests)
@@ -73,9 +80,21 @@
 
 
 * **Deep Learning Part** (back to the DeepMind Course)
-    - [ ] Forward and Backward Propagation 
-    - [ ] Activation Function and how to choose
-    - [ ] Word2Vec training and GloVe Explaination (Representation Learning)
+    - [x] <u>Forward and Backward Propagation</u>: [反向传播算法推导-全连接神经网络 - SIGAI](https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&mid=2247484439&idx=1&sn=4fa8c71ae9cb777d6e97ebd0dd8672e7&chksm=fdb69980cac110960e08c63061e0719a8dc7945606eeef460404dc2eb21b4f5bdb434fb56f92&scene=21#wechat_redirect)
+    - [x] <u>Activation Function and how to choose</u>: `<BGI - No.9.1-2>`
+        - keep the nonlinearity of the neural network
+        - avoid **gradient vanishing** and **gradient explosion**
+        - [理解神经网络的激活函数](https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&mid=2247483977&idx=1&sn=401b211bf72bc70f733d6ac90f7352cc&chksm=fdb69fdecac116c81aad9e5adae42142d67f50258106f501af07dc651d2c1473c52fad8678c3&scene=21#wechat_redirect)
+        - Saturation activation function: [Noisy Activation Functions](https://arxiv.org/pdf/1603.00391.pdf)
+    - [ ] Word level representation Learning (Representation Learning):
+        - [x] <u>Bag of words model</u>: `<BGI - No.10.1>`
+        - [ ] <u>Word2Vec</u> (*CBoW & Skip-Gram, Hierachical Softmax & Negative Sampling*): `<BGI - No.10.2>`
+            - [一篇浅显易懂的word2vec原理讲解 - 知乎](https://zhuanlan.zhihu.com/p/44599645)
+            - [WORD2VEC原理及使用方法总结 - 知乎](https://zhuanlan.zhihu.com/p/31319965)
+        - [ ] GloVe
+        - [ ] **Doc2Vec**
+        - [ ] Tf-idf: **advantages and disadvantages**
+        - [ ] other representation learning for nlp: GPT, Transformer, Bert
     - [ ] RNN, LSTM and GRU
         - [ ] Gradient disapper and Gradient explotion
         - [ ] Structure of LSTM and GRU, compare
@@ -96,6 +115,8 @@
 
 ## Metrics and Ealuation method
 
+* [ ] **when to choose each loss function**
+
 * MLE, MAP
 * Mean square error, Mean Abosolute Error
 * Classification Accuracy
@@ -110,6 +131,7 @@
 * Optimization Theory
     - Gradient Descent (stochastic, mini-batch or others)
     - Revise the Optimization part of the AML notes
+    - [理解凸优化](https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&mid=2247484439&idx=1&sn=4fa8c71ae9cb777d6e97ebd0dd8672e7&chksm=fdb69980cac110960e08c63061e0719a8dc7945606eeef460404dc2eb21b4f5bdb434fb56f92&scene=21#wechat_redirect)
 * Deep Learing Optimizer
     - Adam and many other, how to choose
 

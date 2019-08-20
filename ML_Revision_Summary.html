@@ -992,31 +992,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
-  config: ["MMLorHTML.js"],
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true
-  },
-  TeX: {
-    extensions: ["AMSmath.js", "AMSsymbols.js"],
-    TagSide: "right",
-    TagIndent: ".8em",
-    MultLineWidth: "85%",
-    equationNumbers: {
-      autoNumber: "AMS",
-    },
-    unicode: {
-      fonts: "STIXGeneral,'Arial Unicode MS'"
-    }
-  },
-  displayAlign: "center",
-  showProcessingMessages: false,
-  messageStyle: 'none'
-});</script><style>/*GitHub*/
+</style><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1079,7 +1055,12 @@ body .markdown-body
 .codehilite .vi{color:teal}
 .codehilite .il{color:#009999}
 .codehilite .gc{color:#999;background-color:#EAF2F5}
-</style><title>ML_Revision_Summary</title></head><body><article class="markdown-body"><h2 id="data-preprocessing-and-feature-engineering">Data Preprocessing and Feature Engineering<a class="headerlink" href="#data-preprocessing-and-feature-engineering" title="Permanent link"></a></h2>
+</style><title>ML_Revision_Summary</title></head><body><article class="markdown-body"><h2 id="general-to-read-reference">General to read reference:<a class="headerlink" href="#general-to-read-reference" title="Permanent link"></a></h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/40903328">神经网络的激活函数总结</a>: <strong>links to useful pages at the bottom</strong></li>
+<li><a href="https://zhuanlan.zhihu.com/p/66417229">推荐系统从零单排系列(六)—Word2Vec优化策略层次Softmax与负采样</a>: <strong>links to the series</strong></li>
+</ul>
+<h2 id="data-preprocessing-and-feature-engineering">Data Preprocessing and Feature Engineering<a class="headerlink" href="#data-preprocessing-and-feature-engineering" title="Permanent link"></a></h2>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Normalization and Standardization</u> - <code>&lt;BGI - No.5&gt;</code><ul>
 <li><a href="https://www.jianshu.com/p/95a8f035c86c">归一化 （Normalization）、标准化 （Standardization）和中心化/零均值化 （Zero-centered）</a></li>
@@ -1168,7 +1149,11 @@ body .markdown-body
 <li><strong>Supervised Learning Part</strong><ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Linear Regression:</u> <code>&lt;BGI - No.7.1&gt;</code></li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Logistic Regression:</u> <code>&lt;BGI - No.7.2&gt;</code></li>
-<li class="task-list-item"><input type="checkbox" disabled/> Kernel and Regularization (Ridge Regression, Lasso): L1 compared to L2 regularization</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Kernel and Regularization</u> (Ridge Regression, Lasso): <code>&lt;BGI - No.8.1-3&gt;</code> <ul>
+<li>L1 compared to L2 regularization: <a href="https://www.jianshu.com/p/475d2c3197d2">L1,L2,L0区别，为什么可以防止过拟合 - 简书</a></li>
+<li>Ridge vs Lasso: <a href="https://www.cnblogs.com/mengnan/p/9307615.html">变量的选择——Lasso&amp;Ridge&amp;ElasticNet</a></li>
+</ul>
+</li>
 <li>Support Vector Machine</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Decision Tree</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Bagging Algorithm (Random Forests)</li>
@@ -1195,9 +1180,26 @@ body .markdown-body
 <li>
 <p><strong>Deep Learning Part</strong> (back to the DeepMind Course)</p>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" disabled/> Forward and Backward Propagation </li>
-<li class="task-list-item"><input type="checkbox" disabled/> Activation Function and how to choose</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Word2Vec training and GloVe Explaination (Representation Learning)</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Forward and Backward Propagation</u>: <a href="https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&amp;mid=2247484439&amp;idx=1&amp;sn=4fa8c71ae9cb777d6e97ebd0dd8672e7&amp;chksm=fdb69980cac110960e08c63061e0719a8dc7945606eeef460404dc2eb21b4f5bdb434fb56f92&amp;scene=21#wechat_redirect">反向传播算法推导-全连接神经网络 - SIGAI</a></li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Activation Function and how to choose</u>: <code>&lt;BGI - No.9.1-2&gt;</code><ul>
+<li>keep the nonlinearity of the neural network</li>
+<li>avoid <strong>gradient vanishing</strong> and <strong>gradient explosion</strong></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&amp;mid=2247483977&amp;idx=1&amp;sn=401b211bf72bc70f733d6ac90f7352cc&amp;chksm=fdb69fdecac116c81aad9e5adae42142d67f50258106f501af07dc651d2c1473c52fad8678c3&amp;scene=21#wechat_redirect">理解神经网络的激活函数</a></li>
+<li>Saturation activation function: <a href="https://arxiv.org/pdf/1603.00391.pdf">Noisy Activation Functions</a></li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Word level representation Learning (Representation Learning):<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Bag of words model</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Word2Vec &amp; GloVe: <ul>
+<li><a href="https://zhuanlan.zhihu.com/p/44599645">一篇浅显易懂的word2vec原理讲解 - 知乎</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/31319965">WORD2VEC原理及使用方法总结 - 知乎</a></li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Doc2Vec</strong></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Tf-idf: <strong>advantages and disadvantages</strong></li>
+<li class="task-list-item"><input type="checkbox" disabled/> other representation learning for nlp: GPT, Transformer, Bert</li>
+</ul>
+</li>
 <li class="task-list-item"><input type="checkbox" disabled/> RNN, LSTM and GRU<ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled/> Gradient disapper and Gradient explotion</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Structure of LSTM and GRU, compare</li>
@@ -1231,8 +1233,13 @@ body .markdown-body
 </li>
 </ul>
 <h2 id="metrics-and-ealuation-method">Metrics and Ealuation method<a class="headerlink" href="#metrics-and-ealuation-method" title="Permanent link"></a></h2>
-<ul>
-<li>MLE, MAP</li>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> <strong>when to choose each loss function</strong></p>
+</li>
+<li>
+<p>MLE, MAP</p>
+</li>
 <li>Mean square error, Mean Abosolute Error</li>
 <li>Classification Accuracy</li>
 <li>Precision, Recall, F1 and AUC</li>
@@ -1251,6 +1258,7 @@ body .markdown-body
 <li>Optimization Theory<ul>
 <li>Gradient Descent (stochastic, mini-batch or others)</li>
 <li>Revise the Optimization part of the AML notes</li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&amp;mid=2247484439&amp;idx=1&amp;sn=4fa8c71ae9cb777d6e97ebd0dd8672e7&amp;chksm=fdb69980cac110960e08c63061e0719a8dc7945606eeef460404dc2eb21b4f5bdb434fb56f92&amp;scene=21#wechat_redirect">理解凸优化</a></li>
 </ul>
 </li>
 <li>Deep Learing Optimizer<ul>
