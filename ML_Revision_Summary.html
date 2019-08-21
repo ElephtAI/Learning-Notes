@@ -992,31 +992,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
-  config: ["MMLorHTML.js"],
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true
-  },
-  TeX: {
-    extensions: ["AMSmath.js", "AMSsymbols.js"],
-    TagSide: "right",
-    TagIndent: ".8em",
-    MultLineWidth: "85%",
-    equationNumbers: {
-      autoNumber: "AMS",
-    },
-    unicode: {
-      fonts: "STIXGeneral,'Arial Unicode MS'"
-    }
-  },
-  displayAlign: "center",
-  showProcessingMessages: false,
-  messageStyle: 'none'
-});</script><style>/*GitHub*/
+</style><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1151,6 +1127,7 @@ body .markdown-body
 <p><input type="checkbox" disabled/> Extension of SVD (-&gt; PCA -&gt; LSI -&gt; LDA)</p>
 <ul>
 <li><strong>what is Eigenvalue</strong>: <u><em>Eigenvectors are used for understanding linear transformations. In data analysis, we usually calculate the eigenvectors for a correlation or covariance matrix. Eigenvectors are the directions along which a particular linear transformation acts by flipping, compressing or stretching. Eigenvalue can be referred to as the strength of the transformation in the direction of eigenvector or the factor by which the compression occurs.</em></u></li>
+<li><a href="https://technowiki.wordpress.com/2011/08/27/latent-semantic-analysis-lsa-tutorial/">Latent Semantic Analysis (LSA) Tutorial</a></li>
 </ul>
 </li>
 <li>
@@ -1170,7 +1147,9 @@ body .markdown-body
 </ul>
 <h2 id="learning-algorithm">Learning Algorithm<a class="headerlink" href="#learning-algorithm" title="Permanent link"></a></h2>
 <ul>
-<li><strong>Supervised Learning Part</strong><ul class="task-list">
+<li>
+<p><strong>Supervised Learning Part</strong></p>
+<ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Linear Regression:</u> <code>&lt;BGI - No.7.1&gt;</code></li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Logistic Regression:</u> <code>&lt;BGI - No.7.2&gt;</code></li>
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Kernel and Regularization</u> (Ridge Regression, Lasso): <code>&lt;BGI - No.8.1-3&gt;</code> <ul>
@@ -1197,7 +1176,7 @@ body .markdown-body
 <li class="task-list-item"><input type="checkbox" disabled/> Unsupervised Learning Summary</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Clustering Algorithm Summary</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Topic Modelling: NMF (AML notes)</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Latent Semantic Indexing (LSI)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Latent Semantic AnalysisLatent Semantic Indexing (LSI)</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Latent Dirichlet Allocation (LDA)</li>
 </ul>
 </li>
@@ -1212,20 +1191,39 @@ body .markdown-body
 <li>Saturation activation function: <a href="https://arxiv.org/pdf/1603.00391.pdf">Noisy Activation Functions</a></li>
 </ul>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> Word level representation Learning (Representation Learning):<ul class="task-list">
-<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Bag of words model</u>: <code>&lt;BGI - No.10.1&gt;</code></li>
-<li class="task-list-item"><input type="checkbox" disabled/> <u>Word2Vec</u> (<em>CBoW &amp; Skip-Gram, Hierachical Softmax &amp; Negative Sampling</em>): <code>&lt;BGI - No.10.2&gt;</code><ul>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> Word level representation Learning (Representation Learning):</p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Bag of words model</u>: <code>&lt;BGI - No.10.1&gt;</code><h2 id="-problem-if-large-vocab-dimension-too-large-ignore-the-word-order-cannot-represent-semantic-level-meaning-in-a-context">- <strong>Problem</strong>: <code>if large vocab -&gt; dimension too large</code>; <code>ignore the word order</code>; <code>cannot represent semantic level meaning / in a context</code><a class="headerlink" href="#-problem-if-large-vocab-dimension-too-large-ignore-the-word-order-cannot-represent-semantic-level-meaning-in-a-context" title="Permanent link"></a></h2>
+</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Word2Vec (<strong>local context</strong>)</u> (<em>CBoW &amp; Skip-Gram, Hierachical Softmax &amp; Negative Sampling</em>): <code>&lt;BGI - No.10.2&gt;</code><ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Problem</strong>: <code>no overal cooccur (only local context)</code>, <code>word have only one vector</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> form a huffman tree in python: <a href="https://blog.csdn.net/google19890102/article/details/54848262">数据结构和算法——Huffman树和Huffman编码 - CSDN</a></li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> how is negative sampling work in <a href="https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">the word2vec paper</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/44599645">一篇浅显易懂的word2vec原理讲解 - 知乎</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/31319965">WORD2VEC原理及使用方法总结 - 知乎</a></li>
+<li><a href="https://blog.csdn.net/google19890102/article/details/54848262">数据结构和算法——Huffman树和Huffman编码 - CSDN</a></li>
 </ul>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> GloVe</li>
-<li class="task-list-item"><input type="checkbox" disabled/> <strong>Doc2Vec</strong></li>
-<li class="task-list-item"><input type="checkbox" disabled/> Tf-idf: <strong>advantages and disadvantages</strong></li>
-<li class="task-list-item"><input type="checkbox" disabled/> other representation learning for nlp: GPT, Transformer, Bert</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>GloVe</u>: <a href="https://zhuanlan.zhihu.com/p/42073620">通俗易懂理解——Glove算法原理</a>: <code>&lt;BGI - No.10.3&gt;</code></li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Tf-idf</u>: <code>&lt;BGI - No.10.4&gt;</code><ul>
+<li><strong>Problem</strong>: <code>cannot only use frequency</code>, <code>ignore word order</code>, <code>no importance in context</code></li>
 </ul>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> RNN, LSTM and GRU<ul class="task-list">
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> Latent Semantic Analysis (LSA): <a href="https://technowiki.wordpress.com/2011/08/27/latent-semantic-analysis-lsa-tutorial/">Latent Semantic Analysis (LSA) Tutorial</a>: <code>&lt;BGI - No.10.5&gt;</code></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> <strong>Doc2Vec</strong></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> other representation learning for nlp: GPT, Transformer, Bert</p>
+</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> RNN, LSTM and GRU</p>
+<ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled/> Gradient vanishing and Gradient explosion</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Structure of LSTM and GRU, compare</li>
 </ul>
@@ -1236,8 +1234,10 @@ body .markdown-body
 </ul>
 </li>
 <li class="task-list-item"><input type="checkbox" disabled/> Encoder and Decoder (seq2seq) - Be able to write from stratch</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Attention (Struction and explaination of R-net in Reading comprehension)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> ResNet</li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled/> Attention (Struction and explaination of R-net in Reading comprehension)</p>
+<p><input type="checkbox" disabled/> </p>
 </li>
 <li>
 <p>Others:</p>

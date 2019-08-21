@@ -43,6 +43,7 @@
 
     - [ ] Extension of SVD (-> PCA -> LSI -> LDA)
         - **what is Eigenvalue**: <u>*Eigenvectors are used for understanding linear transformations. In data analysis, we usually calculate the eigenvectors for a correlation or covariance matrix. Eigenvectors are the directions along which a particular linear transformation acts by flipping, compressing or stretching. Eigenvalue can be referred to as the strength of the transformation in the direction of eigenvector or the factor by which the compression occurs.*</u>
+        - [Latent Semantic Analysis (LSA) Tutorial](https://technowiki.wordpress.com/2011/08/27/latent-semantic-analysis-lsa-tutorial/)
 
     - Referenccs: 
         - [降维方法总结 - CSDN](https://blog.csdn.net/qq_28266311/article/details/93342737)
@@ -71,11 +72,13 @@
         - [ ] XGBoost
         - [ ] LightGBM
     - [ ] Gaussian Process
+
+
 * **Unsupervised Learning**
     - [ ] Unsupervised Learning Summary
     - [ ] Clustering Algorithm Summary
     - [ ] Topic Modelling: NMF (AML notes)
-    - [ ] Latent Semantic Indexing (LSI)
+    - [ ] Latent Semantic AnalysisLatent Semantic Indexing (LSI)
     - [ ] Latent Dirichlet Allocation (LDA)
 
 
@@ -88,13 +91,24 @@
         - Saturation activation function: [Noisy Activation Functions](https://arxiv.org/pdf/1603.00391.pdf)
     - [ ] Word level representation Learning (Representation Learning):
         - [x] <u>Bag of words model</u>: `<BGI - No.10.1>`
-        - [ ] <u>Word2Vec</u> (*CBoW & Skip-Gram, Hierachical Softmax & Negative Sampling*): `<BGI - No.10.2>`
+            - **Problem**: `if large vocab -> dimension too large`; `ignore the word order`; `cannot represent semantic level meaning / in a context`
+            - 
+        - [x] <u>Word2Vec (**local context**)</u> (*CBoW & Skip-Gram, Hierachical Softmax & Negative Sampling*): `<BGI - No.10.2>`
+            - [ ] **Problem**: `no overal cooccur (only local context)`, `word have only one vector`
+            - [ ] form a huffman tree in python: [数据结构和算法——Huffman树和Huffman编码 - CSDN](https://blog.csdn.net/google19890102/article/details/54848262)
+            - [x] how is negative sampling work in [the word2vec paper](https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf)
             - [一篇浅显易懂的word2vec原理讲解 - 知乎](https://zhuanlan.zhihu.com/p/44599645)
             - [WORD2VEC原理及使用方法总结 - 知乎](https://zhuanlan.zhihu.com/p/31319965)
-        - [ ] GloVe
+            - [数据结构和算法——Huffman树和Huffman编码 - CSDN](https://blog.csdn.net/google19890102/article/details/54848262)
+        - [x] <u>GloVe</u>: [通俗易懂理解——Glove算法原理](https://zhuanlan.zhihu.com/p/42073620): `<BGI - No.10.3>`
+        - [x] <u>Tf-idf</u>: `<BGI - No.10.4>`
+            - **Problem**: `cannot only use frequency`, `ignore word order`, `no importance in context`
+        - [x] Latent Semantic Analysis (LSA): [Latent Semantic Analysis (LSA) Tutorial](https://technowiki.wordpress.com/2011/08/27/latent-semantic-analysis-lsa-tutorial/): `<BGI - No.10.5>`
+
         - [ ] **Doc2Vec**
-        - [ ] Tf-idf: **advantages and disadvantages**
+
         - [ ] other representation learning for nlp: GPT, Transformer, Bert
+        
     - [ ] RNN, LSTM and GRU
         - [ ] Gradient vanishing and Gradient explosion
         - [ ] Structure of LSTM and GRU, compare
@@ -103,6 +117,8 @@
         - [ ] average-pooling, max-pooling, global pooling & reason to pooling
     - [ ] Encoder and Decoder (seq2seq) - Be able to write from stratch
     - [ ] Attention (Struction and explaination of R-net in Reading comprehension)
+    - [ ] ResNet
+    - [ ] 
 
     - Others:
         - [ ] Batch Normalization
