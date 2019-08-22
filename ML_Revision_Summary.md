@@ -92,7 +92,6 @@
     - [ ] Word level representation Learning (Representation Learning):
         - [x] <u>Bag of words model</u>: `<BGI - No.10.1>`
             - **Problem**: `if large vocab -> dimension too large`; `ignore the word order`; `cannot represent semantic level meaning / in a context`
-            - 
         - [x] <u>Word2Vec (**local context**)</u> (*CBoW & Skip-Gram, Hierachical Softmax & Negative Sampling*): `<BGI - No.10.2>`
             - [ ] **Problem**: `no overal cooccur (only local context)`, `word have only one vector`
             - [ ] form a huffman tree in python: [数据结构和算法——Huffman树和Huffman编码 - CSDN](https://blog.csdn.net/google19890102/article/details/54848262)
@@ -109,9 +108,10 @@
 
         - [ ] other representation learning for nlp: GPT, Transformer, Bert
         
-    - [ ] RNN, LSTM and GRU
-        - [ ] Gradient vanishing and Gradient explosion
-        - [ ] Structure of LSTM and GRU, compare
+    - [x] RNN, LSTM and GRU `<BGI - No.11.1-3>`
+        - [x] Gradient vanishing and Gradient explosion
+        - [x] Structure of LSTM and GRU, compare
+        
     - [ ] Convolusional Neural Network (refer to the DeepMind note)
         - [ ] theory of Convolusion and the equation to calculate
         - [ ] average-pooling, max-pooling, global pooling & reason to pooling
