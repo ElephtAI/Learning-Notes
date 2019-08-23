@@ -77,9 +77,8 @@
 * **Unsupervised Learning**
     - [ ] Unsupervised Learning Summary
     - [ ] Clustering Algorithm Summary
-    - [ ] Topic Modelling: NMF (AML notes)
+    - [ ] Topic Modelling: NMF (AML notes), Latent Dirichlet Allocation (LDA)
     - [ ] Latent Semantic AnalysisLatent Semantic Indexing (LSI)
-    - [ ] Latent Dirichlet Allocation (LDA)
 
 
 * **Deep Learning Part** (back to the DeepMind Course)
@@ -89,6 +88,7 @@
         - avoid **gradient vanishing** and **gradient explosion**
         - [理解神经网络的激活函数](https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&mid=2247483977&idx=1&sn=401b211bf72bc70f733d6ac90f7352cc&chksm=fdb69fdecac116c81aad9e5adae42142d67f50258106f501af07dc651d2c1473c52fad8678c3&scene=21#wechat_redirect)
         - Saturation activation function: [Noisy Activation Functions](https://arxiv.org/pdf/1603.00391.pdf)
+        
     - [ ] Word level representation Learning (Representation Learning):
         - [x] <u>Bag of words model</u>: `<BGI - No.10.1>`
             - **Problem**: `if large vocab -> dimension too large`; `ignore the word order`; `cannot represent semantic level meaning / in a context`
@@ -104,27 +104,36 @@
             - **Problem**: `cannot only use frequency`, `ignore word order`, `no importance in context`
         - [x] Latent Semantic Analysis (LSA): [Latent Semantic Analysis (LSA) Tutorial](https://technowiki.wordpress.com/2011/08/27/latent-semantic-analysis-lsa-tutorial/): `<BGI - No.10.5>`
 
-        - [ ] **Doc2Vec**
+        - [x] **Doc2Vec**: `<BGI - No.13.1>`
+            - [基于Doc2vec训练句子向量](https://zhuanlan.zhihu.com/p/36886191)
 
-        - [ ] other representation learning for nlp: GPT, Transformer, Bert
+        - [ ] other representation learning for nlp: ELMO, GPT, Transformer, Bert
         
     - [x] RNN, LSTM and GRU `<BGI - No.11.1-3>`
         - [x] Gradient vanishing and Gradient explosion
         - [x] Structure of LSTM and GRU, compare
         
-    - [ ] Convolusional Neural Network (refer to the DeepMind note)
-        - [ ] theory of Convolusion and the equation to calculate
-        - [ ] average-pooling, max-pooling, global pooling & reason to pooling
+    - [x] Convolusional Neural Network (refer to the DeepMind note) `<BGI - No.12.1-2>`
+        - [x] theory of Convolusion and the equation to calculate
+        - [x] average-pooling, max-pooling, global pooling & reason to pooling
+        - AlexNet
+        - VGGNet
+        - ResNet
+        - Inception Net 
+
     - [ ] Encoder and Decoder (seq2seq) - Be able to write from stratch
     - [ ] Attention (Struction and explaination of R-net in Reading comprehension)
-    - [ ] ResNet
-    - [ ] 
+    - [ ] Representation Learning
+
 
     - Others:
-        - [ ] Batch Normalization
+        - [x] Batch Normalization `<BGI - No.12.3>`
         - [ ] How to avoid overfitting
 
 * **Reinforcement Learning Part** (refer to the DeepMind Course and RL book)
+
+
+
 * **Graph Learning Part** 
     - AML spectral Learning (Graph Laplacian...)
     - Stanford Analysis of Network course
