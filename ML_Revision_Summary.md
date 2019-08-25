@@ -64,13 +64,17 @@
         - L1 compared to L2 regularization: [L1,L2,L0区别，为什么可以防止过拟合 - 简书](https://www.jianshu.com/p/475d2c3197d2)
         - Ridge vs Lasso: [变量的选择——Lasso&Ridge&ElasticNet](https://www.cnblogs.com/mengnan/p/9307615.html)
     - Support Vector Machine
-    - [ ] Decision Tree
-    - [ ] Bagging Algorithm (Random Forests)
-    - [ ] Boosting Algorithm
-        - [ ] Adaboost
+    - [x] Decision Tree `<BGI - No.15.1-4>` 
+    - [x] Bagging Algorithm (Random Forests) `<BGI - No.16.1, No.16.3>`
+    - [ ] Boosting Algorithm `<BGI - No.16.2>`
+        - [ ] Adaboost 
         - [ ] Gradient Boosting Decision Tree
         - [ ] XGBoost
         - [ ] LightGBM
+
+        - **References**: 
+            - [决策树、随机森林、bagging、boosting、Adaboost、GBDT、XGBoost总结 - 知乎](https://zhuanlan.zhihu.com/p/75468124)
+
     - [ ] Gaussian Process
 
 
@@ -108,6 +112,7 @@
             - [基于Doc2vec训练句子向量](https://zhuanlan.zhihu.com/p/36886191)
 
         - [ ] other representation learning for nlp: ELMO, GPT, Transformer, Bert
+            - [ ] **Representation** learning of the flower book
         
     - [x] RNN, LSTM and GRU `<BGI - No.11.1-3>`
         - [x] Gradient vanishing and Gradient explosion
@@ -121,9 +126,24 @@
         - ResNet
         - Inception Net 
 
-    - [ ] Encoder and Decoder (seq2seq) - Be able to write from stratch
-    - [ ] Attention (Struction and explaination of R-net in Reading comprehension)
-    - [ ] Representation Learning
+    - [x] Encoder and Decoder (seq2seq) - Be able to write from stratch `<BGI - No.14.1>`
+        - [从Encoder到Decoder实现Seq2Seq模型 - 知乎](https://zhuanlan.zhihu.com/p/27608348); [Github](https://github.com/NELSONZHAO/zhihu/blob/master/basic_seq2seq/Seq2seq_char.ipynb)
+
+    - [x] Attention (Struction and explaination of R-net in Reading comprehension) `<BGI - No.14.2>`      
+        - [基于Keras框架实现加入Attention与BiRNN的机器翻译模型 - 知乎](https://zhuanlan.zhihu.com/p/37290775)
+        - [经典算法·从seq2seq、attention到transformer - 知乎](https://zhuanlan.zhihu.com/p/54368798)
+        - [完全图解RNN、RNN变体、Seq2Seq、Attention机制 - 知乎](https://zhuanlan.zhihu.com/p/28054589)
+
+    - [ ] Representation Learning - <u>The chapter in the FLower book</u>
+
+    - [ ] R-net structure and explaination
+    - [ ] NL2SQL structure and explaination
+
+
+    - [ ] Auto-Encoder
+
+
+    
 
 
     - Others:

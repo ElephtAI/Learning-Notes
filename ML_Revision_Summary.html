@@ -992,7 +992,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*GitHub*/
+</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "center",
+  showProcessingMessages: false,
+  messageStyle: 'none'
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1158,16 +1182,28 @@ body .markdown-body
 </ul>
 </li>
 <li>Support Vector Machine</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Decision Tree</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Bagging Algorithm (Random Forests)</li>
-<li class="task-list-item"><input type="checkbox" disabled/> Boosting Algorithm<ul class="task-list">
-<li class="task-list-item"><input type="checkbox" disabled/> Adaboost</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> Decision Tree <code>&lt;BGI - No.15.1-4&gt;</code> </li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> Bagging Algorithm (Random Forests) <code>&lt;BGI - No.16.1, No.16.3&gt;</code></li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> Boosting Algorithm <code>&lt;BGI - No.16.2&gt;</code></p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Adaboost </li>
 <li class="task-list-item"><input type="checkbox" disabled/> Gradient Boosting Decision Tree</li>
 <li class="task-list-item"><input type="checkbox" disabled/> XGBoost</li>
-<li class="task-list-item"><input type="checkbox" disabled/> LightGBM</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> LightGBM</p>
+</li>
+<li>
+<p><strong>References</strong>: </p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/75468124">决策树、随机森林、bagging、boosting、Adaboost、GBDT、XGBoost总结 - 知乎</a></li>
 </ul>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> Gaussian Process</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> Gaussian Process</p>
+</li>
 </ul>
 </li>
 <li>
@@ -1183,7 +1219,9 @@ body .markdown-body
 <p><strong>Deep Learning Part</strong> (back to the DeepMind Course)</p>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled checked/> <u>Forward and Backward Propagation</u>: <a href="https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&amp;mid=2247484439&amp;idx=1&amp;sn=4fa8c71ae9cb777d6e97ebd0dd8672e7&amp;chksm=fdb69980cac110960e08c63061e0719a8dc7945606eeef460404dc2eb21b4f5bdb434fb56f92&amp;scene=21#wechat_redirect">反向传播算法推导-全连接神经网络 - SIGAI</a></li>
-<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Activation Function and how to choose</u>: <code>&lt;BGI - No.9.1-2&gt;</code><ul>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> <u>Activation Function and how to choose</u>: <code>&lt;BGI - No.9.1-2&gt;</code></p>
+<ul>
 <li>keep the nonlinearity of the neural network</li>
 <li>avoid <strong>gradient vanishing</strong> and <strong>gradient explosion</strong></li>
 <li><a href="https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&amp;mid=2247483977&amp;idx=1&amp;sn=401b211bf72bc70f733d6ac90f7352cc&amp;chksm=fdb69fdecac116c81aad9e5adae42142d67f50258106f501af07dc651d2c1473c52fad8678c3&amp;scene=21#wechat_redirect">理解神经网络的激活函数</a></li>
@@ -1222,6 +1260,9 @@ body .markdown-body
 </li>
 <li class="task-list-item">
 <p><input type="checkbox" disabled/> other representation learning for nlp: ELMO, GPT, Transformer, Bert</p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Representation</strong> learning of the flower book</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -1244,10 +1285,30 @@ body .markdown-body
 </ul>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled/> Encoder and Decoder (seq2seq) - Be able to write from stratch</p>
+<p><input type="checkbox" disabled checked/> Encoder and Decoder (seq2seq) - Be able to write from stratch <code>&lt;BGI - No.14.1&gt;</code></p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/27608348">从Encoder到Decoder实现Seq2Seq模型 - 知乎</a>; <a href="https://github.com/NELSONZHAO/zhihu/blob/master/basic_seq2seq/Seq2seq_char.ipynb">Github</a></li>
+</ul>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled/> Attention (Struction and explaination of R-net in Reading comprehension)</p>
+<p><input type="checkbox" disabled checked/> Attention (Struction and explaination of R-net in Reading comprehension) <code>&lt;BGI - No.14.2&gt;</code>      </p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/37290775">基于Keras框架实现加入Attention与BiRNN的机器翻译模型 - 知乎</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/54368798">经典算法·从seq2seq、attention到transformer - 知乎</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/28054589">完全图解RNN、RNN变体、Seq2Seq、Attention机制 - 知乎</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> Representation Learning - <u>The chapter in the FLower book</u></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> R-net structure and explaination</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> NL2SQL structure and explaination</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> Auto-Encoder</p>
 </li>
 <li>
 <p>Others:</p>
