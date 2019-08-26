@@ -67,7 +67,7 @@
     - [x] Decision Tree `<BGI - No.15.1-4>` 
     - [x] Bagging Algorithm (Random Forests) `<BGI - No.16.1, No.16.3>`
     - [ ] Boosting Algorithm `<BGI - No.16.2>`
-        - [ ] Adaboost 
+        - [x] Adaboost [机器学习算法中GBDT与Adaboost的区别与联系是什么？](https://www.zhihu.com/question/54626685/answer/140610056) `<BGI - No.16.3>`
         - [ ] Gradient Boosting Decision Tree
         - [ ] XGBoost
         - [ ] LightGBM
