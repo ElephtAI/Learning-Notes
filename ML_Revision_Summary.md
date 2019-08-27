@@ -28,7 +28,9 @@
             - [x] <u>Kernal PCA</u>: `<BGI - No.6.6>`
                 - [降维算法总结比较（三）- Kenel PCA](https://zhuanlan.zhihu.com/p/25097144) 
                 - [Kernel tricks and nonlinear dimensionality reduction via RBF kernel PCA](https://sebastianraschka.com/Articles/2014_kernel_pca.html#gaussian-radial-basis-function-rbf-kernel-pca)
-            - [ ] <u>Auto-Encoder</u>: Base on **Neural Network**
+            - [x] <u>Auto-Encoder</u>: Base on **Neural Network** `<BGI - No.17.1-3>`
+                - [什么是自编码 Autoencoder - 莫烦](https://zhuanlan.zhihu.com/p/24813602)
+                - [当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎](https://zhuanlan.zhihu.com/p/27865705)
             - <u>Multidimensionaly Scaling (MDS)</u>
             - <u>Isomap</u>
             - <u>Diffusion Map</u>
@@ -139,11 +141,13 @@
     - [ ] R-net structure and explaination
     - [ ] NL2SQL structure and explaination
 
-
-    - [ ] Auto-Encoder
-
-
-    
+    - Generative Model
+        - [ ] Probabilistic PCA 
+        - [ ] Variational Auto-Encoder (VAE)
+        - [ ] GAN
+        - References:
+            - [当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎](https://zhuanlan.zhihu.com/p/27865705)
+            - [漫谈概率 PCA 和变分自编码器 - 机器之心](jiqizhixin.com/articles/2018-08-16-7)
 
 
     - Others:
@@ -167,6 +171,7 @@
 * Classification Accuracy
 * Precision, Recall, F1 and AUC
 * Logrithmic Loss
+* KL - divergence
 
 * Reference: 
     - [Metrics to Evaluate your Machine Learning Algorithm](https://towardsdatascience.com/metrics-to-evaluate-your-machine-learning-algorithm-f10ba6e38234)

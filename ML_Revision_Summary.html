@@ -992,31 +992,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
-  config: ["MMLorHTML.js"],
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true
-  },
-  TeX: {
-    extensions: ["AMSmath.js", "AMSsymbols.js"],
-    TagSide: "right",
-    TagIndent: ".8em",
-    MultLineWidth: "85%",
-    equationNumbers: {
-      autoNumber: "AMS",
-    },
-    unicode: {
-      fonts: "STIXGeneral,'Arial Unicode MS'"
-    }
-  },
-  displayAlign: "center",
-  showProcessingMessages: false,
-  messageStyle: 'none'
-});</script><style>/*GitHub*/
+</style><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1125,7 +1101,11 @@ body .markdown-body
 <li><a href="https://sebastianraschka.com/Articles/2014_kernel_pca.html#gaussian-radial-basis-function-rbf-kernel-pca">Kernel tricks and nonlinear dimensionality reduction via RBF kernel PCA</a></li>
 </ul>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> <u>Auto-Encoder</u>: Base on <strong>Neural Network</strong></li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>Auto-Encoder</u>: Base on <strong>Neural Network</strong> <code>&lt;BGI - No.17.1-3&gt;</code><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/24813602">什么是自编码 Autoencoder - 莫烦</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/27865705">当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎</a></li>
+</ul>
+</li>
 <li><u>Multidimensionaly Scaling (MDS)</u></li>
 <li><u>Isomap</u></li>
 <li><u>Diffusion Map</u></li>
@@ -1307,8 +1287,18 @@ body .markdown-body
 <li class="task-list-item">
 <p><input type="checkbox" disabled/> NL2SQL structure and explaination</p>
 </li>
-<li class="task-list-item">
-<p><input type="checkbox" disabled/> Auto-Encoder</p>
+<li>
+<p>Generative Model</p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Probabilistic PCA </li>
+<li class="task-list-item"><input type="checkbox" disabled/> Variational Auto-Encoder (VAE)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> GAN</li>
+<li>References:<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/27865705">当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎</a></li>
+<li><a href="/Users/q483187/bmw_harry/Learning-Notes/jiqizhixin.com/articles/2018-08-16-7">漫谈概率 PCA 和变分自编码器 - 机器之心</a></li>
+</ul>
+</li>
+</ul>
 </li>
 <li>
 <p>Others:</p>
@@ -1341,8 +1331,9 @@ body .markdown-body
 <li>Mean square error, Mean Abosolute Error</li>
 <li>Classification Accuracy</li>
 <li>Precision, Recall, F1 and AUC</li>
+<li>Logrithmic Loss</li>
 <li>
-<p>Logrithmic Loss</p>
+<p>KL - divergence</p>
 </li>
 <li>
 <p>Reference: </p>
