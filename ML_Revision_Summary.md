@@ -2,6 +2,7 @@
 
 * [神经网络的激活函数总结](https://zhuanlan.zhihu.com/p/40903328): **links to useful pages at the bottom**
 * [推荐系统从零单排系列(六)—Word2Vec优化策略层次Softmax与负采样](https://zhuanlan.zhihu.com/p/66417229): **links to the series**
+* [Graph Neural Network（GNN）最全资源整理分享 - 知乎](https://zhuanlan.zhihu.com/p/73052234)
 
 ## Data Preprocessing and Feature Engineering
 
@@ -66,11 +67,14 @@
         - L1 compared to L2 regularization: [L1,L2,L0区别，为什么可以防止过拟合 - 简书](https://www.jianshu.com/p/475d2c3197d2)
         - Ridge vs Lasso: [变量的选择——Lasso&Ridge&ElasticNet](https://www.cnblogs.com/mengnan/p/9307615.html)
     - Support Vector Machine
-    - [x] Decision Tree `<BGI - No.15.1-4>` 
-    - [x] Bagging Algorithm (Random Forests) `<BGI - No.16.1, No.16.3>`
+    - [x] <u>Decision Tree</u> `<BGI - No.15.1-4>` 
+    - [x] <u>Bagging Algorithm (Random Forests)</u> `<BGI - No.16.1, No.16.3>`
     - [ ] Boosting Algorithm `<BGI - No.16.2>`
-        - [x] Adaboost [机器学习算法中GBDT与Adaboost的区别与联系是什么？](https://www.zhihu.com/question/54626685/answer/140610056) `<BGI - No.16.3>`
-        - [ ] Gradient Boosting Decision Tree
+        - [x] <u>Adaboost</u> [机器学习算法中GBDT与Adaboost的区别与联系是什么？](https://www.zhihu.com/question/54626685/answer/140610056) `<BGI - No.16.3>`
+        - [x] <u>Gradient Boosting Decision Tree</u> `<BGI - No.16.4>`
+            - [当我们在谈论GBDT：从 AdaBoost 到 Gradient Boosting](https://zhuanlan.zhihu.com/p/25096501?refer=data-miner)
+            - [当我们在谈论GBDT：Gradient Boosting 用于分类与回归](https://zhuanlan.zhihu.com/p/25257856)
+            - [机器学习算法中GBDT与Adaboost的区别与联系是什么？](https://www.zhihu.com/question/54626685/answer/140610056)
         - [ ] XGBoost
         - [ ] LightGBM
 
@@ -144,6 +148,8 @@
     - Generative Model
         - [ ] Probabilistic PCA 
         - [ ] Variational Auto-Encoder (VAE)
+            - [当我们在谈论 Deep Learning：AutoEncoder 及其相关模型](https://zhuanlan.zhihu.com/p/27865705)
+            - [变分自编码器（VAEs）](https://zhuanlan.zhihu.com/p/25401928)
         - [ ] GAN
         - References:
             - [当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎](https://zhuanlan.zhihu.com/p/27865705)
