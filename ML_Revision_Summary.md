@@ -77,6 +77,7 @@
             - [机器学习算法中GBDT与Adaboost的区别与联系是什么？](https://www.zhihu.com/question/54626685/answer/140610056)
         - [ ] XGBoost
         - [ ] LightGBM
+        - [ ] CatBoost
 
         - **References**: 
             - [决策树、随机森林、bagging、boosting、Adaboost、GBDT、XGBoost总结 - 知乎](https://zhuanlan.zhihu.com/p/75468124)
@@ -150,6 +151,9 @@
         - [ ] Variational Auto-Encoder (VAE)
             - [当我们在谈论 Deep Learning：AutoEncoder 及其相关模型](https://zhuanlan.zhihu.com/p/27865705)
             - [变分自编码器（VAEs）](https://zhuanlan.zhihu.com/p/25401928)
+            - [Tutorial - What is a variational autoencoder?](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/)
+            - [Tensorflow - code example](https://github.com/y0ast/VAE-TensorFlow); [Torch - code example](https://github.com/y0ast/VAE-Torch)
+
         - [ ] GAN
         - References:
             - [当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎](https://zhuanlan.zhihu.com/p/27865705)
@@ -168,6 +172,9 @@
     - AML spectral Learning (Graph Laplacian...)
     - Stanford Analysis of Network course
 
+    - [ ] **Knowledge Graph**
+        - [ACL 2019 知识图谱的全方位总结](https://www.leiphone.com/news/201908/13I5DsoFpwnLC6sA.html)
+
 ## Metrics and Ealuation method
 
 * [ ] **when to choose each loss function**
@@ -177,7 +184,8 @@
 * Classification Accuracy
 * Precision, Recall, F1 and AUC
 * Logrithmic Loss
-* KL - divergence
+* **KL - divergence**
+    - [Making sense of the Kullback–Leibler (KL) Divergence](https://medium.com/@cotra.marko/making-sense-of-the-kullback-leibler-kl-divergence-b0d57ee10e0a)
 
 * Reference: 
     - [Metrics to Evaluate your Machine Learning Algorithm](https://towardsdatascience.com/metrics-to-evaluate-your-machine-learning-algorithm-f10ba6e38234)
