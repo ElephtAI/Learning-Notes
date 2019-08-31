@@ -75,7 +75,9 @@
             - [当我们在谈论GBDT：从 AdaBoost 到 Gradient Boosting](https://zhuanlan.zhihu.com/p/25096501?refer=data-miner)
             - [当我们在谈论GBDT：Gradient Boosting 用于分类与回归](https://zhuanlan.zhihu.com/p/25257856)
             - [机器学习算法中GBDT与Adaboost的区别与联系是什么？](https://www.zhihu.com/question/54626685/answer/140610056)
-        - [ ] XGBoost
+        - [x] <u>XGBoost</u> `<BGI - No.16.5>`
+            - [决策树、随机森林、bagging、boosting、Adaboost、GBDT、XGBoost总结 - 知乎](https://zhuanlan.zhihu.com/p/75468124)
+            - [机器学习算法中 GBDT 和 XGBOOST 的区别有哪些？ - 知乎](https://www.zhihu.com/question/41354392/answer/124274741)
         - [ ] LightGBM
         - [ ] CatBoost
 
@@ -148,11 +150,12 @@
 
     - Generative Model
         - [ ] Probabilistic PCA 
-        - [ ] Variational Auto-Encoder (VAE)
+        - [x] Variational Auto-Encoder (VAE)
             - [当我们在谈论 Deep Learning：AutoEncoder 及其相关模型](https://zhuanlan.zhihu.com/p/27865705)
             - [变分自编码器（VAEs）](https://zhuanlan.zhihu.com/p/25401928)
             - [Tutorial - What is a variational autoencoder?](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/)
             - [Tensorflow - code example](https://github.com/y0ast/VAE-TensorFlow); [Torch - code example](https://github.com/y0ast/VAE-Torch)
+            - [Auto-Encoding Variational Bayes - original paper](https://arxiv.org/abs/1312.6114)
 
         - [ ] GAN
         - References:
@@ -186,6 +189,7 @@
 * Logrithmic Loss
 * **KL - divergence**
     - [Making sense of the Kullback–Leibler (KL) Divergence](https://medium.com/@cotra.marko/making-sense-of-the-kullback-leibler-kl-divergence-b0d57ee10e0a)
+    - KL divergence between two normal distribution [多变量高斯分布之间的KL散度（KL Divergence）- CSDN](https://blog.csdn.net/wangpeng138375/article/details/78060753)
 
 * Reference: 
     - [Metrics to Evaluate your Machine Learning Algorithm](https://towardsdatascience.com/metrics-to-evaluate-your-machine-learning-algorithm-f10ba6e38234)

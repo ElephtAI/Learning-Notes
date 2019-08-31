@@ -992,7 +992,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*GitHub*/
+</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "center",
+  showProcessingMessages: false,
+  messageStyle: 'none'
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1175,7 +1199,11 @@ body .markdown-body
 <li><a href="https://www.zhihu.com/question/54626685/answer/140610056">机器学习算法中GBDT与Adaboost的区别与联系是什么？</a></li>
 </ul>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> XGBoost</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <u>XGBoost</u> <code>&lt;BGI - No.16.5&gt;</code><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/75468124">决策树、随机森林、bagging、boosting、Adaboost、GBDT、XGBoost总结 - 知乎</a></li>
+<li><a href="https://www.zhihu.com/question/41354392/answer/124274741">机器学习算法中 GBDT 和 XGBOOST 的区别有哪些？ - 知乎</a></li>
+</ul>
+</li>
 <li class="task-list-item"><input type="checkbox" disabled/> LightGBM</li>
 <li class="task-list-item">
 <p><input type="checkbox" disabled/> CatBoost</p>
@@ -1299,12 +1327,13 @@ body .markdown-body
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled/> Probabilistic PCA </li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled/> Variational Auto-Encoder (VAE)</p>
+<p><input type="checkbox" disabled checked/> Variational Auto-Encoder (VAE)</p>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/27865705">当我们在谈论 Deep Learning：AutoEncoder 及其相关模型</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/25401928">变分自编码器（VAEs）</a></li>
 <li><a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">Tutorial - What is a variational autoencoder?</a></li>
 <li><a href="https://github.com/y0ast/VAE-TensorFlow">Tensorflow - code example</a>; <a href="https://github.com/y0ast/VAE-Torch">Torch - code example</a></li>
+<li><a href="https://arxiv.org/abs/1312.6114">Auto-Encoding Variational Bayes - original paper</a></li>
 </ul>
 </li>
 <li class="task-list-item">
@@ -1312,7 +1341,7 @@ body .markdown-body
 </li>
 <li>References:<ul>
 <li><a href="https://zhuanlan.zhihu.com/p/27865705">当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎</a></li>
-<li><a href="/Users/q483187/bmw_harry/Learning-Notes/jiqizhixin.com/articles/2018-08-16-7">漫谈概率 PCA 和变分自编码器 - 机器之心</a></li>
+<li><a href="/Users/yuchengji/Desktop/z_harry_notes/Learning-Notes/jiqizhixin.com/articles/2018-08-16-7">漫谈概率 PCA 和变分自编码器 - 机器之心</a></li>
 </ul>
 </li>
 </ul>
@@ -1361,6 +1390,7 @@ body .markdown-body
 <p><strong>KL - divergence</strong></p>
 <ul>
 <li><a href="https://medium.com/@cotra.marko/making-sense-of-the-kullback-leibler-kl-divergence-b0d57ee10e0a">Making sense of the Kullback–Leibler (KL) Divergence</a></li>
+<li>KL divergence between two normal distribution <a href="https://blog.csdn.net/wangpeng138375/article/details/78060753">多变量高斯分布之间的KL散度（KL Divergence）- CSDN</a></li>
 </ul>
 </li>
 <li>
