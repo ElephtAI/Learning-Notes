@@ -180,18 +180,25 @@
 
 ## Metrics and Ealuation method
 
-* [ ] **when to choose each loss function**
 
-* MLE, MAP
-* Mean square error, Mean Abosolute Error
-* Classification Accuracy
-* Precision, Recall, F1 and AUC
-* Logrithmic Loss
-* **KL - divergence**
+* Mean Squared Error (MSE) `<BGI - No.18.1>`
+* Mean Absolute Error (MAE) `<BGI - No.18.2>`
+* Huber Loss `<BGI - No.18.3>`
+* Cross entropy (two classification and multi classification) `<BGI - No.18.5>`
+* Hinge Loss `<BGI - No.18.6>`
+* **KL - divergence** `<BGI - No.18.7>`
     - [Making sense of the Kullback–Leibler (KL) Divergence](https://medium.com/@cotra.marko/making-sense-of-the-kullback-leibler-kl-divergence-b0d57ee10e0a)
     - KL divergence between two normal distribution [多变量高斯分布之间的KL散度（KL Divergence）- CSDN](https://blog.csdn.net/wangpeng138375/article/details/78060753)
+* Classification Accuracy `<BGI - No.18.8>`
+* Confusion Map (True Positive, True Negative, False Positive, False Negative) `<BGI - No.18.9>`
+* Area Under Curve `<BGI - No.18.10>`
+    - True Positive Rate (sensitivity)
+    - False Positive Rate (Specificity)
+* Precision, Recall, F1 `<BGI - No.18.11>`
+* Error Rate `<BGI - No.18.12>`
 
 * Reference: 
+    - [机器学习常用损失函数小结 - 知乎](https://zhuanlan.zhihu.com/p/77686118)
     - [Metrics to Evaluate your Machine Learning Algorithm](https://towardsdatascience.com/metrics-to-evaluate-your-machine-learning-algorithm-f10ba6e38234)
 
 ## Optimization part
