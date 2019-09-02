@@ -167,9 +167,14 @@
         - [x] Batch Normalization `<BGI - No.12.3>`
         - [ ] How to avoid overfitting
 
+
+* **Transfer Learning**
+
 * **Reinforcement Learning Part** (refer to the DeepMind Course and RL book)
 
 
+
+*
 
 * **Graph Learning Part** 
     - AML spectral Learning (Graph Laplacian...)
