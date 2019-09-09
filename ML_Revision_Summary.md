@@ -157,7 +157,8 @@
             - [Tensorflow - code example](https://github.com/y0ast/VAE-TensorFlow); [Torch - code example](https://github.com/y0ast/VAE-Torch)
             - [Auto-Encoding Variational Bayes - original paper](https://arxiv.org/abs/1312.6114)
 
-        - [ ] GAN
+        - [ ] GAN:
+            - [GAN总结](./GAN-Overview-Chinese.pdf)
         - References:
             - [当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎](https://zhuanlan.zhihu.com/p/27865705)
             - [漫谈概率 PCA 和变分自编码器 - 机器之心](jiqizhixin.com/articles/2018-08-16-7)

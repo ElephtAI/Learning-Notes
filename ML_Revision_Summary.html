@@ -992,7 +992,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*GitHub*/
+</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "center",
+  showProcessingMessages: false,
+  messageStyle: 'none'
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1313,11 +1337,14 @@ body .markdown-body
 </ul>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled/> GAN</p>
+<p><input type="checkbox" disabled/> GAN:</p>
+<ul>
+<li><a href="/Users/yuchengji/Desktop/z_harry_notes/Learning-Notes/GAN-Overview-Chinese.pdf">GAN总结</a></li>
+</ul>
 </li>
 <li>References:<ul>
 <li><a href="https://zhuanlan.zhihu.com/p/27865705">当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎</a></li>
-<li><a href="/Users/q483187/bmw_harry/Learning-Notes/jiqizhixin.com/articles/2018-08-16-7">漫谈概率 PCA 和变分自编码器 - 机器之心</a></li>
+<li><a href="/Users/yuchengji/Desktop/z_harry_notes/Learning-Notes/jiqizhixin.com/articles/2018-08-16-7">漫谈概率 PCA 和变分自编码器 - 机器之心</a></li>
 </ul>
 </li>
 </ul>
@@ -1336,10 +1363,14 @@ body .markdown-body
 </li>
 <li>
 <p><strong>Reinforcement Learning Part</strong> (refer to the DeepMind Course and RL book)</p>
-</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <u>Core Cocept</u>: <ul>
+<li>Environment, agent, rewards, value, action value, state, history, policy, model</li>
 </ul>
-<p>*</p>
-<ul>
+</li>
+<li class="task-list-item"><input type="checkbox" disabled/> </li>
+</ul>
+</li>
 <li>
 <p><strong>Graph Learning Part</strong> </p>
 <ul class="task-list">
