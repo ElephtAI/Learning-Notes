@@ -171,10 +171,10 @@
 * **Transfer Learning**
 
 * **Reinforcement Learning Part** (refer to the DeepMind Course and RL book)
+    - [ ] <u>Core Cocept</u>: 
+        - Environment, agent, rewards, value, action value, state, history, policy, model
+    - [ ] 
 
-
-
-*
 
 * **Graph Learning Part** 
     - AML spectral Learning (Graph Laplacian...)
@@ -208,12 +208,20 @@
 
 ## Optimization part
 
-* Optimization Theory
-    - Gradient Descent (stochastic, mini-batch or others)
-    - Revise the Optimization part of the AML notes
+* Convex Optimization
+
     - [理解凸优化](https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&mid=2247484439&idx=1&sn=4fa8c71ae9cb777d6e97ebd0dd8672e7&chksm=fdb69980cac110960e08c63061e0719a8dc7945606eeef460404dc2eb21b4f5bdb434fb56f92&scene=21#wechat_redirect)
-* Deep Learing Optimizer
-    - Adam and many other, how to choose
+
+* Numerical Optimization method: (Revise AML notes; Numerical Optimization course note)
+    - Gradient Descent
+    - Momentum
+
+* Other Optimiser: 
+    - Adagrad
+    - Adadelta
+    - RMSDrop
+    - **Adam**
+    - Others from paper
 
 ## Tuning the Hyperparameter
 

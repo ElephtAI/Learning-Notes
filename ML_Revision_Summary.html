@@ -992,31 +992,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
-  config: ["MMLorHTML.js"],
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true
-  },
-  TeX: {
-    extensions: ["AMSmath.js", "AMSsymbols.js"],
-    TagSide: "right",
-    TagIndent: ".8em",
-    MultLineWidth: "85%",
-    equationNumbers: {
-      autoNumber: "AMS",
-    },
-    unicode: {
-      fonts: "STIXGeneral,'Arial Unicode MS'"
-    }
-  },
-  displayAlign: "center",
-  showProcessingMessages: false,
-  messageStyle: 'none'
-});</script><style>/*GitHub*/
+</style><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1341,7 +1317,7 @@ body .markdown-body
 </li>
 <li>References:<ul>
 <li><a href="https://zhuanlan.zhihu.com/p/27865705">当我们在谈论 Deep Learning：AutoEncoder 及其相关模型 - 知乎</a></li>
-<li><a href="/Users/yuchengji/Desktop/z_harry_notes/Learning-Notes/jiqizhixin.com/articles/2018-08-16-7">漫谈概率 PCA 和变分自编码器 - 机器之心</a></li>
+<li><a href="/Users/q483187/bmw_harry/Learning-Notes/jiqizhixin.com/articles/2018-08-16-7">漫谈概率 PCA 和变分自编码器 - 机器之心</a></li>
 </ul>
 </li>
 </ul>
@@ -1413,14 +1389,27 @@ body .markdown-body
 </ul>
 <h2 id="optimization-part">Optimization part<a class="headerlink" href="#optimization-part" title="Permanent link"></a></h2>
 <ul>
-<li>Optimization Theory<ul>
-<li>Gradient Descent (stochastic, mini-batch or others)</li>
-<li>Revise the Optimization part of the AML notes</li>
+<li>
+<p>Convex Optimization</p>
+<ul>
 <li><a href="https://mp.weixin.qq.com/s?__biz=MzU4MjQ3MDkwNA==&amp;mid=2247484439&amp;idx=1&amp;sn=4fa8c71ae9cb777d6e97ebd0dd8672e7&amp;chksm=fdb69980cac110960e08c63061e0719a8dc7945606eeef460404dc2eb21b4f5bdb434fb56f92&amp;scene=21#wechat_redirect">理解凸优化</a></li>
 </ul>
 </li>
-<li>Deep Learing Optimizer<ul>
-<li>Adam and many other, how to choose</li>
+<li>
+<p>Numerical Optimization method: (Revise AML notes; Numerical Optimization course note)</p>
+<ul>
+<li>Gradient Descent</li>
+<li>Momentum</li>
+</ul>
+</li>
+<li>
+<p>Other Optimiser: </p>
+<ul>
+<li>Adagrad</li>
+<li>Adadelta</li>
+<li>RMSDrop</li>
+<li><strong>Adam</strong></li>
+<li>Others from paper</li>
 </ul>
 </li>
 </ul>
