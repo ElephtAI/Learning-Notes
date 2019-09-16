@@ -143,7 +143,7 @@
         - [经典算法·从seq2seq、attention到transformer - 知乎](https://zhuanlan.zhihu.com/p/54368798)
         - [完全图解RNN、RNN变体、Seq2Seq、Attention机制 - 知乎](https://zhuanlan.zhihu.com/p/28054589)
 
-    - [ ] Representation Learning - <u>The chapter in the FLower book</u>
+    - [ ] Representation Learning - <u>Chapter 15 in the FLower book</u>
 
     - [ ] R-net structure and explaination
     - [ ] NL2SQL structure and explaination
@@ -180,6 +180,7 @@
 * **Graph Learning Part** 
     - AML spectral Learning (Graph Laplacian...)
     - Stanford Analysis of Network course
+    - (https://www.jianshu.com/p/f4d2d87c9e44)
 
     - [ ] **Knowledge Graph**
         - [ACL 2019 知识图谱的全方位总结](https://www.leiphone.com/news/201908/13I5DsoFpwnLC6sA.html)

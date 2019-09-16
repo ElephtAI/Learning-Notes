@@ -1,6 +1,6 @@
-# Readings summarization for the Graph & Network relevant
+# Summary for the Graph & Network relevant readings
 
-(1) [Automatic Opioid User Detection From Twitter: Transductive Ensemble Built On Different Meta-graph Based Similarities Over Heterogeneous Information Network](https://www.ijcai.org/proceedings/2018/466)
+(1) [Automatic Opioid User Detection From Twitter: Transductive Ensemble Built On Different Meta-graph Based Similarities Over Heterogeneous Information Network](https://www.ijcai.org/proceedings/2018/466) *[Yujie Fan, Yiming Zhang, Yanfang Ye, Xin Li]*
 
 * **Abstract**: 
 
@@ -14,11 +14,31 @@
 
 ---
 
-(2) [Graph Attention Network](https://arxiv.org/abs/1710.10903)
+(2) [Graph Attention Network](https://arxiv.org/abs/1710.10903) *[Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, Yoshua Bengio]*
 
 * **Abstract**: 
 
-> We present **graph attention networks (GATs)**, novel neural network architectures that operate on graph-structured data, leveraging masked self-attentional layers to address the shortcomings of prior methods based on graph convolutions or their approximations. By stacking layers in which <u>nodes are able to attend over their neighborhoods' features</u>, we enable (implicitly) specifying different weights to different nodes in a neighborhood, without requiring any kind of costly matrix operation (such as inversion) or depending on knowing the graph structure upfront. In this way, we address several key challenges of **spectral-based graph neural networks** simultaneously, and make our model readily applicable to inductive as well as transductive problems. Our GAT models have achieved or matched state-of-the-art results across four established transductive and inductive graph benchmarks: the Cora, Citeseer and Pubmed citation network datasets, as well as a protein-protein interaction dataset (wherein test graphs remain unseen during training).
+> We present **graph attention networks (GATs)**, novel neural network architectures that operate on graph-structured data, leveraging masked **self-attentional layers** to address the shortcomings of prior methods based on graph convolutions or their approximations. By stacking layers in which <u>nodes are able to attend over their neighborhoods' features</u>, we enable (implicitly) specifying different weights to different nodes in a neighborhood, without requiring any kind of costly matrix operation (such as inversion) or depending on knowing the graph structure upfront. In this way, we address several key challenges of **spectral-based graph neural networks** simultaneously, and make our model readily applicable to inductive as well as transductive problems. Our GAT models have achieved or matched state-of-the-art results across four established transductive and inductive graph benchmarks: the Cora, Citeseer and Pubmed citation network datasets, as well as a protein-protein interaction dataset (wherein test graphs remain unseen during training).
+
+* **Key Notes**:
+    - Graph Neural Network consists of an **iterative process**: 
+        - propagates the node states until equilibrium
+        - followed by a neural network, produces an output for each node on its states
+    - **Convolution** to the graph domain: 
+        - <u>spectral approaches</u>: Computing the **eigendecomposition of the graph Laplacian** in Fourier domain, Chebyshev expansion; **depends on spacial graph structure**
+        - <u>non-spectral approches</u>: define convolutions directly on the graph, operating on groups of spatially close neighbors -> [GraphSAGE](https://arxiv.org/abs/1706.02216)
+    - **Attention-based** architecture -> **node classification**: *compute the hidden representations of each node in the graph by attending over its **neighbors** following a **self-attention** strategy*
+    - Interesting **Properties** of Attention-architecture:
+        - **[i]** efficient operation, parallelizable across **node-neighbor pairs**
+        - **[ii]** can be applied to graph nodes having different degrees (specifyig arbitrary weights to neighbors)
+        - **[iii]** directly applicable to inductive learning problems, the model has to generalize to completely unseen graphs
+    - In the attention layer, features from K **independent attention mechanisms** are concatenated to employ **multi-head attention** -> <u>to stabilize the learning process of self-attention</u>
+    - The author's attention-layer, works with the **entirety of the neighborhood** and **does not assume any ordering** within it, and it's a **particular instance of** [MoNet](https://arxiv.org/abs/1611.08402)
+    - **Future Improvement**: 
+        - handle large batch sizes
+        - perform a thorough analysis on the model interpretability
+        - extending the method to perform **graph calssification**
+        - extending the model to incorporate **edge features** (indicating replationship among nodes)
 
 ---
 
@@ -43,7 +63,20 @@
 
 * **Abstract**: 
 
-> Graph embedding methods represent nodes in a continuous vector space, preserving information from the graph (e.g. by sampling random walks). There are many hyper-parameters to these methods (such as random walk length) which have to be manually tuned for every graph. In this paper, we replace random walk hyper-parameters with trainable parameters that we automatically learn via backpropagation. In particular, we learn a novel attention model on the power series of the transition matrix, which guides the random walk to optimize an upstream objective. Unlike previous approaches to attention models, the method that we propose utilizes attention parameters exclusively on the data (e.g. on the random walk), and not used by the model for inference. We experiment on link prediction tasks, as we aim to produce embeddings that best-preserve the graph structure, generalizing to unseen information. We improve state-of-the-art on a comprehensive suite of real world datasets including social, collaboration, and biological networks. Adding attention to random walks can reduce the error by 20% to 45% on datasets we attempted. Further, our learned attention parameters are different for every graph, and our automatically-found values agree with the optimal choice of hyper-parameter if we manually tune existing methods.
+> Graph embedding methods represent nodes in a continuous vector space, preserving information from the graph (e.g. by sampling random walks). There are many hyper-parameters to these methods (such as random walk length) which have to be manually tuned for every graph. In this paper, we replace random walk hyper-parameters with **trainable parameters that we automatically learn via backpropagation**. In particular, we learn a novel attention model on the power series of the transition matrix, which guides the random walk to optimize an upstream objective. Unlike previous approaches to attention models, the method that we propose **utilizes attention parameters exclusively on the data** (e.g. on the random walk), and **ot used by the model for inference**. We experiment on link prediction tasks, as we aim to produce embeddings that best-preserve the graph structure, generalizing to unseen information. We improve state-of-the-art on a comprehensive suite of real world datasets including social, collaboration, and biological networks. **Adding attention to random walks** can reduce the error by 20% to 45% on datasets we attempted. Further, our learned attention parameters are different for every graph, and our automatically-found values agree with the optimal choice of hyper-parameter if we manually tune existing methods.
+
+* **Key notes**: 
+    - **Unsupervised graph embedding methods**: 
+        - **[i]** sample pair-wise relationships from the graph through **random walks** and **counting node co-occurance**
+        - **[ii]** train an embedding model (using *skipgram of word2vec*) to learn representations that encode pairwise node similarities
+        - **[Problem]**: significantly depend on hyper-parameters (e.g. length of random walk)
+    - In this work, the author replace the hyper-parameter (`C` for *length of random walk*; `Q` for *context distribution*) with **trainable** parameters: (-> automatically learned for each graph)
+        - pose **graph embedding** as end2end learning (the above discrete 2 steps random walk co-occurance sampling)
+        - followed by **representation learning**: <u>joint using a closed-form expectation over the graph adjacency matrix</u>
+    - **contraibution** summary: 
+        - **[1]** propose extendible family of graph attention models -> **learn arbitrary context distribution**
+        - **[2]** show optimal hyper-parameter (found by manual tunining) agrees
+        - **[3]** evaluate a number of challenging link prediction tasks
 
 ---
 
@@ -74,18 +107,21 @@
 
 ---
 
-### To do
+### To do for graph & network
 
-* [ ] Transductive & Inductive Methods from the Graph Attention Network Paper (No.2 above)
 * [ ] [Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Network](https://arxiv.org/abs/1905.10224)
 * [ ] W. Hamilton, R. Ying, and J. Leskovec. Inductive representation learning on large graphs. In NIPS, 2017. (*negative sampling*)
 * [ ] S. Abu-El-Haija, B. Perozzi, and R. Al-Rfou. Learning edge representations via low-rank asymmetric projections. In ACM International Conference on Information and Knowledge Management (CIKM), 2017. (*graph likelihood*)
-* [ ] T. N. Kipf and M. Welling. Variational graph auto-encoders. In NIPS Workshop on Bayesian
-Deep Learning, 2016.
 * [ ] N.Shervashidze,P.Schweitzer,E.J.v.Leeuwen,K.Mehlhorn,andK.M.Borgwardt.Weisfeiler- lehman graph kernels. Journal of Machine Learning Research, 12:2539–2561, 2011. (*Graph Kernel*)
 * [ ] B. Perozzi, R. Al-Rfou, and S. Skiena. Deepwalk: Online learning of social representations. In KDD, 2014. (Deep Walk)
+* [ ] Federico Monti, Davide Boscaini, Jonathan Masci, Emanuele Rodola, Jan Svoboda, and Michael M Bronstein. Geometric deep learning on graphs and manifolds using mixture model cnns. arXiv preprint arXiv:1611.08402, 2016. (*MoNet*)
 
 **Knowledge Graph Related**:
 
 * [ ] [Learning Attention-based Embeddings for Relation Prediction in Knowledge Graphs](https://www.aclweb.org/anthology/P19-1466)
+
+**Other paper**:
+
+* [ ] T. N. Kipf and M. Welling. Variational graph auto-encoders. In NIPS Workshop on Bayesian
+Deep Learning, 2016.
 
