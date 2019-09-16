@@ -77,6 +77,17 @@
         - **[1]** propose extendible family of graph attention models -> **learn arbitrary context distribution**
         - **[2]** show optimal hyper-parameter (found by manual tunining) agrees
         - **[3]** evaluate a number of challenging link prediction tasks
+    - <u>Preliminaries</u>:
+        - Graph embedding 
+        - **Learning Embeddings via Random Walks**: use w2v on path sequence from random walk
+        - Graph Likelihood
+    - The authors extend the **Negative Log Graph Likelihood** loss to include **attention parameters** on the random walk sampling: 
+        - Expectation on the co-occurance matrix: $E[D]$ to approximate
+        - [DeepWalk](http://www.perozzi.net/publications/14_kdd_deepwalk.pdf) do not use $C$ (length of random walk) as a hard limit
+        - try to learn the context distribution $Q$ (with *C-dimentional*)
+        - train **softmax attentio model** on the **infinite power series** of the transition matrix
+    - **Extension**: extend the model to learn the weight of any other type of pair-wise node similarity
+    - learn a free-form contexts distribution with a parameter for each type of context similarity (distance in a random walk)
 
 ---
 
@@ -115,6 +126,7 @@
 * [ ] N.Shervashidze,P.Schweitzer,E.J.v.Leeuwen,K.Mehlhorn,andK.M.Borgwardt.Weisfeiler- lehman graph kernels. Journal of Machine Learning Research, 12:2539–2561, 2011. (*Graph Kernel*)
 * [ ] B. Perozzi, R. Al-Rfou, and S. Skiena. Deepwalk: Online learning of social representations. In KDD, 2014. (Deep Walk)
 * [ ] Federico Monti, Davide Boscaini, Jonathan Masci, Emanuele Rodola, Jan Svoboda, and Michael M Bronstein. Geometric deep learning on graphs and manifolds using mixture model cnns. arXiv preprint arXiv:1611.08402, 2016. (*MoNet*)
+* [ ] H. Chen, B. Perozzi, R. Al-Rfou, and S. Skiena. A tutorial on network embeddings
 
 **Knowledge Graph Related**:
 

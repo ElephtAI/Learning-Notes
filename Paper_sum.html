@@ -992,7 +992,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*GitHub*/
+</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "center",
+  showProcessingMessages: false,
+  messageStyle: 'none'
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1154,6 +1178,21 @@ body .markdown-body
 <li><strong>[3]</strong> evaluate a number of challenging link prediction tasks</li>
 </ul>
 </li>
+<li><u>Preliminaries</u>:<ul>
+<li>Graph embedding </li>
+<li><strong>Learning Embeddings via Random Walks</strong>: use w2v on path sequence from random walk</li>
+<li>Graph Likelihood</li>
+</ul>
+</li>
+<li>The authors extend the <strong>Negative Log Graph Likelihood</strong> loss to include <strong>attention parameters</strong> on the random walk sampling: <ul>
+<li>Expectation on the co-occurance matrix: $E[D]$ to approximate</li>
+<li><a href="http://www.perozzi.net/publications/14_kdd_deepwalk.pdf">DeepWalk</a> do not use $C$ (length of random walk) as a hard limit</li>
+<li>try to learn the context distribution $Q$ (with <em>C-dimentional</em>)</li>
+<li>train <strong>softmax attentio model</strong> on the <strong>infinite power series</strong> of the transition matrix</li>
+</ul>
+</li>
+<li><strong>Extension</strong>: extend the model to learn the weight of any other type of pair-wise node similarity</li>
+<li>learn a free-form contexts distribution with a parameter for each type of context similarity (distance in a random walk)</li>
 </ul>
 </li>
 </ul>
@@ -1175,7 +1214,7 @@ body .markdown-body
 </blockquote>
 <hr />
 <ol>
-<li><a href="/Users/q483187/bmw_harry/Learning-Notes/https">Template</a></li>
+<li><a href="/Users/yuchengji/Desktop/z_harry_notes/Learning-Notes/https">Template</a></li>
 </ol>
 <ul>
 <li><strong>Abstract</strong>: </li>
@@ -1198,6 +1237,7 @@ body .markdown-body
 <li class="task-list-item"><input type="checkbox" disabled/> N.Shervashidze,P.Schweitzer,E.J.v.Leeuwen,K.Mehlhorn,andK.M.Borgwardt.Weisfeiler- lehman graph kernels. Journal of Machine Learning Research, 12:2539–2561, 2011. (<em>Graph Kernel</em>)</li>
 <li class="task-list-item"><input type="checkbox" disabled/> B. Perozzi, R. Al-Rfou, and S. Skiena. Deepwalk: Online learning of social representations. In KDD, 2014. (Deep Walk)</li>
 <li class="task-list-item"><input type="checkbox" disabled/> Federico Monti, Davide Boscaini, Jonathan Masci, Emanuele Rodola, Jan Svoboda, and Michael M Bronstein. Geometric deep learning on graphs and manifolds using mixture model cnns. arXiv preprint arXiv:1611.08402, 2016. (<em>MoNet</em>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> H. Chen, B. Perozzi, R. Al-Rfou, and S. Skiena. A tutorial on network embeddings</li>
 </ul>
 <p><strong>Knowledge Graph Related</strong>:</p>
 <ul class="task-list">
