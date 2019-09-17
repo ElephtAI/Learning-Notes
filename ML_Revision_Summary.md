@@ -181,7 +181,7 @@
     - AML spectral Learning (Graph Laplacian...)
     - Stanford Analysis of Network course
     - (https://www.jianshu.com/p/f4d2d87c9e44)
-
+    - [Tutorial on Variational Graph Auto-Encoders](https://towardsdatascience.com/tutorial-on-variational-graph-auto-encoders-da9333281129)
     - [ ] **Knowledge Graph**
         - [ACL 2019 知识图谱的全方位总结](https://www.leiphone.com/news/201908/13I5DsoFpwnLC6sA.html)
 
