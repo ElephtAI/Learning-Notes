@@ -99,15 +99,19 @@
 
 ---
 
-(7) [Network Lasso: Clustering and Optimization in Large Graphs](https://arxiv.org/abs/1507.00280)
+(7) `Jul 2015` [Network Lasso: Clustering and Optimization in Large Graphs](https://arxiv.org/abs/1507.00280) *[David Hallac, Jure Leskovec, Stephen Boyd]*
 
 * **Abstract**: 
 
 > Convex optimization is an essential tool for modern data analysis, as it provides a framework to formulate and solve many problems in machine learning and data mining. However, general convex optimization solvers do not scale well, and scalable solvers are often specialized to only work on a narrow class of problems. Therefore, there is a need for simple, scalable algorithms that can solve many common optimization problems. In this paper, we introduce the **network lasso**, a generalization of the group lasso to a network setting that allows for simultaneous clustering and optimization on graphs. We develop an algorithm based on the **Alternating Direction Method of Multipliers (ADMM)** to solve this problem in a distributed and scalable manner, which allows for guaranteed global convergence even on large graphs. We also examine a non-convex extension of this approach. We then demonstrate that many types of problems can be expressed in our framework. We focus on three in particular - binary classification, predicting housing prices, and event detection in time series data - comparing the network lasso to baseline approaches and showing that it is both a fast and accurate method of solving large optimization problems.
 
+* **Key notes**: 
+    - **network lasso**: a generalization of the group lasso to a network setting for simultaneous **clustering** & **optimization** on graph
+    - With **large dataset** classical methods of convex methods fail due to **lack of scalability** -> <u>large-scale optimization</u> (*challenge: generalize, capable of scaling*)
+
 ---
 
-(8) [Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Networks](https://arxiv.org/abs/1905.10224)*[Dominik Alfke, Martin Stoll]*
+(8) `May 2019` [Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Networks](https://arxiv.org/abs/1905.10224) *[Dominik Alfke, Martin Stoll]*
 
 * **Abstract**: 
 
@@ -118,7 +122,7 @@
 
 ---
 
-(9) [Inductive Representation Learning on Large Graphs](https://arxiv.org/abs/1706.02216)*[William L. Hamilton, Rex Ying, Jure Leskovec]* `Negative sampling`
+(9) `Jun 2017 ` [Inductive Representation Learning on Large Graphs](https://arxiv.org/abs/1706.02216) *[William L. Hamilton, Rex Ying, Jure Leskovec]* `Negative sampling`
 
 * **Abstract**: 
 
@@ -129,7 +133,7 @@
 
 ---
 
-(10) [Learning Edge Representations via Low-Rank Asymmetric Projections](https://arxiv.org/abs/1705.05615)*[Sami Abu-El-Haija, Bryan Perozzi, Rami Al-Rfou]* `Graph likelihood`
+(10) `May 2017` [Learning Edge Representations via Low-Rank Asymmetric Projections](https://arxiv.org/abs/1705.05615) *[Sami Abu-El-Haija, Bryan Perozzi, Rami Al-Rfou]* `Graph likelihood`
 
 * **Abstract**: 
 
@@ -142,7 +146,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(11) [DeepWalk: Online Learning of Social Representations](https://arxiv.org/abs/1403.6652)*[Bryan Perozzi, Rami Al-Rfou, Steven Skiena]* `DeepWalk` 
+(11) `Mar 2014` [DeepWalk: Online Learning of Social Representations](https://arxiv.org/abs/1403.6652) *[Bryan Perozzi, Rami Al-Rfou, Steven Skiena]* `DeepWalk` 
 
 * **Abstract**: 
 
@@ -153,7 +157,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(12) [A Tutorial on Network Embeddings](https://arxiv.org/abs/1808.02590)*[Haochen Chen, Bryan Perozzi, Rami Al-Rfou, Steven Skiena]*
+(12) `Aug 2018` [A Tutorial on Network Embeddings](https://arxiv.org/abs/1808.02590) *[Haochen Chen, Bryan Perozzi, Rami Al-Rfou, Steven Skiena]*
 
 * **Abstract**: 
 
@@ -164,7 +168,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(13) [Link Prediction Based on Graph Neural Networks](https://arxiv.org/abs/1802.09691)*[Muhan Zhang, Yixin Chen]*
+(13) `Feb 2018` [Link Prediction Based on Graph Neural Networks](https://arxiv.org/abs/1802.09691) *[Muhan Zhang, Yixin Chen]*
 
 * **Abstract**: 
 
@@ -175,7 +179,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(14) [Deep Graph Infomax](https://arxiv.org/abs/1809.10341)*[Petar Veličković, William Fedus, William L. Hamilton, Pietro Liò, Yoshua Bengio, R Devon Hjelm]*
+(14) `Sep 2018` [Deep Graph Infomax](https://arxiv.org/abs/1809.10341) *[Petar Veličković, William Fedus, William L. Hamilton, Pietro Liò, Yoshua Bengio, R Devon Hjelm]*
 
 * **Abstract**: 
 
@@ -186,7 +190,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(15) [Variational Graph Auto-Encoders](https://arxiv.org/abs/1611.07308)*[Thomas N. Kipf, Max Welling]*
+(15) `Nov 2016` [Variational Graph Auto-Encoders](https://arxiv.org/abs/1611.07308) *[Thomas N. Kipf, Max Welling]*
 
 * **Abstract**: 
 
@@ -197,7 +201,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(16) [DeepGCNs: Can GCNs Go as Deep as CNNs?](https://arxiv.org/abs/1904.03751)*[Guohao Li, Matthias Müller, Ali Thabet, Bernard Ghanem]*
+(16) `Apr 2019` [DeepGCNs: Can GCNs Go as Deep as CNNs?](https://arxiv.org/abs/1904.03751) *[Guohao Li, Matthias Müller, Ali Thabet, Bernard Ghanem]*
 
 * **Abstract**: 
 
@@ -208,7 +212,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(17) [vGraph: A Generative Model for Joint Community Detection and Node Representation Learning](https://arxiv.org/abs/1906.07159)*[Fan-Yun Sun, Meng Qu, Jordan Hoffmann, Chin-Wei Huang, Jian Tang]*
+(17) `Jun 2019` [vGraph: A Generative Model for Joint Community Detection and Node Representation Learning](https://arxiv.org/abs/1906.07159) *[Fan-Yun Sun, Meng Qu, Jordan Hoffmann, Chin-Wei Huang, Jian Tang]*
 
 * **Abstract**: 
 
@@ -219,7 +223,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(18) [Bayesian graph convolutional neural networks for semi-supervised classification](https://arxiv.org/abs/1811.11103)*[Yingxue Zhang, Soumyasundar Pal, Mark Coates, Deniz Üstebay]*
+(18) `Nov 2018` [Bayesian graph convolutional neural networks for semi-supervised classification](https://arxiv.org/abs/1811.11103) *[Yingxue Zhang, Soumyasundar Pal, Mark Coates, Deniz Üstebay]*
 
 * **Abstract**: 
 
@@ -230,7 +234,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(19) [Supervised Community Detection with Line Graph Neural Networks](https://arxiv.org/abs/1705.08415)*[Zhengdao Chen, Xiang Li, Joan Bruna]*
+(19) `May 2017` [Supervised Community Detection with Line Graph Neural Networks](https://arxiv.org/abs/1705.08415) *[Zhengdao Chen, Xiang Li, Joan Bruna]*
 
 * **Abstract**: 
 
@@ -241,7 +245,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
-(20) [Predict then Propagate: Graph Neural Networks meet Personalized PageRank](https://arxiv.org/abs/1810.05997)*[Johannes Klicpera, Aleksandar Bojchevski, Stephan Günnemann]*
+(20) `Oct 2018` [Predict then Propagate: Graph Neural Networks meet Personalized PageRank](https://arxiv.org/abs/1810.05997) *[Johannes Klicpera, Aleksandar Bojchevski, Stephan Günnemann]*
 
 * **Abstract**: 
 
@@ -282,4 +286,5 @@ We evaluate our method on a variety of link-prediction task including social net
 
 * [ ] T. N. Kipf and M. Welling. Variational graph auto-encoders. In NIPS Workshop on Bayesian
 Deep Learning, 2016.
+
 

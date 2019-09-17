@@ -992,7 +992,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*GitHub*/
+</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "center",
+  showProcessingMessages: false,
+  messageStyle: 'none'
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1181,15 +1205,22 @@ body .markdown-body
 <p><strong>Low-dimensional</strong> embeddings of nodes in large graphs have proved extremely useful in a variety of prediction tasks, from content recommendation to identifying protein functions. However, most existing approaches require that all nodes in the graph are present during training of the embeddings; these previous approaches are <u>inherently transductive</u> and do not naturally generalize to unseen nodes. Here we present GraphSAGE, a general, <strong>inductive framework</strong> that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data. <u>Instead of training individual embeddings for each node, we learn a function that generates embeddings by <strong>sampling and aggregating features</strong> from a node&rsquo;s local neighborhood</u>. Our algorithm outperforms strong baselines on three inductive node-classification benchmarks: we classify the category of unseen nodes in evolving information graphs based on citation and Reddit post data, and we show that our algorithm generalizes to completely unseen graphs using a multi-graph dataset of protein-protein interactions.</p>
 </blockquote>
 <hr />
-<p>(7) <a href="https://arxiv.org/abs/1507.00280">Network Lasso: Clustering and Optimization in Large Graphs</a></p>
+<p>(7) <code>Jul 2015</code> <a href="https://arxiv.org/abs/1507.00280">Network Lasso: Clustering and Optimization in Large Graphs</a> <em>[David Hallac, Jure Leskovec, Stephen Boyd]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
 <p>Convex optimization is an essential tool for modern data analysis, as it provides a framework to formulate and solve many problems in machine learning and data mining. However, general convex optimization solvers do not scale well, and scalable solvers are often specialized to only work on a narrow class of problems. Therefore, there is a need for simple, scalable algorithms that can solve many common optimization problems. In this paper, we introduce the <strong>network lasso</strong>, a generalization of the group lasso to a network setting that allows for simultaneous clustering and optimization on graphs. We develop an algorithm based on the <strong>Alternating Direction Method of Multipliers (ADMM)</strong> to solve this problem in a distributed and scalable manner, which allows for guaranteed global convergence even on large graphs. We also examine a non-convex extension of this approach. We then demonstrate that many types of problems can be expressed in our framework. We focus on three in particular - binary classification, predicting housing prices, and event detection in time series data - comparing the network lasso to baseline approaches and showing that it is both a fast and accurate method of solving large optimization problems.</p>
 </blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><strong>network lasso</strong>: a generalization of the group lasso to a network setting for simultaneous <strong>clustering</strong> &amp; <strong>optimization</strong> on graph</li>
+<li>With <strong>large dataset</strong> classical methods of convex methods fail due to <strong>lack of scalability</strong> -&gt; <u>large-scale optimization</u> (<em>challenge: generalize, capable of scaling</em>)</li>
+</ul>
+</li>
+</ul>
 <hr />
-<p>(8) <a href="https://arxiv.org/abs/1905.10224">Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Networks</a><em>[Dominik Alfke, Martin Stoll]</em></p>
+<p>(8) <code>May 2019</code> <a href="https://arxiv.org/abs/1905.10224">Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Networks</a> <em>[Dominik Alfke, Martin Stoll]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1203,7 +1234,7 @@ body .markdown-body
 </li>
 </ul>
 <hr />
-<p>(9) <a href="https://arxiv.org/abs/1706.02216">Inductive Representation Learning on Large Graphs</a><em>[William L. Hamilton, Rex Ying, Jure Leskovec]</em> <code>Negative sampling</code></p>
+<p>(9) <code>Jun 2017</code> <a href="https://arxiv.org/abs/1706.02216">Inductive Representation Learning on Large Graphs</a> <em>[William L. Hamilton, Rex Ying, Jure Leskovec]</em> <code>Negative sampling</code></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1217,7 +1248,7 @@ body .markdown-body
 </li>
 </ul>
 <hr />
-<p>(10) <a href="https://arxiv.org/abs/1705.05615">Learning Edge Representations via Low-Rank Asymmetric Projections</a><em>[Sami Abu-El-Haija, Bryan Perozzi, Rami Al-Rfou]</em> <code>Graph likelihood</code></p>
+<p>(10) <code>May 2017</code> <a href="https://arxiv.org/abs/1705.05615">Learning Edge Representations via Low-Rank Asymmetric Projections</a> <em>[Sami Abu-El-Haija, Bryan Perozzi, Rami Al-Rfou]</em> <code>Graph likelihood</code></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1233,7 +1264,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(11) <a href="https://arxiv.org/abs/1403.6652">DeepWalk: Online Learning of Social Representations</a><em>[Bryan Perozzi, Rami Al-Rfou, Steven Skiena]</em> <code>DeepWalk</code> </p>
+<p>(11) <code>Mar 2014</code> <a href="https://arxiv.org/abs/1403.6652">DeepWalk: Online Learning of Social Representations</a> <em>[Bryan Perozzi, Rami Al-Rfou, Steven Skiena]</em> <code>DeepWalk</code> </p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1247,7 +1278,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(12) <a href="https://arxiv.org/abs/1808.02590">A Tutorial on Network Embeddings</a><em>[Haochen Chen, Bryan Perozzi, Rami Al-Rfou, Steven Skiena]</em></p>
+<p>(12) <code>Aug 2018</code> <a href="https://arxiv.org/abs/1808.02590">A Tutorial on Network Embeddings</a> <em>[Haochen Chen, Bryan Perozzi, Rami Al-Rfou, Steven Skiena]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1261,7 +1292,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(13) <a href="https://arxiv.org/abs/1802.09691">Link Prediction Based on Graph Neural Networks</a><em>[Muhan Zhang, Yixin Chen]</em></p>
+<p>(13) <code>Feb 2018</code> <a href="https://arxiv.org/abs/1802.09691">Link Prediction Based on Graph Neural Networks</a> <em>[Muhan Zhang, Yixin Chen]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1275,7 +1306,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(14) <a href="https://arxiv.org/abs/1809.10341">Deep Graph Infomax</a><em>[Petar Veličković, William Fedus, William L. Hamilton, Pietro Liò, Yoshua Bengio, R Devon Hjelm]</em></p>
+<p>(14) <code>Sep 2018</code> <a href="https://arxiv.org/abs/1809.10341">Deep Graph Infomax</a> <em>[Petar Veličković, William Fedus, William L. Hamilton, Pietro Liò, Yoshua Bengio, R Devon Hjelm]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1289,7 +1320,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(15) <a href="https://arxiv.org/abs/1611.07308">Variational Graph Auto-Encoders</a><em>[Thomas N. Kipf, Max Welling]</em></p>
+<p>(15) <code>Nov 2016</code> <a href="https://arxiv.org/abs/1611.07308">Variational Graph Auto-Encoders</a> <em>[Thomas N. Kipf, Max Welling]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1303,7 +1334,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(16) <a href="https://arxiv.org/abs/1904.03751">DeepGCNs: Can GCNs Go as Deep as CNNs?</a><em>[Guohao Li, Matthias Müller, Ali Thabet, Bernard Ghanem]</em></p>
+<p>(16) <code>Apr 2019</code> <a href="https://arxiv.org/abs/1904.03751">DeepGCNs: Can GCNs Go as Deep as CNNs?</a> <em>[Guohao Li, Matthias Müller, Ali Thabet, Bernard Ghanem]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1317,7 +1348,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(17) <a href="https://arxiv.org/abs/1906.07159">vGraph: A Generative Model for Joint Community Detection and Node Representation Learning</a><em>[Fan-Yun Sun, Meng Qu, Jordan Hoffmann, Chin-Wei Huang, Jian Tang]</em></p>
+<p>(17) <code>Jun 2019</code> <a href="https://arxiv.org/abs/1906.07159">vGraph: A Generative Model for Joint Community Detection and Node Representation Learning</a> <em>[Fan-Yun Sun, Meng Qu, Jordan Hoffmann, Chin-Wei Huang, Jian Tang]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1331,7 +1362,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(18) <a href="https://arxiv.org/abs/1811.11103">Bayesian graph convolutional neural networks for semi-supervised classification</a><em>[Yingxue Zhang, Soumyasundar Pal, Mark Coates, Deniz Üstebay]</em></p>
+<p>(18) <code>Nov 2018</code> <a href="https://arxiv.org/abs/1811.11103">Bayesian graph convolutional neural networks for semi-supervised classification</a> <em>[Yingxue Zhang, Soumyasundar Pal, Mark Coates, Deniz Üstebay]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1345,7 +1376,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(19) <a href="https://arxiv.org/abs/1705.08415">Supervised Community Detection with Line Graph Neural Networks</a><em>[Zhengdao Chen, Xiang Li, Joan Bruna]</em></p>
+<p>(19) <code>May 2017</code> <a href="https://arxiv.org/abs/1705.08415">Supervised Community Detection with Line Graph Neural Networks</a> <em>[Zhengdao Chen, Xiang Li, Joan Bruna]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1359,7 +1390,7 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>(20) <a href="https://arxiv.org/abs/1810.05997">Predict then Propagate: Graph Neural Networks meet Personalized PageRank</a><em>[Johannes Klicpera, Aleksandar Bojchevski, Stephan Günnemann]</em></p>
+<p>(20) <code>Oct 2018</code> <a href="https://arxiv.org/abs/1810.05997">Predict then Propagate: Graph Neural Networks meet Personalized PageRank</a> <em>[Johannes Klicpera, Aleksandar Bojchevski, Stephan Günnemann]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
