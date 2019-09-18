@@ -108,7 +108,8 @@
 * **Key notes**: 
     - **network lasso**: a generalization of the group lasso to a network setting for simultaneous **clustering** & **optimization** on graph
     - With **large dataset** classical methods of convex methods fail due to **lack of scalability** -> <u>large-scale optimization</u> (*challenge: generalize, capable of scaling*)
-
+    - network lasso problem: <u>**cost of node** + **edge cost** (sum of norms of differences of the adjacent edge varialbes)</u> *e.g. each vertex might represent the action of a control system*
+    - The author's **distributed** & **scalable** solution -> each vertex is controlled by one `agent`, they exchange information on the graph to solve the problem iteratively: 
 ---
 
 (8) `May 2019` [Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Networks](https://arxiv.org/abs/1905.10224) *[Dominik Alfke, Martin Stoll]*
