@@ -106,10 +106,26 @@
 > Convex optimization is an essential tool for modern data analysis, as it provides a framework to formulate and solve many problems in machine learning and data mining. However, general convex optimization solvers do not scale well, and scalable solvers are often specialized to only work on a narrow class of problems. Therefore, there is a need for simple, scalable algorithms that can solve many common optimization problems. In this paper, we introduce the **network lasso**, a generalization of the group lasso to a network setting that allows for simultaneous clustering and optimization on graphs. We develop an algorithm based on the **Alternating Direction Method of Multipliers (ADMM)** to solve this problem in a distributed and scalable manner, which allows for guaranteed global convergence even on large graphs. We also examine a non-convex extension of this approach. We then demonstrate that many types of problems can be expressed in our framework. We focus on three in particular - binary classification, predicting housing prices, and event detection in time series data - comparing the network lasso to baseline approaches and showing that it is both a fast and accurate method of solving large optimization problems.
 
 * **Key notes**: 
-    - **network lasso**: a generalization of the group lasso to a network setting for simultaneous **clustering** & **optimization** on graph
-    - With **large dataset** classical methods of convex methods fail due to **lack of scalability** -> <u>large-scale optimization</u> (*challenge: generalize, capable of scaling*)
-    - network lasso problem: <u>**cost of node** + **edge cost** (sum of norms of differences of the adjacent edge varialbes)</u> *e.g. each vertex might represent the action of a control system*
-    - The author's **distributed** & **scalable** solution -> each vertex is controlled by one `agent`, they exchange information on the graph to solve the problem iteratively: 
+    - <u>**Main contributions**</u>: 
+        - **[i]** formally define **network lasso**, a generalization of the group lasso to a network setting for simultaneous **clustering** & **optimization** on graph
+            - network lasso problem: <u>**cost of node** + **edge cost** (sum of norms of differences of the adjacent edge varialbes)</u> *e.g. each vertex might represent the action of a control system*
+            - the **edge** term are <u>regularization that encourages adjacent nodes to have close model parameters</u> -> `adjacent nodes should have similar models`
+        - **[ii]** The author's **distributed** & **scalable** solution -> each vertex is controlled by one `agent`, they exchange information on the graph to solve the problem iteratively:
+            - propose a easy to implement algorithm based on **Alternating Direction Method of Multipliers (ADMM)**
+        - **[iii]** real examples
+    - <u>**Other Notes**</u>:
+        - With **large dataset** classical methods of convex methods fail due to **lack of scalability** -> <u>large-scale optimization</u> (*challenge: generalize, capable of scaling*)
+        - **convex clustering**: a well studied instance of network lasso
+    - <u>**Use cases**</u>:
+        - problem of predicting house price
+        > The network lasso solution empirically determines the neighbourhoods, so that each house can share a common model with houses in its cluster
+    - <u>**Further directions**</u>:
+        - the analysis of different non-convex functions phi
+        - many ways to inmprove speed, performan and robustness: 
+            1. *find closed-form solution for common objective function f(x)*
+            2. *automatically determining the optimal ADMM parameter rho*
+            3. *allow edge objective function beyond just the weighted network lasso*
+
 ---
 
 (8) `May 2019` [Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Networks](https://arxiv.org/abs/1905.10224) *[Dominik Alfke, Martin Stoll]*
@@ -258,7 +274,109 @@ We evaluate our method on a variety of link-prediction task including social net
 ---
 
 
-() [Template]()*[]*
+(21) `May 2019` [Approximation Ratios of Graph Neural Networks for Combinatorial Problems](https://arxiv.org/abs/1905.10261) *[Ryoma Sato, Makoto Yamada, Hisashi Kashima]*
+
+* **Abstract**: 
+
+> In this paper, from a theoretical perspective, we study how powerful graph neural networks (GNNs) can be for learning approximation algorithms for combinatorial problems. To this end, we first establish a new class of GNNs that can solve strictly a wider variety of problems than existing GNNs. Then, we bridge the gap between GNN theory and the theory of distributed local algorithms to theoretically demonstrate that the most powerful GNN can learn approximation algorithms for the minimum dominating set problem and the minimum vertex cover problem with some approximation ratios and that no GNN can perform better than with these ratios. This paper is the first to elucidate approximation ratios of GNNs for combinatorial problems. Furthermore, we prove that adding coloring or weak-coloring to each node feature improves these approximation ratios. This indicates that preprocessing and feature engineering theoretically strengthen model capabilities.
+
+* **Key notes**: 
+    - 
+
+---
+
+(22) `Apr 2019` [D-VAE: A Variational Autoencoder for Directed Acyclic Graphs](https://arxiv.org/abs/1904.11088) *[Muhan Zhang, Shali Jiang, Zhicheng Cui, Roman Garnett, Yixin Chen]*
+
+* **Abstract**: 
+
+> Graph structured data are abundant in the real world. Among different graph types, directed acyclic graphs (DAGs) are of particular interest to machine learning researchers, as many machine learning models are realized as computations on DAGs, including neural networks and Bayesian networks. In this paper, we study deep generative models for DAGs, and propose a novel DAG variational autoencoder (D-VAE). To encode DAGs into the latent space, we leverage graph neural networks. We propose an asynchronous message passing scheme that allows encoding the computations on DAGs, rather than using existing simultaneous message passing schemes to encode local graph structures. We demonstrate the effectiveness of our proposed D-VAE through two tasks: neural architecture search and Bayesian network structure learning. Experiments show that our model not only generates novel and valid DAGs, but also produces a smooth latent space that facilitates searching for DAGs with better performance through Bayesian optimization.
+
+* **Key notes**: 
+    - 
+
+---
+
+(23) `May 2019` [End to end learning and optimization on graphs](https://arxiv.org/abs/1905.13732) *[Bryan Wilder, Eric Ewing, Bistra Dilkina, Milind Tambe]*
+
+* **Abstract**: 
+
+> Real-world applications often combine learning and optimization problems on graphs. For instance, our objective may be to cluster the graph in order to detect meaningful communities (or solve other common graph optimization problems such as facility location, maxcut, and so on). However, graphs or related attributes are often only partially observed, introducing learning problems such as link prediction which must be solved prior to optimization. We propose an approach to integrate a differentiable proxy for common graph optimization problems into training of machine learning models for tasks such as link prediction. This allows the model to focus specifically on the downstream task that its predictions will be used for. Experimental results show that our end-to-end system obtains better performance on example optimization tasks than can be obtained by combining state of the art link prediction methods with expert-designed graph optimization algorithms.
+
+* **Key notes**: 
+    - 
+
+---
+
+(24) `May 2019` [Graph Neural Tangent Kernel: Fusing Graph Neural Networks with Graph Kernels](https://arxiv.org/abs/1905.13192) *[Simon S. Du, Kangcheng Hou, Barnabás Póczos, Ruslan Salakhutdinov, Ruosong Wang, Keyulu Xu]*
+
+* **Abstract**: 
+
+> While graph kernels (GKs) are easy to train and enjoy provable theoretical guarantees, their practical performances are limited by their expressive power, as the kernel function often depends on hand-crafted combinatorial features of graphs. Compared to graph kernels, graph neural networks (GNNs) usually achieve better practical performance, as GNNs use multi-layer architectures and non-linear activation functions to extract high-order information of graphs as features. However, due to the large number of hyper-parameters and the non-convex nature of the training procedure, GNNs are harder to train. Theoretical guarantees of GNNs are also not well-understood. Furthermore, the expressive power of GNNs scales with the number of parameters, and thus it is hard to exploit the full power of GNNs when computing resources are limited. The current paper presents a new class of graph kernels, Graph Neural Tangent Kernels (GNTKs), which correspond to \emph{infinitely wide} multi-layer GNNs trained by gradient descent. GNTKs enjoy the full expressive power of GNNs and inherit advantages of GKs. Theoretically, we show GNTKs provably learn a class of smooth functions on graphs. Empirically, we test GNTKs on graph classification datasets and show they achieve strong performance.
+
+* **Key notes**: 
+    - 
+
+---
+
+(25) `Sep 2018` [HyperGCN: A New Method of Training Graph Convolutional Networks on Hypergraphs](https://arxiv.org/abs/1809.02589) *[Naganand Yadati, Madhav Nimishakavi, Prateek Yadav, Vikram Nitin, Anand Louis, Partha Talukdar]*
+
+* **Abstract**: 
+
+> In many real-world network datasets such as co-authorship, co-citation, email communication, etc., relationships are complex and go beyond pairwise. Hypergraphs provide a flexible and natural modeling tool to model such complex relationships. The obvious existence of such complex relationships in many real-world networks naturaly motivates the problem of learning with hypergraphs. A popular learning paradigm is hypergraph-based semi-supervised learning (SSL) where the goal is to assign labels to initially unlabeled vertices in a hypergraph. Motivated by the fact that a graph convolutional network (GCN) has been effective for graph-based SSL, we propose HyperGCN, a novel GCN for SSL on attributed hypergraphs. Additionally, we show how HyperGCN can be used as a learning-based approach for combinatorial optimisation on NP-hard hypergraph problems. We demonstrate HyperGCN's effectiveness through detailed experimentation on real-world hypergraphs.
+
+* **Key notes**: 
+    - 
+
+---
+
+(26) `Jul 2019` [Social-BiGAT: Multimodal Trajectory Forecasting using Bicycle-GAN and Graph Attention Networks](https://arxiv.org/abs/1907.03395) *[Vineet Kosaraju, Amir Sadeghian, Roberto Martín-Martín, Ian Reid, S. Hamid Rezatofighi, Silvio Savarese]*
+
+* **Abstract**: 
+
+> Predicting the future trajectories of multiple interacting agents in a scene has become an increasingly important problem for many different applications ranging from control of autonomous vehicles and social robots to security and surveillance. This problem is compounded by the presence of social interactions between humans and their physical interactions with the scene. While the existing literature has explored some of these cues, they mainly ignored the multimodal nature of each human's future trajectory. In this paper, we present Social-BiGAT, a graph-based generative adversarial network that generates realistic, multimodal trajectory predictions by better modelling the social interactions of pedestrians in a scene. Our method is based on a graph attention network (GAT) that learns reliable feature representations that encode the social interactions between humans in the scene, and a recurrent encoder-decoder architecture that is trained adversarially to predict, based on the features, the humans' paths. We explicitly account for the multimodal nature of the prediction problem by forming a reversible transformation between each scene and its latent noise vector, as in Bicycle-GAN. We show that our framework achieves state-of-the-art performance comparing it to several baselines on existing trajectory forecasting benchmarks.
+
+* **Key notes**: 
+    - 
+
+---
+
+(27) `May 2019 ` [Scalable Gromov-Wasserstein Learning for Graph Partitioning and Matching](https://arxiv.org/abs/1905.07645) *[Hongteng Xu, Dixin Luo, Lawrence Carin]*
+
+* **Abstract**: 
+
+> We propose a scalable Gromov-Wasserstein learning (S-GWL) method and establish a novel and theoretically-supported paradigm for large-scale graph analysis. The proposed method is based on the fact that Gromov-Wasserstein discrepancy is a pseudometric on graphs. Given two graphs, the optimal transport associated with their Gromov-Wasserstein discrepancy provides the correspondence between their nodes and achieves graph matching. When one of the graphs has isolated but self-connected nodes (i.e., a disconnected graph), the optimal transport indicates the clustering structure of the other graph and achieves graph partitioning. Using this concept, we extend our method to multi-graph partitioning and matching by learning a Gromov-Wasserstein barycenter graph for multiple observed graphs; the barycenter graph plays the role of the disconnected graph, and since it is learned, so is the clustering. Our method combines a recursive K-partition mechanism with a regularized proximal gradient algorithm, whose time complexity is $(K(E+V)logKV)$ for graphs with V nodes and E edges. To our knowledge, our method is the first attempt to make Gromov-Wasserstein discrepancy applicable to large-scale graph analysis and unify graph partitioning and matching into the same framework. It outperforms state-of-the-art graph partitioning and matching methods, achieving a trade-off between accuracy and efficiency.
+
+* **Key notes**: 
+    - 
+
+---
+
+(28) `May 2019` [Universal Invariant and Equivariant Graph Neural Networks](https://arxiv.org/abs/1905.04943) *[Nicolas Keriven, Gabriel Peyré]*
+
+* **Abstract**: 
+
+> Graph Neural Networks (GNN) come in many flavors, but should always be either invariant (permutation of the nodes of the input graph does not affect the output) or equivariant (permutation of the input permutes the output). In this paper, we consider a specific class of invariant and equivariant networks, for which we prove new universality theorems. More precisely, we consider networks with a single hidden layer, obtained by summing channels formed by applying an equivariant linear operator, a pointwise non-linearity and either an invariant or equivariant linear operator. Recently, Maron et al. (2019) showed that by allowing higher-order tensorization inside the network, universal invariant GNNs can be obtained. As a first contribution, we propose an alternative proof of this result, which relies on the Stone-Weierstrass theorem for algebra of real-valued functions. Our main contribution is then an extension of this result to the equivariant case, which appears in many practical applications but has been less studied from a theoretical point of view. The proof relies on a new generalized Stone-Weierstrass theorem for algebra of equivariant functions, which is of independent interest. Finally, unlike many previous settings that consider a fixed number of nodes, our results show that a GNN defined by a single set of parameters can approximate uniformly well a function defined on graphs of varying size.
+
+* **Key notes**: 
+    - 
+
+---
+
+(29) `Jun 2019` [Provably Powerful Graph Networks](https://arxiv.org/pdf/1905.11136.pdf) *[Haggai Maron, Heli Ben-Hamu, Hadar Serviansky, Yaron Lipman]*
+
+* **Abstract**: 
+
+> Recently, the Weisfeiler-Lehman (WL) graph isomorphism test was used to measure the expressive power of graph neural networks (GNN). It was shown that the popular message passing GNN cannot distinguish between graphs that are indistinguishable by the 1-WL test (Morris et al. 2018; Xu et al. 2019). Unfortunately, many simple instances of graphs are indistinguishable by the 1-WL test.
+> In search for more expressive graph learning models we build upon the recent k-order invariant and equivariant graph neural networks (Maron et al. 2019a,b) and present two results:
+> First, we show that such k-order networks can distinguish between non-isomorphic graphs as good as the k-WL tests, which are provably stronger than the 1-WL test for k>2. This makes these models strictly stronger than message passing models. Unfortunately, the higher expressiveness of these models comes with a computational cost of processing high order tensors.
+> Second, setting our goal at building a provably stronger, simple and scalable model we show that a reduced 2-order network containing just scaled identity operator, augmented with a single quadratic operation (matrix multiplication) has a provable 3-WL expressive power. Differently put, we suggest a simple model that interleaves applications of standard Multilayer-Perceptron (MLP) applied to the feature dimension and matrix multiplication. We validate this model by presenting state of the art results on popular graph classification and regression tasks. To the best of our knowledge, this is the first practical invariant/equivariant model with guaranteed 3-WL expressiveness, strictly stronger than message passing models.
+
+* **Key notes**: 
+    - 
+
+---
+
+(28) `201` []() *[]*
 
 * **Abstract**: 
 

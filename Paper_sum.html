@@ -992,31 +992,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
-  config: ["MMLorHTML.js"],
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true
-  },
-  TeX: {
-    extensions: ["AMSmath.js", "AMSsymbols.js"],
-    TagSide: "right",
-    TagIndent: ".8em",
-    MultLineWidth: "85%",
-    equationNumbers: {
-      autoNumber: "AMS",
-    },
-    unicode: {
-      fonts: "STIXGeneral,'Arial Unicode MS'"
-    }
-  },
-  displayAlign: "center",
-  showProcessingMessages: false,
-  messageStyle: 'none'
-});</script><style>/*GitHub*/
+</style><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1214,14 +1190,45 @@ body .markdown-body
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li><strong>network lasso</strong>: a generalization of the group lasso to a network setting for simultaneous <strong>clustering</strong> &amp; <strong>optimization</strong> on graph</li>
-<li>With <strong>large dataset</strong> classical methods of convex methods fail due to <strong>lack of scalability</strong> -&gt; <u>large-scale optimization</u> (<em>challenge: generalize, capable of scaling</em>)</li>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[i]</strong> formally define <strong>network lasso</strong>, a generalization of the group lasso to a network setting for simultaneous <strong>clustering</strong> &amp; <strong>optimization</strong> on graph<ul>
 <li>network lasso problem: <u><strong>cost of node</strong> + <strong>edge cost</strong> (sum of norms of differences of the adjacent edge varialbes)</u> <em>e.g. each vertex might represent the action of a control system</em></li>
-<li>The author&rsquo;s <strong>distributed</strong> &amp; <strong>scalable</strong> solution -&gt; each vertex is controlled by one <code>agent</code>, they exchange information on the graph to solve the problem iteratively: </li>
+<li>the <strong>edge</strong> term are <u>regularization that encourages adjacent nodes to have close model parameters</u> -&gt; <code>adjacent nodes should have similar models</code></li>
 </ul>
-<hr />
+</li>
+<li><strong>[ii]</strong> The author&rsquo;s <strong>distributed</strong> &amp; <strong>scalable</strong> solution -&gt; each vertex is controlled by one <code>agent</code>, they exchange information on the graph to solve the problem iteratively:<ul>
+<li>propose a easy to implement algorithm based on <strong>Alternating Direction Method of Multipliers (ADMM)</strong></li>
+</ul>
+</li>
+<li><strong>[iii]</strong> real examples</li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:<ul>
+<li>With <strong>large dataset</strong> classical methods of convex methods fail due to <strong>lack of scalability</strong> -&gt; <u>large-scale optimization</u> (<em>challenge: generalize, capable of scaling</em>)</li>
+<li><strong>convex clustering</strong>: a well studied instance of network lasso</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:<ul>
+<li>problem of predicting house price<blockquote>
+<p>The network lasso solution empirically determines the neighbourhoods, so that each house can share a common model with houses in its cluster</p>
+</blockquote>
 </li>
 </ul>
+</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li>the analysis of different non-convex functions phi</li>
+<li>many ways to inmprove speed, performan and robustness: <ol>
+<li><em>find closed-form solution for common objective function f(x)</em></li>
+<li><em>automatically determining the optimal ADMM parameter rho</em></li>
+<li><em>allow edge objective function beyond just the weighted network lasso</em></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
 <p>(8) <code>May 2019</code> <a href="https://arxiv.org/abs/1905.10224">Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Networks</a> <em>[Dominik Alfke, Martin Stoll]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
@@ -1406,7 +1413,136 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 </ul>
 <hr />
-<p>() <a href="">Template</a><em>[]</em></p>
+<p>(21) <code>May 2019</code> <a href="https://arxiv.org/abs/1905.10261">Approximation Ratios of Graph Neural Networks for Combinatorial Problems</a> <em>[Ryoma Sato, Makoto Yamada, Hisashi Kashima]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>In this paper, from a theoretical perspective, we study how powerful graph neural networks (GNNs) can be for learning approximation algorithms for combinatorial problems. To this end, we first establish a new class of GNNs that can solve strictly a wider variety of problems than existing GNNs. Then, we bridge the gap between GNN theory and the theory of distributed local algorithms to theoretically demonstrate that the most powerful GNN can learn approximation algorithms for the minimum dominating set problem and the minimum vertex cover problem with some approximation ratios and that no GNN can perform better than with these ratios. This paper is the first to elucidate approximation ratios of GNNs for combinatorial problems. Furthermore, we prove that adding coloring or weak-coloring to each node feature improves these approximation ratios. This indicates that preprocessing and feature engineering theoretically strengthen model capabilities.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(22) <code>Apr 2019</code> <a href="https://arxiv.org/abs/1904.11088">D-VAE: A Variational Autoencoder for Directed Acyclic Graphs</a> <em>[Muhan Zhang, Shali Jiang, Zhicheng Cui, Roman Garnett, Yixin Chen]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Graph structured data are abundant in the real world. Among different graph types, directed acyclic graphs (DAGs) are of particular interest to machine learning researchers, as many machine learning models are realized as computations on DAGs, including neural networks and Bayesian networks. In this paper, we study deep generative models for DAGs, and propose a novel DAG variational autoencoder (D-VAE). To encode DAGs into the latent space, we leverage graph neural networks. We propose an asynchronous message passing scheme that allows encoding the computations on DAGs, rather than using existing simultaneous message passing schemes to encode local graph structures. We demonstrate the effectiveness of our proposed D-VAE through two tasks: neural architecture search and Bayesian network structure learning. Experiments show that our model not only generates novel and valid DAGs, but also produces a smooth latent space that facilitates searching for DAGs with better performance through Bayesian optimization.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(23) <code>May 2019</code> <a href="https://arxiv.org/abs/1905.13732">End to end learning and optimization on graphs</a> <em>[Bryan Wilder, Eric Ewing, Bistra Dilkina, Milind Tambe]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Real-world applications often combine learning and optimization problems on graphs. For instance, our objective may be to cluster the graph in order to detect meaningful communities (or solve other common graph optimization problems such as facility location, maxcut, and so on). However, graphs or related attributes are often only partially observed, introducing learning problems such as link prediction which must be solved prior to optimization. We propose an approach to integrate a differentiable proxy for common graph optimization problems into training of machine learning models for tasks such as link prediction. This allows the model to focus specifically on the downstream task that its predictions will be used for. Experimental results show that our end-to-end system obtains better performance on example optimization tasks than can be obtained by combining state of the art link prediction methods with expert-designed graph optimization algorithms.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(24) <code>May 2019</code> <a href="https://arxiv.org/abs/1905.13192">Graph Neural Tangent Kernel: Fusing Graph Neural Networks with Graph Kernels</a> <em>[Simon S. Du, Kangcheng Hou, Barnabás Póczos, Ruslan Salakhutdinov, Ruosong Wang, Keyulu Xu]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>While graph kernels (GKs) are easy to train and enjoy provable theoretical guarantees, their practical performances are limited by their expressive power, as the kernel function often depends on hand-crafted combinatorial features of graphs. Compared to graph kernels, graph neural networks (GNNs) usually achieve better practical performance, as GNNs use multi-layer architectures and non-linear activation functions to extract high-order information of graphs as features. However, due to the large number of hyper-parameters and the non-convex nature of the training procedure, GNNs are harder to train. Theoretical guarantees of GNNs are also not well-understood. Furthermore, the expressive power of GNNs scales with the number of parameters, and thus it is hard to exploit the full power of GNNs when computing resources are limited. The current paper presents a new class of graph kernels, Graph Neural Tangent Kernels (GNTKs), which correspond to \emph{infinitely wide} multi-layer GNNs trained by gradient descent. GNTKs enjoy the full expressive power of GNNs and inherit advantages of GKs. Theoretically, we show GNTKs provably learn a class of smooth functions on graphs. Empirically, we test GNTKs on graph classification datasets and show they achieve strong performance.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(25) <code>Sep 2018</code> <a href="https://arxiv.org/abs/1809.02589">HyperGCN: A New Method of Training Graph Convolutional Networks on Hypergraphs</a> <em>[Naganand Yadati, Madhav Nimishakavi, Prateek Yadav, Vikram Nitin, Anand Louis, Partha Talukdar]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>In many real-world network datasets such as co-authorship, co-citation, email communication, etc., relationships are complex and go beyond pairwise. Hypergraphs provide a flexible and natural modeling tool to model such complex relationships. The obvious existence of such complex relationships in many real-world networks naturaly motivates the problem of learning with hypergraphs. A popular learning paradigm is hypergraph-based semi-supervised learning (SSL) where the goal is to assign labels to initially unlabeled vertices in a hypergraph. Motivated by the fact that a graph convolutional network (GCN) has been effective for graph-based SSL, we propose HyperGCN, a novel GCN for SSL on attributed hypergraphs. Additionally, we show how HyperGCN can be used as a learning-based approach for combinatorial optimisation on NP-hard hypergraph problems. We demonstrate HyperGCN&rsquo;s effectiveness through detailed experimentation on real-world hypergraphs.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(26) <code>Jul 2019</code> <a href="https://arxiv.org/abs/1907.03395">Social-BiGAT: Multimodal Trajectory Forecasting using Bicycle-GAN and Graph Attention Networks</a> <em>[Vineet Kosaraju, Amir Sadeghian, Roberto Martín-Martín, Ian Reid, S. Hamid Rezatofighi, Silvio Savarese]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Predicting the future trajectories of multiple interacting agents in a scene has become an increasingly important problem for many different applications ranging from control of autonomous vehicles and social robots to security and surveillance. This problem is compounded by the presence of social interactions between humans and their physical interactions with the scene. While the existing literature has explored some of these cues, they mainly ignored the multimodal nature of each human&rsquo;s future trajectory. In this paper, we present Social-BiGAT, a graph-based generative adversarial network that generates realistic, multimodal trajectory predictions by better modelling the social interactions of pedestrians in a scene. Our method is based on a graph attention network (GAT) that learns reliable feature representations that encode the social interactions between humans in the scene, and a recurrent encoder-decoder architecture that is trained adversarially to predict, based on the features, the humans&rsquo; paths. We explicitly account for the multimodal nature of the prediction problem by forming a reversible transformation between each scene and its latent noise vector, as in Bicycle-GAN. We show that our framework achieves state-of-the-art performance comparing it to several baselines on existing trajectory forecasting benchmarks.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(27) <code>May 2019</code> <a href="https://arxiv.org/abs/1905.07645">Scalable Gromov-Wasserstein Learning for Graph Partitioning and Matching</a> <em>[Hongteng Xu, Dixin Luo, Lawrence Carin]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>We propose a scalable Gromov-Wasserstein learning (S-GWL) method and establish a novel and theoretically-supported paradigm for large-scale graph analysis. The proposed method is based on the fact that Gromov-Wasserstein discrepancy is a pseudometric on graphs. Given two graphs, the optimal transport associated with their Gromov-Wasserstein discrepancy provides the correspondence between their nodes and achieves graph matching. When one of the graphs has isolated but self-connected nodes (i.e., a disconnected graph), the optimal transport indicates the clustering structure of the other graph and achieves graph partitioning. Using this concept, we extend our method to multi-graph partitioning and matching by learning a Gromov-Wasserstein barycenter graph for multiple observed graphs; the barycenter graph plays the role of the disconnected graph, and since it is learned, so is the clustering. Our method combines a recursive K-partition mechanism with a regularized proximal gradient algorithm, whose time complexity is $(K(E+V)logKV)$ for graphs with V nodes and E edges. To our knowledge, our method is the first attempt to make Gromov-Wasserstein discrepancy applicable to large-scale graph analysis and unify graph partitioning and matching into the same framework. It outperforms state-of-the-art graph partitioning and matching methods, achieving a trade-off between accuracy and efficiency.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(28) <code>May 2019</code> <a href="https://arxiv.org/abs/1905.04943">Universal Invariant and Equivariant Graph Neural Networks</a> <em>[Nicolas Keriven, Gabriel Peyré]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Graph Neural Networks (GNN) come in many flavors, but should always be either invariant (permutation of the nodes of the input graph does not affect the output) or equivariant (permutation of the input permutes the output). In this paper, we consider a specific class of invariant and equivariant networks, for which we prove new universality theorems. More precisely, we consider networks with a single hidden layer, obtained by summing channels formed by applying an equivariant linear operator, a pointwise non-linearity and either an invariant or equivariant linear operator. Recently, Maron et al. (2019) showed that by allowing higher-order tensorization inside the network, universal invariant GNNs can be obtained. As a first contribution, we propose an alternative proof of this result, which relies on the Stone-Weierstrass theorem for algebra of real-valued functions. Our main contribution is then an extension of this result to the equivariant case, which appears in many practical applications but has been less studied from a theoretical point of view. The proof relies on a new generalized Stone-Weierstrass theorem for algebra of equivariant functions, which is of independent interest. Finally, unlike many previous settings that consider a fixed number of nodes, our results show that a GNN defined by a single set of parameters can approximate uniformly well a function defined on graphs of varying size.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(29) <code>Jun 2019</code> <a href="https://arxiv.org/pdf/1905.11136.pdf">Provably Powerful Graph Networks</a> <em>[Haggai Maron, Heli Ben-Hamu, Hadar Serviansky, Yaron Lipman]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Recently, the Weisfeiler-Lehman (WL) graph isomorphism test was used to measure the expressive power of graph neural networks (GNN). It was shown that the popular message passing GNN cannot distinguish between graphs that are indistinguishable by the 1-WL test (Morris et al. 2018; Xu et al. 2019). Unfortunately, many simple instances of graphs are indistinguishable by the 1-WL test.
+In search for more expressive graph learning models we build upon the recent k-order invariant and equivariant graph neural networks (Maron et al. 2019a,b) and present two results:
+First, we show that such k-order networks can distinguish between non-isomorphic graphs as good as the k-WL tests, which are provably stronger than the 1-WL test for k&gt;2. This makes these models strictly stronger than message passing models. Unfortunately, the higher expressiveness of these models comes with a computational cost of processing high order tensors.
+Second, setting our goal at building a provably stronger, simple and scalable model we show that a reduced 2-order network containing just scaled identity operator, augmented with a single quadratic operation (matrix multiplication) has a provable 3-WL expressive power. Differently put, we suggest a simple model that interleaves applications of standard Multilayer-Perceptron (MLP) applied to the feature dimension and matrix multiplication. We validate this model by presenting state of the art results on popular graph classification and regression tasks. To the best of our knowledge, this is the first practical invariant/equivariant model with guaranteed 3-WL expressiveness, strictly stronger than message passing models.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(28) <code>201</code> <a href=""></a> <em>[]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
