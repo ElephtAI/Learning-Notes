@@ -992,7 +992,31 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*GitHub*/
+</style><script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'></script><script>MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "center",
+  showProcessingMessages: false,
+  messageStyle: 'none'
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1120,7 +1144,7 @@ body .markdown-body
 <p>Graph-structured data appears frequently in domains including chemistry, natural language semantics, social networks, and knowledge bases. In this work, we study <strong>feature learning</strong> techniques for graph-structured inputs. Our starting point is previous work on Graph Neural Networks (Scarselli et al., 2009), which we modify to use gated recurrent units and modern optimization techniques and then extend to output sequences. The result is a flexible and broadly useful class of neural network models that has favorable inductive biases relative to purely sequence-based models (e.g., LSTMs) when the problem is graph-structured. We demonstrate the capabilities on some simple AI (bAbI) and graph algorithm learning tasks. We then show it achieves state-of-the-art performance on a problem from program verification, in which subgraphs need to be matched to abstract data structures.</p>
 </blockquote>
 <hr />
-<p>(4) <code>Sep 2016</code> <a href="https://arxiv.org/abs/1609.02907">Semi-Supervised Classification with Graph Convolutional Networks</a> <em>[Thomas N. Kipf, Max Welling]</em></p>
+<p>(4) <code>Feb 2017</code> <a href="https://arxiv.org/abs/1609.02907">Semi-Supervised Classification with Graph Convolutional Networks</a> <em>[Thomas N. Kipf, Max Welling]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -1339,7 +1363,27 @@ We evaluate our method on a variety of link-prediction task including social net
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li></li>
+<li><u><strong>Contributions</strong></u>: <ul>
+<li>Introduced <strong>variational graph VAE</strong>: -&gt; <blockquote>
+<p>learn interpretable latent representation for <strong>undirected</strong> graphs</p>
+</blockquote>
+<ul>
+<li><strong>GCN encoder</strong> -&gt; <strong>inner product decoder</strong></li>
+</ul>
+</li>
+<li>use model for link prediction task in citation network</li>
+</ul>
+</li>
+<li><u><strong>Other notes</strong></u>:<ul>
+<li>Adding input features significantly improves predictive perfomance across datasets</li>
+</ul>
+</li>
+<li><u><strong>Further direction</strong></u>:<ul>
+<li>investigate better-suited prior ditribution other than <strong>Gaussian prior</strong></li>
+<li>more flexible generative models</li>
+<li>the application of a stochastic gradient descent algorithm for improved scalability</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1405,11 +1449,83 @@ We evaluate our method on a variety of link-prediction task including social net
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>Neural message passing algorithms for semi-supervised classification on graphs have recently achieved great success. However, for classifying a node these methods only consider nodes that are a few propagation steps away and the size of this utilized neighborhood is hard to extend. In this paper, we use the relationship between graph convolutional networks (GCN) and PageRank to derive an improved propagation scheme based on personalized PageRank. We utilize this propagation procedure to construct a simple model, personalized propagation of neural predictions (PPNP), and its fast approximation, APPNP. Our model&rsquo;s training time is on par or faster and its number of parameters on par or lower than previous models. It leverages a large, adjustable neighborhood for classification and can be easily combined with any neural network. We show that this model outperforms several recently proposed methods for semi-supervised classification in the most thorough study done so far for GCN-like models. Our implementation is available online.</p>
+<p><strong>Neural message passing</strong> algorithms for <strong>semi-supervised</strong> classification on graphs have recently achieved great success. However, for classifying a node these methods only consider nodes that are a few propagation steps away and the size of this utilized neighborhood is hard to extend. In this paper, we use the relationship between graph convolutional networks (GCN) and PageRank to derive an <strong>improved propagation scheme</strong> based on <strong>personalized PageRank</strong>. We utilize this propagation procedure to construct a simple model, personalized propagation of neural predictions (PPNP), and its fast approximation, APPNP. Our model&rsquo;s training time is on par or faster and its number of parameters on par or lower than previous models. It leverages a large, adjustable neighborhood for classification and can be easily combined with any neural network. We show that this model outperforms several recently proposed methods for semi-supervised classification in the most thorough study done so far for GCN-like models. Our implementation is available online.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
-<li></li>
+<li>
+<p><strong>Key notes</strong>: </p>
+<ul>
+<li><strong><u>Main Contribution</u></strong>:<ul>
+<li>Highlight the inherent connectin between the <strong>limited distribution</strong> and <strong>PageRank</strong></li>
+<li>Propose an algorithm -&gt; <u>utilizes a propagation scheme derived from <strong>personalized PageRank</strong></u><ul>
+<li>add a chance of <strong>teleporting back to the root node</strong> -&gt; <strong>PageRank</strong> score <u>encodes the local neighborhood for every root node</u></li>
+<li>
+<blockquote>
+<p>the teleport vector allow us to preserve the node;s local neighborhood even in the limit distribution</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>show the propagation scheme permits the use of far more propagation steps <strong>without lead to oversmoothing</strong></li>
+<li><u>The algorithm separates the neural network from the propagation scheme</u> -&gt; achieve higher range without changing NN<ul>
+<li>
+<blockquote>
+<p>decouples prediction and propagation and solves the limited range problem inherent in many message passing models without introducing any additional parameters</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>independent</strong> development of the propagation algorithm and the nerual network generating predictions from node features</li>
+<li>adding the propagation sheme during <strong>inference</strong> could significantly improves the accuracy without using any graph information</li>
+</ul>
+</li>
+<li>
+<p><strong><u>Other Notes</u></strong>:</p>
+<ul>
+<li>Deep Learning on Graph: <ul>
+<li>node embedding (without node features, normally unsupervised)</li>
+<li>use graph structure and node features (supervised)<ul>
+<li><strong>[i]</strong> spectral GCN</li>
+<li><strong>[ii]</strong> message passing</li>
+<li><strong>[iii]</strong> neighbor aggregation via RNN: <em>very limited neighborhood for each node</em></li>
+</ul>
+</li>
+<li><u>Increasing the size of the neighborhood</u> -&gt; Laplacian smoothing and too many layers leed to <strong>oversmoothing</strong></li>
+</ul>
+</li>
+<li><code>solved by author in this paper</code><strong>[why GCN cannot be trivially expanded to use a larger neighborhood]</strong>:<ul>
+<li><strong>[1]</strong> aggregation by averaging causes oversmoothing if <u>too many layers</u> </li>
+<li><strong>[2]</strong> Most use learnable weight matrices in each layer -&gt; <strong>increases <u>depth</u> and <u>number</u> of parameters in large neighborhood</strong></li>
+</ul>
+</li>
+<li>Differences between <strong>limited distribution</strong> &amp; <strong>PageRank</strong>: <ul>
+<li>added self-loops</li>
+<li>adjacency matrix normalization</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><u>Use cases</u></strong>:</p>
+</li>
+<li>
+<p><strong><u>Further direction</u></strong>:</p>
+<ul>
+<li>Combine PPNP with more complex neural networks used</li>
+<li>faster or incremental approximations of personalized PageRank</li>
+<li>More sophisticated propagation schemes </li>
+</ul>
+</li>
+<li>
+<p><strong><u>Important references</u></strong>:</p>
+<ul>
+<li>
+<blockquote>
+<p>Jiezhong Qiu, Yuxiao Dong, Hao Ma, Jian Li, Kuansan Wang, and Jie Tang. Network Embedding as Matrix Factorization: Unifying DeepWalk, LINE, PTE, and node2vec. In ACM International Conference on Web Search and Data Mining (WSDM), 2018.</p>
+</blockquote>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1422,10 +1538,7 @@ We evaluate our method on a variety of link-prediction task including social net
 <p>In this paper, from a theoretical perspective, we study how powerful graph neural networks (GNNs) can be for learning approximation algorithms for combinatorial problems. To this end, we first establish a new class of GNNs that can solve strictly a wider variety of problems than existing GNNs. Then, we bridge the gap between GNN theory and the theory of distributed local algorithms to theoretically demonstrate that the most powerful GNN can learn approximation algorithms for the minimum dominating set problem and the minimum vertex cover problem with some approximation ratios and that no GNN can perform better than with these ratios. This paper is the first to elucidate approximation ratios of GNNs for combinatorial problems. Furthermore, we prove that adding coloring or weak-coloring to each node feature improves these approximation ratios. This indicates that preprocessing and feature engineering theoretically strengthen model capabilities.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
-<li></li>
-</ul>
-</li>
+<li><strong>Key notes</strong>: </li>
 </ul>
 <hr />
 <p>(22) <code>Apr 2019</code> <a href="https://arxiv.org/abs/1904.11088">D-VAE: A Variational Autoencoder for Directed Acyclic Graphs</a> <em>[Muhan Zhang, Shali Jiang, Zhicheng Cui, Roman Garnett, Yixin Chen]</em></p>

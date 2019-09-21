@@ -50,7 +50,7 @@
 
 ---
 
-(4) `Sep 2016` [Semi-Supervised Classification with Graph Convolutional Networks](https://arxiv.org/abs/1609.02907) *[Thomas N. Kipf, Max Welling]*
+(4) `Feb 2017` [Semi-Supervised Classification with Graph Convolutional Networks](https://arxiv.org/abs/1609.02907) *[Thomas N. Kipf, Max Welling]*
 
 * **Abstract**: 
 
@@ -216,7 +216,17 @@ We evaluate our method on a variety of link-prediction task including social net
 > We introduce the variational graph auto-encoder (VGAE), a framework for unsupervised learning on graph-structured data based on the variational auto-encoder (VAE). This model makes use of latent variables and is capable of learning interpretable latent representations for undirected graphs. We demonstrate this model using a graph convolutional network (GCN) encoder and a simple inner product decoder. Our model achieves competitive results on a link prediction task in citation networks. In contrast to most existing models for unsupervised learning on graph-structured data and link prediction, our model can naturally incorporate node features, which significantly improves predictive performance on a number of benchmark datasets.
 
 * **Key notes**: 
-    - 
+    - <u>**Contributions**</u>: 
+        - Introduced **variational graph VAE**: -> 
+        > learn interpretable latent representation for **undirected** graphs
+            - **GCN encoder** -> **inner product decoder**
+        - use model for link prediction task in citation network
+    - <u>**Other notes**</u>:
+        - Adding input features significantly improves predictive perfomance across datasets
+    - <u>**Further direction**</u>:
+        - investigate better-suited prior ditribution other than **Gaussian prior**
+        - more flexible generative models
+        - the application of a stochastic gradient descent algorithm for improved scalability
 
 ---
 
@@ -268,10 +278,42 @@ We evaluate our method on a variety of link-prediction task including social net
 
 * **Abstract**: 
 
-> Neural message passing algorithms for semi-supervised classification on graphs have recently achieved great success. However, for classifying a node these methods only consider nodes that are a few propagation steps away and the size of this utilized neighborhood is hard to extend. In this paper, we use the relationship between graph convolutional networks (GCN) and PageRank to derive an improved propagation scheme based on personalized PageRank. We utilize this propagation procedure to construct a simple model, personalized propagation of neural predictions (PPNP), and its fast approximation, APPNP. Our model's training time is on par or faster and its number of parameters on par or lower than previous models. It leverages a large, adjustable neighborhood for classification and can be easily combined with any neural network. We show that this model outperforms several recently proposed methods for semi-supervised classification in the most thorough study done so far for GCN-like models. Our implementation is available online.
+> **Neural message passing** algorithms for **semi-supervised** classification on graphs have recently achieved great success. However, for classifying a node these methods only consider nodes that are a few propagation steps away and the size of this utilized neighborhood is hard to extend. In this paper, we use the relationship between graph convolutional networks (GCN) and PageRank to derive an **improved propagation scheme** based on **personalized PageRank**. We utilize this propagation procedure to construct a simple model, personalized propagation of neural predictions (PPNP), and its fast approximation, APPNP. Our model's training time is on par or faster and its number of parameters on par or lower than previous models. It leverages a large, adjustable neighborhood for classification and can be easily combined with any neural network. We show that this model outperforms several recently proposed methods for semi-supervised classification in the most thorough study done so far for GCN-like models. Our implementation is available online.
 
 * **Key notes**: 
-    - 
+    - **<u>Main Contribution</u>**:
+        - Highlight the inherent connectin between the **limited distribution** and **PageRank**
+        - Propose an algorithm -> <u>utilizes a propagation scheme derived from **personalized PageRank**</u>
+            - add a chance of **teleporting back to the root node** -> **PageRank** score <u>encodes the local neighborhood for every root node</u>
+            - > the teleport vector allow us to preserve the node;s local neighborhood even in the limit distribution
+        - show the propagation scheme permits the use of far more propagation steps **without lead to oversmoothing**
+        - <u>The algorithm separates the neural network from the propagation scheme</u> -> achieve higher range without changing NN
+            - > decouples prediction and propagation and solves the limited range problem inherent in many message passing models without introducing any additional parameters
+        - **independent** development of the propagation algorithm and the nerual network generating predictions from node features
+        - adding the propagation sheme during **inference** could significantly improves the accuracy without using any graph information
+    - **<u>Other Notes</u>**:
+        - Deep Learning on Graph: 
+            - node embedding (without node features, normally unsupervised)
+            - use graph structure and node features (supervised)
+                - **[i]** spectral GCN
+                - **[ii]** message passing
+                - **[iii]** neighbor aggregation via RNN: *very limited neighborhood for each node*
+            - <u>Increasing the size of the neighborhood</u> -> Laplacian smoothing and too many layers leed to **oversmoothing**
+        - `solved by author in this paper`**[why GCN cannot be trivially expanded to use a larger neighborhood]**:
+            - **[1]** aggregation by averaging causes oversmoothing if <u>too many layers</u> 
+            - **[2]** Most use learnable weight matrices in each layer -> **increases <u>depth</u> and <u>number</u> of parameters in large neighborhood**
+        - Differences between **limited distribution** & **PageRank**: 
+            - added self-loops
+            - adjacency matrix normalization
+
+    - **<u>Use cases</u>**:
+    - **<u>Further direction</u>**:
+        - Combine PPNP with more complex neural networks used
+        - faster or incremental approximations of personalized PageRank
+        - More sophisticated propagation schemes 
+
+    - **<u>Important references</u>**:
+        - > Jiezhong Qiu, Yuxiao Dong, Hao Ma, Jian Li, Kuansan Wang, and Jie Tang. Network Embedding as Matrix Factorization: Unifying DeepWalk, LINE, PTE, and node2vec. In ACM International Conference on Web Search and Data Mining (WSDM), 2018.
 
 ---
 
@@ -283,7 +325,7 @@ We evaluate our method on a variety of link-prediction task including social net
 > In this paper, from a theoretical perspective, we study how powerful graph neural networks (GNNs) can be for learning approximation algorithms for combinatorial problems. To this end, we first establish a new class of GNNs that can solve strictly a wider variety of problems than existing GNNs. Then, we bridge the gap between GNN theory and the theory of distributed local algorithms to theoretically demonstrate that the most powerful GNN can learn approximation algorithms for the minimum dominating set problem and the minimum vertex cover problem with some approximation ratios and that no GNN can perform better than with these ratios. This paper is the first to elucidate approximation ratios of GNNs for combinatorial problems. Furthermore, we prove that adding coloring or weak-coloring to each node feature improves these approximation ratios. This indicates that preprocessing and feature engineering theoretically strengthen model capabilities.
 
 * **Key notes**: 
-    - 
+
 
 ---
 
