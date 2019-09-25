@@ -999,10 +999,7 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true,
-    processEnvironments: true,
-    ignoreClass: ".*|",
-    processClass: "arithmatex"
+    processEscapes: true
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1016,10 +1013,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
+  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});
-</script><style>/*GitHub*/
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1490,15 +1487,22 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 <li><strong>[2]</strong> Novel link prediction framework <strong>SEAL</strong>: to learn general graph structure features (heuristics) from <strong>local</strong> enclosing subgraph as input<ul>
 <li>Use <strong>GNN</strong> (graph convolusion layer) instead of <em>fully-connected NN</em></li>
-<li>SEAL permits not only <strong>subgraph structures</strong> but aslo <strong>latent and explicit</strong> node features -&gt; refer to <u><strong><Other Notes></strong></u></li>
+<li>SEAL permits not only <strong>subgraph structures</strong> but aslo <strong>latent and explicit</strong> node features -&gt; refer to <u><strong><Other Notes></strong></u><ul>
+<li>concatenate the features to $X$</li>
+<li>use negative injection</li>
+</ul>
+</li>
 <li>Include 3 steps: <ul>
 <li><strong>[1]</strong> enclosing subgraph extraction for a set of sampled positive (observed) links and set of sampled negative (unobserved) links</li>
 <li><strong>[2]</strong> node information matrix construction;</li>
 <li><strong>[3]</strong> GNN learning -&gt; adjacency matrix + node information matrix</li>
 </ul>
 </li>
-<li>for <strong>node information matrix</strong>: <ul>
-<li><u>node labelling</u> is the important </li>
+<li><u>node labelling</u> is important -&gt; <strong>let GNN tell where are the target nodes between which a link existence should be predicted</strong><ul>
+<li>the authors propose a <strong>Double-Radius Node Labeling (DRNL)</strong>, it has a perfect <strong>hashing function</strong> -&gt; allows fast closed-form computations<blockquote>
+<p>iteratively assign larger labels to nodes with a <strong>larger radius</strong> wrt both center nodes</p>
+</blockquote>
+</li>
 </ul>
 </li>
 </ul>
@@ -1516,6 +1520,10 @@ We evaluate our method on a variety of link-prediction task including social net
 </li>
 <li>
 <p><u><strong>Further directions</strong></u>:</p>
+<ul>
+<li>knowledge graph completion</li>
+<li>recommender system</li>
+</ul>
 </li>
 </ul>
 </li>

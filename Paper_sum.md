@@ -263,13 +263,15 @@ We evaluate our method on a variety of link-prediction task including social net
         - **[2]** Novel link prediction framework **SEAL**: to learn general graph structure features (heuristics) from **local** enclosing subgraph as input
             - Use **GNN** (graph convolusion layer) instead of *fully-connected NN*
             - SEAL permits not only **subgraph structures** but aslo **latent and explicit** node features -> refer to <u>**<Other Notes>**</u>
+                - concatenate the features to $X$
+                - use negative injection
             - Include 3 steps: 
                 - **[1]** enclosing subgraph extraction for a set of sampled positive (observed) links and set of sampled negative (unobserved) links
                 - **[2]** node information matrix construction;
                 - **[3]** GNN learning -> adjacency matrix + node information matrix
-            - for **node information matrix**: 
-                - <u>node labelling</u> is the important 
-
+            - <u>node labelling</u> is important -> **let GNN tell where are the target nodes between which a link existence should be predicted**
+                - the authors propose a **Double-Radius Node Labeling (DRNL)**, it has a perfect **hashing function** -> allows fast closed-form computations
+                > iteratively assign larger labels to nodes with a **larger radius** wrt both center nodes
 
     - <u>**Use cases**</u>:
         1. friend recommendation
@@ -278,6 +280,8 @@ We evaluate our method on a variety of link-prediction task including social net
         4. metabolic network reconstruction
 
     - <u>**Further directions**</u>:
+        - knowledge graph completion
+        - recommender system
 
 ---
 
