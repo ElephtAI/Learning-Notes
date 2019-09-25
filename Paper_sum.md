@@ -54,8 +54,33 @@
 
 * **Abstract**: 
 
-> We present a scalable approach for **semi-supervised learning** on graph-structured data that is based on an efficient variant of convolutional neural networks which operate directly on graphs. We motivate the choice of our convolutional architecture via a localized first-order approximation of spectral graph convolutions. Our model scales linearly in the number of graph edges and learns hidden layer representations that encode both local grapsh structure and features of nodes. In a number of experiments on citation networks and on a knowledge graph dataset we demonstrate that our approach outperforms related methods by a significant margin.
+> We present a **scalable approach** for **semi-supervised learning** on graph-structured data that is based on an efficient variant of convolutional neural networks which operate directly on graphs. We motivate the choice of our convolutional architecture via a **localized first-order approximation** of spectral graph convolutions. Our model scales linearly in the number of **graph edges** and learns hidden layer representations that encode both local graph structure and features of nodes. In a number of experiments on **citation networks** and on a **knowledge graph dataset** we demonstrate that our approach outperforms related methods by a significant margin.
 
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+        - **[1]** Direct encode the graph structure using a <u>neural network model</u> and train on a supervised target -> **avoding expilicit graph-based regularization in the loss function**
+        - **[2]** introduce a layer-wise propagation rule for NN models operates directly on graph -> <u>motivated from a first order (linear) approximation of **spectral graph convolutions**</u>
+            - use **renormalization trick** to avoid numerical instabilities (gradient exploding/vanishing) while deep learning
+        - **[3]** demonstrate such model can be used for **fast and scalable** semi-supervised classification 
+            - We can condition the model $f(X,A)$ both on the data $X$ and adjacency matrix $A$ [*especially for scenarios where A contain information nnot present in X*]
+        - **[4]** The author's model use a single weigh matrix per layer and deals with varying node degrees through an **appropriate normalization of the adjacency matrix**
+        - In this work, the author implicitly assumes: 
+            - **locality** (dependence on the kth-order neighborhood for a GCN with K layers)
+            - **equal importance** of <u>self-connections</u> vs. <u>edges to neighboring nodes</u>
+    - <u>**Other Notes**</u>:
+        - In **graph-based semi-supervised learning**: label is smoothed via explicit graph-based **regularization**
+        > like using graph Laplacian regularization in the loss fucntion
+        - graph representation for semi-supervised learning: 
+            - **[i]** use graph Laplacian regularization `label propagation` `manifold regularization` `deep semi-supervised embedding`
+            - **[ii]** use graph embedding-based approches
+    - <u>**Use cases**</u>:
+        - on citation networks
+        - on knowledge graph dataset
+    - <u>**Further directions**</u>:
+        - **[1]** Memory requirement (for very large and densely connected graph datasets, further approximations might be necessary)
+        - **[2]** directed edges and edge features (<u>not supported in this work</u>)
+        - **[3]** limiting assumptions
+            - > **introduce a trade-off parameter $\lambda$** in the definition of $A$ (can be learned by GD)
 
 ---
 
@@ -132,10 +157,28 @@
 
 * **Abstract**: 
 
-> Graph Convolutional Networks (GCNs) have proven to be successful tools for semi-supervised learning on graph-based datasets. For sparse graphs, linear and polynomial filter functions have yielded impressive results. For large non-sparse graphs, however, network training and evaluation becomes prohibitively expensive. By introducing low-rank filters, we gain significant runtime acceleration and simultaneously improved accuracy. We further propose an architecture change mimicking techniques from Model Order Reduction in what we call a reduced-order GCN. Moreover, we present how our method can also be applied to hypergraph datasets and how hypergraph convolution can be implemented efficiently.
+> Graph Convolutional Networks (GCNs) have proven to be successful tools for semi-supervised learning on graph-based datasets. For **sparse** graphs, *linear and polynomial* filter functions have yielded impressive results. For **large non-sparse graphs**, however, network training and evaluation becomes prohibitively expensive. By introducing **low-rank filters**, we gain significant runtime acceleration and simultaneously improved accuracy. We further propose an architecture change mimicking techniques from Model Order Reduction in what we call a **reduced-order GCN**. Moreover, we present how our method can also be applied to **hypergraph datasets** and how **hypergraph convolution** can be implemented efficiently.
 
 * **Key notes**: 
-    - 
+    - <u>**Main contributions**</u>: 
+        - **[1]** introduction of **low-rank filters** -> decrease runtimes and produce more accurate classification
+            - inspired by <u>Model Order Reduction</u> to accelerate the convolution operation
+            - advantages of low-rank kernel matrices $K$: 
+                - *[i]* the matrix products are much cheaper to evaluate
+                - *[ii]* setting up it requires only a small number of eigenpairs
+                - *[iii]* the dominant eigenvalues include clustering information -> damping noise to zero
+        - **[2]** introduction of **pseudoinverse filter** -> better than standard linear filter
+        - **[3]** **reduced-order GCN** -> dependent on the dataset, have good performance in hypergraph
+            - define the **graph Laplacian** in hypergraph
+    - <u>**Other Notes**</u>:
+        - Effect method for semi-supervised learning (**SSL**): 
+            - > **a small set of training data** and **clustering information** extracted from a vast amount of unlabeled data
+        - **filter function space** is a crucial design choice in each GCN architecture
+        - **[clustering]**: $i$-th  and $j$-th components of the vector are similar iff nodes $i$ and $j$ have a strong connection in the dataset graph
+    - <u>**Use cases**</u>:
+        - on **Hypergraph**, i.e. *[containing categorical data]*
+        - good for data point classification
+    - <u>**Further directions**</u>:
 
 ---
 
@@ -427,7 +470,10 @@ We evaluate our method on a variety of link-prediction task including social net
 > 
 
 * **Key notes**: 
-    - 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
 
 ---
 
