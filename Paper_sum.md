@@ -232,10 +232,52 @@ We evaluate our method on a variety of link-prediction task including social net
 
 * **Abstract**: 
 
-> Link prediction is a key problem for network-structured data. Link prediction heuristics use some score functions, such as common neighbors and Katz index, to measure the likelihood of links. They have obtained wide practical uses due to their simplicity, interpretability, and for some of them, scalability. However, every heuristic has a strong assumption on when two nodes are likely to link, which limits their effectiveness on networks where these assumptions fail. In this regard, a more reasonable way should be learning a suitable heuristic from a given network instead of using predefined ones. By extracting a local subgraph around each target link, we aim to learn a function mapping the subgraph patterns to link existence, thus automatically learning a heuristic' that suits the current network. In this paper, we study this heuristic learning paradigm for link prediction. First, we develop a novel γ-decaying heuristic theory. The theory unifies a wide range of heuristics in a single framework, and proves that all these heuristics can be well approximated from local subgraphs. Our results show that local subgraphs reserve rich information related to link existence. Second, based on the γ-decaying theory, we propose a new algorithm to learn heuristics from local subgraphs using a graph neural network (GNN). Its experimental results show unprecedented performance, working consistently well on a wide range of problems.
+> **Link prediction** is a key problem for network-structured data. Link prediction heuristics use some score functions, such as **common neighbors** and **Katz index**, to measure the **likelihood** of links. They have obtained wide practical uses due to their **simplicity, interpretability, and for some of them, scalability**. However, every heuristic has a **strong assumption** on *when two nodes are likely to link*, which limits their effectiveness on networks where these assumptions fail. In this regard, a more reasonable way should be learning a suitable heuristic from a given network instead of using predefined ones. By extracting a **local subgraph** around each target link, we aim to learn a function mapping the subgraph patterns to link existence, thus automatically learning a heuristic' that suits the current network. In this paper, we study this heuristic learning paradigm for link prediction. 
+
+> **[1]**First, we develop a novel **γ-decaying heuristic theory**. The theory unifies a wide range of heuristics in a single framework, and proves that all these heuristics can be well approximated from local subgraphs. Our results show that local subgraphs reserve rich information related to link existence. 
+
+> **[2]**Second, based on the γ-decaying theory, we propose a new algorithm to learn heuristics from local subgraphs using a graph neural network (GNN). Its experimental results show unprecedented performance, working consistently well on a wide range of problems.
 
 * **Key notes**: 
-    - 
+    - <u>**Other Notes**</u>:
+        - **[link prediction]**: predict whether two nodes in a network are likely to have a link
+        - **[Heuristic methods]**: compute some heuristic node similarity scores as the likelihood of links -> *can be categorized based on the <u>maximum hop of neighbors</u>*
+            - **First-order heuristics**: `common neighbors (CN)`, `preferential attachment (PA)`
+            - **Second-order heuristics**: `Adamic-Adar (AA)`, `Resource allocation (RA)`
+            - **[h-order heuristics]**: which require knowing up to h-hop neighborhood of the target nodes
+            - > some **high order heuristics** require knowing the entire network e.g. `Katz`, `PageRank (PR)`, `SimRank (SR)`
+        - Heuristic methods have **strong assumptions** on when links may exist e.g. `two nodes are more likely to connect if they have many common neighbors` -> <u>might cause problem if the assumption fail in specific network</u>
+        - **Graph structure features (include heuristics)**: features located inside the observed node and edge structure of the network -> can be calculated directly from the graph
+        - [Weisfeiler-Lehman Neural Machine (WLNM)](https://www.cse.wustl.edu/~muhan/papers/KDD_2017.pdf): use <u>fully connected neural network</u> to learn <u>which enclosing subgraphs correspond to link existence</u> - learn heuristic automatically 
+            - > **problem 1**: high order heuristic have much better performance but need entire network as subgraph -> which means unaffordable time and memory consumption
+            - > **problem 2**: fully connected layer -> fixed size tensors -> information loss due to truncate
+            - > **problem 3**: due to limitation of **adjacency mnatrix representatinon** -> cannot combine latent & explicit features
+            - > **problem 4**: lack of theoretical justification
+        - **Latent feature**: use matrix representation of the network to learn low-dimentional representation/embedding for each node; **explicit features**: node attributes, describing all kinds of side information about individual nodes
+            - > combine both with graph structure feature could improve performance
+
+    - <u>**Main contributions**</u>: 
+        - **[1]** new theory (proof) for **learning link prediction heuristics** - **learn from local enclosing subgraph** 
+            - using **$\gamma$-decaying theory** to effectively approximated from an h-hop enclosing subgraph
+            - from it we are able to accurately calculate 1st and 2nd order heuristic, and approximate a wide range of high-order heuristics with small errors
+        - **[2]** Novel link prediction framework **SEAL**: to learn general graph structure features (heuristics) from **local** enclosing subgraph as input
+            - Use **GNN** (graph convolusion layer) instead of *fully-connected NN*
+            - SEAL permits not only **subgraph structures** but aslo **latent and explicit** node features -> refer to <u>**<Other Notes>**</u>
+            - Include 3 steps: 
+                - **[1]** enclosing subgraph extraction for a set of sampled positive (observed) links and set of sampled negative (unobserved) links
+                - **[2]** node information matrix construction;
+                - **[3]** GNN learning -> adjacency matrix + node information matrix
+            - for **node information matrix**: 
+                - <u>node labelling</u> is the important 
+
+
+    - <u>**Use cases**</u>:
+        1. friend recommendation
+        2. movie recommendation
+        3. knowledge graph completion
+        4. metabolic network reconstruction
+
+    - <u>**Further directions**</u>:
 
 ---
 
@@ -479,7 +521,6 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ### To do for graph & network
 
-* [ ] [Semi-Supervised Classification on Non-Sparse Graphs Using Low-Rank Graph Convolutional Network](https://arxiv.org/abs/1905.10224)
 * [ ] W. Hamilton, R. Ying, and J. Leskovec. Inductive representation learning on large graphs. In NIPS, 2017. (*negative sampling*)
 * [ ] S. Abu-El-Haija, B. Perozzi, and R. Al-Rfou. Learning edge representations via low-rank asymmetric projections. In ACM International Conference on Information and Knowledge Management (CIKM), 2017. (*graph likelihood*)
 * [ ] N.Shervashidze,P.Schweitzer,E.J.v.Leeuwen,K.Mehlhorn,andK.M.Borgwardt.Weisfeiler- lehman graph kernels. Journal of Machine Learning Research, 12:2539–2561, 2011. (*Graph Kernel*)
