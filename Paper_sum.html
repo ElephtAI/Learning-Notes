@@ -1405,11 +1405,242 @@ We evaluate our method on a variety of link-prediction task including social net
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>Network embedding methods aim at learning low-dimensional latent representation of nodes in a network. These representations can be used as features for a wide range of tasks on graphs such as classification, clustering, link prediction, and visualization. In this survey, we give an overview of network embeddings by summarizing and categorizing recent advancements in this research field. We first discuss the desirable properties of network embeddings and briefly introduce the history of network embedding algorithms. Then, we discuss network embedding methods under different scenarios, such as supervised versus unsupervised learning, learning embeddings for homogeneous networks versus for heterogeneous networks, etc. We further demonstrate the applications of network embeddings, and conclude the survey with future work in this area.</p>
+<p>Network embedding methods aim at learning <strong>low-dimensional latent representation</strong> of nodes in a network. These representations can be used as features for a wide range of tasks on graphs such as classification, clustering, link prediction, and visualization. In this survey, we give an overview of network embeddings by summarizing and categorizing recent advancements in this research field. 
+We first discuss the <strong>[1] desirable properties</strong> of network embeddings and briefly introduce the <strong>[2] history</strong> of network embedding algorithms. Then, we discuss network embedding methods under <strong>[3]different scenarios</strong>, such as <em>supervised versus unsupervised learning</em>, <em>learning embeddings for <strong>homogeneous</strong> networks versus for <strong>heterogeneous</strong> networks</em>, etc. We further demonstrate the <strong>[4]applications</strong> of network embeddings, and conclude the survey with <strong>[5]future work</strong> in this area.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
-<li></li>
+<li>
+<p><strong>Key notes</strong>: </p>
+<ul>
+<li>
+<p><u><strong>Main contributions</strong></u>: </p>
+<ul>
+<li><strong>Brief history of Network Embedding</strong>: (lower performance compared to <strong>Deep Learning methods</strong>)<ul>
+<li><strong>[1] PCA and Multidimensional Scaling (MDS)</strong>: &lt;$O(n^3)$&gt;<ul>
+<li>
+<blockquote>
+<p><strong>MDS</strong>: project each row of M to a k-dim components -&gt; the distance between different objects in the oringinal feature matrix M is best preserved in the k-dim space</p>
+</blockquote>
+</li>
+<li>The matrix to factorize could be <code>adjacency matrix</code>, <code>normalized Laplacian matrix</code>, <code>all-pairs shortest path matrix</code></li>
+<li>Both PCA &amp; MDS <strong>fail to discover the non-linearity</strong> and <strong>have high time complexity</strong></li>
+</ul>
+</li>
+<li><strong>[2] IsoMap and Locally Linear Embeddings (LLE)</strong>: -&gt; <strong>non-linear</strong><ul>
+<li>
+<blockquote>
+<p><strong>IsoMap</strong>: extension of MDS, <em>preserving geodesic distances in the neighborhood graph of input data</em> (neighborhood of <strong>node i</strong> contructed by connecting [nodes closer than a threshold]/[nodes which are k-nearest neighbors])</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><strong>LLE</strong>: only exploits the local neighborhood of data point, not estimate distance between distant data points</p>
+</blockquote>
+</li>
+<li><strong>time complexity</strong> to large</li>
+</ul>
+</li>
+<li><strong>[3] Laplacian eigenmaps (LE)</strong>: -&gt; use <strong>spectral properties (eigenvectors)</strong><ul>
+<li>
+<blockquote>
+<p><strong>LE</strong>: represent each node by [eigenvectors associated with its <strong>k-smallest</strong> nontrivial eigenvalues]</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>[4] SocDim</strong>: using the spectral properties of the <strong>[modularity matrix]</strong> as latent social dim in the network</li>
+</ul>
+</li>
+<li><strong>With Deep Learning method</strong>: <strong>Deep walk</strong><ul>
+<li>
+<blockquote>
+<p><strong>Advantanges</strong>: [1] can be generated on demand; [2]scalable <strong>[3] intraoduce a paradigm for deep learning on graphs</strong></p>
+</blockquote>
+</li>
+<li><u>Deep Walk Paradigm</u>: can be expanded in <code>complexity of graphs</code>, <code>complexity of methods</code><ul>
+<li><strong>[i]</strong> Choose a matrix associated with the input graph</li>
+<li><strong>[ii]</strong> <strong>Graph Sampling</strong>: Sample sequences from the chose matrix <ol>
+<li>save time by approximating the matrix</li>
+<li>sequence of symbols are much more easier for deep learning models to deal with</li>
+</ol>
+</li>
+<li><strong>[iii]</strong> Learn embeddings from the sequences or the matrix itself</li>
+<li><strong>[iv]</strong> ouptut node embeddings</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Unsupervised</strong> Network Embedding:<ul>
+<li><u>Summary of unsupervised network embedding methods</u> <strong>[in simple undirected graphs]</strong><ul>
+<li><code>Deep Walk</code>, <code>LINE</code>, <code>Node2vec</code>, <code>Walklets</code>, <code>GraRep</code> -&gt; all have hyper-parameter</li>
+<li><code>GraphAttention</code> -&gt; learn the attention over the power series of the graph transition matrix <ul>
+<li>
+<blockquote>
+<p>learns a multi-scale representation which best predicts links in the original graph</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>SDNE</code>, <code>DNGR</code> -&gt; combined with autoencoder</li>
+</ul>
+</li>
+<li><u>Directed Graph Embedding</u>: <code>HOPE</code> <a href="https://arxiv.org/abs/1705.05615">Learning Edge Representations via Low-Rank Asymmetric Projections</a></li>
+<li><u>Edge Embeddings</u>: -&gt; <code>link prediction</code> <a href="https://arxiv.org/abs/1705.05615">Learning Edge Representations via Low-Rank Asymmetric Projections</a><ul>
+<li>
+<blockquote>
+<p>learn edge representations via low-rank asymmetric projections</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><u>Signed Graph Embeddings</u>: <code>SiNE</code> &amp; <code>SNE</code><ul>
+<li>
+<blockquote>
+<p><strong>SiNE</strong>: maximizing the margin between the embedding similarity of friends (+1 connected) and the embedding similarity of foes (-1 connected)</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><strong>SNE</strong>: predicts the representation of a target node by linearly combines the representation of its context nodes; [tow signed-type vector are incorporated into the log-bilinear model]</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><u>Subgraph Embeddings</u>: <ul>
+<li><code>Deep graph kernel</code>: <em>general framework for modelling sub-structure similarity in graphs</em></li>
+</ul>
+</li>
+<li><u>Meta-strategies for Improving NEtwork Embeddings</u><ul>
+<li>[weakness of neural methods for network embeddings]:<ol>
+<li>all <strong>local approaches</strong> -&gt; limited to strucuture immediately around a node, <strong>fail to uncover important long distance global structural pattern</strong></li>
+<li>all rely on <strong>non-convex optimization goal</strong></li>
+</ol>
+</li>
+<li><a href="https://arxiv.org/abs/1706.07845">HARP</a>: <code>embedding capture both the local and global structures of the ven graphs</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Attributed Network Embedding</strong>: Desirable to learn from <code>node attributes</code> and <code>edge attributes</code><ul>
+<li><strong>[1]</strong> textual attrigutes<ul>
+<li>
+<blockquote>
+<p><strong>TADW</strong>: incorporates the text features into the matrix factorization process</p>
+</blockquote>
+</li>
+<li>Jointly model network structure and node features -&gt; <code>enforce the embedding similarity between nodes with similar feature vectors</code><ul>
+<li>
+<blockquote>
+<p><strong>CENE</strong>: treats text content as a special type of node -&gt; [node-node links] &amp; [node-content links] for node embedding</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<blockquote>
+<p><strong>HSCA</strong></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>[2]</strong> node labels: e.g. <code>citation network</code>: <em>venue</em> or <em>year of publication</em><ul>
+<li>
+<blockquote>
+<p><strong>GENE</strong>: also predicts the group information of context nodes as a part of the optimization goal</p>
+</blockquote>
+</li>
+<li><a href="https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/view/14589">Community Preserving Network Embedding</a>: preserves the <strong>community structures within network</strong></li>
+</ul>
+</li>
+<li><strong>[3]</strong> semi-supervised network embedding methods: <ul>
+<li><a href="https://arxiv.org/abs/1603.08861">Planetoid</a></li>
+<li><a href="https://www.ijcai.org/Proceedings/16/Papers/547.pdf">Max-margin DeepWalk (MMDW)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Heterogeneous Network Embedding</strong> <em>(jointly minimizing the loss over each modality)</em><ul>
+<li><a href="http://www.ifp.illinois.edu/~chang87/papers/kdd_2015.pdf">Heterogeneous Network Embedding via Deep Architectures</a>: <code>feature representation for each modality</code> -&gt; <code>map them to same embedding spae</code></li>
+<li><a href="https://pdfs.semanticscholar.org/ff66/50ee2efab6f6ec155ecb644a329397cb16fa.pdf">Representation Learning for Measuring Entity Relatedness with Rich Information</a></li>
+<li><a href="https://arxiv.org/abs/1510.05198">Learning multi-faceted representations of individuals from heterogeneous evidence using neural networks</a> -&gt; neural network model for learning user representation in a heterogeneous social network</li>
+<li><strong>HEBE</strong>:  embedding large-scale heterogeneous event network</li>
+<li><strong>EOE</strong>: for coupled heterogeneous network (two networks connected by inter-network edges)</li>
+<li><strong>Metapath2vec</strong>: -&gt; [extending random walks and embeding learning methods to hetero-networks]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><u><strong>Other Notes</strong></u>:</p>
+<ul>
+<li>due to <strong>[billions of nodes and edges in the information network can be intractable to perform complex inference procedures]</strong> -&gt; use <strong>network embedding</strong> to solve this problem<ul>
+<li>
+<blockquote>
+<p>find a mapping function: [converts each node in the nework to a low-dimenstional latent representation] (can be use as features)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><u>Target network embedding characteristics</u>: <ul>
+<li><strong>[1] Adaptability</strong>: <em>new application should not require repeating learning process</em></li>
+<li><strong>[2] Scalability</strong>: <em>able to process large-scale networks in a <u>short period of time</u></em></li>
+<li><strong>[3] Community aware</strong>: <em>distance between latent representations should represent a <strong>metric</strong> for evaluating <strong>similarity</strong> between the corresponding members of the network</em> -&gt; <code>generalization in networks with homophily</code></li>
+<li><strong>[4] Low dimensional</strong>: -&gt; better and speed up convergence and inference</li>
+<li><strong>[5] Continuous</strong>: to model partial community membership in continuous space, <u>continuous representation has smooth decision boundatires between communities</u> -&gt; <strong>Robust Classification</strong></li>
+</ul>
+</li>
+<li><strong>Heterogeneous Network</strong>: <code>network with multiple type of nodes or multiple types of edges</code></li>
+<li><strong>Signed Graph</strong>: <code>edge is assigned with a weight from {+1,-1}</code> -&gt; could be used to reflect <strong>agreement or trust</strong></li>
+</ul>
+</li>
+<li>
+<p><u><strong>Use cases and application</strong></u>:</p>
+<ul>
+<li><u>Knowledge Representation</u>: <em>[encoding facts about the world using short sentences composed of (subjects, predicates and objects)]</em><ul>
+<li><code>GenVector</code>: learning social knowledge graphs</li>
+<li><code>RDF2Vec</code>(Resource Description Framework)</li>
+</ul>
+</li>
+<li><u>Recommender Systems</u>:<ul>
+<li>
+<blockquote>
+<p>interactins between (<strong>users</strong>, <strong>users&rsquo; queries</strong>, <strong>items</strong>) -&gt; form a heterogeneous network to encode the latent preference of users over time</p>
+</blockquote>
+</li>
+<li><a href="https://dl.acm.org/citation.cfm?id=2959169">Query-based Music Recommendations via Preference Embedding</a> -&gt; embed user preference and query intention into low-dimensional vector space</li>
+</ul>
+</li>
+<li><u>NLP</u>:<ul>
+<li><code>PLE</code> (label noise reduction in entity typing), <code>CANE</code>(context-aware netowrk embedding frame work), <code>community-based QA framework</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><u>Social Network Analysis</u> <code>refer back to the paper</code></p>
+<ul>
+<li><em>predicting the exact age of users in social network</em></li>
+<li>modelling social network and mobile trajectories simultaneously</li>
+<li>Obtain conect embedding of higher quality, by learning <strong>wikipedia page representations</strong></li>
+<li>align usersacross different social network</li>
+<li>measuring similarity between historical figures</li>
+<li>browsing through large lists in the absense of a predefined hierachy</li>
+</ul>
+</li>
+<li>
+<p><u><strong>Further directions</strong></u>:</p>
+<ul>
+<li><strong>[Problem 1]</strong>: most of the strategies relies on a <strong>rigid definition of context nodes indentical for all networks</strong> -&gt; <code>unifying different network embedding under a general framework</code>, only <strong>Graph Attention</strong> have compacity for different networks</li>
+<li><strong>[Problem 2]</strong>: dependence upon general loss function and optimization models, suboptimal compared to <code>end2end embeddings methods designed specifically for a task</code><ul>
+<li>
+<blockquote>
+<p>design loss functions and optimization models for a specific task</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1842,6 +2073,57 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <ul>
 <li><strong>Key notes</strong>: <ul>
 <li></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(30) <code>Jun 2017</code> <a href="https://arxiv.org/abs/1706.07845">HARP: Hierarchical Representation Learning for Networks</a> <em>[Haochen Chen, Bryan Perozzi, Yifan Hu, Steven Skiena]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>We present HARP, a novel method for learning low dimensional embeddings of a graph&rsquo;s nodes which preserves higher-order structural features. Our proposed method achieves this by compressing the input graph prior to embedding it, effectively avoiding troublesome embedding configurations (i.e. local minima) which can pose problems to non-convex optimization. HARP works by finding a smaller graph which approximates the global structure of its input. This simplified graph is used to learn a set of initial representations, which serve as good initializations for learning representations in the original, detailed graph. We inductively extend this idea, by decomposing a graph in a series of levels, and then embed the hierarchy of graphs from the coarsest one to the original graph. HARP is a general meta-strategy to improve all of the state-of-the-art neural algorithms for embedding graphs, including DeepWalk, LINE, and Node2vec. Indeed, we demonstrate that applying HARP&rsquo;s hierarchical paradigm yields improved implementations for all three of these methods, as evaluated on both classification tasks on real-world graphs such as DBLP, BlogCatalog, CiteSeer, and Arxiv, where we achieve a performance gain over the original implementations by up to 14% Macro F1.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(31) <code>Feb 2017</code> <a href="https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/view/14589">Community Preserving Network Embedding</a> <em>[Xiao Wang, Peng Cui, Jing Wang, Jian Pei, Wenwu Zhu, Shiqiang Yang]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Network embedding, aiming to learn the low-dimensional representations of nodes in networks, is of paramount importance in many real applications. One basic requirement of network embedding is to preserve the structure and inherent properties of the networks. While previous network embedding methods primarily preserve the microscopic structure, such as the first- and second-order proximities of nodes, the mesoscopic community structure, which is one of the most prominent feature of networks, is largely ignored. In this paper, we propose a novel Modularized Nonnegative Matrix Factorization (M-NMF) model to incorporate the community structure into network embedding. We exploit the consensus relationship between the representations of nodes and community structure, and then jointly optimize NMF based representation learning model and modularity based community detection model in a unified framework, which enables the learned representations of nodes to preserve both of the microscopic and community structures. We also provide efficient updating rules to infer the parameters of our model, together with the correctness and convergence guarantees. Extensive experimental results on a variety of real-world networks show the superior performance of the proposed method over the state-of-the-arts.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(32) <code>Feb 2019</code> <a href="https://arxiv.org/abs/1902.06188">Collaborative Similarity Embedding for Recommender Systems</a> <em>[Chih-Ming Chen, Chuan-Ju Wang, Ming-Feng Tsai, Yi-Hsuan Yang]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>We present collaborative similarity embedding (CSE), a unified framework that exploits comprehensive collaborative relations available in a user-item bipartite graph for representation learning and recommendation. In the proposed framework, we differentiate two types of proximity relations: direct proximity and k-th order neighborhood proximity. While learning from the former exploits direct user-item associations observable from the graph, learning from the latter makes use of implicit associations such as user-user similarities and item-item similarities, which can provide valuable information especially when the graph is sparse. Moreover, for improving scalability and flexibility, we propose a sampling technique that is specifically designed to capture the two types of proximity relations. Extensive experiments on eight benchmark datasets show that CSE yields significantly better performance than state-of-the-art recommendation methods.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
 </ul>
 </li>
 </ul>
