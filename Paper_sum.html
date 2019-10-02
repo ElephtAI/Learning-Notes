@@ -1375,13 +1375,60 @@ body .markdown-body
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>We propose a new method for embedding graphs while preserving directed edge information. Learning such continuous-space vector representations (or embeddings) of nodes in a graph is an important first step for using network information (from social networks, user-item graphs, knowledge bases, etc.) in many machine learning tasks.
-Unlike previous work, we (1) explicitly model an edge as a function of node embeddings, and we (2) propose a novel objective, the &ldquo;graph likelihood&rdquo;, which contrasts information from sampled random walks with non-existent edges. Individually, both of these contributions improve the learned representations, especially when there are memory constraints on the total size of the embeddings. When combined, our contributions enable us to significantly improve the state-of-the-art by learning more concise representations that better preserve the graph structure.
-We evaluate our method on a variety of link-prediction task including social networks, collaboration networks, and protein interactions, showing that our proposed method learn representations with error reductions of up to 76% and 55%, on directed and undirected graphs. In addition, we show that the representations learned by our method are quite space efficient, producing embeddings which have higher structure-preserving accuracy but are 10 times smaller.</p>
+<p>We propose a new method for <strong>embedding graphs</strong> while preserving <strong>directed</strong> edge information. Learning such continuous-space vector representations (or embeddings) of nodes in a graph is an important first step for using network information (from social networks, user-item graphs, knowledge bases, etc.) in many machine learning tasks.
+Unlike previous work, we </p>
+</blockquote>
+<ul>
+<li>
+<blockquote>
+<p>(1) explicitly model an edge as a function of node embeddings</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>(2) propose a novel objective, the &ldquo;<strong>graph likelihood</strong>&rdquo;, which contrasts information from sampled random walks with non-existent edges. </p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>Individually, both of these contributions improve the learned representations, especially when there are memory constraints on the total size of the embeddings. When combined, our contributions enable us to significantly improve the state-of-the-art by learning more concise representations that better preserve the graph structure.
+We evaluate our method on a variety of <strong>link-prediction</strong> task including social networks, collaboration networks, and protein interactions, showing that our proposed method learn representations with error reductions of up to 76% and 55%, on directed and undirected graphs. In addition, we show that the representations learned by our method are quite space efficient, producing embeddings which have higher structure-preserving accuracy but are 10 times smaller.</p>
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li></li>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> explicitly model a <strong>directed edge function</strong> -&gt; <strong>[low-rank affine projects]</strong> on a manifold that is produced by a DNN (<code>use DNN to map nodes onto a low-dimensional manifold</code>) + (<code>define a function between two nodes as a projection in the manifold coordinates</code>)<ul>
+<li><strong>[i]</strong> $f()$ removes <u>degrees of freedom</u> as it passes an embedding through the DNN activation functions </li>
+<li><strong>[ii]</strong> reduces overfitting and improve generalization (<em>as f can contrain the embeddings with less degrees of freedom</em>)</li>
+<li><strong>[iii]</strong> hidden layers inf find correlations in the data, as many graphnodes have similar connections</li>
+</ul>
+</li>
+<li><strong>[2]</strong> propose a new objective function, <strong>the graph likelihood</strong> -&gt; <u>joinly maximizing the edge function and the manifold</u> (<em>inspired from MLE in logistic regression</em>)</li>
+<li><strong>[3]</strong> improve the SOTA on learning continuous graph representation, especailly on <strong>directed graphs</strong> while producing significantly <strong>smaller</strong> representation</li>
+<li>learn an asymmetric transformation of the nodes -&gt; combined for any pair of nodes to moedel the strength of their directed relationships</li>
+<li>Adjacency (non-embedding) Baselines: <code>Jaccard Coefficient</code>, <code>Common Neighbors</code>, <code>Adamic Adar</code></li>
+<li>Embedding methods: <code>Laplacian EigenMaps</code>, <code>node2vec</code>, <code>DNGR</code></li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:<ul>
+<li><u>continuous space representations</u>: leanr a vector space that highly preserve the graph structure</li>
+<li>traditional <strong><em>eigen</em></strong> methods learn embeddings that <code>minimize the euclidean distance of the connected nodes</code></li>
+<li>shortcomings of embedding method (like random wlak):<ul>
+<li>do not explictly model deges</li>
+<li>unable to capture asymmetic relationships (different direction of edges)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:<ul>
+<li><strong>link-prediction</strong> in <code>social network</code>, <code>collaboration network</code> and <code>protein interaction</code></li>
+<li><em>followers</em> and <em>followees</em> </li>
+</ul>
+</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li>further investigation for learning continuous representation of graphs</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2128,6 +2175,40 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </li>
 </ul>
 <hr />
+<p>(33) <code>Apr 2019</code> <a href="https://arxiv.org/abs/1904.12787">Graph Matching Networks for Learning the Similarity of Graph Structured Objects</a> <em>[Yujia Li, Chenjie Gu, Thomas Dullien, Oriol Vinyals, Pushmeet Kohli]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>This paper addresses the challenging problem of retrieval and matching of graph structured objects, and makes two key contributions. First, we demonstrate how Graph Neural Networks (GNN), which have emerged as an effective model for various supervised prediction problems defined on structured data, can be trained to produce embedding of graphs in vector spaces that enables efficient similarity reasoning. Second, we propose a novel Graph Matching Network model that, given a pair of graphs as input, computes a similarity score between them by jointly reasoning on the pair through a new cross-graph attention-based matching mechanism. We demonstrate the effectiveness of our models on different domains including the challenging problem of control-flow-graph based function similarity search that plays an important role in the detection of vulnerabilities in software systems. The experimental analysis demonstrates that our models are not only able to exploit structure in the context of similarity learning but they can also outperform domain-specific baseline systems that have been carefully hand-engineered for these problems.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(34) <code>Jul 2016</code> <a href="https://arxiv.org/abs/1607.00653">node2vec: Scalable Feature Learning for Networks</a> <em>[Aditya Grover, Jure Leskovec]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Prediction tasks over nodes and edges in networks require careful effort in engineering features used by learning algorithms. Recent research in the broader field of representation learning has led to significant progress in automating prediction by learning the features themselves. However, present feature learning approaches are not expressive enough to capture the diversity of connectivity patterns observed in networks. Here we propose node2vec, an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. We define a flexible notion of a node&rsquo;s network neighborhood and design a biased random walk procedure, which efficiently explores diverse neighborhoods. Our algorithm generalizes prior work which is based on rigid notions of network neighborhoods, and we argue that the added flexibility in exploring neighborhoods is the key to learning richer representations. We demonstrate the efficacy of node2vec over existing state-of-the-art techniques on multi-label classification and link prediction in several real-world networks from diverse domains. Taken together, our work represents a new way for efficiently learning state-of-the-art task-independent representations in complex networks.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
 <p>(28) <code>201</code> <a href=""></a> <em>[]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
@@ -2158,6 +2239,11 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ul>
 <p><strong>Other paper</strong>:</p>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" disabled/> T. N. Kipf and M. Welling. Variational graph auto-encoders. In NIPS Workshop on Bayesian
-Deep Learning, 2016.</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> T. N. Kipf and M. Welling. Variational graph auto-encoders. In NIPS Workshop on Bayesian
+Deep Learning, 2016.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> Sami Abu-El-Haija. 2017. Proportionate gradient updates with PercentDelta. In arXiv. [graph likelihood]</p>
+</li>
 </ul></article></body></html>

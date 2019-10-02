@@ -197,12 +197,37 @@
 
 * **Abstract**: 
 
-> We propose a new method for embedding graphs while preserving directed edge information. Learning such continuous-space vector representations (or embeddings) of nodes in a graph is an important first step for using network information (from social networks, user-item graphs, knowledge bases, etc.) in many machine learning tasks.
-Unlike previous work, we (1) explicitly model an edge as a function of node embeddings, and we (2) propose a novel objective, the "graph likelihood", which contrasts information from sampled random walks with non-existent edges. Individually, both of these contributions improve the learned representations, especially when there are memory constraints on the total size of the embeddings. When combined, our contributions enable us to significantly improve the state-of-the-art by learning more concise representations that better preserve the graph structure.
-We evaluate our method on a variety of link-prediction task including social networks, collaboration networks, and protein interactions, showing that our proposed method learn representations with error reductions of up to 76% and 55%, on directed and undirected graphs. In addition, we show that the representations learned by our method are quite space efficient, producing embeddings which have higher structure-preserving accuracy but are 10 times smaller.
+> We propose a new method for **embedding graphs** while preserving **directed** edge information. Learning such continuous-space vector representations (or embeddings) of nodes in a graph is an important first step for using network information (from social networks, user-item graphs, knowledge bases, etc.) in many machine learning tasks.
+Unlike previous work, we 
+    
+* > (1) explicitly model an edge as a function of node embeddings
+* > (2) propose a novel objective, the "**graph likelihood**", which contrasts information from sampled random walks with non-existent edges. 
+
+> Individually, both of these contributions improve the learned representations, especially when there are memory constraints on the total size of the embeddings. When combined, our contributions enable us to significantly improve the state-of-the-art by learning more concise representations that better preserve the graph structure.
+We evaluate our method on a variety of **link-prediction** task including social networks, collaboration networks, and protein interactions, showing that our proposed method learn representations with error reductions of up to 76% and 55%, on directed and undirected graphs. In addition, we show that the representations learned by our method are quite space efficient, producing embeddings which have higher structure-preserving accuracy but are 10 times smaller.
 
 * **Key notes**: 
-    - 
+    - <u>**Main contributions**</u>: 
+        - **[1]** explicitly model a **directed edge function** -> **[low-rank affine projects]** on a manifold that is produced by a DNN (`use DNN to map nodes onto a low-dimensional manifold`) + (`define a function between two nodes as a projection in the manifold coordinates`)
+            - **[i]** $f()$ removes <u>degrees of freedom</u> as it passes an embedding through the DNN activation functions 
+            - **[ii]** reduces overfitting and improve generalization (*as f can contrain the embeddings with less degrees of freedom*)
+            - **[iii]** hidden layers inf find correlations in the data, as many graphnodes have similar connections
+        - **[2]** propose a new objective function, **the graph likelihood** -> <u>joinly maximizing the edge function and the manifold</u> (*inspired from MLE in logistic regression*)
+        - **[3]** improve the SOTA on learning continuous graph representation, especailly on **directed graphs** while producing significantly **smaller** representation
+        - learn an asymmetric transformation of the nodes -> combined for any pair of nodes to moedel the strength of their directed relationships
+        - Adjacency (non-embedding) Baselines: `Jaccard Coefficient`, `Common Neighbors`, `Adamic Adar`
+        - Embedding methods: `Laplacian EigenMaps`, `node2vec`, `DNGR`
+    - <u>**Other Notes**</u>:
+        - <u>continuous space representations</u>: leanr a vector space that highly preserve the graph structure
+        - traditional ***eigen*** methods learn embeddings that `minimize the euclidean distance of the connected nodes`
+        - shortcomings of embedding method (like random wlak):
+            - do not explictly model deges
+            - unable to capture asymmetic relationships (different direction of edges)
+    - <u>**Use cases**</u>:
+        * **link-prediction** in `social network`, `collaboration network` and `protein interaction`
+        * *followers* and *followees* 
+    - <u>**Further directions**</u>:
+        - further investigation for learning continuous representation of graphs
 
 ---
 
@@ -646,6 +671,34 @@ We evaluate our method on a variety of link-prediction task including social net
 
 ---
 
+(33) `Apr 2019` [Graph Matching Networks for Learning the Similarity of Graph Structured Objects](https://arxiv.org/abs/1904.12787) *[Yujia Li, Chenjie Gu, Thomas Dullien, Oriol Vinyals, Pushmeet Kohli]*
+
+* **Abstract**: 
+
+> This paper addresses the challenging problem of retrieval and matching of graph structured objects, and makes two key contributions. First, we demonstrate how Graph Neural Networks (GNN), which have emerged as an effective model for various supervised prediction problems defined on structured data, can be trained to produce embedding of graphs in vector spaces that enables efficient similarity reasoning. Second, we propose a novel Graph Matching Network model that, given a pair of graphs as input, computes a similarity score between them by jointly reasoning on the pair through a new cross-graph attention-based matching mechanism. We demonstrate the effectiveness of our models on different domains including the challenging problem of control-flow-graph based function similarity search that plays an important role in the detection of vulnerabilities in software systems. The experimental analysis demonstrates that our models are not only able to exploit structure in the context of similarity learning but they can also outperform domain-specific baseline systems that have been carefully hand-engineered for these problems.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(34) `Jul 2016` [node2vec: Scalable Feature Learning for Networks](https://arxiv.org/abs/1607.00653) *[Aditya Grover, Jure Leskovec]*
+
+* **Abstract**: 
+
+> Prediction tasks over nodes and edges in networks require careful effort in engineering features used by learning algorithms. Recent research in the broader field of representation learning has led to significant progress in automating prediction by learning the features themselves. However, present feature learning approaches are not expressive enough to capture the diversity of connectivity patterns observed in networks. Here we propose node2vec, an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. We define a flexible notion of a node's network neighborhood and design a biased random walk procedure, which efficiently explores diverse neighborhoods. Our algorithm generalizes prior work which is based on rigid notions of network neighborhoods, and we argue that the added flexibility in exploring neighborhoods is the key to learning richer representations. We demonstrate the efficacy of node2vec over existing state-of-the-art techniques on multi-label classification and link prediction in several real-world networks from diverse domains. Taken together, our work represents a new way for efficiently learning state-of-the-art task-independent representations in complex networks.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
 (28) `201` []() *[]*
 
 * **Abstract**: 
@@ -677,5 +730,7 @@ We evaluate our method on a variety of link-prediction task including social net
 
 * [ ] T. N. Kipf and M. Welling. Variational graph auto-encoders. In NIPS Workshop on Bayesian
 Deep Learning, 2016.
+
+* [ ] Sami Abu-El-Haija. 2017. Proportionate gradient updates with PercentDelta. In arXiv. [graph likelihood]
 
 
