@@ -675,13 +675,53 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> This paper addresses the challenging problem of retrieval and matching of graph structured objects, and makes two key contributions. First, we demonstrate how Graph Neural Networks (GNN), which have emerged as an effective model for various supervised prediction problems defined on structured data, can be trained to produce embedding of graphs in vector spaces that enables efficient similarity reasoning. Second, we propose a novel Graph Matching Network model that, given a pair of graphs as input, computes a similarity score between them by jointly reasoning on the pair through a new cross-graph attention-based matching mechanism. We demonstrate the effectiveness of our models on different domains including the challenging problem of control-flow-graph based function similarity search that plays an important role in the detection of vulnerabilities in software systems. The experimental analysis demonstrates that our models are not only able to exploit structure in the context of similarity learning but they can also outperform domain-specific baseline systems that have been carefully hand-engineered for these problems.
+> This paper addresses the challenging problem of **retrieval** and **matching** of *graph structured objects*, and makes two key contributions. 
+
+> First, we demonstrate how Graph Neural Networks (GNN), which have emerged as an effective model for various supervised prediction problems defined on structured data, can **be trained to produce embedding of graphs in vector spaces that enables efficient similarity reasoning**. 
+
+> Second, we propose a **novel Graph Matching Network model** that, given a pair of graphs as input, **computes a similarity score between them by jointly reasoning on the pair through a new cross-graph attention-based matching mechanism**. 
+
+> We demonstrate the effectiveness of our models on different domains including the challenging problem of **control-flow-graph based function similarity search** that plays an important role in the detection of vulnerabilities in software systems. The experimental analysis demonstrates that our models are not only able to exploit structure in the context of similarity learning but they can also outperform domain-specific baseline systems that have been carefully hand-engineered for these problems.
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
+        - **[1]** train **GNN** to produce <u>embedding of graphs</u> in vector spaces (*graph independently to vector*) -> further similarity computation happens in vector space
+            - **(i) encoder**: node and edge features --MLPs--> initial vecotrs
+            - **(ii) propagation layers**: set of node representations ----> new representations
+                - *without propagation* -> *Deep set* or *PointNet* (<u>ignore the </u>)
+            - **(iii) aggregator**: after T rounds of propagation, aggregate all the node representation to a **graph level representation** ----> 
+                - > transorms node representations and then uses weighted sum with gating vectors to aggregate across nodes
+            - for similarity use: `Euclidean`, `cosine`, `Hamming`
+
+        - **[2]** propose **Graph Matching Network** (GMN) -> for similarity learning
+            - compute a similarity score through a **cross-graph attention mechanism** -> `associate nodes across graphs and identify differences`, `use atten-based module`
+            - more powerful than embedding model
+            - compared to *[graph kernel approches]*, the authors' method based **similarity learning framework** learns the simlarity **end2end**
+        - **[3]** evalute the model on three tasks: `syntehtic graph edit-distance learning task` (capture structural similarity only); real world tasks: `binary function similarity search` and `mesh retrieval`
+
+        - **[Problem 1]**: <u>each cross-graph matching step requires computation of the full attention matrices</u> ----> **expensive for large graph**
+        - **[Problem 2]**: the matching models operates on pairs, cannot directly be used for indexing and searching through large databases 
     - <u>**Other Notes**</u>:
+        - graphs -> encoding **relational structures**
+        - **Graph kernel**: kernels on graphs designed to capture the **graph similarity**, can be used in kernel method for `graph classifcation`
+            - kernels based on **limited-sized** sub-strucutures
+            - kernels based on **sub-tree** structures
+            - Can ge formulated: 
+                - > [i] computig the features vector for each graph (the kernel embedding)
+                - > [ii] take inner product between vectors to compute kernel values
+        - <u>distance metric learning</u>:
+            - [early work] assumes data already lies in a vector space -> only a linear metric metrix is learned
+            - [more recently] been combined in `face verification` (CNN to map similar images to similar vectors)
+            - [this work] modeling cross-graph matchings
+        - <u>Graph edit distance</u>: the minimum number of edit operations needed to transform G1 to G2 (*add/removes/substitute*)
+        
     - <u>**Use cases**</u>:
+        - <u>control-flow-graph based function similarity search</u> -> **detection of vulnerabilities in software systems**
+            - <u>In the past</u>: use calssical graph theoretical matching algorithm
     - <u>**Further directions**</u>:
+        - **[1]** improve the efficiency of the matching modesl
+        - **[2]** study different matching architectures
+        - **[3]** adapt GNN capacity to application domains
 
 ---
 
@@ -714,6 +754,17 @@ We evaluate our method on a variety of **link-prediction** task including social
 ---
 
 ### To do for graph & network
+
+Li, Y., Vinyals, O., Dyer, C., Pascanu, R., and Battaglia,
+P. Learning deep generative models of graphs. arXiv
+preprint arXiv:1803.03324, 2018.
+
+Wang, T., Liao, R., Ba, J., and Fidler, S. Nervenet: Learning
+structured policy with graph neural networks. In ICLR,
+2018a.
+
+Al-Rfou, R., Zelle, D., and Perozzi, B. Ddgk: Learning graph representations for deep divergence graph kernels.
+arXiv preprint arXiv:1904.09671, 2019.
 
 * [ ] W. Hamilton, R. Ying, and J. Leskovec. Inductive representation learning on large graphs. In NIPS, 2017. (*negative sampling*)
 * [ ] S. Abu-El-Haija, B. Perozzi, and R. Al-Rfou. Learning edge representations via low-rank asymmetric projections. In ACM International Conference on Information and Knowledge Management (CIKM), 2017. (*graph likelihood*)

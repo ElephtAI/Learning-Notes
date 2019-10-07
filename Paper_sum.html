@@ -2180,14 +2180,98 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>This paper addresses the challenging problem of retrieval and matching of graph structured objects, and makes two key contributions. First, we demonstrate how Graph Neural Networks (GNN), which have emerged as an effective model for various supervised prediction problems defined on structured data, can be trained to produce embedding of graphs in vector spaces that enables efficient similarity reasoning. Second, we propose a novel Graph Matching Network model that, given a pair of graphs as input, computes a similarity score between them by jointly reasoning on the pair through a new cross-graph attention-based matching mechanism. We demonstrate the effectiveness of our models on different domains including the challenging problem of control-flow-graph based function similarity search that plays an important role in the detection of vulnerabilities in software systems. The experimental analysis demonstrates that our models are not only able to exploit structure in the context of similarity learning but they can also outperform domain-specific baseline systems that have been carefully hand-engineered for these problems.</p>
+<p>This paper addresses the challenging problem of <strong>retrieval</strong> and <strong>matching</strong> of <em>graph structured objects</em>, and makes two key contributions. </p>
+<p>First, we demonstrate how Graph Neural Networks (GNN), which have emerged as an effective model for various supervised prediction problems defined on structured data, can <strong>be trained to produce embedding of graphs in vector spaces that enables efficient similarity reasoning</strong>. </p>
+<p>Second, we propose a <strong>novel Graph Matching Network model</strong> that, given a pair of graphs as input, <strong>computes a similarity score between them by jointly reasoning on the pair through a new cross-graph attention-based matching mechanism</strong>. </p>
+<p>We demonstrate the effectiveness of our models on different domains including the challenging problem of <strong>control-flow-graph based function similarity search</strong> that plays an important role in the detection of vulnerabilities in software systems. The experimental analysis demonstrates that our models are not only able to exploit structure in the context of similarity learning but they can also outperform domain-specific baseline systems that have been carefully hand-engineered for these problems.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
-<li><u><strong>Main contributions</strong></u>: </li>
+<li>
+<p><strong>Key notes</strong>: </p>
+<ul>
+<li>
+<p><u><strong>Main contributions</strong></u>: </p>
+<ul>
+<li>
+<p><strong>[1]</strong> train <strong>GNN</strong> to produce <u>embedding of graphs</u> in vector spaces (<em>graph independently to vector</em>) -&gt; further similarity computation happens in vector space</p>
+<ul>
+<li><strong>(i) encoder</strong>: node and edge features &ndash;MLPs&ndash;&gt; initial vecotrs</li>
+<li><strong>(ii) propagation layers</strong>: set of node representations ----&gt; new representations<ul>
+<li><em>without propagation</em> -&gt; <em>Deep set</em> or <em>PointNet</em> (<u>ignore the </u>)</li>
+</ul>
+</li>
+<li><strong>(iii) aggregator</strong>: after T rounds of propagation, aggregate all the node representation to a <strong>graph level representation</strong> ----&gt; <ul>
+<li>
+<blockquote>
+<p>transorms node representations and then uses weighted sum with gating vectors to aggregate across nodes</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>for similarity use: <code>Euclidean</code>, <code>cosine</code>, <code>Hamming</code></li>
+</ul>
+</li>
+<li>
+<p><strong>[2]</strong> propose <strong>Graph Matching Network</strong> (GMN) -&gt; for similarity learning</p>
+<ul>
+<li>compute a similarity score through a <strong>cross-graph attention mechanism</strong> -&gt; <code>associate nodes across graphs and identify differences</code>, <code>use atten-based module</code></li>
+<li>more powerful than embedding model</li>
+<li>compared to <em>[graph kernel approches]</em>, the authors&rsquo; method based <strong>similarity learning framework</strong> learns the simlarity <strong>end2end</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>[3]</strong> evalute the model on three tasks: <code>syntehtic graph edit-distance learning task</code> (capture structural similarity only); real world tasks: <code>binary function similarity search</code> and <code>mesh retrieval</code></p>
+</li>
+<li>
+<p><strong>[Problem 1]</strong>: <u>each cross-graph matching step requires computation of the full attention matrices</u> ----&gt; <strong>expensive for large graph</strong></p>
+</li>
+<li><strong>[Problem 2]</strong>: the matching models operates on pairs, cannot directly be used for indexing and searching through large databases <ul>
 <li><u><strong>Other Notes</strong></u>:</li>
-<li><u><strong>Use cases</strong></u>:</li>
-<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+<li>graphs -&gt; encoding <strong>relational structures</strong></li>
+<li><strong>Graph kernel</strong>: kernels on graphs designed to capture the <strong>graph similarity</strong>, can be used in kernel method for <code>graph classifcation</code><ul>
+<li>kernels based on <strong>limited-sized</strong> sub-strucutures</li>
+<li>kernels based on <strong>sub-tree</strong> structures</li>
+<li>Can ge formulated: <ul>
+<li>
+<blockquote>
+<p>[i] computig the features vector for each graph (the kernel embedding)</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>[ii] take inner product between vectors to compute kernel values</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u>distance metric learning</u>:<ul>
+<li>[early work] assumes data already lies in a vector space -&gt; only a linear metric metrix is learned</li>
+<li>[more recently] been combined in <code>face verification</code> (CNN to map similar images to similar vectors)</li>
+<li>[this work] modeling cross-graph matchings</li>
+</ul>
+</li>
+<li><u>Graph edit distance</u>: the minimum number of edit operations needed to transform G1 to G2 (<em>add/removes/substitute</em>)</li>
+</ul>
+</li>
+<li>
+<p><u><strong>Use cases</strong></u>:</p>
+<ul>
+<li><u>control-flow-graph based function similarity search</u> -&gt; <strong>detection of vulnerabilities in software systems</strong><ul>
+<li><u>In the past</u>: use calssical graph theoretical matching algorithm</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li><strong>[1]</strong> improve the efficiency of the matching modesl</li>
+<li><strong>[2]</strong> study different matching architectures</li>
+<li><strong>[3]</strong> adapt GNN capacity to application domains</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2225,6 +2309,14 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ul>
 <hr />
 <h3 id="to-do-for-graph-network">To do for graph &amp; network<a class="headerlink" href="#to-do-for-graph-network" title="Permanent link"></a></h3>
+<p>Li, Y., Vinyals, O., Dyer, C., Pascanu, R., and Battaglia,
+P. Learning deep generative models of graphs. arXiv
+preprint arXiv:1803.03324, 2018.</p>
+<p>Wang, T., Liao, R., Ba, J., and Fidler, S. Nervenet: Learning
+structured policy with graph neural networks. In ICLR,
+2018a.</p>
+<p>Al-Rfou, R., Zelle, D., and Perozzi, B. Ddgk: Learning graph representations for deep divergence graph kernels.
+arXiv preprint arXiv:1904.09671, 2019.</p>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" disabled/> W. Hamilton, R. Ying, and J. Leskovec. Inductive representation learning on large graphs. In NIPS, 2017. (<em>negative sampling</em>)</li>
 <li class="task-list-item"><input type="checkbox" disabled/> S. Abu-El-Haija, B. Perozzi, and R. Al-Rfou. Learning edge representations via low-rank asymmetric projections. In ACM International Conference on Information and Knowledge Management (CIKM), 2017. (<em>graph likelihood</em>)</li>
