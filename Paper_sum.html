@@ -999,10 +999,7 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true,
-    processEnvironments: true,
-    ignoreClass: ".*|",
-    processClass: "arithmatex"
+    processEscapes: true
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1016,10 +1013,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
+  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});
-</script><style>/*GitHub*/
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -2288,12 +2285,40 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[i]</strong> propose <strong>node2vec</strong> -&gt; <code>efficient</code>, <code>scalable</code> algorithm for feature learning optimizes a <code>novel</code>, <code>network-aware</code>, <code>neighborhood preserving</code> objective using <strong>SGD</strong><ul>
+<li><em>use a 2nd order <u>random walk</u> approach to generate sample network neighborhoods for nodes</em></li>
+</ul>
+</li>
+<li><strong>[ii]</strong> show node2vec in accordance with <strong>principles in network science</strong> -&gt; [providing flexibility in discovering representations conforming to different equivalences]</li>
+<li><strong>[iii]</strong> extend node2vec (and other feature learning methods) based on <strong>neighborhood preserving objectives</strong>, from node -&gt; pair of nodes (edge prediction tasks)</li>
+<li><strong>[iv]</strong> evaluate node2vec on <code>multi-lable classification</code> and <code>link prediction</code></li>
+</ul>
+</li>
 <li><u><strong>Other Notes</strong></u>:<ul>
 <li>challenge in <strong>feature representations</strong>: <u>defining an objective function</u> [trade-off in balancing computational efficency and predictive accurcy]</li>
 <li>essential points for a flexible algorithm to learn node representation<ul>
 <li><strong>[1]</strong> ability to learn representatins that embed nodes from the same network community closely together</li>
 <li><strong>[2]</strong> learn representations where nodes that share similar roles have similar embeddingss</li>
+</ul>
+</li>
+<li>the conventional <u>dimensionality reduction techniques</u> have drawbacks in: <ol>
+<li>computational &amp; statistical performance</li>
+<li>optimize for objectives that are <strong>not robust</strong> to the diverse pattern observed in networks <em>(assumptions -&gt; relationship between underlying network structure and the prediction task)</em></li>
+</ol>
+</li>
+<li>traditional search strategies: <code>Breadth-first sampling</code>, <code>Depth-first Sampling</code></li>
+<li>prediction tasks with two similarities: <ul>
+<li>
+<blockquote>
+<p><strong>homophily hypothesis</strong>: nodes that are highly interconnected and belong to simliar network clusters or communities should be embedded closely together</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><strong>structural equivalence hypothesis</strong>: nodes have similar structural roles in networks should be embedded closely together</p>
+</blockquote>
+</li>
 </ul>
 </li>
 </ul>

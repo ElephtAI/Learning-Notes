@@ -733,11 +733,23 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
+        - **[i]** propose **node2vec** -> `efficient`, `scalable` algorithm for feature learning optimizes a `novel`, `network-aware`, `neighborhood preserving` objective using **SGD**
+            - *use a 2nd order <u>random walk</u> approach to generate sample network neighborhoods for nodes*
+        - **[ii]** show node2vec in accordance with **principles in network science** -> [providing flexibility in discovering representations conforming to different equivalences]
+        - **[iii]** extend node2vec (and other feature learning methods) based on **neighborhood preserving objectives**, from node -> pair of nodes (edge prediction tasks)
+        - **[iv]** evaluate node2vec on `multi-lable classification` and `link prediction`
     - <u>**Other Notes**</u>:
         - challenge in **feature representations**: <u>defining an objective function</u> [trade-off in balancing computational efficency and predictive accurcy]
         - essential points for a flexible algorithm to learn node representation
             - **[1]** ability to learn representatins that embed nodes from the same network community closely together
             - **[2]** learn representations where nodes that share similar roles have similar embeddingss
+        - the conventional <u>dimensionality reduction techniques</u> have drawbacks in: 
+            1. computational & statistical performance
+            2. optimize for objectives that are **not robust** to the diverse pattern observed in networks *(assumptions -> relationship between underlying network structure and the prediction task)*
+        - traditional search strategies: `Breadth-first sampling`, `Depth-first Sampling`
+        - prediction tasks with two similarities: 
+            - > **homophily hypothesis**: nodes that are highly interconnected and belong to simliar network clusters or communities should be embedded closely together
+            - > **structural equivalence hypothesis**: nodes have similar structural roles in networks should be embedded closely together
     - <u>**Use cases**</u>:
         1. predicting interests of users in a social network
         2. predicting functional labels of protein in protein-protein interatction network
