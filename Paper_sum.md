@@ -729,12 +729,21 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> Prediction tasks over nodes and edges in networks require careful effort in engineering features used by learning algorithms. Recent research in the broader field of representation learning has led to significant progress in automating prediction by learning the features themselves. However, present feature learning approaches are not expressive enough to capture the diversity of connectivity patterns observed in networks. Here we propose node2vec, an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. We define a flexible notion of a node's network neighborhood and design a biased random walk procedure, which efficiently explores diverse neighborhoods. Our algorithm generalizes prior work which is based on rigid notions of network neighborhoods, and we argue that the added flexibility in exploring neighborhoods is the key to learning richer representations. We demonstrate the efficacy of node2vec over existing state-of-the-art techniques on multi-label classification and link prediction in several real-world networks from diverse domains. Taken together, our work represents a new way for efficiently learning state-of-the-art task-independent representations in complex networks.
+> Prediction tasks over nodes and edges in networks require careful effort in engineering features used by learning algorithms. Recent research in the broader field of **representation learning** has led to significant progress in automating prediction by learning the features themselves. However, present feature learning approaches are not expressive enough to capture the diversity of connectivity patterns observed in networks. Here we propose node2vec, an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, we learn a mapping of nodes to a low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. We define a flexible notion of a node's network neighborhood and design a biased random walk procedure, which efficiently explores diverse neighborhoods. Our algorithm generalizes prior work which is based on rigid notions of network neighborhoods, and we argue that the **added flexibility in exploring neighborhoods** is the key to learning richer representations. We demonstrate the efficacy of node2vec over existing state-of-the-art techniques on **multi-label classification** and **link prediction** in several real-world networks from diverse domains. Taken together, our work represents a new way for efficiently learning state-of-the-art task-independent representations in complex networks.
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
     - <u>**Other Notes**</u>:
+        - challenge in **feature representations**: <u>defining an objective function</u> [trade-off in balancing computational efficency and predictive accurcy]
+        - essential points for a flexible algorithm to learn node representation
+            - **[1]** ability to learn representatins that embed nodes from the same network community closely together
+            - **[2]** learn representations where nodes that share similar roles have similar embeddingss
     - <u>**Use cases**</u>:
+        1. predicting interests of users in a social network
+        2. predicting functional labels of protein in protein-protein interatction network
+        3. link prediction
+            - discover novel interactions between genes in genomics
+            - identify real-world friends in social network
     - <u>**Further directions**</u>:
 
 ---
