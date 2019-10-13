@@ -774,6 +774,17 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ---
 
+### Useful for network analysis research: 
+
+* [Deep Representation Learning for Social Network Analysis](https://www.frontiersin.org/articles/10.3389/fdata.2019.00002/full)
+* [Stanford Large Network Dataset Collection](https://snap.stanford.edu/data/)
+* [[video] Social Network Analysis - From Graph Theory to Applications - Dima Goldenberg - PyCon Israel 2019](https://www.youtube.com/watch?v=px7ff2_Jeqw&list=WL&index=29&t=0s)
+* [HOW POWERFUL ARE GRAPH NEURAL NETWORKS?](https://cs.stanford.edu/people/jure/pubs/gin-iclr19.pdf)
+* [Social Network Analysis in the field of Learning and Instruction: methodological issues and advances](https://earli.org/sites/default/files/2017-03/ASC2018-web.pdf)
+* [Social Network Analysis: ‘How to guide’](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/491572/socnet_howto.pdf)
+* [User behavior prediction in social networks using weighted extreme learning machine with distribution optimization](https://www.sciencedirect.com/science/article/pii/S0167739X17307938)
+* [Analyzing and inferring human real-life behavior through online social networks with social influence deep learning](https://link.springer.com/article/10.1007/s41109-019-0134-3)
+
 ### To do for graph & network
 
 Li, Y., Vinyals, O., Dyer, C., Pascanu, R., and Battaglia,
