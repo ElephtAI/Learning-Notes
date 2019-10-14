@@ -735,6 +735,7 @@ We evaluate our method on a variety of **link-prediction** task including social
     - <u>**Main contributions**</u>: 
         - **[i]** propose **node2vec** -> `efficient`, `scalable` algorithm for feature learning optimizes a `novel`, `network-aware`, `neighborhood preserving` objective using **SGD**
             - *use a 2nd order <u>random walk</u> approach to generate sample network neighborhoods for nodes*
+            - 
         - **[ii]** show node2vec in accordance with **principles in network science** -> [providing flexibility in discovering representations conforming to different equivalences]
         - **[iii]** extend node2vec (and other feature learning methods) based on **neighborhood preserving objectives**, from node -> pair of nodes (edge prediction tasks)
         - **[iv]** evaluate node2vec on `multi-lable classification` and `link prediction`
@@ -784,6 +785,47 @@ We evaluate our method on a variety of **link-prediction** task including social
 * [Social Network Analysis: ‘How to guide’](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/491572/socnet_howto.pdf)
 * [User behavior prediction in social networks using weighted extreme learning machine with distribution optimization](https://www.sciencedirect.com/science/article/pii/S0167739X17307938)
 * [Analyzing and inferring human real-life behavior through online social networks with social influence deep learning](https://link.springer.com/article/10.1007/s41109-019-0134-3)
+
+**<u>Mihai Cucuringu (ox)</u>** 
+
+* [SPONGE: A generalized eigenproblem for clustering signed networks](http://www.stats.ox.ac.uk/~cucuring/signedClustering.pdf)
+* [Anomaly Detection in Networks with Application to Financial Transaction Networks](http://www.stats.ox.ac.uk/~cucuring/anomaly_detection_networks.pdf)
+
+**<u>François Caron (ox)</u>** 
+
+* X. Miscouridou, F. Caron, Y. W. Teh. [Modelling sparsity, heterogeneity, reciprocity and community structure in temporal interaction data](https://papers.nips.cc/paper/7502-modelling-sparsity-heterogeneity-reciprocity-and-community-structure-in-temporal-interaction-data.pdf). Neural Information Processing Systems (NeurIPS'2018), Montreal, Canada, 2018. 
+
+**<u>Rik Sarkar (Edinburgh)</u>:**
+
+* Benedek Rozemberczki, Ryan Davies, Rik Sarkar, Charles Sutton. [GEMSEC: Graph Embedding with Self Clustering](http://homepages.inf.ed.ac.uk/rsarkar/papers/gemsec.pdf), IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM) 2019.
+* Panagiota Katsikouli, Maria Sinziana Astefanoaei, Rik Sarkar. [Distributed Mining of Popular Paths in Road Networks](http://homepages.inf.ed.ac.uk/rsarkar/papers/popular_paths_dcoss.pdf), IEEE International Conference on Distributed Computing in Sensor Systems 2018 (DCOSS '18).
+
+**<u>Walid Magdy (Edinburgh)</u>**
+
+* [A Practical Guide for the Effective Evaluation of Twitter User Geolocation](https://arxiv.org/abs/1907.12700)
+* [Self-Representation on Twitter Using Emoji Skin Color Modifiers](https://aaai.org/ocs/index.php/ICWSM/ICWSM18/paper/view/17833)
+
+**<u>Kobi Gal (Edinburgh)</u>**
+
+* Avi Segal, Kobi  Gal, Guy Shani and Bracha Shapira. [A difficulty Ranking Approach to Personalization in E-learning](https://arxiv.org/abs/1907.12047). International Journal of Human Computer Studies 130: 261-272, 2019. Supercedes the EDM-14 paper below. 
+
+**<u>Timothy M. Hospedales (Edinburgh)</u>**
+
+* [Feature-Critic Networks for Heterogeneous Domain Generalisation](https://arxiv.org/pdf/1901.11448.pdf)
+
+
+**<u>Emine Yilmaz (UCL)</u>**
+
+* [User Behaviour and Task Characteristics: A Field Study of Daily Information Behaviour](https://dl.acm.org/citation.cfm?id=3020188)
+* [Ranking-based Method for News Stance Detection](http://delivery.acm.org/10.1145/3190000/3186919/p41-zhang.pdf?ip=180.154.9.45&id=3186919&acc=OPEN&key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E6D218144511F3437&__acm__=1571069502_abde5d91c360787561f71b95266fbe84)
+
+
+**<u>Iván Palomares Carrascosa (Bristol)</u>**
+
+* [Large-scale group decision making model based on social network analysis: Trust relationship-based conflict detection and elimination](https://www.sciencedirect.com/science/article/abs/pii/S0377221718310191?via%3Dihub)
+* H. Zhang, I. Palomares, Y.C. Dong, W. Wang. [Managing non-cooperative behaviors in consensus-based multiple attribute group decision making: An approach based on social network analysis](https://doi.org/10.1016/j.knosys.2018.06.008). Knowledge-based Systems, 162, pp. 29-45, 2018.
+* Z. Zhang, X. Kou, I. Palomares, W. Yu, J. Gao. [Stable two-sided matching decision making with incomplete fuzzy preference relations: A disappointment theory based approach](https://doi.org/10.1016/j.asoc.2019.105730). Applied Soft Computing. In press: 
+
 
 ### To do for graph & network
 
