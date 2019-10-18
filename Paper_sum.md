@@ -778,7 +778,12 @@ We evaluate our method on a variety of **link-prediction** task including social
 ### SNA/RP paper to read
 
 * (dynamic/embedding)[Dynamic Network Embedding by Modeling Triadic Closure Process](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/16572)
-* (dynamic/embedding)[Attributed Network Embedding for Learning in a Dynamic Environment](https://arxiv.org/pdf/1706.01860.pdf)
+    - preserve not only the structure information but also the **evolotion pattern** over time
+    - tasks: link prediction at the next time t+1
+    - dynamic mainly for the link construction and link disolution
+
+* **(important)**(dynamic/embedding)[Attributed Network Embedding for Learning in a Dynamic Environment](https://arxiv.org/pdf/1706.01860.pdf)
+    - we present an online model to update the consensus embedding with matrix perturbation theory
 * (Influence Max/Time)[On the Fairness of Time-Critical Influence Maximization in Social Networks](https://arxiv.org/abs/1905.06618)
 * (Embedding/link prediction)[Attributed Social Network Embedding](https://ieeexplore.ieee.org/abstract/document/8326519)
 * (Dynamic network) [Dynamic Network Embedding via Incremental Skip-gram with Negative Sampling](https://arxiv.org/abs/1906.03586)
@@ -786,7 +791,11 @@ We evaluate our method on a variety of **link-prediction** task including social
 * (x)(Dynamic/Influen max) [Influential Nodes Detection in Dynamic Social Networks](https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6)
 * (x)(Dyanmic/Influen max) [TIFIM: A Two-stage Iterative Framework for Influence Maximization in Social Networks](https://www.sciencedirect.com/science/article/abs/pii/S0096300319301602)
 * (x)(Dynamic/Link prediction) [A Supervised Learning Approach to Link Prediction in Dynamic Networks](https://link.springer.com/chapter/10.1007/978-3-319-94268-1_70)
+
 * (x)(Time Series/Link prediction/Heterogeneous)[Multivariate Time Series Link Prediction for Evolving Heterogeneous Network](https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html)
+
+
+
 * (Dynamic/Link Prediction)[Semi–supervised Graph Embedding Approach to Dynamic Link Prediction](https://arxiv.org/pdf/1610.04351.pdf)
 
 ### Useful for network analysis research: 
