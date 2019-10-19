@@ -814,7 +814,7 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 
 * [x] **(very interesting and fresh idea of keeping fair)** (Influence Max/Time)[On the Fairness of Time-Critical Influence Maximization in Social Networks](https://arxiv.org/abs/1905.06618)
-    - fairness, try to make the spread of information have same fraction among different social groups in social network with budget (the number of seeds) fixed 
+    - fairness, try to make the spread of information have same fraction among different social groups iffn social network with budget (the number of seeds) fixed 
 
 * [x] **(very comprehensive for the previous method in influen max)**(Influen max) [TIFIM: A Two-stage Iterative Framework for Influence Maximization in Social Networks](https://www.sciencedirect.com/science/article/abs/pii/S0096300319301602)
     - propose **[TIFIM]**
