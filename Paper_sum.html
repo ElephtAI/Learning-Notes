@@ -999,10 +999,7 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true,
-    processEnvironments: true,
-    ignoreClass: ".*|",
-    processClass: "arithmatex"
+    processEscapes: true
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1016,10 +1013,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
+  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});
-</script><style>/*GitHub*/
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -2355,23 +2352,24 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ul>
 <hr />
 <h3 id="snarp-paper-to-read">SNA/RP paper to read<a class="headerlink" href="#snarp-paper-to-read" title="Permanent link"></a></h3>
-<ul>
-<li>
-<p>(dynamic/embedding)<a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/16572">Dynamic Network Embedding by Modeling Triadic Closure Process</a></p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> <strong>(dynamic/embedding)</strong><a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/16572">Dynamic Network Embedding by Modeling Triadic Closure Process</a></p>
 <ul>
 <li>preserve not only the structure information but also the <strong>evolotion pattern</strong> over time</li>
 <li>tasks: link prediction at the next time t+1</li>
 <li>dynamic mainly for the link construction and link disolution</li>
 </ul>
 </li>
-<li>
-<p><strong>(important)</strong>(dynamic/embedding)<a href="https://arxiv.org/pdf/1706.01860.pdf">Attributed Network Embedding for Learning in a Dynamic Environment</a></p>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> <strong>(important)</strong>(dynamic/embedding)<a href="https://arxiv.org/pdf/1706.01860.pdf">Attributed Network Embedding for Learning in a Dynamic Environment</a></p>
 <ul>
 <li>we present an online model to update the consensus embedding with matrix perturbation theory</li>
 </ul>
 </li>
-<li>(Influence Max/Time)<a href="https://arxiv.org/abs/1905.06618">On the Fairness of Time-Critical Influence Maximization in Social Networks</a></li>
-<li><strong>(very new, with ref to all of the previous dynamic embedding method)</strong>(Dynamic network) <a href="https://arxiv.org/abs/1906.03586">Dynamic Network Embedding via Incremental Skip-gram with Negative Sampling</a><ul>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> <strong>(very new, with ref to all of the previous dynamic embedding method)</strong>(Dynamic network) <a href="https://arxiv.org/abs/1906.03586">Dynamic Network Embedding via Incremental Skip-gram with Negative Sampling</a></p>
+<ul>
 <li>the <strong>network structur</strong> is dynamic<ul>
 <li>
 <blockquote>
@@ -2382,19 +2380,63 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </li>
 </ul>
 </li>
-<li><strong>(mentioned in the above)</strong>(Dynamic network) <a href="https://www.ijcai.org/proceedings/2018/0288.pdf">Dynamic Network Embedding: An Extended Approach for Skip-gram based Network Embedding</a></li>
-<li>(Urgent)(x)(Embedding/link prediction)<a href="https://ieeexplore.ieee.org/abstract/document/8326519">Attributed Social Network Embedding</a></li>
-<li>(x)(Dynamic/Influen max) <a href="https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6">Influential Nodes Detection in Dynamic Social Networks</a></li>
-<li>(x)(Dyanmic/Influen max) <a href="https://www.sciencedirect.com/science/article/abs/pii/S0096300319301602">TIFIM: A Two-stage Iterative Framework for Influence Maximization in Social Networks</a></li>
-<li>(x)(Dynamic/Link prediction) <a href="https://link.springer.com/chapter/10.1007/978-3-319-94268-1_70">A Supervised Learning Approach to Link Prediction in Dynamic Networks</a></li>
-<li>
-<p>(x)(similarity) <a href="https://www.sciencedirect.com/science/article/pii/S002002551930756X?via%3Dihub">Exploiting similarities of user friendship networks across social networks for user identification</a></p>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <strong>(mentioned in the above)</strong>(Dynamic network) <a href="https://www.ijcai.org/proceedings/2018/0288.pdf">Dynamic Network Embedding: An Extended Approach for Skip-gram based Network Embedding</a></li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> (important, combine attribute &amp; structure)(Embedding/link prediction)<a href="https://ieeexplore.ieee.org/abstract/document/8326519">Attributed Social Network Embedding</a><ul>
+<li>combine Structural Proximity &amp; Attribute Proximity by <strong>early fusion</strong> - optimize them simultaneously</li>
+<li>Future direction at its time: <ul>
+<li><strong>[1]</strong> fusing data from multiple modalities (multi-modal data, image&hellip;)</li>
+<li><strong>[2]</strong> semi-supervised for task-oriented embedding</li>
+<li><strong>[3]</strong> capture evolution nature of social network (new users, new social relationship) -&gt; temporal aware neural network</li>
+<li><strong>[4]</strong> improve efficiency</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> (Dynamic/Link prediction) <a href="https://link.springer.com/chapter/10.1007/978-3-319-94268-1_70">A Supervised Learning Approach to Link Prediction in Dynamic Networks</a></p>
+<ul>
+<li>flat SVM for prob of link connecton</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> (Dynamic/Link Prediction)<a href="https://arxiv.org/pdf/1610.04351.pdf">Semi–supervised Graph Embedding Approach to Dynamic Link Prediction</a></p>
+<ul>
+<li>semi-supervised, only consider the link modification (formation and dissoloution) between each of the two cconsecutive discrete time steps.</li>
+<li>use all of the history information 1-t to predict the one at t+1</li>
+<li>semi: supervised in history information + unsupervised in the semisupervised graph embedding</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> <strong>(Dynamic)</strong> <a href="https://arxiv.org/pdf/1710.00818.pdf">Continuous-Time Relationship Prediction in Dynamic Heterogeneous Information Networks</a></p>
+</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>(Dynamic/link prediction)</strong> <a href="https://arxiv.org/pdf/1902.08329.pdf">E-LSTM-D: A Deep Learning Framework for Dynamic Network Link Prediction</a></li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> <strong>(Dynamic/link prediction)</strong> <a href="https://arxiv.org/pdf/1901.09165.pdf">GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks</a></p>
 </li>
 <li>
-<p>(x)(Time Series/Link prediction/Heterogeneous)<a href="https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html">Multivariate Time Series Link Prediction for Evolving Heterogeneous Network</a></p>
+<p>(x) <strong>(Time Series/Link prediction/Heterogeneous)</strong> <a href="https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html">Multivariate Time Series Link Prediction for Evolving Heterogeneous Network</a></p>
 </li>
 <li>
-<p>(Dynamic/Link Prediction)<a href="https://arxiv.org/pdf/1610.04351.pdf">Semi–supervised Graph Embedding Approach to Dynamic Link Prediction</a></p>
+<p>(x) <strong>(Temporal/link prediction/dynamic)</strong> <a href="https://ieeexplore.ieee.org/document/8736786">An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks</a></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> <strong>(very interesting and fresh idea of keeping fair)</strong> (Influence Max/Time)<a href="https://arxiv.org/abs/1905.06618">On the Fairness of Time-Critical Influence Maximization in Social Networks</a></p>
+<ul>
+<li>fairness, try to make the spread of information have same fraction among different social groups in social network with budget (the number of seeds) fixed </li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> <strong>(very comprehensive for the previous method in influen max)</strong>(Influen max) <a href="https://www.sciencedirect.com/science/article/abs/pii/S0096300319301602">TIFIM: A Two-stage Iterative Framework for Influence Maximization in Social Networks</a></p>
+<ul>
+<li>propose <strong>[TIFIM]</strong></li>
+<li>use two stage ierative method to ensure efficiency and accuracy for the influence maximization task</li>
+</ul>
+</li>
+<li>
+<p>(x)(Dynamic/Influen max) <a href="https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6">Influential Nodes Detection in Dynamic Social Networks</a></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> <strong>(similarity)</strong> <a href="https://www.sciencedirect.com/science/article/pii/S002002551930756X?via%3Dihub">Exploiting similarities of user friendship networks across social networks for user identification</a></p>
 </li>
 </ul>
 <p><u>Other than paper:</u></p>

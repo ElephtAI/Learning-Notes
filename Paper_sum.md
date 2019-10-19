@@ -777,29 +777,56 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ### SNA/RP paper to read
 
-* (dynamic/embedding)[Dynamic Network Embedding by Modeling Triadic Closure Process](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/16572)
+* [x] **(dynamic/embedding)**[Dynamic Network Embedding by Modeling Triadic Closure Process](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/16572)
     - preserve not only the structure information but also the **evolotion pattern** over time
     - tasks: link prediction at the next time t+1
     - dynamic mainly for the link construction and link disolution
 
-* **(important)**(dynamic/embedding)[Attributed Network Embedding for Learning in a Dynamic Environment](https://arxiv.org/pdf/1706.01860.pdf)
+* [x] **(important)**(dynamic/embedding)[Attributed Network Embedding for Learning in a Dynamic Environment](https://arxiv.org/pdf/1706.01860.pdf)
     - we present an online model to update the consensus embedding with matrix perturbation theory
-* (Influence Max/Time)[On the Fairness of Time-Critical Influence Maximization in Social Networks](https://arxiv.org/abs/1905.06618)
-* **(very new, with ref to all of the previous dynamic embedding method)**(Dynamic network) [Dynamic Network Embedding via Incremental Skip-gram with Negative Sampling](https://arxiv.org/abs/1906.03586)
+
+* [x] **(very new, with ref to all of the previous dynamic embedding method)**(Dynamic network) [Dynamic Network Embedding via Incremental Skip-gram with Negative Sampling](https://arxiv.org/abs/1906.03586)
     - the **network structur** is dynamic
         - > the edges, the edge weights and the vertices change, the sequences of vertices, the structure proximities and the noise distribution should be updated correspondingly
-* **(mentioned in the above)**(Dynamic network) [Dynamic Network Embedding: An Extended Approach for Skip-gram based Network Embedding](https://www.ijcai.org/proceedings/2018/0288.pdf)
-* (Urgent)(x)(Embedding/link prediction)[Attributed Social Network Embedding](https://ieeexplore.ieee.org/abstract/document/8326519)
+* [x] **(mentioned in the above)**(Dynamic network) [Dynamic Network Embedding: An Extended Approach for Skip-gram based Network Embedding](https://www.ijcai.org/proceedings/2018/0288.pdf)
+* [x] (important, combine attribute & structure)(Embedding/link prediction)[Attributed Social Network Embedding](https://ieeexplore.ieee.org/abstract/document/8326519)
+    -  combine Structural Proximity & Attribute Proximity by **early fusion** - optimize them simultaneously
+    - Future direction at its time: 
+        - **[1]** fusing data from multiple modalities (multi-modal data, image...)
+        - **[2]** semi-supervised for task-oriented embedding
+        - **[3]** capture evolution nature of social network (new users, new social relationship) -> temporal aware neural network
+        - **[4]** improve efficiency
+* [x] (Dynamic/Link prediction) [A Supervised Learning Approach to Link Prediction in Dynamic Networks](https://link.springer.com/chapter/10.1007/978-3-319-94268-1_70)
+    - flat SVM for prob of link connecton
+
+* [x] (Dynamic/Link Prediction)[Semi–supervised Graph Embedding Approach to Dynamic Link Prediction](https://arxiv.org/pdf/1610.04351.pdf)
+    - semi-supervised, only consider the link modification (formation and dissoloution) between each of the two cconsecutive discrete time steps.
+    - use all of the history information 1-t to predict the one at t+1
+    - semi: supervised in history information + unsupervised in the semisupervised graph embedding
+
+* [ ] **(Dynamic)** [Continuous-Time Relationship Prediction in Dynamic Heterogeneous Information Networks](https://arxiv.org/pdf/1710.00818.pdf)
+* [ ] **(Dynamic/link prediction)** [E-LSTM-D: A Deep Learning Framework for Dynamic Network Link Prediction](https://arxiv.org/pdf/1902.08329.pdf)
+* [ ] **(Dynamic/link prediction)** [GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks](https://arxiv.org/pdf/1901.09165.pdf)
+
+* (x) **(Time Series/Link prediction/Heterogeneous)** [Multivariate Time Series Link Prediction for Evolving Heterogeneous Network](https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html)
+* (x) **(Temporal/link prediction/dynamic)** [An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks](https://ieeexplore.ieee.org/document/8736786)
+
+
+
+* [x] **(very interesting and fresh idea of keeping fair)** (Influence Max/Time)[On the Fairness of Time-Critical Influence Maximization in Social Networks](https://arxiv.org/abs/1905.06618)
+    - fairness, try to make the spread of information have same fraction among different social groups in social network with budget (the number of seeds) fixed 
+
+* [x] **(very comprehensive for the previous method in influen max)**(Influen max) [TIFIM: A Two-stage Iterative Framework for Influence Maximization in Social Networks](https://www.sciencedirect.com/science/article/abs/pii/S0096300319301602)
+    - propose **[TIFIM]**
+    - use two stage ierative method to ensure efficiency and accuracy for the influence maximization task
+
 * (x)(Dynamic/Influen max) [Influential Nodes Detection in Dynamic Social Networks](https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6)
-* (x)(Dyanmic/Influen max) [TIFIM: A Two-stage Iterative Framework for Influence Maximization in Social Networks](https://www.sciencedirect.com/science/article/abs/pii/S0096300319301602)
-* (x)(Dynamic/Link prediction) [A Supervised Learning Approach to Link Prediction in Dynamic Networks](https://link.springer.com/chapter/10.1007/978-3-319-94268-1_70)
-* (x)(similarity) [Exploiting similarities of user friendship networks across social networks for user identification](https://www.sciencedirect.com/science/article/pii/S002002551930756X?via%3Dihub)
 
 
 
-* (x)(Time Series/Link prediction/Heterogeneous)[Multivariate Time Series Link Prediction for Evolving Heterogeneous Network](https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html)
+* [x] **(similarity)** [Exploiting similarities of user friendship networks across social networks for user identification](https://www.sciencedirect.com/science/article/pii/S002002551930756X?via%3Dihub)
 
-* (Dynamic/Link Prediction)[Semi–supervised Graph Embedding Approach to Dynamic Link Prediction](https://arxiv.org/pdf/1610.04351.pdf)
+
 
 
 
