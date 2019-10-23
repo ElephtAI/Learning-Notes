@@ -734,8 +734,13 @@ We evaluate our method on a variety of **link-prediction** task including social
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
         - **[i]** propose **node2vec** -> `efficient`, `scalable` algorithm for feature learning optimizes a `novel`, `network-aware`, `neighborhood preserving` objective using **SGD**
-            - *use a 2nd order <u>random walk</u> approach to generate sample network neighborhoods for nodes*
-            - 
+            - *use a 2nd order <u>random walk</u> approach to generate sample network neighborhoods for nodes*, (p,q) are use to represent the search bias
+            - **Return parameter [p]**: <u>controls the likelihood of immedately revisiting a node in the walk</u>
+            - **In-out parameter [q]**: <u>allows the search to differentiate between "inward" and "outward" nodes</u>:
+                - if `q>1` -> biase toward close node -> BFS
+                - if `q<1` -> bias towrad further nodes -> DFS
+            - There is a implicit bias due to the start point: 
+                - > **Solution**: simulating r random walks of fixed length l starting from every node
         - **[ii]** show node2vec in accordance with **principles in network science** -> [providing flexibility in discovering representations conforming to different equivalences]
         - **[iii]** extend node2vec (and other feature learning methods) based on **neighborhood preserving objectives**, from node -> pair of nodes (edge prediction tasks)
         - **[iv]** evaluate node2vec on `multi-lable classification` and `link prediction`
@@ -772,6 +777,31 @@ We evaluate our method on a variety of **link-prediction** task including social
     - <u>**Other Notes**</u>:
     - <u>**Use cases**</u>:
     - <u>**Further directions**</u>:
+
+---
+
+### Extraction from paper
+
+<u>**Social network**</u>
+
+* > **source like twitter**: social interactions, sentiment analysis, content diffusion, link prediction, and **the dynamics behind human collective behaviour** in general
+
+* > social networks, such as Facebook, Twitter and Wechat, have connected all web users in the Internet and received great attention from all over the world [1,2]. [1] H. Zhang, S. Mishra, M.T. Thai, Recent advances in information diffusion and influence maximization in complex social networks, Opportun. Mob. Soc. Netw. (2014) 1–37. [2] W. Tan, M.B. Blake, I. Saleh, S. Dustdar, Social-network-sourced big data analytics, IEEE Int. Comput. 17 (5) (2013) 62–69.
+
+* > many company will promote their products on social network like instagram and twitter. Job provider might spread opportunities through social network. 
+
+<u>**Dynamic network**</u>
+
+
+
+<u>**Link prediction**</u>
+
+<u>**network embedding**</u>
+
+
+<u>**influence maximization**</u>
+
+
 
 ---
 
