@@ -742,6 +742,8 @@ We evaluate our method on a variety of **link-prediction** task including social
             - There is a implicit bias due to the start point: 
                 - > **Solution**: simulating r random walks of fixed length l starting from every node
         - **[ii]** show node2vec in accordance with **principles in network science** -> [providing flexibility in discovering representations conforming to different equivalences]
+            - > **homophily hypothesis**: nodes that are highly interconnected and belong to simliar network clusters or communities should be embedded closely together
+            - > **structural equivalence hypothesis**: nodes have similar structural roles in networks should be embedded closely together
         - **[iii]** extend node2vec (and other feature learning methods) based on **neighborhood preserving objectives**, from node -> pair of nodes (edge prediction tasks)
         - **[iv]** evaluate node2vec on `multi-lable classification` and `link prediction`
     - <u>**Other Notes**</u>:
@@ -753,9 +755,6 @@ We evaluate our method on a variety of **link-prediction** task including social
             1. computational & statistical performance
             2. optimize for objectives that are **not robust** to the diverse pattern observed in networks *(assumptions -> relationship between underlying network structure and the prediction task)*
         - traditional search strategies: `Breadth-first sampling`, `Depth-first Sampling`
-        - prediction tasks with two similarities: 
-            - > **homophily hypothesis**: nodes that are highly interconnected and belong to simliar network clusters or communities should be embedded closely together
-            - > **structural equivalence hypothesis**: nodes have similar structural roles in networks should be embedded closely together
     - <u>**Use cases**</u>:
         1. predicting interests of users in a social network
         2. predicting functional labels of protein in protein-protein interatction network
@@ -763,6 +762,8 @@ We evaluate our method on a variety of **link-prediction** task including social
             - discover novel interactions between genes in genomics
             - identify real-world friends in social network
     - <u>**Further directions**</u>:
+        1. Explore reasons behind the success of Hadamard Operator over others (choice of binary operators for learning edge features)
+        2. Node2Vec with special strucutre such as `heterogeneous information network`, `networks with explicit domain features for nodes and edges and signed-edge netowkr`
 
 ---
 
