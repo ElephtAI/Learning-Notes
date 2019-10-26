@@ -2355,6 +2355,23 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </li>
 </ul>
 <hr />
+<p>(35) <code>JUN 2019</code> <a href="https://ieeexplore.ieee.org/document/8736786">An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks</a> {local} <em>[Min Yang; Junhao Liu; Lei Chen; Zhou Zhao; Xiaojun Chen; Ying Shen]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Temporal link prediction in dynamic networks has attracted increasing attention recently due to its valuable real-world applications. The primary challenge of temporal link prediction is to capture the spatial-temporal patterns and high nonlinearity of dynamic networks. Inspired by the success of image generation, we convert the dynamic network into a sequence of static images and formulate the temporal link prediction as a conditional image generation problem. We propose a novel deep generative framework, called NetworkGAN, to tackle the challenging temporal link prediction task efficiently, which simultaneously models the spatial and temporal features in the dynamic networks via deep learning techniques. The proposed NetworkGAN inherits the advantages of the graph convolutional network (GCN), the temporal matrix factorization (TMF), the long short-term memory network (LSTM), and the generative adversarial network (GAN). Specifically, an attentive GCN is first designed to automatically learn the spatial features of dynamic networks. Second, we propose a TMF enhanced attentive LSTM (TMF-LSTM) to capture the temporal dependencies and evolutionary patterns of dynamic networks, which predicts the network snapshot at next timestamp based on the network snapshots observed at previous timestamps. Furthermore, we employ a GAN framework to further refine the performance of temporal link prediction by using a discriminative model to guide the training of the deep generative model (i.e., TMF-LSTM) in an adversarial process. To verify the effectiveness of the proposed model, we conduct extensive experiments on five real-world datasets. Experimental results demonstrate the significant advantages of NetworkGAN compared to other strong competitors.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
 <p>(28) <code>201</code> <a href=""></a> <em>[]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
@@ -2371,6 +2388,14 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ul>
 <hr />
 <h3 id="extraction-from-paper">Extraction from paper<a class="headerlink" href="#extraction-from-paper" title="Permanent link"></a></h3>
+<p><u><strong>General Network</strong></u></p>
+<ul>
+<li>
+<blockquote>
+<p>Network can effectively characterize many complex systems, where each node indicates an entity and each edge represents an iteraction between a pair of vertices <em>[An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks]</em></p>
+</blockquote>
+</li>
+</ul>
 <p><u><strong>Social network</strong></u></p>
 <ul>
 <li>
@@ -2386,6 +2411,11 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <li>
 <blockquote>
 <p>many company will promote their products on social network like instagram and twitter. Job provider might spread opportunities through social network. </p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>In social networks, the links are usually varying dynamically according to the behaviors of individual&rsquo;s socail patterns <em>ref[D. Jin, X. Wang, R. He, D. He, J. Dang, and W. Zhang, “Robust detec- tion of link communities in large social networks by exploiting link semantics,” in Proc. 32nd AAAI Conf. Artif. Intell., 2018, pp. 314–321.]</em></p>
 </blockquote>
 </li>
 </ul>
@@ -2460,7 +2490,14 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <li>
 <p>(x) <strong>(Time Series/Link prediction/Heterogeneous)</strong> <a href="https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html">Multivariate Time Series Link Prediction for Evolving Heterogeneous Network</a></p>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> <strong>(Temporal/link prediction/dynamic)</strong> <a href="https://ieeexplore.ieee.org/document/8736786">An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks</a> {local}</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> **(Temporal/link prediction/dynamic)(very good, with GCN, LSTM, GAN, have 4 datasets) <a href="https://ieeexplore.ieee.org/document/8736786">An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks</a> {local}<ul>
+<li>inherits <code>graph convolusional NN</code>, <code>temporal matrix factorization</code>(<strong>TMF</strong>), <code>LSTM</code> and <code>GAN</code></li>
+<li>propose TMF enhanced attentive LSTM (TMF-LSTM)</li>
+<li>self-attention GCN</li>
+<li><strong>TMF</strong> for the global latent features and evolving pattern of the dynamic network; <strong>LSTM</strong> to predict the topology of the next network respecting local topology and dynamic in the short term</li>
+<li>use <strong>GAN</strong> to further refine the performance of generative LSTM network</li>
+</ul>
+</li>
 </ul>
 <p><strong><u>Influencial Maximization</u></strong></p>
 <ul class="task-list">
@@ -2478,9 +2515,28 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ul>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled/> (Dynamic/Influen max) <a href="https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6">Influential Nodes Detection in Dynamic Social Networks</a> {local}</p>
+<p><input type="checkbox" disabled checked/> (Importance to investiage the node change in influen max problem)(Dynamic/Influen max) <a href="https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6">Influential Nodes Detection in Dynamic Social Networks</a> {local}</p>
 <ul>
-<li>influential node detection in edge-changing network</li>
+<li>influential node detection in edge-changing network<ol>
+<li>Phase 1: Community Detection <ul>
+<li>
+<blockquote>
+<p>use <strong>Combo</strong>:<em>Sobolevsky, S., Ratti, C., Campari, R.: General optimization technique for high- quality community detection in complex networks. Phys. Rev. 90, 1–19 (2014)</em></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Phase 2: Influential Nodes Detection （use diffusion model）</li>
+</ol>
+</li>
+<li><u><strong>Future</strong></u>:<ul>
+<li>
+<blockquote>
+<p>predict the change of influential nodes where both nodes and edges evolve in dynamic social networks</p>
+</blockquote>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
