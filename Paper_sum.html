@@ -2286,9 +2286,37 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <ul>
 <li><strong>Key notes</strong>: <ul>
 <li><u><strong>Main contributions</strong></u>: <ul>
-<li><strong>[i]</strong> propose <strong>node2vec</strong> -&gt; <code>efficient</code>, <code>scalable</code> algorithm for feature learning optimizes a <code>novel</code>, <code>network-aware</code>, <code>neighborhood preserving</code> objective using <strong>SGD</strong><h2 id="-use-a-2nd-order-random-walk-approach-to-generate-sample-network-neighborhoods-for-nodes">- <em>use a 2nd order <u>random walk</u> approach to generate sample network neighborhoods for nodes</em><a class="headerlink" href="#-use-a-2nd-order-random-walk-approach-to-generate-sample-network-neighborhoods-for-nodes" title="Permanent link"></a></h2>
+<li><strong>[i]</strong> propose <strong>node2vec</strong> -&gt; <code>efficient</code>, <code>scalable</code> algorithm for feature learning optimizes a <code>novel</code>, <code>network-aware</code>, <code>neighborhood preserving</code> objective using <strong>SGD</strong><ul>
+<li><em>use a 2nd order <u>random walk</u> approach to generate sample network neighborhoods for nodes</em>, (p,q) are use to represent the search bias</li>
+<li><strong>Return parameter [p]</strong>: <u>controls the likelihood of immedately revisiting a node in the walk</u></li>
+<li><strong>In-out parameter [q]</strong>: <u>allows the search to differentiate between &ldquo;inward&rdquo; and &ldquo;outward&rdquo; nodes</u>:<ul>
+<li>if <code>q&gt;1</code> -&gt; biase toward close node -&gt; BFS</li>
+<li>if <code>q&lt;1</code> -&gt; bias towrad further nodes -&gt; DFS</li>
+</ul>
 </li>
-<li><strong>[ii]</strong> show node2vec in accordance with <strong>principles in network science</strong> -&gt; [providing flexibility in discovering representations conforming to different equivalences]</li>
+<li>There is a implicit bias due to the start point: <ul>
+<li>
+<blockquote>
+<p><strong>Solution</strong>: simulating r random walks of fixed length l starting from every node</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>[ii]</strong> show node2vec in accordance with <strong>principles in network science</strong> -&gt; [providing flexibility in discovering representations conforming to different equivalences]<ul>
+<li>
+<blockquote>
+<p><strong>homophily hypothesis</strong>: nodes that are highly interconnected and belong to simliar network clusters or communities should be embedded closely together</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><strong>structural equivalence hypothesis</strong>: nodes have similar structural roles in networks should be embedded closely together</p>
+</blockquote>
+</li>
+</ul>
+</li>
 <li><strong>[iii]</strong> extend node2vec (and other feature learning methods) based on <strong>neighborhood preserving objectives</strong>, from node -&gt; pair of nodes (edge prediction tasks)</li>
 <li><strong>[iv]</strong> evaluate node2vec on <code>multi-lable classification</code> and <code>link prediction</code></li>
 </ul>
@@ -2306,19 +2334,6 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ol>
 </li>
 <li>traditional search strategies: <code>Breadth-first sampling</code>, <code>Depth-first Sampling</code></li>
-<li>prediction tasks with two similarities: <ul>
-<li>
-<blockquote>
-<p><strong>homophily hypothesis</strong>: nodes that are highly interconnected and belong to simliar network clusters or communities should be embedded closely together</p>
-</blockquote>
-</li>
-<li>
-<blockquote>
-<p><strong>structural equivalence hypothesis</strong>: nodes have similar structural roles in networks should be embedded closely together</p>
-</blockquote>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 <li><u><strong>Use cases</strong></u>:<ol>
@@ -2331,7 +2346,11 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </li>
 </ol>
 </li>
-<li><u><strong>Further directions</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:<ol>
+<li>Explore reasons behind the success of Hadamard Operator over others (choice of binary operators for learning edge features)</li>
+<li>Node2Vec with special strucutre such as <code>heterogeneous information network</code>, <code>networks with explicit domain features for nodes and edges and signed-edge netowkr</code></li>
+</ol>
+</li>
 </ul>
 </li>
 </ul>
@@ -2361,8 +2380,12 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </li>
 <li>
 <blockquote>
-<p>social networks, such as Facebook, Twitter and Wechat, have connected all web users in the Internet and received great attention from all over the world [1,2].
-[1] H. Zhang, S. Mishra, M.T. Thai, Recent advances in information diffusion and influence maximization in complex social networks, Opportun. Mob. Soc. Netw. (2014) 1–37. [2] W. Tan, M.B. Blake, I. Saleh, S. Dustdar, Social-network-sourced big data analytics, IEEE Int. Comput. 17 (5) (2013) 62–69.</p>
+<p>social networks, such as Facebook, Twitter and Wechat, have connected all web users in the Internet and received great attention from all over the world [1,2]. [1] H. Zhang, S. Mishra, M.T. Thai, Recent advances in information diffusion and influence maximization in complex social networks, Opportun. Mob. Soc. Netw. (2014) 1–37. [2] W. Tan, M.B. Blake, I. Saleh, S. Dustdar, Social-network-sourced big data analytics, IEEE Int. Comput. 17 (5) (2013) 62–69.</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>many company will promote their products on social network like instagram and twitter. Job provider might spread opportunities through social network. </p>
 </blockquote>
 </li>
 </ul>
@@ -2372,6 +2395,7 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <p><u><strong>influence maximization</strong></u></p>
 <hr />
 <h3 id="snarp-paper-to-read">SNA/RP paper to read<a class="headerlink" href="#snarp-paper-to-read" title="Permanent link"></a></h3>
+<p><strong><u>Dynamic, embedding Link prediction</u></strong></p>
 <ul class="task-list">
 <li class="task-list-item">
 <p><input type="checkbox" disabled checked/> <strong>(dynamic/embedding)</strong><a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/16572">Dynamic Network Embedding by Modeling Triadic Closure Process</a></p>
@@ -2436,9 +2460,10 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <li>
 <p>(x) <strong>(Time Series/Link prediction/Heterogeneous)</strong> <a href="https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html">Multivariate Time Series Link Prediction for Evolving Heterogeneous Network</a></p>
 </li>
-<li>
-<p>(x) <strong>(Temporal/link prediction/dynamic)</strong> <a href="https://ieeexplore.ieee.org/document/8736786">An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks</a></p>
-</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>(Temporal/link prediction/dynamic)</strong> <a href="https://ieeexplore.ieee.org/document/8736786">An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks</a> {local}</li>
+</ul>
+<p><strong><u>Influencial Maximization</u></strong></p>
+<ul class="task-list">
 <li class="task-list-item">
 <p><input type="checkbox" disabled checked/> <strong>(very interesting and fresh idea of keeping fair)</strong> (Influence Max/Time)<a href="https://arxiv.org/abs/1905.06618">On the Fairness of Time-Critical Influence Maximization in Social Networks</a></p>
 <ul>
@@ -2452,14 +2477,18 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <li>use two stage ierative method to ensure efficiency and accuracy for the influence maximization task</li>
 </ul>
 </li>
-<li>
-<p>(x)(Dynamic/Influen max) <a href="https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6">Influential Nodes Detection in Dynamic Social Networks</a></p>
-</li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled checked/> <strong>(similarity)</strong> <a href="https://www.sciencedirect.com/science/article/pii/S002002551930756X?via%3Dihub">Exploiting similarities of user friendship networks across social networks for user identification</a></p>
+<p><input type="checkbox" disabled/> (Dynamic/Influen max) <a href="https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6">Influential Nodes Detection in Dynamic Social Networks</a> {local}</p>
+<ul>
+<li>influential node detection in edge-changing network</li>
+</ul>
 </li>
 </ul>
-<p><u>Other than paper:</u></p>
+<p><strong><u>Other paper</u></strong></p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled checked/> <strong>(similarity)</strong> <a href="https://www.sciencedirect.com/science/article/pii/S002002551930756X?via%3Dihub">Exploiting similarities of user friendship networks across social networks for user identification</a></li>
+</ul>
+<p><strong><u>Other than paper:</u></strong></p>
 <ul>
 <li><a href="http://www.cs.tau.ac.il/~amir1/COURSE2012-2013/perturbationTheory.pdf">Matrix Perturbation Theory</a></li>
 </ul>

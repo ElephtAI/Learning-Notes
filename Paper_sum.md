@@ -808,6 +808,8 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ### SNA/RP paper to read
 
+**<u>Dynamic, embedding Link prediction</u>**
+
 * [x] **(dynamic/embedding)**[Dynamic Network Embedding by Modeling Triadic Closure Process](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/16572)
     - preserve not only the structure information but also the **evolotion pattern** over time
     - tasks: link prediction at the next time t+1
@@ -840,9 +842,9 @@ We evaluate our method on a variety of **link-prediction** task including social
 * [ ] **(Dynamic/link prediction)** [GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks](https://arxiv.org/pdf/1901.09165.pdf)
 
 * (x) **(Time Series/Link prediction/Heterogeneous)** [Multivariate Time Series Link Prediction for Evolving Heterogeneous Network](https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html)
-* (x) **(Temporal/link prediction/dynamic)** [An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks](https://ieeexplore.ieee.org/document/8736786)
+* [ ] **(Temporal/link prediction/dynamic)** [An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks](https://ieeexplore.ieee.org/document/8736786) {local}
 
-
+**<u>Influencial Maximization</u>**
 
 * [x] **(very interesting and fresh idea of keeping fair)** (Influence Max/Time)[On the Fairness of Time-Critical Influence Maximization in Social Networks](https://arxiv.org/abs/1905.06618)
     - fairness, try to make the spread of information have same fraction among different social groups iffn social network with budget (the number of seeds) fixed 
@@ -851,17 +853,19 @@ We evaluate our method on a variety of **link-prediction** task including social
     - propose **[TIFIM]**
     - use two stage ierative method to ensure efficiency and accuracy for the influence maximization task
 
-* (x)(Dynamic/Influen max) [Influential Nodes Detection in Dynamic Social Networks](https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6)
+* [x] (Importance to investiage the node change in influen max problem)(Dynamic/Influen max) [Influential Nodes Detection in Dynamic Social Networks](https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6) {local}
+    - influential node detection in edge-changing network
+        1. Phase 1: Community Detection 
+            - > use **Combo**:*Sobolevsky, S., Ratti, C., Campari, R.: General optimization technique for high- quality community detection in complex networks. Phys. Rev. 90, 1–19 (2014)*
+        2. Phase 2: Influential Nodes Detection （use diffusion model）
+    - <u>**Future**</u>:
+        - > predict the change of influential nodes where both nodes and edges evolve in dynamic social networks
 
-
+**<u>Other paper</u>**
 
 * [x] **(similarity)** [Exploiting similarities of user friendship networks across social networks for user identification](https://www.sciencedirect.com/science/article/pii/S002002551930756X?via%3Dihub)
 
-
-
-
-
-<u>Other than paper:</u>
+**<u>Other than paper:</u>**
 
 * [Matrix Perturbation Theory](http://www.cs.tau.ac.il/~amir1/COURSE2012-2013/perturbationTheory.pdf)
 
