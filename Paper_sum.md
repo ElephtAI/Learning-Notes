@@ -767,11 +767,39 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ---
 
-(35) `JUN 2019` [An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks](https://ieeexplore.ieee.org/document/8736786) {local} *[Min Yang; Junhao Liu; Lei Chen; Zhou Zhao; Xiaojun Chen; Ying Shen]*
+(35) `Jun 2019` [An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks](https://ieeexplore.ieee.org/document/8736786) {local} *[Min Yang; Junhao Liu; Lei Chen; Zhou Zhao; Xiaojun Chen; Ying Shen]*
 
 * **Abstract**: 
 
 > Temporal link prediction in dynamic networks has attracted increasing attention recently due to its valuable real-world applications. The primary challenge of temporal link prediction is to capture the spatial-temporal patterns and high nonlinearity of dynamic networks. Inspired by the success of image generation, we convert the dynamic network into a sequence of static images and formulate the temporal link prediction as a conditional image generation problem. We propose a novel deep generative framework, called NetworkGAN, to tackle the challenging temporal link prediction task efficiently, which simultaneously models the spatial and temporal features in the dynamic networks via deep learning techniques. The proposed NetworkGAN inherits the advantages of the graph convolutional network (GCN), the temporal matrix factorization (TMF), the long short-term memory network (LSTM), and the generative adversarial network (GAN). Specifically, an attentive GCN is first designed to automatically learn the spatial features of dynamic networks. Second, we propose a TMF enhanced attentive LSTM (TMF-LSTM) to capture the temporal dependencies and evolutionary patterns of dynamic networks, which predicts the network snapshot at next timestamp based on the network snapshots observed at previous timestamps. Furthermore, we employ a GAN framework to further refine the performance of temporal link prediction by using a discriminative model to guide the training of the deep generative model (i.e., TMF-LSTM) in an adversarial process. To verify the effectiveness of the proposed model, we conduct extensive experiments on five real-world datasets. Experimental results demonstrate the significant advantages of NetworkGAN compared to other strong competitors.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(36) `Jan 2019` [GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks](https://arxiv.org/abs/1901.09165) *[Kai Lei, Meng Qin, Bo Bai, Gong Zhang, Min Yang]*
+
+* **Abstract**: 
+
+> In this paper, we generally formulate the dynamics prediction problem of various network systems (e.g., the prediction of mobility, traffic and topology) as the temporal link prediction task. Different from conventional techniques of temporal link prediction that ignore the potential non-linear characteristics and the informative link weights in the dynamic network, we introduce a novel non-linear model GCN-GAN to tackle the challenging temporal link prediction task of weighted dynamic networks. The proposed model leverages the benefits of the graph convolutional network (GCN), long short-term memory (LSTM) as well as the generative adversarial network (GAN). Thus, the dynamics, topology structure and evolutionary patterns of weighted dynamic networks can be fully exploited to improve the temporal link prediction performance. Concretely, we first utilize GCN to explore the local topological characteristics of each single snapshot and then employ LSTM to characterize the evolving features of the dynamic networks. Moreover, GAN is used to enhance the ability of the model to generate the next weighted network snapshot, which can effectively tackle the sparsity and the wide-value-range problem of edge weights in real-life dynamic networks. To verify the model's effectiveness, we conduct extensive experiments on four datasets of different network systems and application scenarios. The experimental results demonstrate that our model achieves impressive results compared to the state-of-the-art competitors.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(28) `201` []() *[]*
+
+* **Abstract**: 
+
+> 
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
@@ -814,6 +842,7 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 <u>**Dynamic network**</u>
 
+* > the dynamics of communication links in ad hoc networks makes the design of routing protocol a challenging problem
 
 
 <u>**Link prediction**</u>
@@ -858,9 +887,28 @@ We evaluate our method on a variety of **link-prediction** task including social
     - use all of the history information 1-t to predict the one at t+1
     - semi: supervised in history information + unsupervised in the semisupervised graph embedding
 
-* [ ] **(Dynamic)** [Continuous-Time Relationship Prediction in Dynamic Heterogeneous Information Networks](https://arxiv.org/pdf/1710.00818.pdf)
-* [ ] **(Dynamic/link prediction)** [E-LSTM-D: A Deep Learning Framework for Dynamic Network Link Prediction](https://arxiv.org/pdf/1902.08329.pdf)
-* [ ] **(Dynamic/link prediction)** [GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks](https://arxiv.org/pdf/1901.09165.pdf)
+* [x] **(May 2018)(Dynamic/Heterogeneous)(fresh for forecasting the relation building time, dynamic in structure)** [Continuous-Time Relationship Prediction in Dynamic Heterogeneous Information Networks](https://arxiv.org/pdf/1710.00818.pdf)
+    - solve the problem of continous-time relationship prediction in **dynamic** and **heterogeneous** information networks
+    - propose `continuous-time link prediction problem`, <u>predict when a link will emerge or appear between two nodes in the network</u>
+    - all nodes and links are associated with a birth and death time
+    - combine LSTM and auto-encoder
+    - Further direction:
+        1. design unified architecture to combine feature extraction step with the learing algorithm in an integrated Deep Learning framework
+        2. investigate node embedding and approximation techniques
+
+* [x] **(Feb 2019)(Dynamic/link prediction)(dynamic in link formation and dissolusion)** [E-LSTM-D: A Deep Learning Framework for Dynamic Network Link Prediction](https://arxiv.org/pdf/1902.08329.pdf)
+    - Encoder-LSTM-Decoder to predict dynamic links **end2end**
+    - embedding still lack the ability of analyzing the evolution of network
+    - define new metrix **[Error Rate]** to measure the performance of dynamic network link prediction
+        - > Ratio of the number of mispredicted links to the total number of truly existing links
+    - experienment on five real-world human contact dynamic network
+
+* [x] **(Jan 2019)(Dynamic/link prediction)(Good to touch predict topology/traffic prediction)** [GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks](https://arxiv.org/pdf/1901.09165.pdf)
+    - generally formulate the dynamic prediction problem of various network system (the prediction of `mobility`, `traffic`, `topology`)
+    - GCN-LSTM-GAN
+    - temporal link prediction task tries to construct the graph topology in the next time slice
+    - Most of the link prediction only for unweighted network
+    - first to use GAN to tackle the temporal link prediction of **weighted** dynamic network
 
 * (x) **(Time Series/Link prediction/Heterogeneous)** [Multivariate Time Series Link Prediction for Evolving Heterogeneous Network](https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html)
 * [x] **(Temporal/link prediction/dynamic)(very good, with GCN, LSTM, GAN, have 4 datasets) [An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks](https://ieeexplore.ieee.org/document/8736786) {local}
@@ -869,6 +917,9 @@ We evaluate our method on a variety of **link-prediction** task including social
     - self-attention GCN
     - **TMF** for the global latent features and evolving pattern of the dynamic network; **LSTM** to predict the topology of the next network respecting local topology and dynamic in the short term
     - use **GAN** to further refine the performance of generative LSTM network
+    - **restricted Boltzmann machine** and **graph embedding** -> only applied to unweighted network
+    - A. Mozo, B. Ordozgoiti, and S. Gomez, “Forecasting short-term data center network traffic load with convolutional neural networks,” Plos One, vol. 13, no. 2, p. e0191939, 2018.
+    - L. Nie, X. Wang, L. Wan, S. Yu, H. Song, and D. Jiang, “Network traffic prediction based on deep belief network and spatiotemporal compressive sensing in wireless mesh backbone networks,” Wireless Communications & Mobile Computing, vol. 2018, pp. 1–10, 2018.
 
 
 **<u>Influencial Maximization</u>**
@@ -887,6 +938,8 @@ We evaluate our method on a variety of **link-prediction** task including social
         2. Phase 2: Influential Nodes Detection （use diffusion model）
     - <u>**Future**</u>:
         - > predict the change of influential nodes where both nodes and edges evolve in dynamic social networks
+
+* (x) (IM)[Heuristics-based influence maximization for opinion formation in social networks](https://www.sciencedirect.com/science/article/abs/pii/S1568494618300759)
 
 **<u>Other paper</u>**
 

@@ -2355,13 +2355,45 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </li>
 </ul>
 <hr />
-<p>(35) <code>JUN 2019</code> <a href="https://ieeexplore.ieee.org/document/8736786">An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks</a> {local} <em>[Min Yang; Junhao Liu; Lei Chen; Zhou Zhao; Xiaojun Chen; Ying Shen]</em></p>
+<p>(35) <code>Jun 2019</code> <a href="https://ieeexplore.ieee.org/document/8736786">An Advanced Deep Generative Framework for Temporal Link Prediction in Dynamic Networks</a> {local} <em>[Min Yang; Junhao Liu; Lei Chen; Zhou Zhao; Xiaojun Chen; Ying Shen]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
 <p>Temporal link prediction in dynamic networks has attracted increasing attention recently due to its valuable real-world applications. The primary challenge of temporal link prediction is to capture the spatial-temporal patterns and high nonlinearity of dynamic networks. Inspired by the success of image generation, we convert the dynamic network into a sequence of static images and formulate the temporal link prediction as a conditional image generation problem. We propose a novel deep generative framework, called NetworkGAN, to tackle the challenging temporal link prediction task efficiently, which simultaneously models the spatial and temporal features in the dynamic networks via deep learning techniques. The proposed NetworkGAN inherits the advantages of the graph convolutional network (GCN), the temporal matrix factorization (TMF), the long short-term memory network (LSTM), and the generative adversarial network (GAN). Specifically, an attentive GCN is first designed to automatically learn the spatial features of dynamic networks. Second, we propose a TMF enhanced attentive LSTM (TMF-LSTM) to capture the temporal dependencies and evolutionary patterns of dynamic networks, which predicts the network snapshot at next timestamp based on the network snapshots observed at previous timestamps. Furthermore, we employ a GAN framework to further refine the performance of temporal link prediction by using a discriminative model to guide the training of the deep generative model (i.e., TMF-LSTM) in an adversarial process. To verify the effectiveness of the proposed model, we conduct extensive experiments on five real-world datasets. Experimental results demonstrate the significant advantages of NetworkGAN compared to other strong competitors.</p>
 </blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(36) <code>Jan 2019</code> <a href="https://arxiv.org/abs/1901.09165">GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks</a> <em>[Kai Lei, Meng Qin, Bo Bai, Gong Zhang, Min Yang]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>In this paper, we generally formulate the dynamics prediction problem of various network systems (e.g., the prediction of mobility, traffic and topology) as the temporal link prediction task. Different from conventional techniques of temporal link prediction that ignore the potential non-linear characteristics and the informative link weights in the dynamic network, we introduce a novel non-linear model GCN-GAN to tackle the challenging temporal link prediction task of weighted dynamic networks. The proposed model leverages the benefits of the graph convolutional network (GCN), long short-term memory (LSTM) as well as the generative adversarial network (GAN). Thus, the dynamics, topology structure and evolutionary patterns of weighted dynamic networks can be fully exploited to improve the temporal link prediction performance. Concretely, we first utilize GCN to explore the local topological characteristics of each single snapshot and then employ LSTM to characterize the evolving features of the dynamic networks. Moreover, GAN is used to enhance the ability of the model to generate the next weighted network snapshot, which can effectively tackle the sparsity and the wide-value-range problem of edge weights in real-life dynamic networks. To verify the model&rsquo;s effectiveness, we conduct extensive experiments on four datasets of different network systems and application scenarios. The experimental results demonstrate that our model achieves impressive results compared to the state-of-the-art competitors.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(28) <code>201</code> <a href=""></a> <em>[]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote></blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
 <li><u><strong>Main contributions</strong></u>: </li>
@@ -2420,6 +2452,13 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </li>
 </ul>
 <p><u><strong>Dynamic network</strong></u></p>
+<ul>
+<li>
+<blockquote>
+<p>the dynamics of communication links in ad hoc networks makes the design of routing protocol a challenging problem</p>
+</blockquote>
+</li>
+</ul>
 <p><u><strong>Link prediction</strong></u></p>
 <p><u><strong>network embedding</strong></u></p>
 <p><u><strong>influence maximization</strong></u></p>
@@ -2481,11 +2520,44 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ul>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled/> <strong>(Dynamic)</strong> <a href="https://arxiv.org/pdf/1710.00818.pdf">Continuous-Time Relationship Prediction in Dynamic Heterogeneous Information Networks</a></p>
+<p><input type="checkbox" disabled checked/> <strong>(May 2018)(Dynamic/Heterogeneous)(fresh for forecasting the relation building time, dynamic in structure)</strong> <a href="https://arxiv.org/pdf/1710.00818.pdf">Continuous-Time Relationship Prediction in Dynamic Heterogeneous Information Networks</a></p>
+<ul>
+<li>solve the problem of continous-time relationship prediction in <strong>dynamic</strong> and <strong>heterogeneous</strong> information networks</li>
+<li>propose <code>continuous-time link prediction problem</code>, <u>predict when a link will emerge or appear between two nodes in the network</u></li>
+<li>all nodes and links are associated with a birth and death time</li>
+<li>combine LSTM and auto-encoder</li>
+<li>Further direction:<ol>
+<li>design unified architecture to combine feature extraction step with the learing algorithm in an integrated Deep Learning framework</li>
+<li>investigate node embedding and approximation techniques</li>
+</ol>
 </li>
-<li class="task-list-item"><input type="checkbox" disabled/> <strong>(Dynamic/link prediction)</strong> <a href="https://arxiv.org/pdf/1902.08329.pdf">E-LSTM-D: A Deep Learning Framework for Dynamic Network Link Prediction</a></li>
+</ul>
+</li>
 <li class="task-list-item">
-<p><input type="checkbox" disabled/> <strong>(Dynamic/link prediction)</strong> <a href="https://arxiv.org/pdf/1901.09165.pdf">GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks</a></p>
+<p><input type="checkbox" disabled checked/> <strong>(Feb 2019)(Dynamic/link prediction)(dynamic in link formation and dissolusion)</strong> <a href="https://arxiv.org/pdf/1902.08329.pdf">E-LSTM-D: A Deep Learning Framework for Dynamic Network Link Prediction</a></p>
+<ul>
+<li>Encoder-LSTM-Decoder to predict dynamic links <strong>end2end</strong></li>
+<li>embedding still lack the ability of analyzing the evolution of network</li>
+<li>define new metrix <strong>[Error Rate]</strong> to measure the performance of dynamic network link prediction<ul>
+<li>
+<blockquote>
+<p>Ratio of the number of mispredicted links to the total number of truly existing links</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>experienment on five real-world human contact dynamic network</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled checked/> <strong>(Jan 2019)(Dynamic/link prediction)(Good to touch predict topology/traffic prediction)</strong> <a href="https://arxiv.org/pdf/1901.09165.pdf">GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks</a></p>
+<ul>
+<li>generally formulate the dynamic prediction problem of various network system (the prediction of <code>mobility</code>, <code>traffic</code>, <code>topology</code>)</li>
+<li>GCN-LSTM-GAN</li>
+<li>temporal link prediction task tries to construct the graph topology in the next time slice</li>
+<li>Most of the link prediction only for unweighted network</li>
+<li>first to use GAN to tackle the temporal link prediction of <strong>weighted</strong> dynamic network</li>
+</ul>
 </li>
 <li>
 <p>(x) <strong>(Time Series/Link prediction/Heterogeneous)</strong> <a href="https://ideas.repec.org/a/wsi/ijitdm/v18y2019i01ns0219622018500530.html">Multivariate Time Series Link Prediction for Evolving Heterogeneous Network</a></p>
@@ -2496,6 +2568,9 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <li>self-attention GCN</li>
 <li><strong>TMF</strong> for the global latent features and evolving pattern of the dynamic network; <strong>LSTM</strong> to predict the topology of the next network respecting local topology and dynamic in the short term</li>
 <li>use <strong>GAN</strong> to further refine the performance of generative LSTM network</li>
+<li><strong>restricted Boltzmann machine</strong> and <strong>graph embedding</strong> -&gt; only applied to unweighted network</li>
+<li>A. Mozo, B. Ordozgoiti, and S. Gomez, “Forecasting short-term data center network traffic load with convolutional neural networks,” Plos One, vol. 13, no. 2, p. e0191939, 2018.</li>
+<li>L. Nie, X. Wang, L. Wan, S. Yu, H. Song, and D. Jiang, “Network traffic prediction based on deep belief network and spatiotemporal compressive sensing in wireless mesh backbone networks,” Wireless Communications &amp; Mobile Computing, vol. 2018, pp. 1–10, 2018.</li>
 </ul>
 </li>
 </ul>
@@ -2538,6 +2613,9 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ul>
 </li>
 </ul>
+</li>
+<li>
+<p>(x) (IM)<a href="https://www.sciencedirect.com/science/article/abs/pii/S1568494618300759">Heuristics-based influence maximization for opinion formation in social networks</a></p>
 </li>
 </ul>
 <p><strong><u>Other paper</u></strong></p>
