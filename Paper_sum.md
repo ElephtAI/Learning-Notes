@@ -46,7 +46,25 @@
 
 * **Abstract**: 
 
-> Graph-structured data appears frequently in domains including chemistry, natural language semantics, social networks, and knowledge bases. In this work, we study **feature learning** techniques for graph-structured inputs. Our starting point is previous work on Graph Neural Networks (Scarselli et al., 2009), which we modify to use gated recurrent units and modern optimization techniques and then extend to output sequences. The result is a flexible and broadly useful class of neural network models that has favorable inductive biases relative to purely sequence-based models (e.g., LSTMs) when the problem is graph-structured. We demonstrate the capabilities on some simple AI (bAbI) and graph algorithm learning tasks. We then show it achieves state-of-the-art performance on a problem from program verification, in which subgraphs need to be matched to abstract data structures.
+> Graph-structured data appears frequently in domains including chemistry, natural language semantics, social networks, and knowledge bases. In this work, we study **feature learning** techniques for graph-structured inputs. Our starting point is previous work on Graph Neural Networks (Scarselli et al., 2009), which we modify to use **gated recurrent units** and **modern optimization techniques** and then extend to output sequences. The result is a flexible and broadly useful class of neural network models that has favorable inductive biases relative to purely sequence-based models (e.g., LSTMs) when the problem is graph-structured. We demonstrate the capabilities on some simple AI (bAbI) and graph algorithm learning tasks. We then show it achieves state-of-the-art performance on a problem from program verification, in which subgraphs need to be matched to abstract data structures.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+        - **[1]** extension of **Graph Neural Networks** that ouptuts **sequences**
+            - as previous only produce single output => cannot be used for problems require outputting sequences <u>e.g. pahts on a graph, enumerations of graph nodes with properties</u>
+            - incorporate node labels as additional inputs => node annotations (*easy for the propagation model to learn to propagate the node annotation for s to all nodes reachable*)
+        - **[2]** highlighting that GNN are a broadly useful calss of neural network
+    - <u>**Other Notes**</u>:
+        - Two settings for feature learning on graph: 
+            1. learning a representation of the **input graph**
+            2. learning representations of the **internal state** during the process of **producing a sequence of outputs**
+        - GNN map graphs -> outputs in two steps:
+            - **[i]** propagation step computes node representation for each node (*iterative procedure*)
+            - **[ii]** output model map from node representations and corresponding lables to output
+
+
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
 
 ---
 
@@ -964,8 +982,8 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 **<u>Mihai Cucuringu (ox)</u>** 
 
-* [SPONGE: A generalized eigenproblem for clustering signed networks](http://www.stats.ox.ac.uk/~cucuring/signedClustering.pdf)
-* [Anomaly Detection in Networks with Application to Financial Transaction Networks](http://www.stats.ox.ac.uk/~cucuring/anomaly_detection_networks.pdf)
+* [ ] [SPONGE: A generalized eigenproblem for clustering signed networks](http://www.stats.ox.ac.uk/~cucuring/signedClustering.pdf)
+* [ ] [Anomaly Detection in Networks with Application to Financial Transaction Networks](http://www.stats.ox.ac.uk/~cucuring/anomaly_detection_networks.pdf)
 
 **<u>François Caron (ox)</u>** 
 
