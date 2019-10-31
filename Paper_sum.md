@@ -61,10 +61,9 @@
         - GNN map graphs -> outputs in two steps:
             - **[i]** propagation step computes node representation for each node (*iterative procedure*)
             - **[ii]** output model map from node representations and corresponding lables to output
-
-
     - <u>**Use cases**</u>:
     - <u>**Further directions**</u>:
+        - develop end2end methods that take the question as an initial input and then dynamically derive the facts needed to answer the question
 
 ---
 

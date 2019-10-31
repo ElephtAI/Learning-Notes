@@ -1144,31 +1144,34 @@ body .markdown-body
 <p>Graph-structured data appears frequently in domains including chemistry, natural language semantics, social networks, and knowledge bases. In this work, we study <strong>feature learning</strong> techniques for graph-structured inputs. Our starting point is previous work on Graph Neural Networks (Scarselli et al., 2009), which we modify to use <strong>gated recurrent units</strong> and <strong>modern optimization techniques</strong> and then extend to output sequences. The result is a flexible and broadly useful class of neural network models that has favorable inductive biases relative to purely sequence-based models (e.g., LSTMs) when the problem is graph-structured. We demonstrate the capabilities on some simple AI (bAbI) and graph algorithm learning tasks. We then show it achieves state-of-the-art performance on a problem from program verification, in which subgraphs need to be matched to abstract data structures.</p>
 </blockquote>
 <ul>
-<li>
-<p><strong>Key notes</strong>: </p>
-<ul>
+<li><strong>Key notes</strong>: <ul>
 <li><u><strong>Main contributions</strong></u>: <ul>
 <li><strong>[1]</strong> extension of <strong>Graph Neural Networks</strong> that ouptuts <strong>sequences</strong><ul>
 <li>as previous only produce single output =&gt; cannot be used for problems require outputting sequences <u>e.g. pahts on a graph, enumerations of graph nodes with properties</u></li>
+<li>incorporate node labels as additional inputs =&gt; node annotations (<em>easy for the propagation model to learn to propagate the node annotation for s to all nodes reachable</em>)</li>
 </ul>
 </li>
 <li><strong>[2]</strong> highlighting that GNN are a broadly useful calss of neural network</li>
 </ul>
 </li>
-<li>
-<p><u><strong>Other Notes</strong></u>:</p>
-<ul>
+<li><u><strong>Other Notes</strong></u>:<ul>
 <li>Two settings for feature learning on graph: <ol>
 <li>learning a representation of the <strong>input graph</strong></li>
 <li>learning representations of the <strong>internal state</strong> during the process of <strong>producing a sequence of outputs</strong></li>
 </ol>
 </li>
+<li>GNN map graphs -&gt; outputs in two steps:<ul>
+<li><strong>[i]</strong> propagation step computes node representation for each node (<em>iterative procedure</em>)</li>
+<li><strong>[ii]</strong> output model map from node representations and corresponding lables to output</li>
 </ul>
 </li>
-<li>
-<p><u><strong>Use cases</strong></u>:</p>
+</ul>
 </li>
-<li><u><strong>Further directions</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li>develop end2end methods that take the question as an initial input and then dynamically derive the facts needed to answer the question</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
