@@ -116,11 +116,39 @@
 
 ---
 
-(6) `Jun 2017` [Inductive Representation Learning on Large Graphs](https://arxiv.org/abs/1706.02216) *[William L. Hamilton, Rex Ying, Jure Leskovec]* `MoNet`
+(6) `Jun 2017` [Inductive Representation Learning on Large Graphs](https://arxiv.org/abs/1706.02216) *[William L. Hamilton, Rex Ying, Jure Leskovec]* `MoNet`, `GraphSAGE`
 
 * **Abstract**: 
 
-> **Low-dimensional** embeddings of nodes in large graphs have proved extremely useful in a variety of prediction tasks, from content recommendation to identifying protein functions. However, most existing approaches require that all nodes in the graph are present during training of the embeddings; these previous approaches are <u>inherently transductive</u> and do not naturally generalize to unseen nodes. Here we present GraphSAGE, a general, **inductive framework** that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data. <u>Instead of training individual embeddings for each node, we learn a function that generates embeddings by **sampling and aggregating features** from a node's local neighborhood</u>. Our algorithm outperforms strong baselines on three inductive node-classification benchmarks: we classify the category of unseen nodes in evolving information graphs based on citation and Reddit post data, and we show that our algorithm generalizes to completely unseen graphs using a multi-graph dataset of protein-protein interactions.
+> **Low-dimensional** embeddings of nodes in large graphs have proved extremely useful in a variety of prediction tasks, from content recommendation to identifying protein functions. However, most existing approaches require that all nodes in the graph are present during training of the embeddings; these previous approaches are <u>inherently transductive</u> and do not naturally generalize to unseen nodes. Here we present **GraphSAGE**, a general, **inductive framework** that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data. <u>Instead of training individual embeddings for each node, we learn a function that generates embeddings by **sampling and aggregating features** from a node's **local** neighborhood</u>. Our algorithm outperforms strong baselines on three inductive node-classification benchmarks: we classify the category of unseen nodes in evolving information graphs based on citation and Reddit post data, and we show that our algorithm generalizes to completely unseen graphs using a multi-graph dataset of protein-protein interactions.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+        - **[1]** propose **GraphSAGE**(sample and aggregate) for inductive node embedding
+            - leverate node attributes (e.g. `text attributes`, `node profile information`, `node degrees`) -> generalize to unseen nodes
+            - simultaneously learn **topological structure** of each node's neighborhood, and, **distribution** of node features in the neighborhood
+            - main idea: <u>leanr how to aggregate feature information from a node's local neighborhood</u>
+            - sample and aggregate approach: 
+                - **[i]** Sample neighborhood (*each node aggregates the representations of the nodes in its immediate neighborhood into a single vector*)
+                - **[ii]** Aggregate feature information from neighbors (*concatenate the node's current representation with the aggregated neighborhood vector -> fed through a fully connected layer with nonlinear activation function*)
+                - **[iii]** predict graph context and label using aggregated information 
+            
+        - **[2]** train a set of **aggregator functions** -> learn to aggregate feature information from a node's local neighborhood
+            - design an **unsupervised loss function** -> allow GraphSAGE to be trained without task-specific supervision
+            - Aggregator architectures: `Mean aggregator`, `LSTM aggregator`, `Pooling aggregator`**LSTM** and **Pooling** -> **LSTM** and **Pooling** perform the best
+        - **[3]** evaluate the algorithm on three node-classification benchmarks
+    - <u>**Other Notes**</u>:
+        - previous focused on embedding nodes from a **single** fixed graph, require all nodes in the graph are present during training => **transductive**, <u>do not naturally generalize to unseen nodes</u>
+        - the inductive framework must learn to recognize **structural properties** of a node's **neighbourhood** -> reveal both <u>node's local role in the graph</u> and <u>its global position</u>
+        - <u>Factorization-based embedding approaches</u> require expensive additional training after transductive learning; and the objective function is <u>invariant to orthogonal transformations of the embeddings</u>
+    - <u>**Use cases**</u>:
+        1. classifying academic papers into different subjects using the Web of Science citation dataset
+        2. classifying Reddit posts as belonging to different communities
+        3. classifying protein functions across various biological protein-protein interaction (PPI) graph
+    - <u>**Further directions**</u>:
+        1. extending GraphSAGE to incorporate **directed** or **multi-model** graphs
+        2. exploring non-uniform neighborhood sampling functions
+        3. learning these functions as part of the GraphSAGE optimization
 
 ---
 
@@ -182,14 +210,17 @@
 
 ---
 
-(9) `Jun 2017 ` [Inductive Representation Learning on Large Graphs](https://arxiv.org/abs/1706.02216) *[William L. Hamilton, Rex Ying, Jure Leskovec]* `Negative sampling`
+(9) `201` []() *[]*
 
 * **Abstract**: 
 
-> Low-dimensional embeddings of nodes in large graphs have proved extremely useful in a variety of prediction tasks, from content recommendation to identifying protein functions. However, most existing approaches require that all nodes in the graph are present during training of the embeddings; these previous approaches are inherently transductive and do not naturally generalize to unseen nodes. Here we present GraphSAGE, a general, inductive framework that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data. Instead of training individual embeddings for each node, we learn a function that generates embeddings by sampling and aggregating features from a node's local neighborhood. Our algorithm outperforms strong baselines on three inductive node-classification benchmarks: we classify the category of unseen nodes in evolving information graphs based on citation and Reddit post data, and we show that our algorithm generalizes to completely unseen graphs using a multi-graph dataset of protein-protein interactions.
+> 
 
 * **Key notes**: 
-    - 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
 
 ---
 
