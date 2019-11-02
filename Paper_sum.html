@@ -1144,8 +1144,40 @@ body .markdown-body
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>Graph-structured data appears frequently in domains including chemistry, natural language semantics, social networks, and knowledge bases. In this work, we study <strong>feature learning</strong> techniques for graph-structured inputs. Our starting point is previous work on Graph Neural Networks (Scarselli et al., 2009), which we modify to use gated recurrent units and modern optimization techniques and then extend to output sequences. The result is a flexible and broadly useful class of neural network models that has favorable inductive biases relative to purely sequence-based models (e.g., LSTMs) when the problem is graph-structured. We demonstrate the capabilities on some simple AI (bAbI) and graph algorithm learning tasks. We then show it achieves state-of-the-art performance on a problem from program verification, in which subgraphs need to be matched to abstract data structures.</p>
+<p>Graph-structured data appears frequently in domains including chemistry, natural language semantics, social networks, and knowledge bases. In this work, we study <strong>feature learning</strong> techniques for graph-structured inputs. Our starting point is previous work on Graph Neural Networks (Scarselli et al., 2009), which we modify to use <strong>gated recurrent units</strong> and <strong>modern optimization techniques</strong> and then extend to output sequences. The result is a flexible and broadly useful class of neural network models that has favorable inductive biases relative to purely sequence-based models (e.g., LSTMs) when the problem is graph-structured. We demonstrate the capabilities on some simple AI (bAbI) and graph algorithm learning tasks. We then show it achieves state-of-the-art performance on a problem from program verification, in which subgraphs need to be matched to abstract data structures.</p>
 </blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> extension of <strong>Graph Neural Networks</strong> that ouptuts <strong>sequences</strong><ul>
+<li>as previous only produce single output =&gt; cannot be used for problems require outputting sequences <u>e.g. pahts on a graph, enumerations of graph nodes with properties</u></li>
+<li>incorporate node labels as additional inputs =&gt; node annotations (<em>easy for the propagation model to learn to propagate the node annotation for s to all nodes reachable</em>)</li>
+</ul>
+</li>
+<li><strong>[2]</strong> highlighting that GNN are a broadly useful calss of neural network</li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:<ul>
+<li>Two settings for feature learning on graph: <ol>
+<li>learning a representation of the <strong>input graph</strong></li>
+<li>learning representations of the <strong>internal state</strong> during the process of <strong>producing a sequence of outputs</strong></li>
+</ol>
+</li>
+<li>GNN map graphs -&gt; outputs in two steps:<ul>
+<li><strong>[i]</strong> propagation step computes node representation for each node (<em>iterative procedure</em>)</li>
+<li><strong>[ii]</strong> output model map from node representations and corresponding lables to output</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li>develop end2end methods that take the question as an initial input and then dynamically derive the facts needed to answer the question</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <hr />
 <p>(4) <code>Feb 2017</code> <a href="https://arxiv.org/abs/1609.02907">Semi-Supervised Classification with Graph Convolutional Networks</a> <em>[Thomas N. Kipf, Max Welling]</em></p>
 <ul>
@@ -2691,9 +2723,9 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 <li><a href="https://link.springer.com/article/10.1007/s41109-019-0134-3">Analyzing and inferring human real-life behavior through online social networks with social influence deep learning</a></li>
 </ul>
 <p><strong><u>Mihai Cucuringu (ox)</u></strong> </p>
-<ul>
-<li><a href="http://www.stats.ox.ac.uk/~cucuring/signedClustering.pdf">SPONGE: A generalized eigenproblem for clustering signed networks</a></li>
-<li><a href="http://www.stats.ox.ac.uk/~cucuring/anomaly_detection_networks.pdf">Anomaly Detection in Networks with Application to Financial Transaction Networks</a></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <a href="http://www.stats.ox.ac.uk/~cucuring/signedClustering.pdf">SPONGE: A generalized eigenproblem for clustering signed networks</a></li>
+<li class="task-list-item"><input type="checkbox" disabled/> <a href="http://www.stats.ox.ac.uk/~cucuring/anomaly_detection_networks.pdf">Anomaly Detection in Networks with Application to Financial Transaction Networks</a></li>
 </ul>
 <p><strong><u>François Caron (ox)</u></strong> </p>
 <ul>
