@@ -999,10 +999,7 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true,
-    processEnvironments: true,
-    ignoreClass: ".*|",
-    processClass: "arithmatex"
+    processEscapes: true
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1016,10 +1013,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
+  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});
-</script><style>/*GitHub*/
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -1285,61 +1282,13 @@ body .markdown-body
 </li>
 </ul>
 <hr />
-<p>(6) <code>Jun 2017</code> <a href="https://arxiv.org/abs/1706.02216">Inductive Representation Learning on Large Graphs</a> <em>[William L. Hamilton, Rex Ying, Jure Leskovec]</em> <code>MoNet</code>, <code>GraphSAGE</code></p>
+<p>(6) <code>Jun 2017</code> <a href="https://arxiv.org/abs/1706.02216">Inductive Representation Learning on Large Graphs</a> <em>[William L. Hamilton, Rex Ying, Jure Leskovec]</em> <code>MoNet</code></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p><strong>Low-dimensional</strong> embeddings of nodes in large graphs have proved extremely useful in a variety of prediction tasks, from content recommendation to identifying protein functions. However, most existing approaches require that all nodes in the graph are present during training of the embeddings; these previous approaches are <u>inherently transductive</u> and do not naturally generalize to unseen nodes. Here we present <strong>GraphSAGE</strong>, a general, <strong>inductive framework</strong> that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data. <u>Instead of training individual embeddings for each node, we learn a function that generates embeddings by <strong>sampling and aggregating features</strong> from a node&rsquo;s <strong>local</strong> neighborhood</u>. Our algorithm outperforms strong baselines on three inductive node-classification benchmarks: we classify the category of unseen nodes in evolving information graphs based on citation and Reddit post data, and we show that our algorithm generalizes to completely unseen graphs using a multi-graph dataset of protein-protein interactions.</p>
+<p><strong>Low-dimensional</strong> embeddings of nodes in large graphs have proved extremely useful in a variety of prediction tasks, from content recommendation to identifying protein functions. However, most existing approaches require that all nodes in the graph are present during training of the embeddings; these previous approaches are <u>inherently transductive</u> and do not naturally generalize to unseen nodes. Here we present GraphSAGE, a general, <strong>inductive framework</strong> that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data. <u>Instead of training individual embeddings for each node, we learn a function that generates embeddings by <strong>sampling and aggregating features</strong> from a node&rsquo;s local neighborhood</u>. Our algorithm outperforms strong baselines on three inductive node-classification benchmarks: we classify the category of unseen nodes in evolving information graphs based on citation and Reddit post data, and we show that our algorithm generalizes to completely unseen graphs using a multi-graph dataset of protein-protein interactions.</p>
 </blockquote>
-<ul>
-<li><strong>Key notes</strong>: <ul>
-<li>
-<p><u><strong>Main contributions</strong></u>: </p>
-<ul>
-<li>
-<p><strong>[1]</strong> propose <strong>GraphSAGE</strong>(sample and aggregate) for inductive node embedding</p>
-<ul>
-<li>leverate node attributes (e.g. <code>text attributes</code>, <code>node profile information</code>, <code>node degrees</code>) -&gt; generalize to unseen nodes</li>
-<li>simultaneously learn <strong>topological structure</strong> of each node&rsquo;s neighborhood, and, <strong>distribution</strong> of node features in the neighborhood</li>
-<li>main idea: <u>leanr how to aggregate feature information from a node&rsquo;s local neighborhood</u></li>
-<li>sample and aggregate approach: <ul>
-<li><strong>[i]</strong> Sample neighborhood (<em>each node aggregates the representations of the nodes in its immediate neighborhood into a single vector</em>)</li>
-<li><strong>[ii]</strong> Aggregate feature information from neighbors (<em>concatenate the node&rsquo;s current representation with the aggregated neighborhood vector -&gt; fed through a fully connected layer with nonlinear activation function</em>)</li>
-<li><strong>[iii]</strong> predict graph context and label using aggregated information </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>[2]</strong> train a set of <strong>aggregator functions</strong> -&gt; learn to aggregate feature information from a node&rsquo;s local neighborhood</p>
-<ul>
-<li>design an <strong>unsupervised loss function</strong> -&gt; allow GraphSAGE to be trained without task-specific supervision</li>
-<li>Aggregator architectures: <code>Mean aggregator</code>, <code>LSTM aggregator</code>, <code>Pooling aggregator</code><strong>LSTM</strong> and <strong>Pooling</strong> -&gt; <strong>LSTM</strong> and <strong>Pooling</strong> perform the best</li>
-</ul>
-</li>
-<li><strong>[3]</strong> evaluate the algorithm on three node-classification benchmarks<ul>
-<li><u><strong>Other Notes</strong></u>:</li>
-</ul>
-</li>
-<li>previous focused on embedding nodes from a <strong>single</strong> fixed graph, require all nodes in the graph are present during training =&gt; <strong>transductive</strong>, <u>do not naturally generalize to unseen nodes</u></li>
-<li>the inductive framework must learn to recognize <strong>structural properties</strong> of a node&rsquo;s <strong>neighbourhood</strong> -&gt; reveal both <u>node&rsquo;s local role in the graph</u> and <u>its global position</u></li>
-<li><u>Factorization-based embedding approaches</u> require expensive additional training after transductive learning; and the objective function is <u>invariant to orthogonal transformations of the embeddings</u><ul>
-<li><u><strong>Use cases</strong></u>:
-1. classifying academic papers into different subjects using the Web of Science citation dataset
-2. classifying Reddit posts as belonging to different communities
-3. classifying protein functions across various biological protein-protein interaction (PPI) graph</li>
-<li><u><strong>Further directions</strong></u>:
-1. extending GraphSAGE to incorporate <strong>directed</strong> or <strong>multi-model</strong> graphs
-2. exploring non-uniform neighborhood sampling functions
-3. learning these functions as part of the GraphSAGE optimization</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 <hr />
 <p>(7) <code>Jul 2015</code> <a href="https://arxiv.org/abs/1507.00280">Network Lasso: Clustering and Optimization in Large Graphs</a> <em>[David Hallac, Jure Leskovec, Stephen Boyd]</em></p>
 <ul>
@@ -1439,17 +1388,16 @@ body .markdown-body
 </li>
 </ul>
 <hr />
-<p>(9) <code>201</code> <a href=""></a> <em>[]</em></p>
+<p>(9) <code>Jun 2017</code> <a href="https://arxiv.org/abs/1706.02216">Inductive Representation Learning on Large Graphs</a> <em>[William L. Hamilton, Rex Ying, Jure Leskovec]</em> <code>Negative sampling</code></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
-<blockquote></blockquote>
+<blockquote>
+<p>Low-dimensional embeddings of nodes in large graphs have proved extremely useful in a variety of prediction tasks, from content recommendation to identifying protein functions. However, most existing approaches require that all nodes in the graph are present during training of the embeddings; these previous approaches are inherently transductive and do not naturally generalize to unseen nodes. Here we present GraphSAGE, a general, inductive framework that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data. Instead of training individual embeddings for each node, we learn a function that generates embeddings by sampling and aggregating features from a node&rsquo;s local neighborhood. Our algorithm outperforms strong baselines on three inductive node-classification benchmarks: we classify the category of unseen nodes in evolving information graphs based on citation and Reddit post data, and we show that our algorithm generalizes to completely unseen graphs using a multi-graph dataset of protein-protein interactions.</p>
+</blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li><u><strong>Main contributions</strong></u>: </li>
-<li><u><strong>Other Notes</strong></u>:</li>
-<li><u><strong>Use cases</strong></u>:</li>
-<li><u><strong>Further directions</strong></u>:</li>
+<li></li>
 </ul>
 </li>
 </ul>
@@ -1522,11 +1470,66 @@ We evaluate our method on a variety of <strong>link-prediction</strong> task inc
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>We present DeepWalk, a novel approach for learning latent representations of vertices in a network. These latent representations encode social relations in a continuous vector space, which is easily exploited by statistical models. DeepWalk generalizes recent advancements in language modeling and unsupervised feature learning (or deep learning) from sequences of words to graphs. DeepWalk uses local information obtained from truncated random walks to learn latent representations by treating walks as the equivalent of sentences. We demonstrate DeepWalk&rsquo;s latent representations on several multi-label network classification tasks for social networks such as BlogCatalog, Flickr, and YouTube. Our results show that DeepWalk outperforms challenging baselines which are allowed a global view of the network, especially in the presence of missing information. DeepWalk&rsquo;s representations can provide F1 scores up to 10% higher than competing methods when labeled data is sparse. In some experiments, DeepWalk&rsquo;s representations are able to outperform all baseline methods while using 60% less training data. DeepWalk is also scalable. It is an online learning algorithm which builds useful incremental results, and is trivially parallelizable. These qualities make it suitable for a broad class of real world applications such as network classification, and anomaly detection.</p>
+<p>We present DeepWalk, a novel approach for learning latent representations of <strong>vertices</strong> in a network. These latent representations <em>encode social relations in a continuous vector space</em>, which is easily exploited by statistical models. DeepWalk generalizes recent advancements in language modeling and unsupervised feature learning (or deep learning) from sequences of words to graphs. DeepWalk uses <strong>local information</strong> obtained from truncated random walks to learn latent representations by treating walks as the equivalent of sentences. We demonstrate DeepWalk&rsquo;s latent representations on several multi-label network classification tasks for social networks such as <code>BlogCatalog</code>, <code>Flickr</code>, and <code>YouTube</code>. Our results show that DeepWalk outperforms challenging baselines which are allowed a global view of the network, especially in the presence of missing information. DeepWalk&rsquo;s representations can provide F1 scores up to 10% higher than competing methods when labeled data is sparse. In some experiments, DeepWalk&rsquo;s representations are able to outperform all baseline methods while using 60% less training data. DeepWalk is also scalable. It is an <strong>online learning</strong> algorithm which builds useful incremental results, and is trivially parallelizable. These qualities make it suitable for a broad class of real world applications such as network classification, and anomaly detection.</p>
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li></li>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> introduce <u>deep learning</u> to analyze graphs, introduce <strong>DEEPWALK</strong><ul>
+<li>use DL to <u>robust representations</u> -&gt; statistical learning</li>
+<li>DEEPWALK (<strong>Random Walk Generator</strong> + <strong>Update Procedure</strong>)learns <code>structual regularities</code> with <em>short random walk</em> -&gt; capture network topology information</li>
+<li>Learning <strong>label independent representations</strong> of the graph -&gt; shared among tasks</li>
+</ul>
+</li>
+<li><strong>[2]</strong> evaluate the representations on <strong>multi-label classfication tasks</strong> on several social networks</li>
+<li><strong>[3]</strong> demonstrate the <strong>scalability</strong> of the algorithm</li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:<ul>
+<li>The sparsity of a network representation is both a strength and a weakness<ul>
+<li>
+<blockquote>
+<p><strong>+</strong>: enables the design of efficient discrete algorithm</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><strong>-</strong>: harder to generalize in statistical learning</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><u><strong>social representation</strong></u>: <em>latent features of the vertices that capture neighborhood similarity and community membership</em> </li>
+<li>Traditional approches to <strong>realational classification</strong>: <ul>
+<li>inference in an <strong>undirected Markov network</strong> -&gt; use <strong>iterative approximate inference algorithms</strong> (e.g. <code>Gibbs Sampling</code>, <code>label relexation</code> -&gt; posterior distribution of labels)</li>
+</ul>
+</li>
+<li><u>Characteristics</u> for learning social representation: <ul>
+<li>
+<blockquote>
+<p><code>Adaptability</code>, <code>Community aware</code>, <code>Low dimensional</code>, <code>Continuous</code>(-&gt; have smooth decision boundaries between communities which allows more robust classification)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>model natural language</code> -&gt; <code>model community structure in networks</code></li>
+<li>the relaxations of the optimization for target: <ol>
+<li>the order independence assumption -&gt; better captures a sense of <strong>nearness</strong> that is provided by <u>random walk</u></li>
+<li>speeding up the training time by building small models as one vertex is given at a time</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:<ul>
+<li><u>classifiy members of a social network into one or more categories</u></li>
+</ul>
+</li>
+<li><u><strong>Further directions</strong></u>:<ol>
+<li>focus on investigating duality further</li>
+<li>improve language modeling</li>
+<li>strengthening the theoretical justifications of the method</li>
+</ol>
+</li>
 </ul>
 </li>
 </ul>
@@ -1896,11 +1899,70 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>We present Deep Graph Infomax (DGI), a general approach for learning node representations within graph-structured data in an unsupervised manner. DGI relies on maximizing mutual information between patch representations and corresponding high-level summaries of graphs&mdash;both derived using established graph convolutional network architectures. The learnt patch representations summarize subgraphs centered around nodes of interest, and can thus be reused for downstream node-wise learning tasks. In contrast to most prior approaches to unsupervised learning with GCNs, DGI does not rely on random walk objectives, and is readily applicable to both transductive and inductive learning setups. We demonstrate competitive performance on a variety of node classification benchmarks, which at times even exceeds the performance of supervised learning.</p>
+<p>We present <strong>Deep Graph Infomax (DGI)</strong>, a general approach for learning node representations within graph-structured data in an <strong>unsupervised</strong> manner. DGI relies on <strong>maximizing mutual information</strong> between patch representations and corresponding high-level summaries of graphs&mdash;both derived using established graph convolutional network architectures. The learnt patch representations summarize subgraphs centered around nodes of interest, and can thus be reused for downstream node-wise learning tasks. In contrast to most prior approaches to unsupervised learning with GCNs, DGI does <strong>not rely on random walk objectives</strong>, and is readily applicable to <em>both transductive and inductive</em> learning setups. We demonstrate competitive performance on a variety of node classification benchmarks, which at times even exceeds the performance of supervised learning.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
-<li></li>
+<li>
+<p><strong>Key notes</strong>: </p>
+<ul>
+<li>
+<p><u><strong>Main contributions</strong></u>: </p>
+<ul>
+<li><strong>[1]</strong> <strong>DGI</strong>(Deep Graph InfoMax) propose an anternative objective for unsupervised graph learning -&gt; based on <strong>mutual information</strong><ul>
+<li>Mutual Information Neural Estimation (MINE) -&gt; make scalable estimation of mutual information possible and practical <ul>
+<li>
+<blockquote>
+<p>training a statistics network as a <strong>classifier</strong> of samples coming from the joint distribution of two random variables and their product of marginals</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>DIM</strong>(Deep InfoMax) -&gt; learn representation of high-dim data</li>
+<li><u>combine the above two, adapt ideas from DIM to graph domain</u> (use a <em>noice-constrastive</em> type objective with a standard binary cross-entropy (BCE) loss between samples from the joint and the product of marginal)</li>
+<li>DGI is <strong>Contrastive</strong>: objective is based on classifying local-global pairs and negative-sampled counterparts</li>
+<li>the authors&rsquo; method contrast global &amp; local parts simultaneously -&gt; <u>global variable is computed from all local variables</u></li>
+</ul>
+</li>
+<li><strong>[2]</strong> Steps of <strong>DGI</strong>: <ol>
+<li>sample a negative example by using the corruption function</li>
+<li>obtain patch representations for the <strong>input graph</strong> by passing it through the encoder</li>
+<li>obtain path representations for the <strong>negative example</strong> by passing it through the encoder</li>
+<li>summarize the input graph by passing its patch representations through the <strong>readout function</strong></li>
+<li>Update parameters by applying gradient descent ot maximieze the objective function</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><u><strong>Other Notes</strong></u>:</p>
+<ul>
+<li>unsupervised representation learning with graph-structured data rely on <strong>random walk-based objectives</strong></li>
+<li>Limitations of <u>random walk-based methods</u>:<ol>
+<li>over-emphasize proximity information at the expense of structural information</li>
+<li>performance is highly dependent on hyperparameter choices</li>
+<li>enforce an inductive bias that neighboring nodes have similar representations</li>
+</ol>
+</li>
+<li><strong>Contrastive method</strong>: train an encoder to be <strong>contrastive</strong> between representations that capture statistical dependencies of interest and those that do not</li>
+<li><strong>Sampling strategies</strong>: <ul>
+<li>previous get positive samples from <em>short random walks in the graph</em></li>
+<li>recent work adapt <strong>node-anchored sampling</strong> to use a <strong>curriculum-based negative sampling</strong> scheme</li>
+</ul>
+</li>
+<li><strong>Predictive coding</strong>:<ul>
+<li>previous Contrastive predictive coding (<strong>CPC</strong>) all predicitve -&gt; the contrastive objective effectively trains a predictor between structurally-specified parts of the input</li>
+<li>others (encoding objectives on adjacency matrix; incorporation of community-level constraints into node embeddings) rely on <strong>matrix factorization-style losses</strong> &mdash;&gt; <strong>not scalable to large graph</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:<ul>
+<li><strong>[i]</strong> classifying research papers into topics on the <code>Cora</code>, <code>Citeseer</code> and <code>Pubmed</code> <strong>citation networks</strong></li>
+<li><strong>[ii]</strong> predicting the community structure of a social network modeled with <code>Reddit</code> posts</li>
+<li><strong>[iii]</strong> classifying protein roles within <strong>protein-protein interaction</strong> (PPI) networks (<em>requiring generalisation to the unseen networks</em>) </li>
+</ul>
+</li>
+<li><u><strong>Further directions</strong></u>:</li>
 </ul>
 </li>
 </ul>
@@ -2724,8 +2786,12 @@ Second, setting our goal at building a provably stronger, simple and scalable mo
 </ul>
 <p><strong><u>Mihai Cucuringu (ox)</u></strong> </p>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" disabled/> <a href="http://www.stats.ox.ac.uk/~cucuring/signedClustering.pdf">SPONGE: A generalized eigenproblem for clustering signed networks</a></li>
-<li class="task-list-item"><input type="checkbox" disabled/> <a href="http://www.stats.ox.ac.uk/~cucuring/anomaly_detection_networks.pdf">Anomaly Detection in Networks with Application to Financial Transaction Networks</a></li>
+<li class="task-list-item"><input type="checkbox" disabled/> <a href="http://www.stats.ox.ac.uk/~cucuring/signedClustering.pdf">SPONGE: A generalized eigenproblem for clustering signed networks</a><ul>
+<li><strong>Clustering</strong>: the average connectivity or similarity between pairs of nodes within the same group is larger than that of pairs of nodes from dif- ferent groups.</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" disabled checked/> <a href="http://www.stats.ox.ac.uk/~cucuring/anomaly_detection_networks.pdf">Anomaly Detection in Networks with Application to Financial Transaction Networks</a><h2 id="-many-general-network-anomaly-deteciton-reply-on-community-detection-find-the-embeddings-deviate-substantially">- Many general network anomaly deteciton reply on  <strong>community detection</strong> -&gt; find the embeddings deviate substantially<a class="headerlink" href="#-many-general-network-anomaly-deteciton-reply-on-community-detection-find-the-embeddings-deviate-substantially" title="Permanent link"></a></h2>
+</li>
 </ul>
 <p><strong><u>François Caron (ox)</u></strong> </p>
 <ul>
