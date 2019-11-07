@@ -692,10 +692,35 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> Predicting the future trajectories of multiple interacting agents in a scene has become an increasingly important problem for many different applications ranging from control of autonomous vehicles and social robots to security and surveillance. This problem is compounded by the presence of social interactions between humans and their physical interactions with the scene. While the existing literature has explored some of these cues, they mainly ignored the multimodal nature of each human's future trajectory. In this paper, we present Social-BiGAT, a graph-based generative adversarial network that generates realistic, multimodal trajectory predictions by better modelling the social interactions of pedestrians in a scene. Our method is based on a graph attention network (GAT) that learns reliable feature representations that encode the social interactions between humans in the scene, and a recurrent encoder-decoder architecture that is trained adversarially to predict, based on the features, the humans' paths. We explicitly account for the multimodal nature of the prediction problem by forming a reversible transformation between each scene and its latent noise vector, as in Bicycle-GAN. We show that our framework achieves state-of-the-art performance comparing it to several baselines on existing trajectory forecasting benchmarks.
+> Predicting the future trajectories of **multiple interacting agents** in a scene has become an increasingly important problem for many different applications ranging from control of autonomous vehicles and social robots to security and surveillance. This problem is compounded by the presence of social interactions between humans and their physical interactions with the scene. While the existing literature has explored some of these cues, they mainly ignored the **multimodal nature** of each human's future trajectory. In this paper, we present **Social-BiGAT**, a graph-based generative adversarial network that generates realistic, multimodal trajectory predictions by better modelling the social interactions of pedestrians in a scene. Our method is based on a **graph attention network (GAT)** that learns reliable feature representations that encode the social interactions between humans in the scene, and a **recurrent encoder-decoder architecture** that is trained adversarially to predict, based on the features, the humans' paths. We explicitly account for the multimodal nature of the prediction problem by forming a reversible transformation between each scene and its latent noise vector, as in Bicycle-GAN. We show that our framework achieves state-of-the-art performance comparing it to several baselines on existing trajectory forecasting benchmarks.
 
 * **Key notes**: 
-    - 
+    - <u>**Main contributions**</u>: 
+        - **[1]** propose **Social-BiGAT**, `GAN based approach to learn essential multimodel trajectory distributions`
+        - **[2]** In troduce a fexible **graph attention network** -> <u>improve the modeling of social interactions between pedestrains</u>
+            - **formulate pedestrian interactions as a graph**
+        - **[3]** constructing a **reversible mapping** between <u>outputted trajectories</u> and <u>latents (represent the pedestrian behaviour)</u> -> encourage generalization towards a **multimodel** distribution
+        - **[4]** incorporate physical scene cues using **soft attention** -> make the model more **generalizable**
+    - <u>**Other Notes**</u>:
+        - trajectory prediction is still **challenging** due to <u>properties of human behaviour</u>:
+            - **[i]** Social Interactions: (*require prediction methods to model social behaviour*)
+            - **[ii]** Scene Context: (*people around the pedestrian*)
+            - **[iii]** Multimodal behavior: (*human motion is inherently multimodal*)
+        - previous work have limitation: 
+            - not consider the physical cues of the scene
+            - prior methods for trajectory prediction: <u>limit interactions to nearby pedestrian neighbors</u>
+        - modern **Trajectory Forecasting** rely on **RNN**
+
+
+    - <u>**Use cases**</u>:
+        1. control of autonomous vehicles
+        2. social robots to security and surveillance
+        3. accurate pedestrian trajectory forecasting 
+            - delivery vehicles -> understand human movement and avoid collisions
+            - 
+        4. Trajectory prediction for downstream tasks -> <u>tracking and reidentification</u>
+
+    - <u>**Further directions**</u>:
 
 ---
 

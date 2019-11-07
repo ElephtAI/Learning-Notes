@@ -999,10 +999,7 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true,
-    processEnvironments: true,
-    ignoreClass: ".*|",
-    processClass: "arithmatex"
+    processEscapes: true
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1016,10 +1013,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
+  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});
-</script><style>/*GitHub*/
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -2268,11 +2265,52 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>Predicting the future trajectories of multiple interacting agents in a scene has become an increasingly important problem for many different applications ranging from control of autonomous vehicles and social robots to security and surveillance. This problem is compounded by the presence of social interactions between humans and their physical interactions with the scene. While the existing literature has explored some of these cues, they mainly ignored the multimodal nature of each human&rsquo;s future trajectory. In this paper, we present Social-BiGAT, a graph-based generative adversarial network that generates realistic, multimodal trajectory predictions by better modelling the social interactions of pedestrians in a scene. Our method is based on a graph attention network (GAT) that learns reliable feature representations that encode the social interactions between humans in the scene, and a recurrent encoder-decoder architecture that is trained adversarially to predict, based on the features, the humans&rsquo; paths. We explicitly account for the multimodal nature of the prediction problem by forming a reversible transformation between each scene and its latent noise vector, as in Bicycle-GAN. We show that our framework achieves state-of-the-art performance comparing it to several baselines on existing trajectory forecasting benchmarks.</p>
+<p>Predicting the future trajectories of <strong>multiple interacting agents</strong> in a scene has become an increasingly important problem for many different applications ranging from control of autonomous vehicles and social robots to security and surveillance. This problem is compounded by the presence of social interactions between humans and their physical interactions with the scene. While the existing literature has explored some of these cues, they mainly ignored the <strong>multimodal nature</strong> of each human&rsquo;s future trajectory. In this paper, we present <strong>Social-BiGAT</strong>, a graph-based generative adversarial network that generates realistic, multimodal trajectory predictions by better modelling the social interactions of pedestrians in a scene. Our method is based on a <strong>graph attention network (GAT)</strong> that learns reliable feature representations that encode the social interactions between humans in the scene, and a <strong>recurrent encoder-decoder architecture</strong> that is trained adversarially to predict, based on the features, the humans&rsquo; paths. We explicitly account for the multimodal nature of the prediction problem by forming a reversible transformation between each scene and its latent noise vector, as in Bicycle-GAN. We show that our framework achieves state-of-the-art performance comparing it to several baselines on existing trajectory forecasting benchmarks.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
-<li></li>
+<li>
+<p><strong>Key notes</strong>: </p>
+<ul>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> propose <strong>Social-BiGAT</strong>, <code>GAN based approach to learn essential multimodel trajectory distributions</code></li>
+<li><strong>[2]</strong> In troduce a fexible <strong>graph attention network</strong> -&gt; <u>improve the modeling of social interactions between pedestrains</u><ul>
+<li><strong>formulate pedestrian interactions as a graph</strong></li>
+</ul>
+</li>
+<li><strong>[3]</strong> constructing a <strong>reversible mapping</strong> between <u>outputted trajectories</u> and <u>latents (represent the pedestrian behaviour)</u> -&gt; encourage generalization towards a <strong>multimodel</strong> distribution</li>
+<li><strong>[4]</strong> incorporate physical scene cues using <strong>soft attention</strong> -&gt; make the model more <strong>generalizable</strong></li>
+</ul>
+</li>
+<li>
+<p><u><strong>Other Notes</strong></u>:</p>
+<ul>
+<li>trajectory prediction is still <strong>challenging</strong> due to <u>properties of human behaviour</u>:<ul>
+<li><strong>[i]</strong> Social Interactions: (<em>require prediction methods to model social behaviour</em>)</li>
+<li><strong>[ii]</strong> Scene Context: (<em>people around the pedestrian</em>)</li>
+<li><strong>[iii]</strong> Multimodal behavior: (<em>human motion is inherently multimodal</em>)</li>
+</ul>
+</li>
+<li>previous work have limitation: <ul>
+<li>not consider the physical cues of the scene</li>
+<li>prior methods for trajectory prediction: <u>limit interactions to nearby pedestrian neighbors</u></li>
+</ul>
+</li>
+<li>modern <strong>Trajectory Forecasting</strong> rely on <strong>RNN</strong></li>
+</ul>
+</li>
+<li>
+<p><u><strong>Use cases</strong></u>:</p>
+<ol>
+<li>control of autonomous vehicles</li>
+<li>social robots to security and surveillance</li>
+<li>accurate pedestrian trajectory forecasting <h2 id="-delivery-vehicles-understand-human-movement-and-avoid-collisions">- delivery vehicles -&gt; understand human movement and avoid collisions<a class="headerlink" href="#-delivery-vehicles-understand-human-movement-and-avoid-collisions" title="Permanent link"></a></h2>
+</li>
+<li>Trajectory prediction for downstream tasks -&gt; <u>tracking and reidentification</u></li>
+</ol>
+</li>
+<li>
+<p><u><strong>Further directions</strong></u>:</p>
+</li>
 </ul>
 </li>
 </ul>
