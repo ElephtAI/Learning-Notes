@@ -2272,7 +2272,26 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <p><strong>Key notes</strong>: </p>
 <ul>
 <li><u><strong>Main contributions</strong></u>: <ul>
-<li><strong>[1]</strong> propose <strong>Social-BiGAT</strong>, <code>GAN based approach to learn essential multimodel trajectory distributions</code></li>
+<li><strong>[1]</strong> propose <strong>Social-BiGAT</strong>, <code>GAN based approach to learn essential multimodel trajectory distributions</code><ul>
+<li>input: <code>scene information</code> &amp; <code>previously observed trajectory</code></li>
+<li>four main networks: <ul>
+<li><strong>i</strong> generator: <ol>
+<li><code>feature encoder module</code>(social pedestrian - <strong>MLP</strong> &amp; physical scene - <strong>CNN</strong>) </li>
+<li><code>attention network module</code> -&gt; <strong>Physical attention</strong> &amp; <strong>Social attention</strong> </li>
+<li><code>decoder module</code> -&gt; <strong>GAN</strong></li>
+</ol>
+</li>
+<li><strong>ii</strong> discriminator (<em>local pedestrain scale</em>)</li>
+<li><strong>iii</strong> discriminator (<em>global scene-level scale</em>)</li>
+<li><strong>iv</strong> latent space encoder -&gt; <em>Multimodel</em><ol>
+<li>Physical attention</li>
+<li>Social Attention</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><strong>[2]</strong> In troduce a fexible <strong>graph attention network</strong> -&gt; <u>improve the modeling of social interactions between pedestrains</u><ul>
 <li><strong>formulate pedestrian interactions as a graph</strong></li>
 </ul>
@@ -2282,7 +2301,9 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </ul>
 </li>
 <li>
-<p><u><strong>Other Notes</strong></u>:</p>
+<p><u><strong>Other Notes</strong></u>:
+    -<u>Human trajectory prediction</u>: the problem of predicting the future navigation movements of pedestrians
+         - given their <code>prior movement</code> and <code>additional contextual information</code></p>
 <ul>
 <li>trajectory prediction is still <strong>challenging</strong> due to <u>properties of human behaviour</u>:<ul>
 <li><strong>[i]</strong> Social Interactions: (<em>require prediction methods to model social behaviour</em>)</li>

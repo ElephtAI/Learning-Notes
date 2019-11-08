@@ -697,11 +697,24 @@ We evaluate our method on a variety of **link-prediction** task including social
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
         - **[1]** propose **Social-BiGAT**, `GAN based approach to learn essential multimodel trajectory distributions`
+            - input: `scene information` & `previously observed trajectory`
+            - four main networks: 
+                - **i** generator: 
+                    1. `feature encoder module`(social pedestrian - **MLP** & physical scene - **CNN**) 
+                    2. `attention network module` -> **Physical attention** & **Social attention** 
+                    3. `decoder module` -> **GAN**
+                - **ii** discriminator (*local pedestrain scale*)
+                - **iii** discriminator (*global scene-level scale*)
+                - **iv** latent space encoder -> *Multimodel*
+                    1. Physical attention
+                    2. Social Attention
         - **[2]** In troduce a fexible **graph attention network** -> <u>improve the modeling of social interactions between pedestrains</u>
             - **formulate pedestrian interactions as a graph**
         - **[3]** constructing a **reversible mapping** between <u>outputted trajectories</u> and <u>latents (represent the pedestrian behaviour)</u> -> encourage generalization towards a **multimodel** distribution
         - **[4]** incorporate physical scene cues using **soft attention** -> make the model more **generalizable**
     - <u>**Other Notes**</u>:
+        -<u>Human trajectory prediction</u>: the problem of predicting the future navigation movements of pedestrians
+             - given their `prior movement` and `additional contextual information`
         - trajectory prediction is still **challenging** due to <u>properties of human behaviour</u>:
             - **[i]** Social Interactions: (*require prediction methods to model social behaviour*)
             - **[ii]** Scene Context: (*people around the pedestrian*)
