@@ -227,11 +227,11 @@
 
 ---
 
-(9) `201` []() *[]*
+(9) `Feb 2019` [How Powerful are Graph Neural Networks?](https://arxiv.org/abs/1810.00826) *[Keyulu Xu, Weihua Hu, Jure Leskovec, Stefanie Jegelka]*
 
 * **Abstract**: 
 
-> 
+> Graph Neural Networks (GNNs) are an effective framework for representation learning of graphs. GNNs follow a neighborhood aggregation scheme, where the representation vector of a node is computed by recursively aggregating and transforming representation vectors of its neighboring nodes. Many GNN variants have been proposed and have achieved state-of-the-art results on both node and graph classification tasks. However, despite GNNs revolutionizing graph representation learning, there is limited understanding of their representational properties and limitations. Here, we present a theoretical framework for analyzing the expressive power of GNNs to capture different graph structures. Our results characterize the discriminative power of popular GNN variants, such as Graph Convolutional Networks and GraphSAGE, and show that they cannot learn to distinguish certain simple graph structures. We then develop a simple architecture that is provably the most expressive among the class of GNNs and is as powerful as the Weisfeiler-Lehman graph isomorphism test. We empirically validate our theoretical findings on a number of graph classification benchmarks, and demonstrate that our model achieves state-of-the-art performance.
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
@@ -763,13 +763,38 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> Recently, the Weisfeiler-Lehman (WL) graph isomorphism test was used to measure the expressive power of graph neural networks (GNN). It was shown that the popular message passing GNN cannot distinguish between graphs that are indistinguishable by the 1-WL test (Morris et al. 2018; Xu et al. 2019). Unfortunately, many simple instances of graphs are indistinguishable by the 1-WL test.
-> In search for more expressive graph learning models we build upon the recent k-order invariant and equivariant graph neural networks (Maron et al. 2019a,b) and present two results:
-> First, we show that such k-order networks can distinguish between non-isomorphic graphs as good as the k-WL tests, which are provably stronger than the 1-WL test for k>2. This makes these models strictly stronger than message passing models. Unfortunately, the higher expressiveness of these models comes with a computational cost of processing high order tensors.
-> Second, setting our goal at building a provably stronger, simple and scalable model we show that a reduced 2-order network containing just scaled identity operator, augmented with a single quadratic operation (matrix multiplication) has a provable 3-WL expressive power. Differently put, we suggest a simple model that interleaves applications of standard Multilayer-Perceptron (MLP) applied to the feature dimension and matrix multiplication. We validate this model by presenting state of the art results on popular graph classification and regression tasks. To the best of our knowledge, this is the first practical invariant/equivariant model with guaranteed 3-WL expressiveness, strictly stronger than message passing models.
+> Recently, the Weisfeiler-Lehman (WL) graph isomorphism test was used to measure the **expressive power** of graph neural networks (GNN). It was shown that the popular message passing GNN cannot distinguish between graphs that are **[indistinguishable]** by the 1-WL test (Morris et al. 2018; Xu et al. 2019). Unfortunately, many simple instances of graphs are indistinguishable by the 1-WL test.In search for more expressive graph learning models we build upon the recent k-order **invariant** and **equivariant** graph neural networks (Maron et al. 2019a,b) and present two results:
+
+> **First**, we show that such **[k-order networks can distinguish between non-isomorphic graphs as good as the k-WL tests]**, which are provably stronger than the 1-WL test for k>2. This makes these models strictly stronger than message passing models. Unfortunately, the higher expressiveness of these models comes with a computational cost of processing high order tensors.
+
+> **Second**, setting our goal at building a provably stronger, simple and scalable model we show that a **[reduced 2-order network containing just scaled identity operator, augmented with a *single quadratic operation* (matrix multiplication) has a provable 3-WL expressive power]**. Differently put, we suggest a simple model that interleaves applications of standard Multilayer-Perceptron (MLP) applied to the feature dimension and matrix multiplication. We validate this model by presenting state of the art results on popular graph classification and regression tasks. To the best of our knowledge, this is the first practical invariant/equivariant model with guaranteed 3-WL expressiveness, strictly stronger than message passing models.
 
 * **Key notes**: 
-    - 
+    - <u>**Main contributions**</u>: 
+        - GOAL: <u>explore and develope GNN models that possess higher expressiveness while maintaining scalability</u>
+        - MAIN CHALLENGE: <u>difficult to represent the multisets of neighborhoods required for the WL algorithms</u>
+        - **[1]** establishing a baseline for expressive GNNs 
+            - prove that recent **k-order invariant** GNN offer a natural hierarcht of models that are as expressive as the **k-WL** tests
+        - **[2]** develope a simple model -> <u>incoporates standard **MLP** of the feature dimension and a **matrix multiplication layer**</u>
+            - as far as they know, the model is the first to offer both **expressiveness (3-WL)** and **scalability (k=2)**
+            - **Color representation**: *represent colors as vecotrs*
+            - **Multiset representation**: encode multiset using a <u>set of Sn - invariant functions</u> -> **Power-sum Multi-symmetric Polynomials (PMP)**
+    - <u>**Other Notes**</u>:
+        - > **Message passing nerual networks**: node features are propagated through the graph according to its connectivity structure
+        - previously, it is suggested to <u>compare the model's ability to distinguish between two given graphs to that of the hierarchy of the **Weisfeiler-Lehman (WL)** graph isomorphism tests</u>
+        - Known results of **WL** and **FWL** algorithms: 
+            1. **1-WL** and **2-WL** have equivalent discrimination power
+            2. **k-FWL** is equivalent to **(k+1)-WL** for k>=2
+            3. For each k>= 2 there is a pair of non-isomorphic graphs distinguishable by (k+1)-WL but not by k-WL
+        - **Challenges** while analyzing networks ability to implement WL-like algorithms:
+            1. Representing the coloar sigma in the nework
+            2. implementing a multiset representation
+            3. implementing the encoding function
+    - <u>**Use cases**</u>:
+        - Graphs are used to model -> `social network`, `chemical compounds`, `biological structures` and `high-level image content information`
+    - <u>**Further directions**</u>: 
+        1. search for more efficient GNN models with high expressiveness
+        2. quantifying the generalization ability of these models
 
 ---
 
@@ -1153,23 +1178,24 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ### To do for graph & network
 
-Li, Y., Vinyals, O., Dyer, C., Pascanu, R., and Battaglia,
+* [ ] Morris, C. and Mutzel, P. (2019). Towards a practical k-dimensional weisfeiler-leman algorithm.
+arXiv preprint arXiv:1904.01543.
+
+* [ ] Li, Y., Vinyals, O., Dyer, C., Pascanu, R., and Battaglia,
 P. Learning deep generative models of graphs. arXiv
 preprint arXiv:1803.03324, 2018.
 
-Wang, T., Liao, R., Ba, J., and Fidler, S. Nervenet: Learning
+* [ ] Wang, T., Liao, R., Ba, J., and Fidler, S. Nervenet: Learning
 structured policy with graph neural networks. In ICLR,
 2018a.
 
-Al-Rfou, R., Zelle, D., and Perozzi, B. Ddgk: Learning graph representations for deep divergence graph kernels.
+* [ ] Al-Rfou, R., Zelle, D., and Perozzi, B. Ddgk: Learning graph representations for deep divergence graph kernels.
 arXiv preprint arXiv:1904.09671, 2019.
 
-* [ ] W. Hamilton, R. Ying, and J. Leskovec. Inductive representation learning on large graphs. In NIPS, 2017. (*negative sampling*)
-* [ ] S. Abu-El-Haija, B. Perozzi, and R. Al-Rfou. Learning edge representations via low-rank asymmetric projections. In ACM International Conference on Information and Knowledge Management (CIKM), 2017. (*graph likelihood*)
 * [ ] N.Shervashidze,P.Schweitzer,E.J.v.Leeuwen,K.Mehlhorn,andK.M.Borgwardt.Weisfeiler- lehman graph kernels. Journal of Machine Learning Research, 12:2539–2561, 2011. (*Graph Kernel*)
-* [ ] B. Perozzi, R. Al-Rfou, and S. Skiena. Deepwalk: Online learning of social representations. In KDD, 2014. (Deep Walk)
+
 * [ ] Federico Monti, Davide Boscaini, Jonathan Masci, Emanuele Rodola, Jan Svoboda, and Michael M Bronstein. Geometric deep learning on graphs and manifolds using mixture model cnns. arXiv preprint arXiv:1611.08402, 2016. (*MoNet*)
-* [ ] H. Chen, B. Perozzi, R. Al-Rfou, and S. Skiena. A tutorial on network embeddings
+
 
 **Knowledge Graph Related**:
 
