@@ -231,12 +231,20 @@
 
 * **Abstract**: 
 
-> Graph Neural Networks (GNNs) are an effective framework for representation learning of graphs. GNNs follow a neighborhood aggregation scheme, where the representation vector of a node is computed by recursively aggregating and transforming representation vectors of its neighboring nodes. Many GNN variants have been proposed and have achieved state-of-the-art results on both node and graph classification tasks. However, despite GNNs revolutionizing graph representation learning, there is limited understanding of their representational properties and limitations. Here, we present a theoretical framework for analyzing the expressive power of GNNs to capture different graph structures. Our results characterize the discriminative power of popular GNN variants, such as Graph Convolutional Networks and GraphSAGE, and show that they cannot learn to distinguish certain simple graph structures. We then develop a simple architecture that is provably the most expressive among the class of GNNs and is as powerful as the Weisfeiler-Lehman graph isomorphism test. We empirically validate our theoretical findings on a number of graph classification benchmarks, and demonstrate that our model achieves state-of-the-art performance.
+> Graph Neural Networks (GNNs) are an effective framework for representation learning of graphs. GNNs follow a neighborhood aggregation scheme, where the representation vector of a node is computed by *recursively aggregating and transforming representation vectors of its neighboring nodes*. Many GNN variants have been proposed and have achieved state-of-the-art results on both node and graph classification tasks. However, despite GNNs revolutionizing graph representation learning, there is **[limited understanding of their representational properties and limitations]**. Here, we present a theoretical framework for analyzing the expressive power of GNNs to **capture different graph structures**. Our results characterize the discriminative power of popular GNN variants, such as Graph Convolutional Networks and GraphSAGE, and show that they cannot learn to distinguish certain simple graph structures. We then develop a simple architecture that is provably the most expressive among the class of GNNs and is as powerful as the Weisfeiler-Lehman graph isomorphism test. We empirically validate our theoretical findings on a number of graph classification benchmarks, and demonstrate that our model achieves state-of-the-art performance.
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
+        - **[1]** show that GNNs are <u>at most as powerful as the WL test</u> in *distinguishing graph structures*
+        - **[2]** establish conditions on the **neighbor aggregation** and **graph readout function** => the resulting GNN is *as powerful as* the WL test
+        - **[3]** identify graph structure that cannot be identified by [popular GNN variants], `GCN` and `GraphSAGE`; chatacterize the kinds of structure that can be captured
+        - **[4]** develop a <u>simple neural architecture</u> -> **Graph Isomorphism Network (GIN)** (*equal to the power of WL test*)
     - <u>**Other Notes**</u>:
+        - design of new GNNs is mostly based on **empirical intuition**, **heuristics** and `experimental trial-and-error` => <u>there is little theoretical understanding of the prpperties and limitations of GNNs</u>
+        - need to formally characterize how expressive different GNN => <u>represent and distinguish between different **graph structures**</u>
+        - the more **discriminative** the multiset function is, the more powerful the representational power of the underlying GNN
     - <u>**Use cases**</u>:
+        - `molecules networks`, `social networks`, `biological networks`, `financial networks`
     - <u>**Further directions**</u>:
 
 ---
