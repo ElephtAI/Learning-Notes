@@ -236,16 +236,40 @@
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
         - **[1]** show that GNNs are <u>at most as powerful as the WL test</u> in *distinguishing graph structures*
+            - intuitively a maximally powerfull GNN: <u>maps two nodes to the sam e location in the embedding space</u> --**only if**--> they have **identical subtree structures with identical features on the corresponding nodes**
         - **[2]** establish conditions on the **neighbor aggregation** and **graph readout function** => the resulting GNN is *as powerful as* the WL test
+            - > ideal maximally powerful GNN: distinguish different graph structures by mapping them to different representations in the embedding space
         - **[3]** identify graph structure that cannot be identified by [popular GNN variants], `GCN` and `GraphSAGE`; chatacterize the kinds of structure that can be captured
+            - **Less powerful** but still **Interesting** GNNs:
+                - **1-layer perceptrons are not sufficient**
+                - <u>Structures that confuse **mean** and **max** pooling</u> -> [have trouble distinguishing graphs with nodes that have **repeating features**]
+                - **Mean pooling** method learns **DISTRIBUTION** of elements in a multiset (but not the exact multiset)
+                - **Max pooling** learns **SETS with DISTINCT ELEMENTS** 
+                    - *it is important to identify representative elements (or the skeleton) rather than to distinguish the exact structure or distribution*
         - **[4]** develop a <u>simple neural architecture</u> -> **Graph Isomorphism Network (GIN)** (*equal to the power of WL test*)
+
     - <u>**Other Notes**</u>:
         - design of new GNNs is mostly based on **empirical intuition**, **heuristics** and `experimental trial-and-error` => <u>there is little theoretical understanding of the prpperties and limitations of GNNs</u>
         - need to formally characterize how expressive different GNN => <u>represent and distinguish between different **graph structures**</u>
         - the more **discriminative** the multiset function is, the more powerful the representational power of the underlying GNN
+        - **Graph Neural Networks**:-> follow a <u>neighborhood aggregation</u>
+            - `GraphSAGE` use **element-wise max-pooling**; `GCN` use **element-wise mean pooling**
+        - **Weisferler-Lehman test**:
+            - > **WL test of graph isomorphism**: an effective and computationally efficient test that distinguishes a broad class of graphs
+            - the test iteratively: 
+                1. aggregates the lables of **nodes** and their **neighborhoods**
+                2. hashes the aggregated labels into unique new lables
+            - it decides two graphs are **non-isomorphic** -> if <u>at some iteration the labels of the nodes between the two graphs differ</u>
+        - **Multiset**: allows multiple instaances for its elements
+        - GNN with **sum aggregators** tend to fit the **training sets** better than those with mean and max pooling aggregators
+        - WL kernel is **not able to learn how to combine node featues**
     - <u>**Use cases**</u>:
         - `molecules networks`, `social networks`, `biological networks`, `financial networks`
+        - `node classification`, `graph classification`, `link prediction`
     - <u>**Further directions**</u>:
+        1. apply the framework to analyze and understanding <u>other aggregation schemes</u>
+        2. go beyond neighborhood aggregation (or message passing) -> <u>pursue possibly even more powerful architectures for learning with graphs</u>
+        3. understand and improve the **generalization properties** of GNNs as well as better understanding their **optimization** landscape
 
 ---
 
