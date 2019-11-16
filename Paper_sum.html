@@ -999,10 +999,7 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true,
-    processEnvironments: true,
-    ignoreClass: ".*|",
-    processClass: "arithmatex"
+    processEscapes: true
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1016,10 +1013,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
+  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});
-</script><style>/*GitHub*/
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -2144,11 +2141,92 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>This paper focuses on two fundamental tasks of graph analysis: community detection and node representation learning, which capture the global and local structures of graphs, respectively. In the current literature, these two tasks are usually independently studied while they are actually highly correlated. We propose a probabilistic generative model called vGraph to learn community membership and node representation collaboratively. Specifically, we assume that each node can be represented as a mixture of communities, and each community is defined as a multinomial distribution over nodes. Both the mixing coefficients and the community distribution are parameterized by the low-dimensional representations of the nodes and communities. We designed an effective variational inference algorithm which regularizes the community membership of neighboring nodes to be similar in the latent space. Experimental results on multiple real-world graphs show that vGraph is very effective in both community detection and node representation learning, outperforming many competitive baselines in both tasks. We show that the framework of vGraph is quite flexible and can be easily extended to detect hierarchical communities.</p>
+<p>This paper focuses on two fundamental tasks of graph analysis: <strong>community detection</strong> and <strong>node representation learning</strong>, which capture the [global] and [local] structures of graphs, respectively. In the current literature, these two tasks are usually independently studied while they are actually highly correlated. We propose a probabilistic generative model called vGraph to learn community membership and node representation collaboratively. Specifically, we assume that each node can be represented as a mixture of communities, and each community is defined as a multinomial distribution over nodes. Both the mixing coefficients and the community distribution are parameterized by the low-dimensional representations of the nodes and communities. We designed an effective <strong>variational inference algorithm</strong> which regularizes the <em>community membership of neighboring nodes to be similar in the latent space</em>. Experimental results on multiple real-world graphs show that vGraph is very effective in both community detection and node representation learning, outperforming many competitive baselines in both tasks. We show that the framework of vGraph is quite flexible and can be easily extended to detect <strong>hierarchical communities</strong>.</p>
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li></li>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> propose a novel <strong>probabilistic generative</strong> model called <strong>vGraph</strong> -&gt; <u>joint community detection and node representation learning</u><ul>
+<li>
+<blockquote>
+<p><strong>Assumption 1</strong>: each node can be represented by a mixture of multiple communities and described by a <strong>multinomial distribution</strong> over communities <code>p(z|v)</code></p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><strong>Assumption 2</strong>: each community is modeled as a distribution over the nodes <code>p(v|z)</code></p>
+</blockquote>
+</li>
+<li>By this approach: <u>it allows the node representation and the communities to interact in a mutually beneficial way</u></li>
+<li><strong>scalable</strong>, <strong>can be optimized efficiently</strong></li>
+<li>[parameterizes the node-community distributions by introducing node and community embeddings]</li>
+</ul>
+</li>
+<li><strong>[2]</strong> design a very effective algorithm for inference and back propagation<ul>
+<li>use <strong>variaonal inference</strong> -&gt; maximizing the lower-bound of the data likelihood</li>
+<li>use <code>Gumbel-Softmax</code> tricks -&gt; to obtain gradients for the evidence lower bound</li>
+<li>added a <strong>smoothness regulatization term</strong> to the objective function -&gt; ensure that <strong>[community membership of neighboring nodes is similar]</strong></li>
+</ul>
+</li>
+<li><strong>[3]</strong> show that the model can be easily extended to detect <strong>hierarchical communities</strong><ul>
+<li>at every node of the tree -&gt; there is an embedding vector associated with the community</li>
+<li>similar to the hierarchical softmax parameterization used in language models</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:
+        - &gt; Graphs or networks, are a general and flexible data structure to encode complex replationships among objects<ul>
+<li><strong>Community detection</strong>: <ul>
+<li>
+<blockquote>
+<p><em>aims to cluster nodes into mulitple groups called communities</em></p>
+</blockquote>
+</li>
+<li>each community contain nodes that are <u>more closely connected to each other than to nodes in different communities</u></li>
+<li>classical method - <code>spectral cluster</code>: <ul>
+<li>
+<blockquote>
+<p><strong>Assumption</strong>: nieghboring nodes tend to belong to the same communities</p>
+</blockquote>
+</li>
+<li>detect communitites by find the <strong>eigenvectors</strong> of the <strong>graph Laplacian</strong></li>
+</ul>
+</li>
+<li>use <u>matrix factorization techniques</u> -&gt; <em>to recover the node-community affiliation matrix by performing a low-rank decomposition of the graph adjacency matrix</em><ul>
+<li>but <code>not scalable</code>, <code>restricted by capacity of bi-linear model</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>node representation Learning</strong>: * describe nodes using low-dimensional features*<ul>
+<li>
+<blockquote>
+<p><strong>Goal</strong>: learn distributed representations of nodes in graphs so that nodes with similar local connectivity tend to have similar representations</p>
+</blockquote>
+</li>
+<li>classical method: <code>focus on local</code>, <code>ignore global community information</code><ul>
+<li><strong>DeepWalk</strong>:  a method that adopts truncated random walk and Skip-Gram to learn vertex embedding </li>
+<li><strong>Node2Vec</strong>: adopts biased random walk and Skip-Gram to learn vertex embeddings</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Clustering</strong>: <em>captures <strong>Global</strong> structure of graphs</em> -&gt; <code>exploratory analysis</code></li>
+<li>intuition to combine <u>clustering</u> and <u>node embedding</u>:<ol>
+<li>node representations can be used as good features for community detection (<em>through K-means</em>)</li>
+<li>node community membership can provide <strong>good contexts</strong> for learning node representations</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:<ol>
+<li>overlapping community detection</li>
+<li>non-overlapping comminity detection</li>
+<li>node classfication</li>
+</ol>
+</li>
+<li><u><strong>Further directions</strong></u>:</li>
 </ul>
 </li>
 </ul>

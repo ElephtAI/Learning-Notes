@@ -592,10 +592,47 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> This paper focuses on two fundamental tasks of graph analysis: community detection and node representation learning, which capture the global and local structures of graphs, respectively. In the current literature, these two tasks are usually independently studied while they are actually highly correlated. We propose a probabilistic generative model called vGraph to learn community membership and node representation collaboratively. Specifically, we assume that each node can be represented as a mixture of communities, and each community is defined as a multinomial distribution over nodes. Both the mixing coefficients and the community distribution are parameterized by the low-dimensional representations of the nodes and communities. We designed an effective variational inference algorithm which regularizes the community membership of neighboring nodes to be similar in the latent space. Experimental results on multiple real-world graphs show that vGraph is very effective in both community detection and node representation learning, outperforming many competitive baselines in both tasks. We show that the framework of vGraph is quite flexible and can be easily extended to detect hierarchical communities.
+> This paper focuses on two fundamental tasks of graph analysis: **community detection** and **node representation learning**, which capture the [global] and [local] structures of graphs, respectively. In the current literature, these two tasks are usually independently studied while they are actually highly correlated. We propose a probabilistic generative model called vGraph to learn community membership and node representation collaboratively. Specifically, we assume that each node can be represented as a mixture of communities, and each community is defined as a multinomial distribution over nodes. Both the mixing coefficients and the community distribution are parameterized by the low-dimensional representations of the nodes and communities. We designed an effective **variational inference algorithm** which regularizes the *community membership of neighboring nodes to be similar in the latent space*. Experimental results on multiple real-world graphs show that vGraph is very effective in both community detection and node representation learning, outperforming many competitive baselines in both tasks. We show that the framework of vGraph is quite flexible and can be easily extended to detect **hierarchical communities**.
 
 * **Key notes**: 
-    - 
+    - <u>**Main contributions**</u>: 
+        - **[1]** propose a novel **probabilistic generative** model called **vGraph** -> <u>joint community detection and node representation learning</u>
+            - > **Assumption 1**: each node can be represented by a mixture of multiple communities and described by a **multinomial distribution** over communities `p(z|v)`
+            - > **Assumption 2**: each community is modeled as a distribution over the nodes `p(v|z)`
+            - By this approach: <u>it allows the node representation and the communities to interact in a mutually beneficial way</u>
+            - **scalable**, **can be optimized efficiently**
+            - [parameterizes the node-community distributions by introducing node and community embeddings]
+        - **[2]** design a very effective algorithm for inference and back propagation
+            - use **variaonal inference** -> maximizing the lower-bound of the data likelihood
+            - use `Gumbel-Softmax` tricks -> to obtain gradients for the evidence lower bound
+            - added a **smoothness regulatization term** to the objective function -> ensure that **[community membership of neighboring nodes is similar]**
+        - **[3]** show that the model can be easily extended to detect **hierarchical communities**
+            - at every node of the tree -> there is an embedding vector associated with the community
+            - similar to the hierarchical softmax parameterization used in language models
+    - <u>**Other Notes**</u>:
+            - > Graphs or networks, are a general and flexible data structure to encode complex replationships among objects
+        - **Community detection**: 
+            - > *aims to cluster nodes into mulitple groups called communities*
+            - each community contain nodes that are <u>more closely connected to each other than to nodes in different communities</u>
+            - classical method - `spectral cluster`: 
+                - > **Assumption**: nieghboring nodes tend to belong to the same communities
+                -  detect communitites by find the **eigenvectors** of the **graph Laplacian**
+            - use <u>matrix factorization techniques</u> -> *to recover the node-community affiliation matrix by performing a low-rank decomposition of the graph adjacency matrix*
+                - but `not scalable`, `restricted by capacity of bi-linear model`
+        - **node representation Learning**: * describe nodes using low-dimensional features*
+            - > **Goal**: learn distributed representations of nodes in graphs so that nodes with similar local connectivity tend to have similar representations
+            - classical method: `focus on local`, `ignore global community information`
+                - **DeepWalk**:  a method that adopts truncated random walk and Skip-Gram to learn vertex embedding 
+                - **Node2Vec**: adopts biased random walk and Skip-Gram to learn vertex embeddings
+        - **Clustering**: *captures **Global** structure of graphs* -> `exploratory analysis`
+        - intuition to combine <u>clustering</u> and <u>node embedding</u>:
+            1. node representations can be used as good features for community detection (*through K-means*)
+            2. node community membership can provide **good contexts** for learning node representations
+    - <u>**Use cases**</u>:
+        1. overlapping community detection
+        2. non-overlapping comminity detection
+        3. node classfication
+    - <u>**Further directions**</u>:
 
 ---
 
