@@ -2127,11 +2127,126 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>Convolutional Neural Networks (CNNs) achieve impressive performance in a wide variety of fields. Their success benefited from a massive boost when very deep CNN models were able to be reliably trained. Despite their merits, CNNs fail to properly address problems with non-Euclidean data. To overcome this challenge, Graph Convolutional Networks (GCNs) build graphs to represent non-Euclidean data, borrow concepts from CNNs, and apply them in training. GCNs show promising results, but they are usually limited to very shallow models due to the vanishing gradient problem. As a result, most state-of-the-art GCN models are no deeper than 3 or 4 layers. In this work, we present new ways to successfully train very deep GCNs. We do this by borrowing concepts from CNNs, specifically residual/dense connections and dilated convolutions, and adapting them to GCN architectures. Extensive experiments show the positive effect of these deep GCN frameworks. Finally, we use these new concepts to build a very deep 56-layer GCN, and show how it significantly boosts performance (+3.7% mIoU over state-of-the-art) in the task of point cloud semantic segmentation. We believe that the community can greatly benefit from this work, as it opens up many opportunities for advancing GCN-based research.</p>
+<p>Convolutional Neural Networks (CNNs) achieve impressive performance in a wide variety of fields. Their success benefited from a massive boost when very deep CNN models were able to be reliably trained. Despite their merits, CNNs <strong>[fail to properly address problems with non-Euclidean data</strong>. To overcome this challenge, Graph Convolutional Networks (GCNs) build graphs to represent non-Euclidean data, borrow concepts from CNNs, and apply them in training. GCNs show promising results, but they are usually <strong>[limited to very shallow models due to the vanishing gradient problem]</strong>. As a result, most state-of-the-art GCN models are no deeper than 3 or 4 layers. In this work, we present new ways to successfully train very deep GCNs. We do this by borrowing concepts from CNNs, specifically <strong>residual/dense connections</strong> and <strong>dilated convolutions</strong>, and adapting them to GCN architectures. Extensive experiments show the positive effect of these deep GCN frameworks. Finally, we use these new concepts to build a very deep 56-layer GCN, and show how it significantly boosts performance (+3.7% mIoU over state-of-the-art) in the task of point cloud semantic segmentation. We believe that the community can greatly benefit from this work, as it opens up many opportunities for advancing GCN-based research.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
-<li></li>
+<li>
+<p><strong>Key notes</strong>: </p>
+<ul>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> adapt <strong>residual/dense</strong> connections and <strong>dilated convolustions</strong> to GCNs<ul>
+<li>borowing orthogonal tricks from CNN</li>
+<li><code>ResNet</code>: <u>add residual connections between inputs and ouputs of layers</u><ul>
+<li><u>propose a <strong>graph residual learning framework</strong></u> -&gt; <em>learns an underlying mapping H by fitting another mapping F</em></li>
+</ul>
+</li>
+<li><code>DenseNet</code>: <u>apply resnet further and add connections across layers</u>, <ul>
+<li>exploit dense connectivity among layers -&gt; <strong>[improves information flow in the network and enables efficient reuse of features among layers]</strong></li>
+</ul>
+</li>
+<li><code>Dilated Convolutions</code>: <u>increasing the receptive field without loss of resolution</u><ul>
+<li>propose to use <strong>Dilated k-NN</strong> -&gt; <u>to find dilated neighbors after every GCN layer and constrct a Dilated Graph</u></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>[2]</strong> present extensive experiments on <strong>point cloud data</strong> -&gt; showing the effect of each of these added new layers to the <strong>stability</strong> and <strong>performance</strong> of training deep GCNs<ul>
+<li>use <strong>point cloud semantic segmentation</strong> as experimental testbed</li>
+<li>Network structure: <strong>GCN backbone block</strong> + <strong>fusion block</strong> (<em>fuse the global and multi-scale local features</em>) + <strong>MLP prediction blck</strong></li>
+</ul>
+</li>
+<li><strong>[3]</strong> show how these new concepts help build a <strong>56-layer GCN</strong> -&gt; achieve close to 4% boost in performance</li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:<ul>
+<li>Reasons for increased interests in <strong>GCN</strong>:<ol>
+<li>the increasing proliferation of <strong>non-Euclidean</strong> data in real-world applications</li>
+<li>the limited performance of CNN when dealing with non-Euclidean data</li>
+</ol>
+</li>
+<li>Classic problem: <u>stacking more layers in to a GCN leads to the common <strong>vanishing gradient</strong> problem</u> (<em>normally no deeper than 4 layers</em>)</li>
+<li><strong>Graph Convolution Network</strong><ul>
+<li>represent <strong>vertices</strong> by -&gt; <strong>associating each vertex with a feature vector</strong></li>
+<li>graph convolution operation: <strong>aggregation function</strong> + <strong>update operations</strong><ul>
+<li><u>aggregation function</u>: <strong>compile information from the neighborhood of vertices</strong><ul>
+<li>
+<blockquote>
+<p>e.g. <code>mean aggregator</code>, <code>max-pooling aggregator</code>, <code>attention aggregator</code>, <code>LSTM aggregator</code></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><u>update function</u>: <strong>performa a non-linear transform on the aggregated information</strong> -&gt; <strong>to compute new vertex representations</strong><ul>
+<li>
+<blockquote>
+<p>e.g. <code>MLP</code>, <code>gated network</code> etc.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Dynamic Edges</strong>: <u>graph structure is allowed to change in each layer</u><ul>
+<li><strong>ECC (Edge-Conditioned Convolution)</strong>: <em>uses dynamic edge-conditional filters to learn an <u>edge-specific weight matrix</u></em></li>
+<li><strong>Graph-Convolution GAN</strong>: use k-NN graphs to construct the neighbourhood of each vertex in every layer -&gt; <em>generate point clouds</em></li>
+<li>
+<blockquote>
+<p>We find that <strong>dynamically changing neighbourhood</strong> in GCNs helps <strong>alleviate</strong> the <strong>over-smoothing</strong> problem and results in an effectively <strong>large receptive field</strong></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>Chanllenges in Point Cloud segmentation</strong>: <u>unordered and irregular structure of 3D point clouds</u> -&gt; [3D spatial coordinates and possibly auxiliary features such as color and surface normal]</li>
+</ul>
+</li>
+<li>
+<p><u><strong>Use cases</strong></u>:</p>
+<ul>
+<li><u>predict individual relations in social networks</u><ul>
+<li>Graph represent connections between individuals based on <strong>mutual interests/relations</strong> - in social network</li>
+<li>GCN help better estimate <strong>edge strength</strong></li>
+</ul>
+</li>
+<li><u>model proteins for drug discovery</u><ul>
+<li>Graphs can model chemical molecule structures</li>
+</ul>
+</li>
+<li><u>enhance predictions of recommendation engines</u><ul>
+<li>accurate modelling of user interatctions -&gt; improved product recommendations</li>
+</ul>
+</li>
+<li><u><strong>point cloud semantic segmentation</strong></u></li>
+<li>[Graph] representation in NLP -&gt; <u>complex relations between large text units</u></li>
+<li>[CV] <u>scene graph generation</u>: semantic relations between objects are modelled using a graph<ul>
+<li>also predict semantic relations between object pairs</li>
+</ul>
+</li>
+<li>[CV] image is reconstructed given a graph representation of the scene</li>
+<li>[CV] model human joints for action recognition in video</li>
+<li>[CV] 3D point cloud processing</li>
+<li>directly processing unordered point cloud representation</li>
+<li><strong>Column Netwok (CLN)</strong> -&gt; <u>collective classifcation in relational learning</u></li>
+<li><strong>Highway GCN</strong> -&gt; for user geo-location in social media graphs</li>
+<li><strong>Jump Knowledge Network</strong> -&gt; representation learning</li>
+</ul>
+</li>
+<li>
+<p><u><strong>Further directions</strong></u>:</p>
+<ol>
+<li>explore how to transfer: <ul>
+<li>other operators (e.g.<code>deformable confolutions</code>)</li>
+<li>other architectures (e.g. <code>feature pyramid architectures</code>)</li>
+</ul>
+</li>
+<li>study different distince meatures to compute dilated k-NN</li>
+<li>constructing graphs with different k at each layer</li>
+<li>better dilation rate schedules</li>
+<li>combining residual and dense connections</li>
+<li>more suitable sampling approach -&gt; should lead to further performance gains on the task </li>
+</ol>
+</li>
 </ul>
 </li>
 </ul>
@@ -2868,6 +2983,16 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><u><strong>Use cases</strong></u>:</li>
 <li><u><strong>Further directions</strong></u>:</li>
 </ul>
+</li>
+</ul>
+<hr />
+<p><strong>TO ADD</strong>:</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> A. Rahimi, T. Cohn, and T. Baldwin. Semi-supervised user geolocation via graph convolutional networks. arXiv preprint arXiv:1804.08049, 2018. 2</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled/> Y. Wang, Y. Sun, Z. Liu, S. E. Sarma, M. M. Bronstein, and J. M. Solomon. Dynamic graph cnn for learning on point clouds. arXiv preprint arXiv:1801.07829, 2018</p>
 </li>
 </ul>
 <hr />
