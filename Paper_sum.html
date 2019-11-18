@@ -999,7 +999,10 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true
+    processEscapes: true,
+    processEnvironments: true,
+    ignoreClass: ".*|",
+    processClass: "arithmatex"
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1013,10 +1016,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
-  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});</script><style>/*GitHub*/
+});
+</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -2956,6 +2959,74 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </li>
 </ul>
 <hr />
+<p>(37) <code>May 2019</code> <a href="https://link.springer.com/chapter/10.1007/978-3-030-20482-2_6">Influential Nodes Detection in Dynamic Social Networks</a> <em>[Nesrine HafieneEmail, authorWafa KarouiLotfi, Ben Romdhane]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>The influence maximization problem aims to identify influential nodes allowing to reach the viral marketing objectives on social networks. Previous researches are mainly concerned with the static social network analysis and the development of algorithms in this context. However, when network changes, those algorithms must be updated. In this paper, we offer a new interesting approach to study the influential nodes detection problem in changing social networks. This approach can be considered to be an extension of a previous static algorithm SND (Semantic and structural influential Nodes Detection). Experimental results prove the effectiveness of SNDUpdate to detect influential nodes in dynamic social networks.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(38) <code>Jul 2019</code> <a href="https://arxiv.org/abs/1906.03737">Factorization Bandits for Online Influence Maximization</a> <em>[Qingyun Wu, Zhige Li, Huazheng Wang, Wei Chen, Hongning Wang]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>We study the problem of online influence maximization in social networks. In this problem, a learner aims to identify the set of &ldquo;best influencers&rdquo; in a network by interacting with it, i.e., repeatedly selecting seed nodes and observing activation feedback in the network. We capitalize on an important property of the influence maximization problem named network assortativity, which is ignored by most existing works in online influence maximization. To realize network assortativity, we factorize the activation probability on the edges into latent factors on the corresponding nodes, including influence factor on the giving nodes and susceptibility factor on the receiving nodes. We propose an upper confidence bound based online learning solution to estimate the latent factors, and therefore the activation probabilities. Considerable regret reduction is achieved by our factorization based online influence maximization algorithm. And extensive empirical evaluations on two real-world networks showed the effectiveness of our proposed solution.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(28) <code>May 2018</code> <a href="https://arxiv.org/abs/1804.08049">Semi-supervised User Geolocation via Graph Convolutional Networks</a> <em>[Afshin Rahimi, Trevor Cohn, Timothy Baldwin]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Social media user geolocation is vital to many applications such as event detection. In this paper, we propose GCN, a multiview geolocation model based on Graph Convolutional Networks, that uses both text and network context. We compare GCN to the state-of-the-art, and to two baselines we propose, and show that our model achieves or is competitive with the state- of-the-art over three benchmark geolocation datasets when sufficient supervision is available. We also evaluate GCN under a minimal supervision scenario, and show it outperforms baselines. We find that highway network gates are essential for controlling the amount of useful neighbourhood expansion in GCN.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(28) <code>Jun 2019</code> <a href="https://arxiv.org/abs/1801.07829">Dynamic Graph CNN for Learning on Point Clouds</a> <em>[Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Point clouds provide a flexible geometric representation suitable for countless applications in computer graphics; they also comprise the raw output of most 3D data acquisition devices. While hand-designed features on point clouds have long been proposed in graphics and vision, however, the recent overwhelming success of convolutional neural networks (CNNs) for image analysis suggests the value of adapting insight from CNN to the point cloud world. Point clouds inherently lack topological information so designing a model to recover topology can enrich the representation power of point clouds. To this end, we propose a new neural network module dubbed EdgeConv suitable for CNN-based high-level tasks on point clouds including classification and segmentation. EdgeConv acts on graphs dynamically computed in each layer of the network. It is differentiable and can be plugged into existing architectures. Compared to existing modules operating in extrinsic space or treating each point independently, EdgeConv has several appealing properties: It incorporates local neighborhood information; it can be stacked applied to learn global shape properties; and in multi-layer systems affinity in feature space captures semantic characteristics over potentially long distances in the original embedding. We show the performance of our model on standard benchmarks including ModelNet40, ShapeNetPart, and S3DIS.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
 <p>(28) <code>201</code> <a href=""></a> <em>[]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
@@ -2988,12 +3059,7 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <hr />
 <p><strong>TO ADD</strong>:</p>
 <ul class="task-list">
-<li class="task-list-item">
-<p><input type="checkbox" disabled/> A. Rahimi, T. Cohn, and T. Baldwin. Semi-supervised user geolocation via graph convolutional networks. arXiv preprint arXiv:1804.08049, 2018. 2</p>
-</li>
-<li class="task-list-item">
-<p><input type="checkbox" disabled/> Y. Wang, Y. Sun, Z. Liu, S. E. Sarma, M. M. Bronstein, and J. M. Solomon. Dynamic graph cnn for learning on point clouds. arXiv preprint arXiv:1801.07829, 2018</p>
-</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Y. Wang, Y. Sun, Z. Liu, S. E. Sarma, M. M. Bronstein, and J. M. Solomon. Dynamic graph cnn for learning on point clouds. arXiv preprint arXiv:1801.07829, 2018</li>
 </ul>
 <hr />
 <h3 id="extraction-from-paper">Extraction from paper<a class="headerlink" href="#extraction-from-paper" title="Permanent link"></a></h3>
