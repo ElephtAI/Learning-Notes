@@ -999,10 +999,7 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true,
-    processEnvironments: true,
-    ignoreClass: ".*|",
-    processClass: "arithmatex"
+    processEscapes: true
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1016,10 +1013,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
+  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});
-</script><style>/*GitHub*/
+});</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -2981,19 +2978,70 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>We study the problem of online influence maximization in social networks. In this problem, a learner aims to identify the set of &ldquo;best influencers&rdquo; in a network by interacting with it, i.e., repeatedly selecting seed nodes and observing activation feedback in the network. We capitalize on an important property of the influence maximization problem named network assortativity, which is ignored by most existing works in online influence maximization. To realize network assortativity, we factorize the activation probability on the edges into latent factors on the corresponding nodes, including influence factor on the giving nodes and susceptibility factor on the receiving nodes. We propose an upper confidence bound based online learning solution to estimate the latent factors, and therefore the activation probabilities. Considerable regret reduction is achieved by our factorization based online influence maximization algorithm. And extensive empirical evaluations on two real-world networks showed the effectiveness of our proposed solution.</p>
+<p>We study the problem of online influence maximization in social networks. In this problem, a learner aims to identify the set of &ldquo;<strong>best influencers</strong>&rdquo; in a network by interacting with it, i.e., <em>(repeatedly selecting seed nodes and observing activation feedback in the network)</em>. We capitalize on an important property of the influence maximization problem named <strong>[network assortativity]</strong>, which is ignored by most existing works in online influence maximization. To realize network assortativity, -&gt; <em>(we factorize the activation probability on the edges into latent factors on the corresponding nodes)</em>, including influence factor on the giving nodes and susceptibility factor on the receiving nodes. We propose an <strong>upper confidence bound</strong> based online learning solution to estimate the latent factors, and therefore the activation probabilities. Considerable regret reduction is achieved by our <strong>factorization based online influence maximization algorithm</strong>. And extensive empirical evaluations on two real-world networks showed the effectiveness of our proposed solution.</p>
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li><u><strong>Main contributions</strong></u>: </li>
-<li><u><strong>Other Notes</strong></u>:</li>
-<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> propose to model the <strong>dependency</strong> of <strong>activation probabilities</strong> on the edges for <u>online influence maximization</u><ul>
+<li>[Assumption 1]: each network nodes&rsquo;s <u>influence and susceptibility</u> are <strong>distinct</strong> and <strong>individually specified</strong></li>
+<li>[Assumption 2]: activation probability on an edge is jointly determined by <u>the <strong>giving node&rsquo;s influence</strong> and <strong>receiving node&rsquo;s susceptibility</strong></u></li>
+</ul>
+</li>
+<li><strong>[2]</strong> propose a <strong>factorization based bandit solution</strong> -&gt; to learn the <u>latent influence factors and susceptibility factors</u><ul>
+<li><u>Tree important advantages:</u><ol>
+<li>able to capture the <strong>assortative mixing property</strong> of influence distribution in a network</li>
+<li>activation observation from one edge can be readily leveraged to other edges <u>that share the same node</u></li>
+<li>does not depend on the availability of manually constructed edge  or node level feautres (<em>it learns the property of network nodes via <strong>factorization</strong></em>)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>[3]</strong> provide rigorous theoretical analysis on the <u>upper regeret bound of the proposed solution</u> ==&gt; prove considerable regret reduction comparint to solution that model the activation probability on edges independently. </li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:<ul>
+<li>online social networks play a vital role in the <strong>spread of information ideas</strong> and <strong>influence among people</strong></li>
+<li><strong>[influence maximization problem]</strong>: <em>with a fixed budget on the number of selections, a marketer aims to maximize the spread of this influence</em></li>
+<li>typically, in a social network:<ul>
+<li>it is associated with the <strong>activation probility</strong> -&gt; <u>represent the connections or relationship between users</u></li>
+<li>influence is propagated through the network under a specific <strong>diffusion model</strong> (e.g. <code>independent cascade model</code>, <code>linear threshold model</code>)</li>
+</ul>
+</li>
+<li>Most existing influence maximization solutions assume the <strong>activation probaibility is known beforehand</strong> -&gt; [however, this information might <strong>not be observable</strong> in many networks]</li>
+<li><strong>[online influence maximization]</strong>: <u>seed nodes are purposely selected by a learning agent</u> -&gt; improve quality in influence estimation and influencer selection (based on <strong>combinatorial bandits</strong>)<ul>
+<li><em>each node in the network as an arm</em>, at each round, the received reward on the selected set of seed nodes ==&gt; the number of their activated nodes</li>
+</ul>
+</li>
+<li>Most existing [online influence maximization] model the activation probability <strong>on the edges independently</strong> -&gt; <u>cannot capture how social influence forms in real networks</u></li>
+<li>referring to (independence/dependence) in <u>estimation of influence across network edges</u>: <ol>
+<li><strong>independence assumption</strong> prevents the model from <strong>realizign the deoendency among the influence patterns on related nodes</strong> -&gt; <strong>[assortative mixing]</strong><ul>
+<li>
+<blockquote>
+<p>influential individuals are less susceptible to be influenced than non-influential individuals </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>the distribution of <strong>influence</strong> and <strong>susceptibility</strong> over network is ==&gt; <strong>heterogeneous</strong><ul>
+<li>to solve -&gt; introduce <strong>edge-level features</strong> [however, many attributes are sensitive and hardly be exhausted, prohibited under privacy policy]</li>
+</ul>
+</li>
+<li>edge-level estimzation of activation probability costs an algorithm high <strong>computational complexity</strong> and <strong>sample complexity</strong></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:<ul>
+<li>marketer tries to select a set of customers with great influence for a new product promotion</li>
+</ul>
+</li>
 <li><u><strong>Further directions</strong></u>:</li>
 </ul>
 </li>
 </ul>
 <hr />
-<p>(28) <code>May 2018</code> <a href="https://arxiv.org/abs/1804.08049">Semi-supervised User Geolocation via Graph Convolutional Networks</a> <em>[Afshin Rahimi, Trevor Cohn, Timothy Baldwin]</em></p>
+<p>(39) <code>May 2018</code> <a href="https://arxiv.org/abs/1804.08049">Semi-supervised User Geolocation via Graph Convolutional Networks</a> <em>[Afshin Rahimi, Trevor Cohn, Timothy Baldwin]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -3010,7 +3058,7 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </li>
 </ul>
 <hr />
-<p>(28) <code>Jun 2019</code> <a href="https://arxiv.org/abs/1801.07829">Dynamic Graph CNN for Learning on Point Clouds</a> <em>[Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon]</em></p>
+<p>(40) <code>Jun 2019</code> <a href="https://arxiv.org/abs/1801.07829">Dynamic Graph CNN for Learning on Point Clouds</a> <em>[Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>

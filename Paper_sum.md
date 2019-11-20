@@ -1109,17 +1109,42 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> We study the problem of online influence maximization in social networks. In this problem, a learner aims to identify the set of "best influencers" in a network by interacting with it, i.e., repeatedly selecting seed nodes and observing activation feedback in the network. We capitalize on an important property of the influence maximization problem named network assortativity, which is ignored by most existing works in online influence maximization. To realize network assortativity, we factorize the activation probability on the edges into latent factors on the corresponding nodes, including influence factor on the giving nodes and susceptibility factor on the receiving nodes. We propose an upper confidence bound based online learning solution to estimate the latent factors, and therefore the activation probabilities. Considerable regret reduction is achieved by our factorization based online influence maximization algorithm. And extensive empirical evaluations on two real-world networks showed the effectiveness of our proposed solution.
+> We study the problem of online influence maximization in social networks. In this problem, a learner aims to identify the set of "**best influencers**" in a network by interacting with it, i.e., *(repeatedly selecting seed nodes and observing activation feedback in the network)*. We capitalize on an important property of the influence maximization problem named **[network assortativity]**, which is ignored by most existing works in online influence maximization. To realize network assortativity, -> *(we factorize the activation probability on the edges into latent factors on the corresponding nodes)*, including influence factor on the giving nodes and susceptibility factor on the receiving nodes. We propose an **upper confidence bound** based online learning solution to estimate the latent factors, and therefore the activation probabilities. Considerable regret reduction is achieved by our **factorization based online influence maximization algorithm**. And extensive empirical evaluations on two real-world networks showed the effectiveness of our proposed solution.
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
+        - **[1]** propose to model the **dependency** of **activation probabilities** on the edges for <u>online influence maximization</u>
+            - [Assumption 1]: each network nodes's <u>influence and susceptibility</u> are **distinct** and **individually specified**
+            - [Assumption 2]: activation probability on an edge is jointly determined by <u>the **giving node's influence** and **receiving node's susceptibility**</u>
+        - **[2]** propose a **factorization based bandit solution** -> to learn the <u>latent influence factors and susceptibility factors</u>
+            - <u>Tree important advantages:</u>
+                1. able to capture the **assortative mixing property** of influence distribution in a network
+                2. activation observation from one edge can be readily leveraged to other edges <u>that share the same node</u>
+                3. does not depend on the availability of manually constructed edge  or node level feautres (*it learns the property of network nodes via **factorization***)
+        - **[3]** provide rigorous theoretical analysis on the <u>upper regeret bound of the proposed solution</u> ==> prove considerable regret reduction comparint to solution that model the activation probability on edges independently. 
     - <u>**Other Notes**</u>:
+        - online social networks play a vital role in the **spread of information ideas** and **influence among people**
+        - **[influence maximization problem]**: *with a fixed budget on the number of selections, a marketer aims to maximize the spread of this influence*
+        - typically, in a social network:
+            - it is associated with the **activation probility** -> <u>represent the connections or relationship between users</u>
+            - influence is propagated through the network under a specific **diffusion model** (e.g. `independent cascade model`, `linear threshold model`)
+        - Most existing influence maximization solutions assume the **activation probaibility is known beforehand** -> [however, this information might **not be observable** in many networks]
+        - **[online influence maximization]**: <u>seed nodes are purposely selected by a learning agent</u> -> improve quality in influence estimation and influencer selection (based on **combinatorial bandits**)
+            - *each node in the network as an arm*, at each round, the received reward on the selected set of seed nodes ==> the number of their activated nodes
+        - Most existing [online influence maximization] model the activation probability **on the edges independently** -> <u>cannot capture how social influence forms in real networks</u>
+        - referring to (independence/dependence) in <u>estimation of influence across network edges</u>: 
+            1. **independence assumption** prevents the model from **realizign the deoendency among the influence patterns on related nodes** -> **[assortative mixing]**
+                - > influential individuals are less susceptible to be influenced than non-influential individuals 
+            2. the distribution of **influence** and **susceptibility** over network is ==> **heterogeneous**
+                - to solve -> introduce **edge-level features** [however, many attributes are sensitive and hardly be exhausted, prohibited under privacy policy]
+            3. edge-level estimzation of activation probability costs an algorithm high **computational complexity** and **sample complexity**
     - <u>**Use cases**</u>:
+        - marketer tries to select a set of customers with great influence for a new product promotion
     - <u>**Further directions**</u>:
 
 ---
 
-(28) `May 2018` [Semi-supervised User Geolocation via Graph Convolutional Networks](https://arxiv.org/abs/1804.08049) *[Afshin Rahimi, Trevor Cohn, Timothy Baldwin]*
+(39) `May 2018` [Semi-supervised User Geolocation via Graph Convolutional Networks](https://arxiv.org/abs/1804.08049) *[Afshin Rahimi, Trevor Cohn, Timothy Baldwin]*
 
 * **Abstract**: 
 
@@ -1133,7 +1158,7 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ---
 
-(28) `Jun 2019` [Dynamic Graph CNN for Learning on Point Clouds](https://arxiv.org/abs/1801.07829) *[Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon]*
+(40) `Jun 2019` [Dynamic Graph CNN for Learning on Point Clouds](https://arxiv.org/abs/1801.07829) *[Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon]*
 
 * **Abstract**: 
 
