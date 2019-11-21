@@ -2983,7 +2983,7 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <ul>
 <li><strong>Key notes</strong>: <ul>
 <li><u><strong>Main contributions</strong></u>: <ul>
-<li><strong>[1]</strong> propose to model the <strong>dependency</strong> of <strong>activation probabilities</strong> on the edges for <u>online influence maximization</u><ul>
+<li><strong>[1]</strong> propose to model the <strong>dependency</strong> of <strong>activation probabilities</strong> on the edges for <u>online influence maximization</u> (<em>without the need of edge features</em>)<ul>
 <li>[Assumption 1]: each network nodes&rsquo;s <u>influence and susceptibility</u> are <strong>distinct</strong> and <strong>individually specified</strong></li>
 <li>[Assumption 2]: activation probability on an edge is jointly determined by <u>the <strong>giving node&rsquo;s influence</strong> and <strong>receiving node&rsquo;s susceptibility</strong></u></li>
 </ul>
@@ -3030,6 +3030,9 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li>edge-level estimzation of activation probability costs an algorithm high <strong>computational complexity</strong> and <strong>sample complexity</strong></li>
 </ol>
 </li>
+<li>traditional <strong>offline setting</strong> -&gt; <u>ignores many important properties (e.g. <strong>assotativity</strong>) of real network influence patterns</u></li>
+<li>[<em>In practive it is very difficult to exhaustively specify the features for influence modeling on every edge</em>]</li>
+<li>previous works donnot explicitly separate influence and susceptibility of nodes ==&gt; causes seriously degraded estimation of <strong>influence propagation</strong></li>
 </ul>
 </li>
 <li><u><strong>Use cases</strong></u>:<ul>

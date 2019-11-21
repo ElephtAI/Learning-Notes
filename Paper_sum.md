@@ -1113,7 +1113,7 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
-        - **[1]** propose to model the **dependency** of **activation probabilities** on the edges for <u>online influence maximization</u>
+        - **[1]** propose to model the **dependency** of **activation probabilities** on the edges for <u>online influence maximization</u> (*without the need of edge features*)
             - [Assumption 1]: each network nodes's <u>influence and susceptibility</u> are **distinct** and **individually specified**
             - [Assumption 2]: activation probability on an edge is jointly determined by <u>the **giving node's influence** and **receiving node's susceptibility**</u>
         - **[2]** propose a **factorization based bandit solution** -> to learn the <u>latent influence factors and susceptibility factors</u>
@@ -1138,6 +1138,9 @@ We evaluate our method on a variety of **link-prediction** task including social
             2. the distribution of **influence** and **susceptibility** over network is ==> **heterogeneous**
                 - to solve -> introduce **edge-level features** [however, many attributes are sensitive and hardly be exhausted, prohibited under privacy policy]
             3. edge-level estimzation of activation probability costs an algorithm high **computational complexity** and **sample complexity**
+        - traditional **offline setting** -> <u>ignores many important properties (e.g. **assotativity**) of real network influence patterns</u>
+        - [*In practive it is very difficult to exhaustively specify the features for influence modeling on every edge*]
+        - previous works donnot explicitly separate influence and susceptibility of nodes ==> causes seriously degraded estimation of **influence propagation**
     - <u>**Use cases**</u>:
         - marketer tries to select a set of customers with great influence for a new product promotion
     - <u>**Further directions**</u>:
