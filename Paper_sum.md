@@ -1117,14 +1117,28 @@ We evaluate our method on a variety of **link-prediction** task including social
             - [Assumption 1]: each network nodes's <u>influence and susceptibility</u> are **distinct** and **individually specified**
             - [Assumption 2]: activation probability on an edge is jointly determined by <u>the **giving node's influence** and **receiving node's susceptibility**</u>
         - **[2]** propose a **factorization based bandit solution** -> to learn the <u>latent influence factors and susceptibility factors</u>
+            - assuming <u>activation probability on edge e canbe decomposed into two d-dim latent factors on the giving node and receiving node</u> (**influence factor** + **susceptibility factor**)
+            - assuming <u>the diffusion follows the **independent cascade model**</u>
+            - introduce **L2-regularization** in the objective function: 
+                1. *makes the sub-problem in coordinate decent based optimization **well-proposed*** ==> <u>closed form solution</u>
+                2 *helps to remove the scaling indeterminacy between the estimates of the two factors*, and make the *q-linear convergence rate of parameter estimation achievable*
+            - <u>Two definitions: </u>
+                - > **Observed edge**: for any rount, a directed edge is considered as observed **iff** its start node is activated
+                - > **Observed node**: A node is observed **iff** at least one of its giving-neighbor nodes is active
             - <u>Tree important advantages:</u>
                 1. able to capture the **assortative mixing property** of influence distribution in a network
                 2. activation observation from one edge can be readily leveraged to other edges <u>that share the same node</u>
                 3. does not depend on the availability of manually constructed edge  or node level feautres (*it learns the property of network nodes via **factorization***)
+            - <u>advanatages of **IMFB** to **CUCB**</u>:
+                1. [reduced model complexity] 
+                2. [reduced sampling complexity]
+            - > in **CUCB**: *activation probability statistics* only be updated for those observed edges -> no information is learned for those unobserved edges
+            - > in **IMFB**: utilizing the fact that **[the activation on a particular edge is a reflection of the giving node's influence]** and **[the receiving node's susceptibility]** ===> observations from the observed edges can be propagated to the unobserved edges
         - **[3]** provide rigorous theoretical analysis on the <u>upper regeret bound of the proposed solution</u> ==> prove considerable regret reduction comparint to solution that model the activation probability on edges independently. 
     - <u>**Other Notes**</u>:
         - online social networks play a vital role in the **spread of information ideas** and **influence among people**
         - **[influence maximization problem]**: *with a fixed budget on the number of selections, a marketer aims to maximize the spread of this influence*
+            - **[activation probability]**: (Pe) represent the probability taht the reveiving node of edge e will be activated by the giving node on e
         - typically, in a social network:
             - it is associated with the **activation probility** -> <u>represent the connections or relationship between users</u>
             - influence is propagated through the network under a specific **diffusion model** (e.g. `independent cascade model`, `linear threshold model`)
@@ -1141,9 +1155,17 @@ We evaluate our method on a variety of **link-prediction** task including social
         - traditional **offline setting** -> <u>ignores many important properties (e.g. **assotativity**) of real network influence patterns</u>
         - [*In practive it is very difficult to exhaustively specify the features for influence modeling on every edge*]
         - previous works donnot explicitly separate influence and susceptibility of nodes ==> causes seriously degraded estimation of **influence propagation**
+        - **[Online influence maximization with bandit]**: 
+            - Traditional works assums: `knows the per-edge activation probability`, `the probability can be specified from past propagation data`
+            - most existing badit-based OIM: `the learner estimates the activation probabilities on all edges independently` ==> <u>cannot capture how tht influence between nodes is ofrmed and ignores the underlying structure behind the activation probabilities of edges</u>
+            - In each round of OIM, the learner needs to choose seeds to:
+                1. <u>maximize influence spread</u> (**exploitation**)
+                2. <u>improve its knowledge of the activation probabilities via feedback</u> (**exploration**)
     - <u>**Use cases**</u>:
         - marketer tries to select a set of customers with great influence for a new product promotion
+        - datasets: `NetHEPT` and `Flickr`
     - <u>**Further directions**</u>:
+        - incorporate more sophisticated inference mehtods based on the factor models to learn from **[node-level feedback is more prevalent instead of edge-level feedback (we assumed)]**
 
 ---
 

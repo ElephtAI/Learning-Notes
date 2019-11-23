@@ -2989,11 +2989,46 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </ul>
 </li>
 <li><strong>[2]</strong> propose a <strong>factorization based bandit solution</strong> -&gt; to learn the <u>latent influence factors and susceptibility factors</u><ul>
+<li>assuming <u>activation probability on edge e canbe decomposed into two d-dim latent factors on the giving node and receiving node</u> (<strong>influence factor</strong> + <strong>susceptibility factor</strong>)</li>
+<li>assuming <u>the diffusion follows the <strong>independent cascade model</strong></u></li>
+<li>introduce <strong>L2-regularization</strong> in the objective function: <ol>
+<li><em>makes the sub-problem in coordinate decent based optimization <strong>well-proposed</strong></em> ==&gt; <u>closed form solution</u>
+2 <em>helps to remove the scaling indeterminacy between the estimates of the two factors</em>, and make the <em>q-linear convergence rate of parameter estimation achievable</em></li>
+</ol>
+</li>
+<li><u>Two definitions: </u><ul>
+<li>
+<blockquote>
+<p><strong>Observed edge</strong>: for any rount, a directed edge is considered as observed <strong>iff</strong> its start node is activated</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><strong>Observed node</strong>: A node is observed <strong>iff</strong> at least one of its giving-neighbor nodes is active</p>
+</blockquote>
+</li>
+</ul>
+</li>
 <li><u>Tree important advantages:</u><ol>
 <li>able to capture the <strong>assortative mixing property</strong> of influence distribution in a network</li>
 <li>activation observation from one edge can be readily leveraged to other edges <u>that share the same node</u></li>
 <li>does not depend on the availability of manually constructed edge  or node level feautres (<em>it learns the property of network nodes via <strong>factorization</strong></em>)</li>
 </ol>
+</li>
+<li><u>advanatages of <strong>IMFB</strong> to <strong>CUCB</strong></u>:<ol>
+<li>[reduced model complexity] </li>
+<li>[reduced sampling complexity]</li>
+</ol>
+</li>
+<li>
+<blockquote>
+<p>in <strong>CUCB</strong>: <em>activation probability statistics</em> only be updated for those observed edges -&gt; no information is learned for those unobserved edges</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>in <strong>IMFB</strong>: utilizing the fact that <strong>[the activation on a particular edge is a reflection of the giving node&rsquo;s influence]</strong> and <strong>[the receiving node&rsquo;s susceptibility]</strong> ===&gt; observations from the observed edges can be propagated to the unobserved edges</p>
+</blockquote>
 </li>
 </ul>
 </li>
@@ -3002,7 +3037,10 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </li>
 <li><u><strong>Other Notes</strong></u>:<ul>
 <li>online social networks play a vital role in the <strong>spread of information ideas</strong> and <strong>influence among people</strong></li>
-<li><strong>[influence maximization problem]</strong>: <em>with a fixed budget on the number of selections, a marketer aims to maximize the spread of this influence</em></li>
+<li><strong>[influence maximization problem]</strong>: <em>with a fixed budget on the number of selections, a marketer aims to maximize the spread of this influence</em><ul>
+<li><strong>[activation probability]</strong>: (Pe) represent the probability taht the reveiving node of edge e will be activated by the giving node on e</li>
+</ul>
+</li>
 <li>typically, in a social network:<ul>
 <li>it is associated with the <strong>activation probility</strong> -&gt; <u>represent the connections or relationship between users</u></li>
 <li>influence is propagated through the network under a specific <strong>diffusion model</strong> (e.g. <code>independent cascade model</code>, <code>linear threshold model</code>)</li>
@@ -3033,13 +3071,27 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li>traditional <strong>offline setting</strong> -&gt; <u>ignores many important properties (e.g. <strong>assotativity</strong>) of real network influence patterns</u></li>
 <li>[<em>In practive it is very difficult to exhaustively specify the features for influence modeling on every edge</em>]</li>
 <li>previous works donnot explicitly separate influence and susceptibility of nodes ==&gt; causes seriously degraded estimation of <strong>influence propagation</strong></li>
+<li><strong>[Online influence maximization with bandit]</strong>: <ul>
+<li>Traditional works assums: <code>knows the per-edge activation probability</code>, <code>the probability can be specified from past propagation data</code></li>
+<li>most existing badit-based OIM: <code>the learner estimates the activation probabilities on all edges independently</code> ==&gt; <u>cannot capture how tht influence between nodes is ofrmed and ignores the underlying structure behind the activation probabilities of edges</u></li>
+<li>In each round of OIM, the learner needs to choose seeds to:<ol>
+<li><u>maximize influence spread</u> (<strong>exploitation</strong>)</li>
+<li><u>improve its knowledge of the activation probabilities via feedback</u> (<strong>exploration</strong>)</li>
+</ol>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><u><strong>Use cases</strong></u>:<ul>
 <li>marketer tries to select a set of customers with great influence for a new product promotion</li>
+<li>datasets: <code>NetHEPT</code> and <code>Flickr</code></li>
 </ul>
 </li>
-<li><u><strong>Further directions</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li>incorporate more sophisticated inference mehtods based on the factor models to learn from <strong>[node-level feedback is more prevalent instead of edge-level feedback (we assumed)]</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
