@@ -775,10 +775,51 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> Graph structured data are abundant in the real world. Among different graph types, directed acyclic graphs (DAGs) are of particular interest to machine learning researchers, as many machine learning models are realized as computations on DAGs, including neural networks and Bayesian networks. In this paper, we study deep generative models for DAGs, and propose a novel DAG variational autoencoder (D-VAE). To encode DAGs into the latent space, we leverage graph neural networks. We propose an asynchronous message passing scheme that allows encoding the computations on DAGs, rather than using existing simultaneous message passing schemes to encode local graph structures. We demonstrate the effectiveness of our proposed D-VAE through two tasks: neural architecture search and Bayesian network structure learning. Experiments show that our model not only generates novel and valid DAGs, but also produces a smooth latent space that facilitates searching for DAGs with better performance through Bayesian optimization.
+> Graph structured data are abundant in the real world. Among different graph types, **directed acyclic graphs (DAGs)** are of particular interest to machine learning researchers, as many machine learning models are realized as computations on DAGs, including neural networks and Bayesian networks. In this paper, we study deep generative models for DAGs, and propose a novel DAG variational autoencoder (D-VAE). To encode DAGs into the latent space, we leverage graph neural networks. We propose an **[asynchronous message passing scheme]** that allows encoding the computations on DAGs, rather than using existing simultaneous message passing schemes to encode local graph structures. We demonstrate the effectiveness of our proposed D-VAE through two tasks: **neural architecture search** and **Bayesian network structure learning**. Experiments show that our model not only generates novel and valid DAGs, but also produces a **smooth** latent space that facilitates searching for DAGs with better performance through Bayesian optimization.
 
 * **Key notes**: 
-    - 
+    - <u>**Main contributions**</u>: 
+        - **[1]** propose **D-VAE**: <u>a variational autoencoder for DAGs</u> using a **novel asynchronous message passing scheme** 
+            - able to **injectively encode computations** (*can build a mapping from the discrete space to a continuous latent space => every DAT computation has its unique embedding in the latent space*)
+            - leverage GNN, **but** they ***simultaneously** passing all nodes' neighbors' messages to themselves* ==> designed ot learn **local structure features**, not suitable for DAGs because: 
+                1. nodes are not symmetric, <u>intrinsically hae some ordering based on its dependency strucutre</u>
+                2. more concerned about the computation represented by the **entire** graph, **not the local** strucutre
+            - > Definition - **Computation**: composition of a finite number of operations applied to an input signal x, with the ouput of each operation being the input to its secceeding operations
+            - **[Encoding]**: <u>graph neural network (GNN)</u> ==> <u>sequentially perform message passing for nodes following a topologica ordering of the DAG</u>
+                - > **Theorem 1**: The D-VAE encoder is **invariant** to node permutations of the input DAT if teh aggregatoin functio is invariant to the order of its inputs
+                - > **Theorem 2**: the encoder of D-VAE maps computation to hidden vector injectively if aggregator function is **injective** and update function is **injective**
+                - <u>Themroem 2</u> provides a way to injectively encode computations on DAGs ==> every computation has a unique embedding in latent space 
+            - **[Decoding]**: for new nodes: 
+                1. predict its node type based on the current graph state
+                2. sequentially predict whether each existing node has a directed edge to it based on the existing and current nodes' hidden states
+        - **[2]** propose a new **DAG optimization framework** ==> <u>performs Bayesian optimization in a continuous latent space</u>
+        - **[3]** apply D-VAE to two problems: `neural architecture search` and `Bayeisan network structure learning`
+            - Evaluation schemes: 
+                1. **[Accuracy]**: how often they can reconstruct input DAGs perfectly
+                2. **[Validity]**: how often they can generate valid neural architectures or bayesian network from the prior distribution
+                3. **[Uniqueness]**: the proportion of unique DAGs out of the valid generations
+                4. **[Novelty]**: the proportion of valid generations that are never seen in the training set
+    - <u>**Other Notes**</u>:
+        - DAG optimization is very challenging: 
+            1. the evaluation of the performance is time-consuming (training NN)
+            2. SOTA optimization techiniques (**simulated annealing** & **Bayesian optimization (need kernal)**) operate in a **continuous** space ==> not directly applicable to DAG optimization due to the **discrete** nature
+        - **[Deep graph generative models]**:   
+            - `token-based`: <u>represent a graph as a sequence of tokens and model using RNNs</u>
+            - `Adjacency-matrix-based models`: <u>leverage proxy adjacency matrix represnetation of a graph</u> ===> generate matrix in one shot or sequentially 
+            - `graph-based`: operate **directly** on graph structures by <u>iteratively adding new nodes/edges to a graph based on existing graph and node states</u>
+    - <u>**Use cases**</u>:
+        - **[Neural architecture search (NAS)]**: searching optimal neural architectures (DAG optimization task)
+            - <u>automating the design of neural network architectures</u>
+            - `RL methods` (generate architectures with high rewards in term of validation accuracy)
+            - `Bayesian optimization based method` (define kernels to measure architecture similarity and extrapolate the architecutre space heuristically)
+            - `evolutionary approaches` (use evolutionary algorithms to optimize neural architectures)
+            - `differentiable methods` (use continuous relaxation/mapping of neural architectures to enable gradient-based optimization)
+        - **[Bayesian network structure learning (BNSL)]**: optimizing the connection structures of Bayesian networks
+            - <u>learn the structure of the underlying bayesian network from observed data</u>
+            - `score-based search` (define some "goodness-of-fit" score (*BIC and BDeu -> on marginal likelihood*) for network structure and search for one with optimal score in the discrete design space)
+        - optimizing DAG circuit blocks ==> [realize target functions] && [meet specifications such as pwer usage & operating temperature]
+    - <u>**Further directions**</u>:
+        - currently use **one-hot** encoding of node types ==> could use pretrained embeddings of node types to replace it
 
 ---
 

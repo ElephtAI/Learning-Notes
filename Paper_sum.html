@@ -2476,11 +2476,92 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>Graph structured data are abundant in the real world. Among different graph types, directed acyclic graphs (DAGs) are of particular interest to machine learning researchers, as many machine learning models are realized as computations on DAGs, including neural networks and Bayesian networks. In this paper, we study deep generative models for DAGs, and propose a novel DAG variational autoencoder (D-VAE). To encode DAGs into the latent space, we leverage graph neural networks. We propose an asynchronous message passing scheme that allows encoding the computations on DAGs, rather than using existing simultaneous message passing schemes to encode local graph structures. We demonstrate the effectiveness of our proposed D-VAE through two tasks: neural architecture search and Bayesian network structure learning. Experiments show that our model not only generates novel and valid DAGs, but also produces a smooth latent space that facilitates searching for DAGs with better performance through Bayesian optimization.</p>
+<p>Graph structured data are abundant in the real world. Among different graph types, <strong>directed acyclic graphs (DAGs)</strong> are of particular interest to machine learning researchers, as many machine learning models are realized as computations on DAGs, including neural networks and Bayesian networks. In this paper, we study deep generative models for DAGs, and propose a novel DAG variational autoencoder (D-VAE). To encode DAGs into the latent space, we leverage graph neural networks. We propose an <strong>[asynchronous message passing scheme]</strong> that allows encoding the computations on DAGs, rather than using existing simultaneous message passing schemes to encode local graph structures. We demonstrate the effectiveness of our proposed D-VAE through two tasks: <strong>neural architecture search</strong> and <strong>Bayesian network structure learning</strong>. Experiments show that our model not only generates novel and valid DAGs, but also produces a <strong>smooth</strong> latent space that facilitates searching for DAGs with better performance through Bayesian optimization.</p>
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li></li>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> propose <strong>D-VAE</strong>: <u>a variational autoencoder for DAGs</u> using a <strong>novel asynchronous message passing scheme</strong> <ul>
+<li>able to <strong>injectively encode computations</strong> (<em>can build a mapping from the discrete space to a continuous latent space =&gt; every DAT computation has its unique embedding in the latent space</em>)</li>
+<li>leverage GNN, <strong>but</strong> they <em><strong>simultaneously</strong> passing all nodes&rsquo; neighbors&rsquo; messages to themselves</em> ==&gt; designed ot learn <strong>local structure features</strong>, not suitable for DAGs because: <ol>
+<li>nodes are not symmetric, <u>intrinsically hae some ordering based on its dependency strucutre</u></li>
+<li>more concerned about the computation represented by the <strong>entire</strong> graph, <strong>not the local</strong> strucutre</li>
+</ol>
+</li>
+<li>
+<blockquote>
+<p>Definition - <strong>Computation</strong>: composition of a finite number of operations applied to an input signal x, with the ouput of each operation being the input to its secceeding operations</p>
+</blockquote>
+</li>
+<li><strong>[Encoding]</strong>: <u>graph neural network (GNN)</u> ==&gt; <u>sequentially perform message passing for nodes following a topologica ordering of the DAG</u><ul>
+<li>
+<blockquote>
+<p><strong>Theorem 1</strong>: The D-VAE encoder is <strong>invariant</strong> to node permutations of the input DAT if teh aggregatoin functio is invariant to the order of its inputs</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p><strong>Theorem 2</strong>: the encoder of D-VAE maps computation to hidden vector injectively if aggregator function is <strong>injective</strong> and update function is <strong>injective</strong></p>
+</blockquote>
+</li>
+<li><u>Themroem 2</u> provides a way to injectively encode computations on DAGs ==&gt; every computation has a unique embedding in latent space </li>
+</ul>
+</li>
+<li><strong>[Decoding]</strong>: for new nodes: <ol>
+<li>predict its node type based on the current graph state</li>
+<li>sequentially predict whether each existing node has a directed edge to it based on the existing and current nodes&rsquo; hidden states</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>[2]</strong> propose a new <strong>DAG optimization framework</strong> ==&gt; <u>performs Bayesian optimization in a continuous latent space</u></li>
+<li><strong>[3]</strong> apply D-VAE to two problems: <code>neural architecture search</code> and <code>Bayeisan network structure learning</code><ul>
+<li>Evaluation schemes: <ol>
+<li><strong>[Accuracy]</strong>: how often they can reconstruct input DAGs perfectly</li>
+<li><strong>[Validity]</strong>: how often they can generate valid neural architectures or bayesian network from the prior distribution</li>
+<li><strong>[Uniqueness]</strong>: the proportion of unique DAGs out of the valid generations</li>
+<li><strong>[Novelty]</strong>: the proportion of valid generations that are never seen in the training set</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:<ul>
+<li>DAG optimization is very challenging: <ol>
+<li>the evaluation of the performance is time-consuming (training NN)</li>
+<li>SOTA optimization techiniques (<strong>simulated annealing</strong> &amp; <strong>Bayesian optimization (need kernal)</strong>) operate in a <strong>continuous</strong> space ==&gt; not directly applicable to DAG optimization due to the <strong>discrete</strong> nature</li>
+</ol>
+</li>
+<li><strong>[Deep graph generative models]</strong>:   <ul>
+<li><code>token-based</code>: <u>represent a graph as a sequence of tokens and model using RNNs</u></li>
+<li><code>Adjacency-matrix-based models</code>: <u>leverage proxy adjacency matrix represnetation of a graph</u> ===&gt; generate matrix in one shot or sequentially </li>
+<li><code>graph-based</code>: operate <strong>directly</strong> on graph structures by <u>iteratively adding new nodes/edges to a graph based on existing graph and node states</u></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:<ul>
+<li><strong>[Neural architecture search (NAS)]</strong>: searching optimal neural architectures (DAG optimization task)<ul>
+<li><u>automating the design of neural network architectures</u></li>
+<li><code>RL methods</code> (generate architectures with high rewards in term of validation accuracy)</li>
+<li><code>Bayesian optimization based method</code> (define kernels to measure architecture similarity and extrapolate the architecutre space heuristically)</li>
+<li><code>evolutionary approaches</code> (use evolutionary algorithms to optimize neural architectures)</li>
+<li><code>differentiable methods</code> (use continuous relaxation/mapping of neural architectures to enable gradient-based optimization)</li>
+</ul>
+</li>
+<li><strong>[Bayesian network structure learning (BNSL)]</strong>: optimizing the connection structures of Bayesian networks<ul>
+<li><u>learn the structure of the underlying bayesian network from observed data</u></li>
+<li><code>score-based search</code> (define some &ldquo;goodness-of-fit&rdquo; score (<em>BIC and BDeu -&gt; on marginal likelihood</em>) for network structure and search for one with optimal score in the discrete design space)</li>
+</ul>
+</li>
+<li>optimizing DAG circuit blocks ==&gt; [realize target functions] &amp;&amp; [meet specifications such as pwer usage &amp; operating temperature]</li>
+</ul>
+</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li>currently use <strong>one-hot</strong> encoding of node types ==&gt; could use pretrained embeddings of node types to replace it</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
