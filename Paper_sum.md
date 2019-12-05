@@ -1214,13 +1214,30 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> Social media user geolocation is vital to many applications such as **event detection**. In this paper, we propose GCN, a multiview geolocation model based on **[Graph Convolutional Networks]**, that uses **both text and network context**. We compare GCN to the state-of-the-art, and to two baselines we propose, and show that our model achieves or is competitive with the state- of-the-art over three benchmark geolocation datasets when sufficient supervision is available. We also evaluate GCN under a minimal supervision scenario, and show it outperforms baselines. We find that highway network gates are essential for controlling the amount of **useful neighbourhood expansion** in GCN.
+> Social media user geolocation is vital to many applications such as **event detection**. In this paper, we propose GCN, a multiview geolocation model based on **Graph Convolutional Networks**, that uses **[both text and network context]**. We compare GCN to the state-of-the-art, and to two baselines we propose, and show that our model achieves or is competitive with the state- of-the-art over three benchmark geolocation datasets when sufficient supervision is available. We also evaluate GCN under a minimal supervision scenario, and show it outperforms baselines. We find that **[highway network gates are essential for controlling the amount of useful neighbourhood expansion in GCN]**.
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
+        - **[1]** propose GCN, an **end-to-end user geolocation model based on <u>Graph Convolutional Networks</u>** -> jointly learns from **text** and **network** information
+        - **[2]** evaluate the model under a <u>minimal supervision scenario</u> -> close to real world applications, show GCN outperforms than two strong baselines
+            - `MLP-TXT+NET` based on **concatenation of text and network**
+            - `DCCA` based on **Deep Canonical Correlation Analysis**
+        - **[3]** given sufficient supervision -> GCN is competitive
+        - **[4]** show highway gates play a significant role in controlling the amount of useful neighbourhood smoothing in GCN
     - <u>**Other Notes**</u>:
+        - **[User geolocation]**: <u>identifying the "home" location of a user</u>
+        - Social media **[Twitter]**: rely on `IP addresses`, `WiFi footprints`, `GPS data` to geolocate users
+        - Most previous work on user geolocation uses: 
+            - `supervised text-based approaches` -> rely on **geographical variation of language use**
+            - `graph-based semi-supervised label propagation` -> rely on **location homophily in user-user interactions**
+            - 
     - <u>**Use cases**</u>:
+        - Event detection by socia media user geolocation
+        - public health monitoring
+        - regional studies of sentiment
+        - real-time emergency awareness systems
     - <u>**Further directions**</u>:
+        - modelling the extent to which a social interaction is caused by geographical proximity (using user-user gates)
 
 ---
 

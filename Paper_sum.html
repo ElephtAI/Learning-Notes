@@ -3182,14 +3182,43 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>Social media user geolocation is vital to many applications such as <strong>event detection</strong>. In this paper, we propose GCN, a multiview geolocation model based on <strong>[Graph Convolutional Networks]</strong>, that uses <strong>both text and network context</strong>. We compare GCN to the state-of-the-art, and to two baselines we propose, and show that our model achieves or is competitive with the state- of-the-art over three benchmark geolocation datasets when sufficient supervision is available. We also evaluate GCN under a minimal supervision scenario, and show it outperforms baselines. We find that highway network gates are essential for controlling the amount of <strong>useful neighbourhood expansion</strong> in GCN.</p>
+<p>Social media user geolocation is vital to many applications such as <strong>event detection</strong>. In this paper, we propose GCN, a multiview geolocation model based on <strong>Graph Convolutional Networks</strong>, that uses <strong>[both text and network context]</strong>. We compare GCN to the state-of-the-art, and to two baselines we propose, and show that our model achieves or is competitive with the state- of-the-art over three benchmark geolocation datasets when sufficient supervision is available. We also evaluate GCN under a minimal supervision scenario, and show it outperforms baselines. We find that <strong>[highway network gates are essential for controlling the amount of useful neighbourhood expansion in GCN]</strong>.</p>
 </blockquote>
 <ul>
 <li><strong>Key notes</strong>: <ul>
-<li><u><strong>Main contributions</strong></u>: </li>
-<li><u><strong>Other Notes</strong></u>:</li>
-<li><u><strong>Use cases</strong></u>:</li>
-<li><u><strong>Further directions</strong></u>:</li>
+<li><u><strong>Main contributions</strong></u>: <ul>
+<li><strong>[1]</strong> propose GCN, an <strong>end-to-end user geolocation model based on <u>Graph Convolutional Networks</u></strong> -&gt; jointly learns from <strong>text</strong> and <strong>network</strong> information</li>
+<li><strong>[2]</strong> evaluate the model under a <u>minimal supervision scenario</u> -&gt; close to real world applications, show GCN outperforms than two strong baselines<ul>
+<li><code>MLP-TXT+NET</code> based on <strong>concatenation of text and network</strong></li>
+<li><code>DCCA</code> based on <strong>Deep Canonical Correlation Analysis</strong></li>
+</ul>
+</li>
+<li><strong>[3]</strong> given sufficient supervision -&gt; GCN is competitive</li>
+<li><strong>[4]</strong> show highway gates play a significant role in controlling the amount of useful neighbourhood smoothing in GCN</li>
+</ul>
+</li>
+<li><u><strong>Other Notes</strong></u>:<ul>
+<li><strong>[User geolocation]</strong>: <u>identifying the &ldquo;home&rdquo; location of a user</u></li>
+<li>Social media <strong>[Twitter]</strong>: rely on <code>IP addresses</code>, <code>WiFi footprints</code>, <code>GPS data</code> to geolocate users</li>
+<li>Most previous work on user geolocation uses: <ul>
+<li><code>supervised text-based approaches</code> -&gt; rely on <strong>geographical variation of language use</strong></li>
+<li><code>graph-based semi-supervised label propagation</code> -&gt; rely on <strong>location homophily in user-user interactions</strong></li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><u><strong>Use cases</strong></u>:<ul>
+<li>Event detection by socia media user geolocation</li>
+<li>public health monitoring</li>
+<li>regional studies of sentiment</li>
+<li>real-time emergency awareness systems</li>
+</ul>
+</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li>modelling the extent to which a social interaction is caused by geographical proximity (using user-user gates)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
