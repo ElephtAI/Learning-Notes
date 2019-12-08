@@ -1255,6 +1255,62 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ---
 
+(41) `Aug 2018` [Attributed Network Embedding for Learning in a Dynamic Environment](https://arxiv.org/pdf/1706.01860.pdf) *[Jundong Li, Harsh Dani, Xia Hu, Jiliang Tang, Yi Chang, Huan Liu]*
+
+* **Abstract**: 
+
+> Network embedding leverages the node proximity manifested to learn a low-dimensional node vector representation for each node in the network. The learned embeddings could advance various learning tasks such as node classification, network clustering, and link prediction. Most, if not all, of the existing works, are overwhelmingly performed in the context of plain and static networks. Nonetheless, in reality, network structure often evolves over time with addition/deletion of links and nodes. Also, a vast majority of real-world networks are associated with a rich set of node attributes, and their attribute values are also naturally changing, with the emerging of new content patterns and the fading of old content patterns. These changing characteristics motivate us to seek an effective embedding representation to capture network and attribute evolving patterns, which is of fundamental importance for learning in a dynamic environment. To our best knowledge, we are the first to tackle this problem with the following two challenges: (1) the inherently correlated network and node attributes could be noisy and incomplete, it necessitates a robust consensus representation to capture their individual properties and correlations; (2) the embedding learning needs to be performed in an online fashion to adapt to the changes accordingly. In this paper, we tackle this problem by proposing a novel dynamic attributed network embedding framework - DANE. In particular, DANE first provides an offline method for a consensus embedding and then leverages matrix perturbation theory to maintain the freshness of the end embedding results in an online manner. We perform extensive experiments on both synthetic and real attributed networks to corroborate the effectiveness and efficiency of the proposed framework.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(42) `Jun 2019` [Dynamic Network Embedding via Incremental Skip-gram with Negative Sampling](https://arxiv.org/abs/1906.03586) *[Hao Peng, Jianxin Li, Hao Yan, Qiran Gong, Senzhang Wang, Lin Liu, Lihong Wang, Xiang Ren]*
+
+* **Abstract**: 
+
+> Network representation learning, as an approach to learn low dimensional representations of vertices, has attracted considerable research attention recently. It has been proven extremely useful in many machine learning tasks over large graph. Most existing methods focus on learning the structural representations of vertices in a static network, but cannot guarantee an accurate and efficient embedding in a dynamic network scenario. To address this issue, we present an efficient incremental skip-gram algorithm with negative sampling for dynamic network embedding, and provide a set of theoretical analyses to characterize the performance guarantee. Specifically, we first partition a dynamic network into the updated, including addition/deletion of links and vertices, and the retained networks over time. Then we factorize the objective function of network embedding into the added, vanished and retained parts of the network. Next we provide a new stochastic gradient-based method, guided by the partitions of the network, to update the nodes and the parameter vectors. The proposed algorithm is proven to yield an objective function value with a bounded difference to that of the original objective function. Experimental results show that our proposal can significantly reduce the training time while preserving the comparable performance. We also demonstrate the correctness of the theoretical analysis and the practical usefulness of the dynamic network embedding. We perform extensive experiments on multiple real-world large network datasets over multi-label classification and link prediction tasks to evaluate the effectiveness and efficiency of the proposed framework, and up to 22 times speedup has been achieved.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(43) `August 2019` [TIFIM: A Two-stage Iterative Framework for Influence Maximization in Social Networks](https://www.sciencedirect.com/science/article/abs/pii/S0096300319301602) *[Qiang He, Xingwei Wang, Zhencheng Lei, Min Huang, Yuliang Cai, Lianbo Ma]*
+
+* **Abstract**: 
+
+> Influence Maximization is an important problem in social networks, and its main goal is to select some most influential initial nodes (i.e., seed nodes) to obtain the maximal influence spread. The existing studies primarily concentrate on the corresponding methods for influence maximization, including greedy algorithms, heuristic algorithms and their extensions to determine the most influential nodes. However, there is little work to ensure efficiency and accuracy of the proposed schemes at the same time. In this paper, a Two-stage Iterative Framework for the Influence Maximization in social networks, (i.e., TIFIM) is proposed. In order to exclude less influential nodes and decrease the computation complexity of TIFIM, in the first stage, an iterative framework in descending order is proposed to select the candidate nodes. In particular, based on the results of the last iteration and the two-hop measure, the First-Last Allocating Strategy (FLAS) is presented to compute the spread benefit of each node. We prove that TIFIM converges to a stable order within the finite iterations. In the second stage, we define the apical dominance to calculate the overlapping phenomenon of spread benefit among nodes and further propose Removal of the Apical Dominance (RAD) to determine seed nodes from the candidate nodes. Moreover, we also prove that the influence spread of TIFIM according to RAD converges to a specific value within finite computations. Finally, simulation results show that the proposed scheme has superior influence spread and running time than other existing ones.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(28) `201` []() *[]*
+
+* **Abstract**: 
+
+> 
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
 (28) `201` []() *[]*
 
 * **Abstract**: 
