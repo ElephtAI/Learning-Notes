@@ -3245,14 +3245,87 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>Abstract</strong>: </li>
 </ul>
 <blockquote>
-<p>Network embedding leverages the node proximity manifested to learn a low-dimensional node vector representation for each node in the network. The learned embeddings could advance various learning tasks such as node classification, network clustering, and link prediction. Most, if not all, of the existing works, are overwhelmingly performed in the context of plain and static networks. Nonetheless, in reality, network structure often evolves over time with addition/deletion of links and nodes. Also, a vast majority of real-world networks are associated with a rich set of node attributes, and their attribute values are also naturally changing, with the emerging of new content patterns and the fading of old content patterns. These changing characteristics motivate us to seek an effective embedding representation to capture network and attribute evolving patterns, which is of fundamental importance for learning in a dynamic environment. To our best knowledge, we are the first to tackle this problem with the following two challenges: (1) the inherently correlated network and node attributes could be noisy and incomplete, it necessitates a robust consensus representation to capture their individual properties and correlations; (2) the embedding learning needs to be performed in an online fashion to adapt to the changes accordingly. In this paper, we tackle this problem by proposing a novel dynamic attributed network embedding framework - DANE. In particular, DANE first provides an offline method for a consensus embedding and then leverages matrix perturbation theory to maintain the freshness of the end embedding results in an online manner. We perform extensive experiments on both synthetic and real attributed networks to corroborate the effectiveness and efficiency of the proposed framework.</p>
+<p>Network embedding leverages the node proximity manifested to learn a low-dimensional <strong>node vector representation</strong> for each node in the network. The learned embeddings could advance various learning tasks such as <strong>[node classification]</strong>, <strong>[network clustering]</strong>, and <strong>[link prediction]</strong>. Most, if not all, of the existing works, are overwhelmingly performed in the context of plain and static networks. Nonetheless, in reality, network structure often <strong>evolves over time with addition/deletion of links and nodes</strong>. Also, a vast majority of real-world networks are associated with a rich set of node attributes, and their attribute values are also naturally changing, with the emerging of new content patterns and the fading of old content patterns. These changing characteristics motivate us to seek an effective embedding representation to capture network and attribute evolving patterns, which is of fundamental importance for learning in a dynamic environment. To our best knowledge, we are the first to tackle this problem with the following two challenges: </p>
+<p><strong>(1)</strong> the inherently correlated network and node attributes could be noisy and incomplete, it necessitates a robust consensus representation to capture their individual properties and correlations; </p>
+<p><strong>(2)</strong> the embedding learning needs to be performed in an online fashion to adapt to the changes accordingly. </p>
+<p>In this paper, we tackle this problem by proposing a novel dynamic attributed network embedding framework - <strong>DANE</strong>. In particular, DANE first provides an <strong>offline</strong> method for a consensus embedding and then leverages <strong>matrix perturbation theory</strong> to maintain the freshness of the end embedding results in an online manner. We perform extensive experiments on both synthetic and real attributed networks to corroborate the effectiveness and efficiency of the proposed framework.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
-<li><u><strong>Main contributions</strong></u>: </li>
-<li><u><strong>Other Notes</strong></u>:</li>
-<li><u><strong>Use cases</strong></u>:</li>
-<li><u><strong>Further directions</strong></u>:</li>
+<li>
+<p><strong>Key notes</strong>: </p>
+<ul>
+<li>
+<p><u><strong>Main contributions</strong></u>: </p>
+<ul>
+<li><strong>[1]</strong> <strong>Problem Formulations</strong>: formally define the problem of <strong>[dynamic attributed netowrk embedding]</strong>: <u>initiate an offline model at the very beginning, based on which an online model is presented to maintain the freshness of the end attributed network embedding results</u></li>
+<li><strong>[2]</strong> <strong>ALgorithms and Analysis</strong>: propose a novel framework <strong>[DANE]</strong> for <u>dynamic attributed nework embedding</u><ul>
+<li>introuce an <strong>offline embedding method</strong> as a based model -&gt; preserve <strong>node proximity interms of both [network structure] and [node attributes]</strong> for consensus embedding representation in a <strong>robust</strong> way</li>
+<li>workflow of proposed model DANE: <ul>
+<li><strong>Problem 1</strong>: <u>The offline model of DANE at time t</u> - given network topology At and node attributes Xt; output attributed netowrk embedding Yt for all nodes</li>
+<li><strong>Problem 2</strong>: <u>The online model of DANE at time step t+1</u> - given network topology A(t+1) and node attributes X(t+1) and intermediate embedding results at time step t -&gt; output attributed network embedding Y(t+1) for all nodes</li>
+</ul>
+</li>
+<li><strong>Nodes</strong>: network embedding could be <strong>jeopardized</strong> as <u>links are inadequate to provide enough node proximity information</u></li>
+<li>The proposed online embedding model is motivated by the <strong>observation</strong>: <ul>
+<li>
+<blockquote>
+<p>most of the real-world networks, with no exception for attributed networks, often evolve smoothly in the temporal dimension between two consecutive time steps</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>The <strong>core idea</strong> to enable online update of the embeddings is &ndash;&gt; <u>develop an efficient way to update the top eigenvectors and eigenvalues</u></li>
+</ul>
+</li>
+<li><strong>[3]</strong> <strong>Evaluations</strong>: perform extensive experiments on both <strong>synthetic</strong> and <strong>real-world</strong> attributed network &ndash;&gt; <u>corroborate the efficacy in terms of two network mining tasks</u> (both <code>unsupervised</code> and <code>supervised</code>)<ul>
+<li>show efficiency by comparing to the baselines, results show that DANE outperforms the best competitors in terms of both <u>clustering</u> and <u>classfication performace</u>, and it&rsquo;s much <strong>faster</strong></li>
+<li>Attempts to answers two questions in the experiments: <ol>
+<li><strong>Effectiveness</strong>: <u>how effective are the embeddings obtained by DANE on different learning tasks</u></li>
+<li><strong>Efficiency</strong>: how fast is the proposed framewrok DANE compared with other offline embedding methods</li>
+</ol>
+</li>
+<li>datasets: <code>BlogCatalog</code>, <code>Flickr</code>, <code>Epinions</code>, <code>DBLP</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><u><strong>Other Notes</strong></u>:</p>
+<ul>
+<li>there exhibits a <strong>[strong correlation among the attributes of linked nodes]</strong>, with root causes: <code>social influence</code> and <code>homophily effect</code></li>
+<li><u>Basic idea of <strong>network embedding</strong></u>: preserve the node proximity in the embedded Euclidean space </li>
+<li><strong>fundamental assumption</strong> behind existing network embedding methods: <u>networks are <strong>static</strong> and given a prior</u> </li>
+<li><u>most real-world networks are intrinsically dynamic with <strong>addition/deletion</strong> of edges and nodes</u>: (examples: <code>co-author relations b/w scholar</code>, <code>friendships among users in a social network</code>)</li>
+<li>Natural question to ask for dynamic attriguted networks: <ul>
+<li><u>when attributed netowrks evolve</u></li>
+<li><u>how to correct and adjust the saleness of the end embedding results for network analysis</u></li>
+</ul>
+</li>
+<li>dynamic attributed netowrk embedding is a <strong>dauning task</strong> because: <ol>
+<li>even though <strong>network topology</strong> and <strong>node attributes</strong> are two distinct data representations -&gt; they are <strong>[inherently correlated]</strong> </li>
+<li><em>the raw data representations could be <strong>noisy</strong> and even <strong>incomplete</strong></em> -&gt; it is of <strong>paramount importance</strong> to seek a <strong>noise-resilient consensus embedding</strong> to capture their <strong>individual properties</strong> and <strong>correlations</strong></li>
+<li>applying offline embedding methods from scratch at each time step is <strong>time-consuming</strong> and cannot seize the emerging patterns timely &ndash;&gt; require an <strong>efficient online algorithm</strong></li>
+</ol>
+</li>
+<li>In <u>attributed networks</u>, the <strong>network structure</strong> is <u>more than a single view of data as it encodes other types of rich information</u> &ndash;&gt; such as <strong>[connectivity]</strong>, <strong>[transitivity]</strong>, <strong>[reciprocity]</strong></li>
+</ul>
+</li>
+<li>
+<p><u><strong>Use cases</strong></u>:</p>
+<ul>
+<li><strong>attributed networks</strong> &ndash;&gt; <code>social media networks</code>, <code>academic networks</code>, <code>protein-protein intereaction networks</code></li>
+<li>in <strong>scientific collabration networks</strong>: researchers collaborate and are distinct from others by their unique research interests</li>
+<li>in <strong>social networks</strong>: users interact and communicate with others and also post personalized content</li>
+<li><code>node classifcation</code>, <code>community detection</code>, <code>topic modeling</code> and <code>anomaly detection</code></li>
+</ul>
+</li>
+<li>
+<p><u><strong>Further directions</strong></u>:</p>
+<ol>
+<li>investigate how the <strong>high-order</strong> approximations can be applied to the online embedding learning problem (<em>first-order matrix matrix perturbation theory is employed in this paper</em>)</li>
+<li>extend the current framework to multi-mode and multi-dim dynamic network</li>
+</ol>
+</li>
 </ul>
 </li>
 </ul>
