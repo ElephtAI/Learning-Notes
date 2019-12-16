@@ -1316,12 +1316,50 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 * **Abstract**: 
 
-> Network representation learning, as an approach to learn low dimensional representations of vertices, has attracted considerable research attention recently. It has been proven extremely useful in many machine learning tasks over large graph. Most existing methods focus on learning the structural representations of vertices in a static network, but cannot guarantee an accurate and efficient embedding in a dynamic network scenario. To address this issue, we present an efficient incremental skip-gram algorithm with negative sampling for dynamic network embedding, and provide a set of theoretical analyses to characterize the performance guarantee. Specifically, we first partition a dynamic network into the updated, including addition/deletion of links and vertices, and the retained networks over time. Then we factorize the objective function of network embedding into the added, vanished and retained parts of the network. Next we provide a new stochastic gradient-based method, guided by the partitions of the network, to update the nodes and the parameter vectors. The proposed algorithm is proven to yield an objective function value with a bounded difference to that of the original objective function. Experimental results show that our proposal can significantly reduce the training time while preserving the comparable performance. We also demonstrate the correctness of the theoretical analysis and the practical usefulness of the dynamic network embedding. We perform extensive experiments on multiple real-world large network datasets over multi-label classification and link prediction tasks to evaluate the effectiveness and efficiency of the proposed framework, and up to 22 times speedup has been achieved.
+> **Network representation learning**, as an approach to learn low dimensional representations of vertices, has attracted considerable research attention recently. It has been proven extremely useful in many machine learning tasks over large graph. Most existing methods focus on learning the **structural representations** of vertices in a static network, but cannot guarantee an accurate and efficient embedding in a dynamic network scenario. The fundamental problem of **[continuously capturing the dynamic properties in an efficient way for a dynamic network]** remains unsolved. To address this issue, we present an **efficient incremental skip-gram algorithm with negative sampling for dynamic network embedding**, and provide a set of theoretical analyses to characterize the performance guarantee. Specifically, 
+
+> **[1]** we first partition a dynamic network into the updated, including addition/deletion of links and vertices, and the retained networks over time. 
+
+> **[2]** Then we factorize the objective function of network embedding into the added, vanished and retained parts of the network. 
+
+> **[3]** Next we provide a new stochastic gradient-based method, guided by the partitions of the network, to update the nodes and the parameter vectors. 
+
+> The proposed algorithm is proven to yield an objective function value with a bounded difference to that of the original objective function. Experimental results show that our proposal can significantly **reduce the training time** while **preserving the comparable performance**. We also demonstrate the correctness of the theoretical analysis and the practical usefulness of the dynamic network embedding. We perform extensive experiments on multiple real-world large network datasets over multi-label classification and link prediction tasks to evaluate the effectiveness and efficiency of the proposed framework, and up to 22 times speedup has been achieved.
 
 * **Key notes**: 
     - <u>**Main contributions**</u>: 
+        - **[1]** A **dynmaic network embedding framework** based on an **approximately optimal solution** of <u>incremental skip-gram with negative sampling</u> is proposed ==> can be directly applied in existing network embedding models such as `DeepWalk` and `Node2Vec`
+            - To address the issue of updating `structure proximities` and `noise distribution`: 
+                1. partition the network in to the **updated part** and **retained part**
+                2. employ **random walk** and **sliding window** to <u>extract the sequences of the nodes or subgraphs</u> -> **[affected sequences of subgraphs in the network]**
+                3. the model <u>inherits all the retained nodes and parameter vectors and implements a new **stochastic gradient-based model** to update the changed nodes and parameter vectors</u>
+            - Therefore, we only need to update vectors in affected subgraph
+        - **[2]** solid theoretical analyses show that: the proposal **guarantees the boundness of the objective difference and the convergence when the training network scale is infinitely large** (*empirial study also verifies the boundary and moments of the network dynmaic change*)
+        - **[3]** Experiments on <u>multiple large real-world network datasets show both the **efficiency** and **effectiveness** of the proposed **ISGNS** on **multi-label classfication** and **link prediction tasks**</u>
     - <u>**Other Notes**</u>:
+        - The idea of **nework embedding**: <u>learn a mapping that projects each vertex in a network to a low dimensional and continuous distributed vector space</u>
+        - **DeepWalk** & **node2vec**: *capture high-order proximities in embeddings by maximizing the conditional probability of observing the neighbourhood of vertices of a vertex given the mapped point of the vertex*
+            - **Difference**: **node2vec** --> employs a biased random walk to provide a trade-off b/w **breadth-first search** and **depth-first search** in a network ==> better representation
+        - **LINE** & **SDNE**: *preserving the first- and second-order proximities in the embedded space* (former refers to pairwise neighborhood relatoinship, and determined by the similarity of nodes' neighbors)
+            - **Difference**: **SDNE** uses <u>highly non-linear function to represent the mapping function</u>
+        - **Problem** of using `negative sampling` or `hierarchical softmax optimizing`: <u>when the difference b/w the updated network and the old network is **relatively small**</u> --> it's **inefficient** to obtain the new node embeddings through retraining the entire new network
+        - **[Hierarchical softmax]**: <u>a hierarchical tree is constructed to index all the words in a corpus as leaves</u>
+        - **[Negative sampling]**: <u>developed based on **noise constrastive estimzatio** and **randomly samples the words not in the context** to distinguish the observed data from the artificially generated random noise</u> 
+        - **Problems** to apply **skip-gram with negative sampling** to network representation learning: [investigate the **structure proximities** and compute the **noise distributions** for negative sampling]: 
+            - <u>when the vertices and edges of a network evolve over time, the proximities and noise distributions will update automatically to reflect the change of the network structure</u>
+            - **In the dynamic scewnario**: when the `edges`, the `edge weights` and the `vertices` changes --> the **sequences of vertices**, the **structure proximities** and the **noise distribution** should be updated correspondingly
+        - **[Static network embedding]**: 
+            - `DeepWalk`: the first work that utilizes a **truncated random walk** to transform a static network into a collection of node sequences -> the <u>skip-gram on **hierarchial softmax** funciton is used</u>
+            - `Node2vec`: further generalizes `DeepWalk` with **Breadth-First Search (BFS)** and **Depth-First Searc (DFS)** on random walks ==> employ <u>skip-gram with **negative sampling**</u>
+            - `LINE` and `SDNE`: model the <u>first-order and second-order</u> proximities b/w **vertices** ==> employ <u>skip-gram with **negative sampling**</u> to deal with the limitatio of <u>stochastic gradient descent</u> on weighted edges **without compromising efficiency**
+            - `Struct2vec`: propose to <u>preserve the structural identity b/w **nodes** in the representation</u> -->: 
+                1. creates a new graph based on the <u>structural identity similarity b/w nodes</u>
+                2. follows a similar method to `DeepWalk` on the created graph
+            - `Graph-Wave`: use <u>wavelet diffusion patterns</u> by treating the wavelets 
+        - **[Dynamic network embeding]**
     - <u>**Use cases**</u>:
+        - `recommended systems`, `social networks`, `biology networks`
+        - `vertext community detection`, `recommended system`, `anamoly detection`, `multi-label classifcation`, `link prediction`, `knowledge representation`
     - <u>**Further directions**</u>:
 
 ---
