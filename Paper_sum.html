@@ -3342,7 +3342,9 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <p>The proposed algorithm is proven to yield an objective function value with a bounded difference to that of the original objective function. Experimental results show that our proposal can significantly <strong>reduce the training time</strong> while <strong>preserving the comparable performance</strong>. We also demonstrate the correctness of the theoretical analysis and the practical usefulness of the dynamic network embedding. We perform extensive experiments on multiple real-world large network datasets over multi-label classification and link prediction tasks to evaluate the effectiveness and efficiency of the proposed framework, and up to 22 times speedup has been achieved.</p>
 </blockquote>
 <ul>
-<li><strong>Key notes</strong>: <ul>
+<li>
+<p><strong>Key notes</strong>: </p>
+<ul>
 <li><u><strong>Main contributions</strong></u>: <ul>
 <li><strong>[1]</strong> A <strong>dynmaic network embedding framework</strong> based on an <strong>approximately optimal solution</strong> of <u>incremental skip-gram with negative sampling</u> is proposed ==&gt; can be directly applied in existing network embedding models such as <code>DeepWalk</code> and <code>Node2Vec</code><ul>
 <li>To address the issue of updating <code>structure proximities</code> and <code>noise distribution</code>: <ol>
@@ -3358,7 +3360,9 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><strong>[3]</strong> Experiments on <u>multiple large real-world network datasets show both the <strong>efficiency</strong> and <strong>effectiveness</strong> of the proposed <strong>ISGNS</strong> on <strong>multi-label classfication</strong> and <strong>link prediction tasks</strong></u></li>
 </ul>
 </li>
-<li><u><strong>Other Notes</strong></u>:<ul>
+<li>
+<p><u><strong>Other Notes</strong></u>:</p>
+<ul>
 <li>The idea of <strong>nework embedding</strong>: <u>learn a mapping that projects each vertex in a network to a low dimensional and continuous distributed vector space</u></li>
 <li><strong>DeepWalk</strong> &amp; <strong>node2vec</strong>: <em>capture high-order proximities in embeddings by maximizing the conditional probability of observing the neighbourhood of vertices of a vertex given the mapped point of the vertex</em><ul>
 <li><strong>Difference</strong>: <strong>node2vec</strong> &ndash;&gt; employs a biased random walk to provide a trade-off b/w <strong>breadth-first search</strong> and <strong>depth-first search</strong> in a network ==&gt; better representation</li>
@@ -3385,13 +3389,22 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li>follows a similar method to <code>DeepWalk</code> on the created graph</li>
 </ol>
 </li>
-<li><code>Graph-Wave</code>: use <u>wavelet diffusion patterns</u> by treating the wavelets </li>
+<li><code>Graph-Wave</code>: use <u>wavelet diffusion patterns</u> by treating the wavelets from the <strong>heat wavelet diffusion process</strong> as distribution</li>
 </ul>
 </li>
-<li><strong>[Dynamic network embeding]</strong></li>
+<li><strong>[Dynamic network embeding]</strong>:<ul>
+<li><code>DANE</code>: leverages a <strong>matrix perturbation theory</strong> &ndash;&gt; to update the <u>dynamic attributed network spectral embeddings</u></li>
+<li><code>BCGD</code>: <u>temporal latent space learning model</u> via <strong>non-negative matrix factorization</strong> to target the link prediction task in dynamic social networks</li>
+<li><code>Know-Evolve</code>: <strong>deep recurrent architecture</strong> ==&gt; model the historical evolution of entity representations in a specific relationship space</li>
+<li><code>Dynamic SBM</code>: statistical model for dynamic networks that utilized a set of <strong>unobserved time-varying states</strong> ==&gt; characterize the dynamics of the network</li>
+<li></li>
 </ul>
 </li>
-<li><u><strong>Use cases</strong></u>:<ul>
+</ul>
+</li>
+<li>
+<p><u><strong>Use cases</strong></u>:</p>
+<ul>
 <li><code>recommended systems</code>, <code>social networks</code>, <code>biology networks</code></li>
 <li><code>vertext community detection</code>, <code>recommended system</code>, <code>anamoly detection</code>, <code>multi-label classifcation</code>, <code>link prediction</code>, <code>knowledge representation</code></li>
 </ul>

@@ -1355,8 +1355,14 @@ We evaluate our method on a variety of **link-prediction** task including social
             - `Struct2vec`: propose to <u>preserve the structural identity b/w **nodes** in the representation</u> -->: 
                 1. creates a new graph based on the <u>structural identity similarity b/w nodes</u>
                 2. follows a similar method to `DeepWalk` on the created graph
-            - `Graph-Wave`: use <u>wavelet diffusion patterns</u> by treating the wavelets 
-        - **[Dynamic network embeding]**
+            - `Graph-Wave`: use <u>wavelet diffusion patterns</u> by treating the wavelets from the **heat wavelet diffusion process** as distribution
+        - **[Dynamic network embeding]**:
+            - `DANE`: leverages a **matrix perturbation theory** --> to update the <u>dynamic attributed network spectral embeddings</u>
+            - `BCGD`: <u>temporal latent space learning model</u> via **non-negative matrix factorization** to target the link prediction task in dynamic social networks
+            - `Know-Evolve`: **deep recurrent architecture** ==> model the historical evolution of entity representations in a specific relationship space
+            - `Dynamic SBM`: statistical model for dynamic networks that utilized a set of **unobserved time-varying states** ==> characterize the dynamics of the network
+            -  
+
     - <u>**Use cases**</u>:
         - `recommended systems`, `social networks`, `biology networks`
         - `vertext community detection`, `recommended system`, `anamoly detection`, `multi-label classifcation`, `link prediction`, `knowledge representation`
