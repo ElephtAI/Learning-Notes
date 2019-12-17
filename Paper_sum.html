@@ -3354,6 +3354,21 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </ol>
 </li>
 <li>Therefore, we only need to update vectors in affected subgraph</li>
+<li><strong>Assumption</strong>: the influence of <u>structural changes</u> on representation learning is partial in <strong>neighborhoods/sub-graphs</strong> for limited adjacency matrix float: <ol>
+<li><u>locate the metabolic sub-graphs by <strong>local random walk</strong> in retraining</u></li>
+<li><strong>For newly added nodes or edges</strong>: <u>implement the random walk only on the sub-graphs to generate sequences of vertices</u></li>
+<li><strong>For the vanished nodes or edges</strong>: <u>implement the random walk on the sub-graphs to generate sequences of vertices following the same rule</u></li>
+<li>re-count the frequency for each vertex appearing in the above sequences, and add/subtract its into/from the frequencies generated in the old network ===&gt; <u>get the latest noise distribution</u></li>
+</ol>
+</li>
+<li>For <strong>fast training</strong> in dynamic network scenario, adopt a strategy: <ul>
+<li>
+<blockquote>
+<p>inherits the vertexes and the parameter vectors through changes in the netwrok structures</p>
+</blockquote>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>[2]</strong> solid theoretical analyses show that: the proposal <strong>guarantees the boundness of the objective difference and the convergence when the training network scale is infinitely large</strong> (<em>empirial study also verifies the boundary and moments of the network dynmaic change</em>)</li>
@@ -3392,13 +3407,21 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><code>Graph-Wave</code>: use <u>wavelet diffusion patterns</u> by treating the wavelets from the <strong>heat wavelet diffusion process</strong> as distribution</li>
 </ul>
 </li>
-<li><strong>[Dynamic network embeding]</strong>:<ul>
+<li>
+<p><strong>[Dynamic network embeding]</strong>:</p>
+<ul>
 <li><code>DANE</code>: leverages a <strong>matrix perturbation theory</strong> &ndash;&gt; to update the <u>dynamic attributed network spectral embeddings</u></li>
 <li><code>BCGD</code>: <u>temporal latent space learning model</u> via <strong>non-negative matrix factorization</strong> to target the link prediction task in dynamic social networks</li>
 <li><code>Know-Evolve</code>: <strong>deep recurrent architecture</strong> ==&gt; model the historical evolution of entity representations in a specific relationship space</li>
 <li><code>Dynamic SBM</code>: statistical model for dynamic networks that utilized a set of <strong>unobserved time-varying states</strong> ==&gt; characterize the dynamics of the network</li>
-<li></li>
+<li><code>OLSN</code>: online embedding representation learning method <u>based on spectral embedding</u> used for node classification</li>
+<li><code>Dynamic Triad</code>: <u>triadic closure process based semi-supervised algorithm</u> ==&gt; to learn the structural oinformation and evolution pattern in dynamic network</li>
+<li><code>DNE</code>: <u>heuristic dynamic network embedding method</u> ==&gt; employs a decomposable objective based on the skip-gram objective</li>
+<li><code>HTNE</code>: <u>Hawkes process based temporal network embedding method</u> ==&gt; capture the influence of the historical neighbors on the current neighbor formation simultaneously</li>
 </ul>
+</li>
+<li>
+<p><u>network representation learning</u> is sensitive to the <strong>[network structure]</strong> and the <strong>[objective proximities among vertices]</strong></p>
 </li>
 </ul>
 </li>
@@ -3409,7 +3432,10 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 <li><code>vertext community detection</code>, <code>recommended system</code>, <code>anamoly detection</code>, <code>multi-label classifcation</code>, <code>link prediction</code>, <code>knowledge representation</code></li>
 </ul>
 </li>
-<li><u><strong>Further directions</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:<ul>
+<li>extend the approach to other advanced network representation learning models</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

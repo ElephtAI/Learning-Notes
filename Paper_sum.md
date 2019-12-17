@@ -1334,6 +1334,13 @@ We evaluate our method on a variety of **link-prediction** task including social
                 2. employ **random walk** and **sliding window** to <u>extract the sequences of the nodes or subgraphs</u> -> **[affected sequences of subgraphs in the network]**
                 3. the model <u>inherits all the retained nodes and parameter vectors and implements a new **stochastic gradient-based model** to update the changed nodes and parameter vectors</u>
             - Therefore, we only need to update vectors in affected subgraph
+            - **Assumption**: the influence of <u>structural changes</u> on representation learning is partial in **neighborhoods/sub-graphs** for limited adjacency matrix float: 
+                1. <u>locate the metabolic sub-graphs by **local random walk** in retraining</u>
+                2. **For newly added nodes or edges**: <u>implement the random walk only on the sub-graphs to generate sequences of vertices</u>
+                3. **For the vanished nodes or edges**: <u>implement the random walk on the sub-graphs to generate sequences of vertices following the same rule</u>
+                4. re-count the frequency for each vertex appearing in the above sequences, and add/subtract its into/from the frequencies generated in the old network ===> <u>get the latest noise distribution</u>
+            - For **fast training** in dynamic network scenario, adopt a strategy: 
+                - > inherits the vertexes and the parameter vectors through changes in the netwrok structures
         - **[2]** solid theoretical analyses show that: the proposal **guarantees the boundness of the objective difference and the convergence when the training network scale is infinitely large** (*empirial study also verifies the boundary and moments of the network dynmaic change*)
         - **[3]** Experiments on <u>multiple large real-world network datasets show both the **efficiency** and **effectiveness** of the proposed **ISGNS** on **multi-label classfication** and **link prediction tasks**</u>
     - <u>**Other Notes**</u>:
@@ -1361,12 +1368,18 @@ We evaluate our method on a variety of **link-prediction** task including social
             - `BCGD`: <u>temporal latent space learning model</u> via **non-negative matrix factorization** to target the link prediction task in dynamic social networks
             - `Know-Evolve`: **deep recurrent architecture** ==> model the historical evolution of entity representations in a specific relationship space
             - `Dynamic SBM`: statistical model for dynamic networks that utilized a set of **unobserved time-varying states** ==> characterize the dynamics of the network
-            -  
+            - `OLSN`: online embedding representation learning method <u>based on spectral embedding</u> used for node classification
+            - `Dynamic Triad`: <u>triadic closure process based semi-supervised algorithm</u> ==> to learn the structural oinformation and evolution pattern in dynamic network
+            - `DNE`: <u>heuristic dynamic network embedding method</u> ==> employs a decomposable objective based on the skip-gram objective
+            - `HTNE`: <u>Hawkes process based temporal network embedding method</u> ==> capture the influence of the historical neighbors on the current neighbor formation simultaneously
+
+        - <u>network representation learning</u> is sensitive to the **[network structure]** and the **[objective proximities among vertices]**
 
     - <u>**Use cases**</u>:
         - `recommended systems`, `social networks`, `biology networks`
         - `vertext community detection`, `recommended system`, `anamoly detection`, `multi-label classifcation`, `link prediction`, `knowledge representation`
     - <u>**Further directions**</u>:
+        - extend the approach to other advanced network representation learning models
 
 ---
 
