@@ -1405,7 +1405,49 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ---
 
-(28) `201` []() *[]*
+(44) `Dec 2019` [Principled Weight Initialization for Hypernetworks ](https://openreview.net/forum?id=H1lma24tPB) *[Oscar Chang, Lampros Flokas, Hod Lipson]*
+
+* **Abstract**: 
+
+> Hypernetworks are meta neural networks that generate weights for a main neural network in an end-to-end differentiable manner. Despite extensive applications ranging from multi-task learning to Bayesian deep learning, the problem of optimizing hypernetworks has not been studied to date. We observe that classical weight initialization methods like Glorot & Bengio (2010) and He et al. (2015), when applied directly on a hypernet, fail to produce weights for the mainnet in the correct scale. We develop principled techniques for weight initialization in hypernets, and show that they lead to more stable mainnet weights, lower training loss, and faster convergence.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(45) `Nov 2019` [Contrastive Learning of Structured World Models](https://arxiv.org/abs/1911.12247) *[Thomas Kipf, Elise van der Pol, Max Welling]*
+
+* **Abstract**: 
+
+> A structured understanding of our world in terms of objects, relations, and hierarchies is an important component of human cognition. Learning such a structured world model from raw sensory data remains a challenge. As a step towards this goal, we introduce Contrastively-trained Structured World Models (C-SWMs). C-SWMs utilize a contrastive approach for representation learning in environments with compositional structure. We structure each state embedding as a set of object representations and their relations, modeled by a graph neural network. This allows objects to be discovered from raw pixel observations without direct supervision as part of the learning process. We evaluate C-SWMs on compositional environments involving multiple interacting objects that can be manipulated independently by an agent, simple Atari games, and a multi-object physics simulation. Our experiments demonstrate that C-SWMs can overcome limitations of models based on pixel reconstruction and outperform typical representatives of this model class in highly structured environments, while learning interpretable object-based representations.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(46) `Jun 2019` [Causal Discovery with Reinforcement Learning](https://arxiv.org/abs/1906.04477) *[Shengyu Zhu, Zhitang Chen]*
+
+* **Abstract**: 
+
+> Discovering causal structure among a set of variables is a fundamental problem in many empirical sciences. Traditional score-based casual discovery methods rely on various local heuristics to search for a directly acyclic graph (DAG) according to a predefined score function. While these methods, e.g., greedy equivalence search (GES), may have attractive results with infinite samples and certain model assumptions, they are less satisfactory in practice due to finite data and possible violation of assumptions. Motivated by recent advances in neural combinatorial optimization, we propose to use reinforcement learning (RL) to search for the DAG with the best scoring. Our encoder-decoder model takes observable data as input and generates graph adjacency matrices that are used to compute corresponding rewards. The reward incorporates both the predefined score function and two penalty terms for enforcing acyclicity. In contrast with typical RL applications where the goal is to learn a policy, we use RL as a search strategy and our final output would be the graph, among all graphs generated during training, that achieves the best reward. We conduct experiments on both synthetic and real data, and show that the proposed approach not only has an improved search ability but also allows for a flexible score function under the acyclicity constraint.
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(46) `201` []() *[]*
 
 * **Abstract**: 
 
@@ -1419,7 +1461,7 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ---
 
-(28) `201` []() *[]*
+(46) `201` []() *[]*
 
 * **Abstract**: 
 
@@ -1433,7 +1475,63 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ---
 
-(28) `201` []() *[]*
+(46) `201` []() *[]*
+
+* **Abstract**: 
+
+> 
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(46) `201` []() *[]*
+
+* **Abstract**: 
+
+> 
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(46) `201` []() *[]*
+
+* **Abstract**: 
+
+> 
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(46) `201` []() *[]*
+
+* **Abstract**: 
+
+> 
+
+* **Key notes**: 
+    - <u>**Main contributions**</u>: 
+    - <u>**Other Notes**</u>:
+    - <u>**Use cases**</u>:
+    - <u>**Further directions**</u>:
+
+---
+
+(46) `201` []() *[]*
 
 * **Abstract**: 
 

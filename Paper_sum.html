@@ -999,7 +999,10 @@ body .markdown-body
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: true
+    processEscapes: true,
+    processEnvironments: true,
+    ignoreClass: ".*|",
+    processClass: "arithmatex"
   },
   TeX: {
     extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -1013,10 +1016,10 @@ body .markdown-body
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
-  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: 'none'
-});</script><style>/*GitHub*/
+});
+</script><style>/*GitHub*/
 .codehilite {background-color:#fff;color:#333333;}
 .codehilite .hll {background-color:#ffffcc;}
 .codehilite .c{color:#999988;font-style:italic}
@@ -3461,7 +3464,58 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </li>
 </ul>
 <hr />
-<p>(28) <code>201</code> <a href=""></a> <em>[]</em></p>
+<p>(44) <code>Dec 2019</code> <a href="https://openreview.net/forum?id=H1lma24tPB">Principled Weight Initialization for Hypernetworks </a> <em>[Oscar Chang, Lampros Flokas, Hod Lipson]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Hypernetworks are meta neural networks that generate weights for a main neural network in an end-to-end differentiable manner. Despite extensive applications ranging from multi-task learning to Bayesian deep learning, the problem of optimizing hypernetworks has not been studied to date. We observe that classical weight initialization methods like Glorot &amp; Bengio (2010) and He et al. (2015), when applied directly on a hypernet, fail to produce weights for the mainnet in the correct scale. We develop principled techniques for weight initialization in hypernets, and show that they lead to more stable mainnet weights, lower training loss, and faster convergence.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(45) <code>Nov 2019</code> <a href="https://arxiv.org/abs/1911.12247">Contrastive Learning of Structured World Models</a> <em>[Thomas Kipf, Elise van der Pol, Max Welling]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>A structured understanding of our world in terms of objects, relations, and hierarchies is an important component of human cognition. Learning such a structured world model from raw sensory data remains a challenge. As a step towards this goal, we introduce Contrastively-trained Structured World Models (C-SWMs). C-SWMs utilize a contrastive approach for representation learning in environments with compositional structure. We structure each state embedding as a set of object representations and their relations, modeled by a graph neural network. This allows objects to be discovered from raw pixel observations without direct supervision as part of the learning process. We evaluate C-SWMs on compositional environments involving multiple interacting objects that can be manipulated independently by an agent, simple Atari games, and a multi-object physics simulation. Our experiments demonstrate that C-SWMs can overcome limitations of models based on pixel reconstruction and outperform typical representatives of this model class in highly structured environments, while learning interpretable object-based representations.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(46) <code>Jun 2019</code> <a href="https://arxiv.org/abs/1906.04477">Causal Discovery with Reinforcement Learning</a> <em>[Shengyu Zhu, Zhitang Chen]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote>
+<p>Discovering causal structure among a set of variables is a fundamental problem in many empirical sciences. Traditional score-based casual discovery methods rely on various local heuristics to search for a directly acyclic graph (DAG) according to a predefined score function. While these methods, e.g., greedy equivalence search (GES), may have attractive results with infinite samples and certain model assumptions, they are less satisfactory in practice due to finite data and possible violation of assumptions. Motivated by recent advances in neural combinatorial optimization, we propose to use reinforcement learning (RL) to search for the DAG with the best scoring. Our encoder-decoder model takes observable data as input and generates graph adjacency matrices that are used to compute corresponding rewards. The reward incorporates both the predefined score function and two penalty terms for enforcing acyclicity. In contrast with typical RL applications where the goal is to learn a policy, we use RL as a search strategy and our final output would be the graph, among all graphs generated during training, that achieves the best reward. We conduct experiments on both synthetic and real data, and show that the proposed approach not only has an improved search ability but also allows for a flexible score function under the acyclicity constraint.</p>
+</blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(46) <code>201</code> <a href=""></a> <em>[]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -3476,7 +3530,7 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </li>
 </ul>
 <hr />
-<p>(28) <code>201</code> <a href=""></a> <em>[]</em></p>
+<p>(46) <code>201</code> <a href=""></a> <em>[]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
@@ -3491,7 +3545,67 @@ We first discuss the <strong>[1] desirable properties</strong> of network embedd
 </li>
 </ul>
 <hr />
-<p>(28) <code>201</code> <a href=""></a> <em>[]</em></p>
+<p>(46) <code>201</code> <a href=""></a> <em>[]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote></blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(46) <code>201</code> <a href=""></a> <em>[]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote></blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(46) <code>201</code> <a href=""></a> <em>[]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote></blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(46) <code>201</code> <a href=""></a> <em>[]</em></p>
+<ul>
+<li><strong>Abstract</strong>: </li>
+</ul>
+<blockquote></blockquote>
+<ul>
+<li><strong>Key notes</strong>: <ul>
+<li><u><strong>Main contributions</strong></u>: </li>
+<li><u><strong>Other Notes</strong></u>:</li>
+<li><u><strong>Use cases</strong></u>:</li>
+<li><u><strong>Further directions</strong></u>:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(46) <code>201</code> <a href=""></a> <em>[]</em></p>
 <ul>
 <li><strong>Abstract</strong>: </li>
 </ul>
