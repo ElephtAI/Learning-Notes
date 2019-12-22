@@ -1584,6 +1584,25 @@ We evaluate our method on a variety of **link-prediction** task including social
 
 ---
 
+### New RP by author
+
+**<u>Benjamin_Guedj</u>**
+
+* [ ] **(PAC-Bayesian tutorial)** [A Primer on PAC-Bayesian Learning](https://arxiv.org/abs/1901.05353)
+* [ ] **(PAC-Bayesian/Representation Learning)** [PAC-Bayesian Contrastive Unsupervised Representation Learning](https://arxiv.org/abs/1910.04464)
+* [ ] **(PAC-Bayesian/DNN)** [Dichotomize and Generalize: PAC-Bayesian Binary Activated Deep Neural Networks](https://arxiv.org/abs/1905.10259)
+
+**<u>Anthony C. Constantinous</u>**
+
+* [ ] **()** [Evaluating structure learning algorithms with a balanced scoring function](https://arxiv.org/abs/1905.12666)
+* [ ] **()** [Learning Bayesian networks from demographic and health survey data](https://arxiv.org/abs/1912.00715)
+
+**<u>James Cussens</u>**
+
+* [ ] **()** [Finding All Bayesian Network Structures within a Factor of Optimal](https://arxiv.org/pdf/1811.05039.pdf)
+* [ ] **()** [On Pruning for Score-Based Bayesian Network Structure Learning](https://arxiv.org/pdf/1905.09943.pdf)
+
+
 ### SNA/RP paper to read
 
 **<u>Dynamic, embedding Link prediction</u>**
